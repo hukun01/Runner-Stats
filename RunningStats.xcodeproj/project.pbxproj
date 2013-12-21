@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		46AC5AFB18656098006CAAD1 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AC5AFA18656098006CAAD1 /* AudioToolbox.framework */; };
+		46AC5AFD1865648E006CAAD1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AC5AFC1865648E006CAAD1 /* MapKit.framework */; };
+		46AC5B0918656BDD006CAAD1 /* RSPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 46AC5B0818656BDD006CAAD1 /* RSPath.m */; };
 		46D4AAAE18655E6700F787BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D4AAAD18655E6700F787BA /* Foundation.framework */; };
 		46D4AAB018655E6700F787BA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D4AAAF18655E6700F787BA /* CoreGraphics.framework */; };
 		46D4AAB218655E6700F787BA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D4AAB118655E6700F787BA /* UIKit.framework */; };
@@ -38,6 +40,9 @@
 /* Begin PBXFileReference section */
 		46AC5AF918656062006CAAD1 /* RunningStats.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = RunningStats.entitlements; sourceTree = "<group>"; };
 		46AC5AFA18656098006CAAD1 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		46AC5AFC1865648E006CAAD1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		46AC5B0718656BDD006CAAD1 /* RSPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSPath.h; sourceTree = "<group>"; };
+		46AC5B0818656BDD006CAAD1 /* RSPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSPath.m; sourceTree = "<group>"; };
 		46D4AAAA18655E6700F787BA /* RunningStats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunningStats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46D4AAAD18655E6700F787BA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		46D4AAAF18655E6700F787BA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -66,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46AC5AFD1865648E006CAAD1 /* MapKit.framework in Frameworks */,
 				46D4AAB018655E6700F787BA /* CoreGraphics.framework in Frameworks */,
 				46D4AAB218655E6700F787BA /* UIKit.framework in Frameworks */,
 				46D4AAAE18655E6700F787BA /* Foundation.framework in Frameworks */,
@@ -86,11 +92,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46AC5B0618656BDD006CAAD1 /* Overlay */ = {
+			isa = PBXGroup;
+			children = (
+				46AC5B0718656BDD006CAAD1 /* RSPath.h */,
+				46AC5B0818656BDD006CAAD1 /* RSPath.m */,
+			);
+			name = Overlay;
+			path = RunningStats/Overlay;
+			sourceTree = "<group>";
+		};
 		46D4AAA118655E6700F787BA = {
 			isa = PBXGroup;
 			children = (
-				46D4AAE518655EF200F787BA /* Overlay */,
 				46D4AAE618655EF200F787BA /* Other */,
+				46AC5B0618656BDD006CAAD1 /* Overlay */,
 				46D4AAB318655E6700F787BA /* RunningStats */,
 				46D4AAD518655E6800F787BA /* RunningStatsTests */,
 				46D4AAAC18655E6700F787BA /* Frameworks */,
@@ -110,6 +126,7 @@
 		46D4AAAC18655E6700F787BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				46AC5AFC1865648E006CAAD1 /* MapKit.framework */,
 				46AC5AFA18656098006CAAD1 /* AudioToolbox.framework */,
 				46D4AAAD18655E6700F787BA /* Foundation.framework */,
 				46D4AAAF18655E6700F787BA /* CoreGraphics.framework */,
@@ -161,14 +178,6 @@
 				46D4AAD818655E6800F787BA /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		46D4AAE518655EF200F787BA /* Overlay */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Overlay;
-			path = RunningStats/Overlay;
 			sourceTree = "<group>";
 		};
 		46D4AAE618655EF200F787BA /* Other */ = {
@@ -298,6 +307,7 @@
 			files = (
 				46D4AABA18655E6700F787BA /* main.m in Sources */,
 				46D4AAC418655E6700F787BA /* RSRunningVC.m in Sources */,
+				46AC5B0918656BDD006CAAD1 /* RSPath.m in Sources */,
 				46D4AAC718655E6700F787BA /* RSStatsVC.m in Sources */,
 				46D4AAE918655EF200F787BA /* RSAppDelegate.m in Sources */,
 			);

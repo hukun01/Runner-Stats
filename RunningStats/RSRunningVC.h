@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
 @interface RSRunningVC : UIViewController
+            <MKMapViewDelegate, CLLocationManagerDelegate>
+{
+    CLLocation *currLocation;
+}
 
 @end
