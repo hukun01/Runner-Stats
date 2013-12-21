@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RSSecondViewController : UIViewController
+@interface RSStatsVC : UIViewController
 
 @end

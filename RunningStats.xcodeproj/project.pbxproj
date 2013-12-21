@@ -7,21 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46AC5AFB18656098006CAAD1 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AC5AFA18656098006CAAD1 /* AudioToolbox.framework */; };
 		46D4AAAE18655E6700F787BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D4AAAD18655E6700F787BA /* Foundation.framework */; };
 		46D4AAB018655E6700F787BA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D4AAAF18655E6700F787BA /* CoreGraphics.framework */; };
 		46D4AAB218655E6700F787BA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D4AAB118655E6700F787BA /* UIKit.framework */; };
 		46D4AAB818655E6700F787BA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46D4AAB618655E6700F787BA /* InfoPlist.strings */; };
 		46D4AABA18655E6700F787BA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D4AAB918655E6700F787BA /* main.m */; };
-		46D4AABE18655E6700F787BA /* RSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D4AABD18655E6700F787BA /* RSAppDelegate.m */; };
 		46D4AAC118655E6700F787BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46D4AABF18655E6700F787BA /* Main.storyboard */; };
-		46D4AAC418655E6700F787BA /* RSFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D4AAC318655E6700F787BA /* RSFirstViewController.m */; };
-		46D4AAC718655E6700F787BA /* RSSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D4AAC618655E6700F787BA /* RSSecondViewController.m */; };
+		46D4AAC418655E6700F787BA /* RSRunningVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D4AAC318655E6700F787BA /* RSRunningVC.m */; };
+		46D4AAC718655E6700F787BA /* RSStatsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D4AAC618655E6700F787BA /* RSStatsVC.m */; };
 		46D4AAC918655E6700F787BA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46D4AAC818655E6700F787BA /* Images.xcassets */; };
 		46D4AAD018655E6800F787BA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D4AACF18655E6800F787BA /* XCTest.framework */; };
 		46D4AAD118655E6800F787BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D4AAAD18655E6700F787BA /* Foundation.framework */; };
 		46D4AAD218655E6800F787BA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D4AAB118655E6700F787BA /* UIKit.framework */; };
 		46D4AADA18655E6800F787BA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46D4AAD818655E6800F787BA /* InfoPlist.strings */; };
 		46D4AADC18655E6800F787BA /* RunningStatsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D4AADB18655E6800F787BA /* RunningStatsTests.m */; };
+		46D4AAE918655EF200F787BA /* RSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D4AAE818655EF200F787BA /* RSAppDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		46AC5AF918656062006CAAD1 /* RunningStats.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = RunningStats.entitlements; sourceTree = "<group>"; };
+		46AC5AFA18656098006CAAD1 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		46D4AAAA18655E6700F787BA /* RunningStats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunningStats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46D4AAAD18655E6700F787BA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		46D4AAAF18655E6700F787BA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -43,19 +46,19 @@
 		46D4AAB718655E6700F787BA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		46D4AAB918655E6700F787BA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		46D4AABB18655E6700F787BA /* RunningStats-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RunningStats-Prefix.pch"; sourceTree = "<group>"; };
-		46D4AABC18655E6700F787BA /* RSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSAppDelegate.h; sourceTree = "<group>"; };
-		46D4AABD18655E6700F787BA /* RSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSAppDelegate.m; sourceTree = "<group>"; };
 		46D4AAC018655E6700F787BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		46D4AAC218655E6700F787BA /* RSFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSFirstViewController.h; sourceTree = "<group>"; };
-		46D4AAC318655E6700F787BA /* RSFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSFirstViewController.m; sourceTree = "<group>"; };
-		46D4AAC518655E6700F787BA /* RSSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSSecondViewController.h; sourceTree = "<group>"; };
-		46D4AAC618655E6700F787BA /* RSSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSSecondViewController.m; sourceTree = "<group>"; };
+		46D4AAC218655E6700F787BA /* RSRunningVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSRunningVC.h; sourceTree = "<group>"; };
+		46D4AAC318655E6700F787BA /* RSRunningVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSRunningVC.m; sourceTree = "<group>"; };
+		46D4AAC518655E6700F787BA /* RSStatsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSStatsVC.h; sourceTree = "<group>"; };
+		46D4AAC618655E6700F787BA /* RSStatsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSStatsVC.m; sourceTree = "<group>"; };
 		46D4AAC818655E6700F787BA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		46D4AACE18655E6800F787BA /* RunningStatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunningStatsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		46D4AACF18655E6800F787BA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		46D4AAD718655E6800F787BA /* RunningStatsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RunningStatsTests-Info.plist"; sourceTree = "<group>"; };
 		46D4AAD918655E6800F787BA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		46D4AADB18655E6800F787BA /* RunningStatsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RunningStatsTests.m; sourceTree = "<group>"; };
+		46D4AAE718655EF200F787BA /* RSAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSAppDelegate.h; sourceTree = "<group>"; };
+		46D4AAE818655EF200F787BA /* RSAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAppDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +69,7 @@
 				46D4AAB018655E6700F787BA /* CoreGraphics.framework in Frameworks */,
 				46D4AAB218655E6700F787BA /* UIKit.framework in Frameworks */,
 				46D4AAAE18655E6700F787BA /* Foundation.framework in Frameworks */,
+				46AC5AFB18656098006CAAD1 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +89,8 @@
 		46D4AAA118655E6700F787BA = {
 			isa = PBXGroup;
 			children = (
+				46D4AAE518655EF200F787BA /* Overlay */,
+				46D4AAE618655EF200F787BA /* Other */,
 				46D4AAB318655E6700F787BA /* RunningStats */,
 				46D4AAD518655E6800F787BA /* RunningStatsTests */,
 				46D4AAAC18655E6700F787BA /* Frameworks */,
@@ -104,6 +110,7 @@
 		46D4AAAC18655E6700F787BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				46AC5AFA18656098006CAAD1 /* AudioToolbox.framework */,
 				46D4AAAD18655E6700F787BA /* Foundation.framework */,
 				46D4AAAF18655E6700F787BA /* CoreGraphics.framework */,
 				46D4AAB118655E6700F787BA /* UIKit.framework */,
@@ -115,13 +122,12 @@
 		46D4AAB318655E6700F787BA /* RunningStats */ = {
 			isa = PBXGroup;
 			children = (
-				46D4AABC18655E6700F787BA /* RSAppDelegate.h */,
-				46D4AABD18655E6700F787BA /* RSAppDelegate.m */,
+				46AC5AF918656062006CAAD1 /* RunningStats.entitlements */,
 				46D4AABF18655E6700F787BA /* Main.storyboard */,
-				46D4AAC218655E6700F787BA /* RSFirstViewController.h */,
-				46D4AAC318655E6700F787BA /* RSFirstViewController.m */,
-				46D4AAC518655E6700F787BA /* RSSecondViewController.h */,
-				46D4AAC618655E6700F787BA /* RSSecondViewController.m */,
+				46D4AAC218655E6700F787BA /* RSRunningVC.h */,
+				46D4AAC318655E6700F787BA /* RSRunningVC.m */,
+				46D4AAC518655E6700F787BA /* RSStatsVC.h */,
+				46D4AAC618655E6700F787BA /* RSStatsVC.m */,
 				46D4AAC818655E6700F787BA /* Images.xcassets */,
 				46D4AAB418655E6700F787BA /* Supporting Files */,
 			);
@@ -155,6 +161,24 @@
 				46D4AAD818655E6800F787BA /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		46D4AAE518655EF200F787BA /* Overlay */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Overlay;
+			path = RunningStats/Overlay;
+			sourceTree = "<group>";
+		};
+		46D4AAE618655EF200F787BA /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				46D4AAE718655EF200F787BA /* RSAppDelegate.h */,
+				46D4AAE818655EF200F787BA /* RSAppDelegate.m */,
+			);
+			name = Other;
+			path = RunningStats/Other;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,6 +229,23 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = hk;
 				TargetAttributes = {
+					46D4AAA918655E6700F787BA = {
+						DevelopmentTeam = GVRWTQ7EVM;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.InterAppAudio = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+							com.apple.iOS = {
+								enabled = 0;
+							};
+						};
+					};
 					46D4AACD18655E6800F787BA = {
 						TestTargetID = 46D4AAA918655E6700F787BA;
 					};
@@ -256,9 +297,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				46D4AABA18655E6700F787BA /* main.m in Sources */,
-				46D4AABE18655E6700F787BA /* RSAppDelegate.m in Sources */,
-				46D4AAC418655E6700F787BA /* RSFirstViewController.m in Sources */,
-				46D4AAC718655E6700F787BA /* RSSecondViewController.m in Sources */,
+				46D4AAC418655E6700F787BA /* RSRunningVC.m in Sources */,
+				46D4AAC718655E6700F787BA /* RSStatsVC.m in Sources */,
+				46D4AAE918655EF200F787BA /* RSAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,10 +426,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = RunningStats/RunningStats.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RunningStats/RunningStats-Prefix.pch";
 				INFOPLIST_FILE = "RunningStats/RunningStats-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -398,10 +443,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = RunningStats/RunningStats.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RunningStats/RunningStats-Prefix.pch";
 				INFOPLIST_FILE = "RunningStats/RunningStats-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -467,6 +516,7 @@
 				46D4AAE118655E6800F787BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		46D4AAE218655E6800F787BA /* Build configuration list for PBXNativeTarget "RunningStatsTests" */ = {
 			isa = XCConfigurationList;
@@ -475,6 +525,7 @@
 				46D4AAE418655E6800F787BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

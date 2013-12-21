@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 hk. All rights reserved.
 //
 
-#import "RSSecondViewController.h"
+#import "RSStatsVC.h"
 
-@interface RSSecondViewController ()
+@interface RSStatsVC ()
 
 @end
 
-@implementation RSSecondViewController
+@implementation RSStatsVC
 
 - (void)viewDidLoad
 {

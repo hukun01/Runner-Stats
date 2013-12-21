@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 hk. All rights reserved.
 //
 
-#import "RSFirstViewController.h"
+#import "RSRunningVC.h"
 
-@interface RSFirstViewController ()
+@interface RSRunningVC ()
 
 @end
 
-@implementation RSFirstViewController
+@implementation RSRunningVC
 
 - (void)viewDidLoad
 {
