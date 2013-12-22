@@ -46,7 +46,8 @@
     currLocation = [self.locationManager location];
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+- (void)locationManager:(CLLocationManager *)manager
+     didUpdateLocations:(NSArray *)locations
 {
     if (!self.path) {
         _path = [[RSPath alloc] initWithCenterCoordinate:currLocation.coordinate];
@@ -64,7 +65,8 @@
             
             if (!MKMapRectIsNull(updateRect))
             {
-                // There is a non null update rect.
+                // Update map and speed and distance textfields
+                // Map
                 // Compute the currently visible map zoom scale
                 MKZoomScale currentZoomScale = (CGFloat)(self.map.bounds.size.width / self.map.visibleMapRect.size.width);
                 // Find out the line width at this zoom scale and outset the updateRect by that amount
@@ -72,19 +74,22 @@
                 updateRect = MKMapRectInset(updateRect, -lineWidth, -lineWidth);
                 // Ask the overlay view to update just the changed area.
                 [self.pathRenderer setNeedsDisplayInMapRect:updateRect];
+                
+                // Speed
+                self.currSpeedTxt.text = [NSString stringWithFormat:@"Speed: %.2f km/h", newLocation.speed];
             }
         }
     }
 }
 
-
-- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id <MKOverlay>)overlay
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView
+            rendererForOverlay:(id <MKOverlay>)overlay
 {
     if (!self.pathRenderer)
     {
         _pathRenderer = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
-        self.pathRenderer.strokeColor = [[UIColor greenColor] colorWithAlphaComponent:0.65];
-        self.pathRenderer.lineWidth = 5;
+        self.pathRenderer.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.65];
+        self.pathRenderer.lineWidth = 6;
     }
     return self.pathRenderer;
 }
