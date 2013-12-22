@@ -11,14 +11,12 @@
     
     MKMapRect boundingMapRect;
     
-    pthread_rwlock_t rwLock;
+
 }
 
-// Initialize the CrumbPath with the starting coordinate.
-// The CrumbPath's boundingMapRect will be set to a sufficiently large square
-// centered on the starting coordinate.
-//
-- (id)initWithCenterCoordinate:(CLLocationCoordinate2D)coord;
+- (void)saveCurrLocation:(CLLocationCoordinate2D)coord;
+
+- (void)clearContents;
 
 // Add a location observation. A MKMapRect containing the newly added point
 // and the previously added point is returned so that the view can be updated
@@ -28,7 +26,7 @@
 //
 - (MKMapRect)addCoordinate:(CLLocationCoordinate2D)coord;
 
-- (void)lockForReading;
+
 
 // The following properties must only be accessed when holding the read lock
 // via lockForReading.  Once you're done accessing the points, release the
@@ -37,6 +35,6 @@
 @property (readonly) MKMapPoint *points;
 @property (readonly) NSUInteger pointCount;
 
-- (void)unlockForReading;
+
 
 @end

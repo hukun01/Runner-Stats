@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "CHCSVParser.h"
+#import "RSRecordManager.h"
 
 @interface RSRunningVC : UIViewController
-            <MKMapViewDelegate, CLLocationManagerDelegate>
+<MKMapViewDelegate, CLLocationManagerDelegate, UIAlertViewDelegate>
 {
     CLLocation *currLocation;
 }

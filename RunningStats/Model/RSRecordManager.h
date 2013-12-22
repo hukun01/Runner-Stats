@@ -1,0 +1,19 @@
+//
+//  RSRecordManager.h
+//  RunningStats
+//
+//  Created by Mr. Who on 12/22/13.
+//  Copyright (c) 2013 hk. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "CHCSVParser.h"
+
+@interface RSRecordManager : NSObject <CHCSVParserDelegate>
+// Create if not exists an empty record named record.csv, in which there is one empty line
+- (void) createRecord;
+
+- (NSArray *)readRecord;
+// newline points to a NSArray separated by comma
+- (void)addALine:(NSArray *)newline;
+@end

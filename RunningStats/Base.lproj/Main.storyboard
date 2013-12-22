@@ -38,6 +38,35 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XUg-bu-Lvn">
+                                <rect key="frame" x="237" y="57" width="63" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="startSession:" destination="CZ4-MO-1fc" eventType="touchUpInside" id="uaO-gp-ehH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y4X-gG-Cmv">
+                                <rect key="frame" x="237" y="93" width="63" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveSession:" destination="CZ4-MO-1fc" eventType="touchUpInside" id="Ul5-aF-jZ5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gt-yV-Crg">
+                                <rect key="frame" x="237" y="57" width="63" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Discard">
+                                    <color key="titleColor" red="1" green="0.36361072486656121" blue="0.39991693264258465" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="discardSession:" destination="CZ4-MO-1fc" eventType="touchUpInside" id="BvG-AT-elE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -47,6 +76,9 @@
                         <outlet property="currSpeedTxt" destination="B4V-CM-sD7" id="hlG-8E-fLv"/>
                         <outlet property="distanceTxt" destination="yMv-a9-1cB" id="Yh2-wv-fNc"/>
                         <outlet property="map" destination="jst-3r-Nt7" id="YHp-oB-zV3"/>
+                        <outlet property="saveButton" destination="Y4X-gG-Cmv" id="cfA-kM-3v6"/>
+                        <outlet property="startButton" destination="XUg-bu-Lvn" id="Lpe-5p-cau"/>
+                        <outlet property="stopButton" destination="7gt-yV-Crg" id="4UV-th-uv3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qh2-T1-AhA" sceneMemberID="firstResponder"/>

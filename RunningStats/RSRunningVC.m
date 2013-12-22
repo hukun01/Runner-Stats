@@ -9,11 +9,24 @@
 #import "RSRunningVC.h"
 #import "RSPath.h"
 
+#define DISCARD_ALERT_TAG 0
+#define SAVE_ALERT_TAG 1
+
 @interface RSRunningVC ()
 @property (strong, nonatomic) IBOutlet MKMapView *map;
+// TextField to display instant data
 @property (strong, nonatomic) IBOutlet UITextField *currSpeedTxt;
 @property (strong, nonatomic) IBOutlet UITextField *distanceTxt;
 @property (strong, nonatomic) IBOutlet UITextField *avgSpeedTxt;
+
+// Start a session
+@property (strong, nonatomic) IBOutlet UIButton *startButton;
+// Stop and discard a session
+@property (strong, nonatomic) IBOutlet UIButton *stopButton;
+// Stop and save a session
+@property (strong, nonatomic) IBOutlet UIButton *saveButton;
+
+@property (nonatomic, strong) RSRecordManager *recordManager;
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) RSPath *path;
@@ -31,32 +44,101 @@
 
 - (void)setUp
 {
-    // map
-    self.map.userTrackingMode = YES;
-    
-    self.map.showsUserLocation = YES;
-    self.map.delegate = self;
     // locationManager
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [self.locationManager startUpdatingLocation];
-
-    //需要防抖动
+    //可能需要防抖动
     currLocation = [self.locationManager location];
+    // map
+    self.map.showsUserLocation = YES;
+    self.map.delegate = self;
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(currLocation.coordinate, 1500, 1500);
+    [self.map setRegion:region animated:YES];
+    // path
+    self.path = [[RSPath alloc] init];
+    // UI
+    self.saveButton.hidden = YES;
+    self.stopButton.hidden = YES;
+    
+    //debug
+    self.recordManager = [[RSRecordManager alloc] init];
+    [self.recordManager createRecord];
+}
+
+- (IBAction)startSession:(id)sender
+{
+    [self.locationManager startUpdatingLocation];
+    [self.path saveCurrLocation:currLocation.coordinate];
+    [self.map addOverlay:self.path];
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(currLocation.coordinate, 500, 500);
+    [self.map setRegion:region animated:YES];
+    //debug
+    self.avgSpeedTxt.text =  @"Path added.";
+    
+    self.startButton.hidden = YES;
+    self.stopButton.hidden = NO;
+    self.saveButton.hidden = NO;
+}
+
+- (IBAction)discardSession:(id)sender
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Discard?" message:@"Do you want to stop and discard this session?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Discard", nil];
+    alert.tag = DISCARD_ALERT_TAG;
+    [alert show];
+}
+
+- (IBAction)saveSession:(id)sender
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Save?" message:@"Do you want to stop and save this session?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Save", nil];
+    alert.tag = SAVE_ALERT_TAG;
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView
+clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        // First to stop the session
+        [self stopSession];
+        
+        if (alertView.tag == DISCARD_ALERT_TAG) {
+            // Discard current session
+            // TO-DO: delete tmp files
+            // Remove overlay
+            [self.map removeOverlay:self.path];
+            [self.path clearContents];
+            //self.path = NULL;
+            self.avgSpeedTxt.text =  @"Path deleted.";
+        }
+        else if (alertView.tag == SAVE_ALERT_TAG) {
+            // Save current session
+            // TO-DO: save tmp files to disk
+        }
+    }
+}
+
+- (void)stopSession
+{
+    [self.locationManager stopUpdatingLocation];
+    self.startButton.hidden = NO;
+    self.stopButton.hidden = YES;
+    self.saveButton.hidden = YES;
 }
 
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations
 {
-    if (!self.path) {
-        _path = [[RSPath alloc] initWithCenterCoordinate:currLocation.coordinate];
-        [self.map addOverlay:self.path];
-        
-        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(currLocation.coordinate, 1000, 1000);
-        [self.map setRegion:region animated:YES];
-    }
-    else {
+//    if (!self.path) {
+//        self.path = [[RSPath alloc] initWithCenterCoordinate:currLocation.coordinate];
+//        [self.map addOverlay:self.path];
+//        //debug
+//        self.avgSpeedTxt.text =  @"Path added.";
+//        
+//        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(currLocation.coordinate, 1000, 1000);
+//        [self.map setRegion:region animated:YES];
+//    }
+//    else {
         CLLocation *newLocation = [locations lastObject];
         if ((currLocation.coordinate.latitude != newLocation.coordinate.latitude) &&
             (currLocation.coordinate.longitude != newLocation.coordinate.longitude))
@@ -74,12 +156,16 @@
                 updateRect = MKMapRectInset(updateRect, -lineWidth, -lineWidth);
                 // Ask the overlay view to update just the changed area.
                 [self.pathRenderer setNeedsDisplayInMapRect:updateRect];
-                
+                currLocation = newLocation;
                 // Speed
                 self.currSpeedTxt.text = [NSString stringWithFormat:@"Speed: %.2f km/h", newLocation.speed];
+                // TO-DO: save data to tmp files
             }
+            //debug
+            NSArray *fields = [self.recordManager readRecord];
+            NSLog(@"read %lu: %@", [fields count], fields);
         }
-    }
+    //}
 }
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView
