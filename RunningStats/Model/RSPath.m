@@ -3,7 +3,7 @@
 #import "RSPath.h"
 
 #define INITIAL_POINT_SPACE 1000
-#define MINIMUM_DELTA_METERS 1.0
+#define MINIMUM_DELTA_METERS 5.0
 
 @implementation RSPath
 

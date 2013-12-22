@@ -1,7 +1,6 @@
 
 
 #import <MapKit/MapKit.h>
-#import <pthread.h>
 
 @interface RSPath : NSObject <MKOverlay>
 {

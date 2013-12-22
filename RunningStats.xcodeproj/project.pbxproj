@@ -8,18 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		15A3F798A6CB417B9C2C0F91 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B49D21AA1849DCAC899F2D /* libPods.a */; };
-		46189D91186753C0003E1785 /* RSRecordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 46189D90186753C0003E1785 /* RSRecordManager.m */; };
 		46AC5AFB18656098006CAAD1 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AC5AFA18656098006CAAD1 /* AudioToolbox.framework */; };
 		46AC5AFD1865648E006CAAD1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AC5AFC1865648E006CAAD1 /* MapKit.framework */; };
-		46AC5B0918656BDD006CAAD1 /* RSPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 46AC5B0818656BDD006CAAD1 /* RSPath.m */; };
+		46C6D4F518679ECF00CD5232 /* RSPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C6D4F218679ECF00CD5232 /* RSPath.m */; };
+		46C6D4F618679ECF00CD5232 /* RSRecordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C6D4F418679ECF00CD5232 /* RSRecordManager.m */; };
+		46C6D4FC18679F7B00CD5232 /* RSRunningVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C6D4F918679F7B00CD5232 /* RSRunningVC.m */; };
+		46C6D4FD18679F7B00CD5232 /* RSStatsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C6D4FB18679F7B00CD5232 /* RSStatsVC.m */; };
 		46D4AAAE18655E6700F787BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D4AAAD18655E6700F787BA /* Foundation.framework */; };
 		46D4AAB018655E6700F787BA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D4AAAF18655E6700F787BA /* CoreGraphics.framework */; };
 		46D4AAB218655E6700F787BA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D4AAB118655E6700F787BA /* UIKit.framework */; };
 		46D4AAB818655E6700F787BA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46D4AAB618655E6700F787BA /* InfoPlist.strings */; };
 		46D4AABA18655E6700F787BA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D4AAB918655E6700F787BA /* main.m */; };
 		46D4AAC118655E6700F787BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46D4AABF18655E6700F787BA /* Main.storyboard */; };
-		46D4AAC418655E6700F787BA /* RSRunningVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D4AAC318655E6700F787BA /* RSRunningVC.m */; };
-		46D4AAC718655E6700F787BA /* RSStatsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D4AAC618655E6700F787BA /* RSStatsVC.m */; };
 		46D4AAC918655E6700F787BA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46D4AAC818655E6700F787BA /* Images.xcassets */; };
 		46D4AAD018655E6800F787BA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D4AACF18655E6800F787BA /* XCTest.framework */; };
 		46D4AAD118655E6800F787BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D4AAAD18655E6700F787BA /* Foundation.framework */; };
@@ -40,13 +40,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		46189D8F186753C0003E1785 /* RSRecordManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSRecordManager.h; path = Model/RSRecordManager.h; sourceTree = "<group>"; };
-		46189D90186753C0003E1785 /* RSRecordManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSRecordManager.m; path = Model/RSRecordManager.m; sourceTree = "<group>"; };
 		46AC5AF918656062006CAAD1 /* RunningStats.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = RunningStats.entitlements; sourceTree = "<group>"; };
 		46AC5AFA18656098006CAAD1 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		46AC5AFC1865648E006CAAD1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		46AC5B0718656BDD006CAAD1 /* RSPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSPath.h; sourceTree = "<group>"; };
-		46AC5B0818656BDD006CAAD1 /* RSPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSPath.m; sourceTree = "<group>"; };
+		46C6D4F118679ECF00CD5232 /* RSPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSPath.h; sourceTree = "<group>"; };
+		46C6D4F218679ECF00CD5232 /* RSPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSPath.m; sourceTree = "<group>"; };
+		46C6D4F318679ECF00CD5232 /* RSRecordManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSRecordManager.h; sourceTree = "<group>"; };
+		46C6D4F418679ECF00CD5232 /* RSRecordManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSRecordManager.m; sourceTree = "<group>"; };
+		46C6D4F818679F7B00CD5232 /* RSRunningVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSRunningVC.h; sourceTree = "<group>"; };
+		46C6D4F918679F7B00CD5232 /* RSRunningVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSRunningVC.m; sourceTree = "<group>"; };
+		46C6D4FA18679F7B00CD5232 /* RSStatsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSStatsVC.h; sourceTree = "<group>"; };
+		46C6D4FB18679F7B00CD5232 /* RSStatsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSStatsVC.m; sourceTree = "<group>"; };
 		46D4AAAA18655E6700F787BA /* RunningStats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunningStats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46D4AAAD18655E6700F787BA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		46D4AAAF18655E6700F787BA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -56,10 +60,6 @@
 		46D4AAB918655E6700F787BA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		46D4AABB18655E6700F787BA /* RunningStats-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RunningStats-Prefix.pch"; sourceTree = "<group>"; };
 		46D4AAC018655E6700F787BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		46D4AAC218655E6700F787BA /* RSRunningVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSRunningVC.h; sourceTree = "<group>"; };
-		46D4AAC318655E6700F787BA /* RSRunningVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSRunningVC.m; sourceTree = "<group>"; };
-		46D4AAC518655E6700F787BA /* RSStatsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSStatsVC.h; sourceTree = "<group>"; };
-		46D4AAC618655E6700F787BA /* RSStatsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSStatsVC.m; sourceTree = "<group>"; };
 		46D4AAC818655E6700F787BA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		46D4AACE18655E6800F787BA /* RunningStatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunningStatsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		46D4AACF18655E6800F787BA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -99,32 +99,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		46189D8E1866AF9A003E1785 /* Model */ = {
+		46C6D4F018679ECF00CD5232 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				46189D8F186753C0003E1785 /* RSRecordManager.h */,
-				46189D90186753C0003E1785 /* RSRecordManager.m */,
+				46C6D4F118679ECF00CD5232 /* RSPath.h */,
+				46C6D4F218679ECF00CD5232 /* RSPath.m */,
+				46C6D4F318679ECF00CD5232 /* RSRecordManager.h */,
+				46C6D4F418679ECF00CD5232 /* RSRecordManager.m */,
 			);
-			name = Model;
-			path = RunningStats;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		46AC5B0618656BDD006CAAD1 /* Overlay */ = {
+		46C6D4F718679F7B00CD5232 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				46AC5B0718656BDD006CAAD1 /* RSPath.h */,
-				46AC5B0818656BDD006CAAD1 /* RSPath.m */,
+				46C6D4F818679F7B00CD5232 /* RSRunningVC.h */,
+				46C6D4F918679F7B00CD5232 /* RSRunningVC.m */,
+				46C6D4FA18679F7B00CD5232 /* RSStatsVC.h */,
+				46C6D4FB18679F7B00CD5232 /* RSStatsVC.m */,
 			);
-			name = Overlay;
-			path = RunningStats/Overlay;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		46D4AAA118655E6700F787BA = {
 			isa = PBXGroup;
 			children = (
-				46D4AAE618655EF200F787BA /* Other */,
-				46AC5B0618656BDD006CAAD1 /* Overlay */,
-				46189D8E1866AF9A003E1785 /* Model */,
 				46D4AAB318655E6700F787BA /* RunningStats */,
 				46D4AAD518655E6800F787BA /* RunningStatsTests */,
 				46D4AAAC18655E6700F787BA /* Frameworks */,
@@ -159,13 +158,10 @@
 		46D4AAB318655E6700F787BA /* RunningStats */ = {
 			isa = PBXGroup;
 			children = (
-				46AC5AF918656062006CAAD1 /* RunningStats.entitlements */,
+				46D4AAE618655EF200F787BA /* Other */,
+				46C6D4F718679F7B00CD5232 /* ViewController */,
+				46C6D4F018679ECF00CD5232 /* Model */,
 				46D4AABF18655E6700F787BA /* Main.storyboard */,
-				46D4AAC218655E6700F787BA /* RSRunningVC.h */,
-				46D4AAC318655E6700F787BA /* RSRunningVC.m */,
-				46D4AAC518655E6700F787BA /* RSStatsVC.h */,
-				46D4AAC618655E6700F787BA /* RSStatsVC.m */,
-				46D4AAC818655E6700F787BA /* Images.xcassets */,
 				46D4AAB418655E6700F787BA /* Supporting Files */,
 			);
 			path = RunningStats;
@@ -174,6 +170,8 @@
 		46D4AAB418655E6700F787BA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				46D4AAC818655E6700F787BA /* Images.xcassets */,
+				46AC5AF918656062006CAAD1 /* RunningStats.entitlements */,
 				46D4AAB518655E6700F787BA /* RunningStats-Info.plist */,
 				46D4AAB618655E6700F787BA /* InfoPlist.strings */,
 				46D4AAB918655E6700F787BA /* main.m */,
@@ -206,8 +204,7 @@
 				46D4AAE718655EF200F787BA /* RSAppDelegate.h */,
 				46D4AAE818655EF200F787BA /* RSAppDelegate.m */,
 			);
-			name = Other;
-			path = RunningStats/Other;
+			path = Other;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,12 +357,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46C6D4FC18679F7B00CD5232 /* RSRunningVC.m in Sources */,
 				46D4AABA18655E6700F787BA /* main.m in Sources */,
-				46189D91186753C0003E1785 /* RSRecordManager.m in Sources */,
-				46D4AAC418655E6700F787BA /* RSRunningVC.m in Sources */,
-				46AC5B0918656BDD006CAAD1 /* RSPath.m in Sources */,
-				46D4AAC718655E6700F787BA /* RSStatsVC.m in Sources */,
+				46C6D4F618679ECF00CD5232 /* RSRecordManager.m in Sources */,
 				46D4AAE918655EF200F787BA /* RSAppDelegate.m in Sources */,
+				46C6D4F518679ECF00CD5232 /* RSPath.m in Sources */,
+				46C6D4FD18679F7B00CD5232 /* RSStatsVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

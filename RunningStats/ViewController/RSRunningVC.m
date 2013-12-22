@@ -61,7 +61,6 @@
     self.saveButton.hidden = YES;
     self.stopButton.hidden = YES;
     
-    //debug
     self.recordManager = [[RSRecordManager alloc] init];
     [self.recordManager createRecord];
 }
@@ -99,18 +98,18 @@
 clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1) {
-        // First to stop the session
+        // First to stop session
         [self stopSession];
-        
+        // Discard session
         if (alertView.tag == DISCARD_ALERT_TAG) {
-            // Discard current session
             // TO-DO: delete tmp files
-            // Remove overlay
+            // Remove overlay, clear path
             [self.map removeOverlay:self.path];
             [self.path clearContents];
-            //self.path = NULL;
+            //debug
             self.avgSpeedTxt.text =  @"Path deleted.";
         }
+        // save session
         else if (alertView.tag == SAVE_ALERT_TAG) {
             // Save current session
             // TO-DO: save tmp files to disk
