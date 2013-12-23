@@ -7,13 +7,14 @@
     MKMapPoint *points;
     NSUInteger pointCount;
     NSUInteger pointSpace;
-    
     MKMapRect boundingMapRect;
-    
-
+    CLLocationSpeed *speedArray;
+    NSUInteger speedCount;
+    NSUInteger speedSpace;
+    CLLocationDistance distance;
 }
 
-- (void)saveCurrLocation:(CLLocationCoordinate2D)coord;
+- (void)saveCurrLocation:(CLLocation *)location;
 
 - (void)clearContents;
 
@@ -23,17 +24,13 @@
 // the previously added coordinate it will not be added to the list and 
 // MKMapRectNull will be returned.
 //
-- (MKMapRect)addCoordinate:(CLLocationCoordinate2D)coord;
+- (MKMapRect)addLocation:(CLLocation *)location;
+- (CLLocationSpeed)averageSpeed;
+- (CLLocationSpeed)instantSpeed;
 
-
-
-// The following properties must only be accessed when holding the read lock
-// via lockForReading.  Once you're done accessing the points, release the
-// read lock with unlockForReading.
-//
-@property (readonly) MKMapPoint *points;
-@property (readonly) NSUInteger pointCount;
-
-
+@property (assign, nonatomic) MKMapPoint *points;
+@property (assign, nonatomic) NSUInteger pointCount;
+@property (assign, nonatomic) CLLocationDistance distance;
+@property (assign, nonatomic) CLLocationSpeed *speedArray;
 
 @end

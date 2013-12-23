@@ -15,9 +15,14 @@
 @interface RSRunningVC ()
 @property (strong, nonatomic) IBOutlet MKMapView *map;
 // TextField to display instant data
-@property (strong, nonatomic) IBOutlet UITextField *currSpeedTxt;
-@property (strong, nonatomic) IBOutlet UITextField *distanceTxt;
-@property (strong, nonatomic) IBOutlet UITextField *avgSpeedTxt;
+@property (strong, nonatomic) IBOutlet UILabel *timerLabel;
+@property (strong, nonatomic) NSTimer *timer;
+@property (strong, nonatomic) IBOutlet UILabel *currSpeedLabel;
+@property (assign, nonatomic) CLLocationSpeed speed;
+@property (strong, nonatomic) IBOutlet UILabel *distanceLabel;
+@property (assign, nonatomic) CLLocationDistance distance;
+@property (strong, nonatomic) IBOutlet UILabel *avgSpeedLabel;
+@property (assign, nonatomic) CLLocationSpeed avgSpeed;
 
 // Start a session
 @property (strong, nonatomic) IBOutlet UIButton *startButton;
@@ -35,6 +40,7 @@
 @end
 
 @implementation RSRunningVC
+static unsigned int sessionSeconds = 0;
 
 - (void)viewDidLoad
 {
@@ -47,6 +53,7 @@
     // locationManager
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
+    self.locationManager.distanceFilter = 3.0f;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     //可能需要防抖动
     currLocation = [self.locationManager location];
@@ -60,7 +67,7 @@
     // UI
     self.saveButton.hidden = YES;
     self.stopButton.hidden = YES;
-    
+    // Create a record if not exist
     self.recordManager = [[RSRecordManager alloc] init];
     [self.recordManager createRecord];
 }
@@ -68,16 +75,49 @@
 - (IBAction)startSession:(id)sender
 {
     [self.locationManager startUpdatingLocation];
-    [self.path saveCurrLocation:currLocation.coordinate];
+    [self.path saveCurrLocation:currLocation];
+    if ([[self.map overlays] count] != 0) {
+        [self.map removeOverlays:[self.map overlays]];
+    }
     [self.map addOverlay:self.path];
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(currLocation.coordinate, 500, 500);
     [self.map setRegion:region animated:YES];
-    //debug
-    self.avgSpeedTxt.text =  @"Path added.";
-    
+    // start a timer
+    [self startTimer];
     self.startButton.hidden = YES;
     self.stopButton.hidden = NO;
     self.saveButton.hidden = NO;
+}
+
+- (void)startTimer
+{
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                               target:self
+                                             selector:@selector(timerTick)
+                                             userInfo:nil
+                                              repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
+}
+
+- (void)timerTick
+{
+    // Update sessionSeconds
+    sessionSeconds += 1;
+    // Update timerLabel
+    [self updateTimerLabel];
+}
+
+- (void)updateTimerLabel
+{
+    self.timerLabel.text = [self timeFormatted:sessionSeconds];
+}
+
+- (NSString *)timeFormatted:(int)totalSeconds
+{
+    int seconds = totalSeconds % 60;
+    int minutes = (totalSeconds / 60) % 60;
+    int hours = totalSeconds / 3600;
+    return [NSString stringWithFormat:@"%02d:%02d:%02d",hours, minutes, seconds];
 }
 
 - (IBAction)discardSession:(id)sender
@@ -97,22 +137,26 @@
 - (void)alertView:(UIAlertView *)alertView
 clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex == 1) {
+    if (buttonIndex == 1)
+    {
         // First to stop session
         [self stopSession];
         // Discard session
-        if (alertView.tag == DISCARD_ALERT_TAG) {
+        if (alertView.tag == DISCARD_ALERT_TAG)
+        {
             // TO-DO: delete tmp files
             // Remove overlay, clear path
-            [self.map removeOverlay:self.path];
+            [self.map removeOverlays:[self.map overlays]];
             [self.path clearContents];
-            //debug
-            self.avgSpeedTxt.text =  @"Path deleted.";
+            [self restoreUI];
         }
         // save session
-        else if (alertView.tag == SAVE_ALERT_TAG) {
+        else if (alertView.tag == SAVE_ALERT_TAG)
+        {
             // Save current session
             // TO-DO: save tmp files to disk
+            // Do not remove overlays
+            [self.path clearContents];
         }
     }
 }
@@ -120,51 +164,109 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
 - (void)stopSession
 {
     [self.locationManager stopUpdatingLocation];
+    // Restore UI
     self.startButton.hidden = NO;
     self.stopButton.hidden = YES;
     self.saveButton.hidden = YES;
+    [self stopTimer];
+}
+
+- (void)restoreUI
+{
+    [self updateTimerLabel];
+    self.currSpeedLabel.text = @"0.00";
+    self.avgSpeedLabel.text = @"0.00";
+    self.distanceLabel.text = @"0.00";
+}
+
+- (void)stopTimer
+{
+    if (self.timer) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
+    sessionSeconds = 0;
 }
 
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations
 {
-//    if (!self.path) {
-//        self.path = [[RSPath alloc] initWithCenterCoordinate:currLocation.coordinate];
-//        [self.map addOverlay:self.path];
-//        //debug
-//        self.avgSpeedTxt.text =  @"Path added.";
-//        
-//        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(currLocation.coordinate, 1000, 1000);
-//        [self.map setRegion:region animated:YES];
-//    }
-//    else {
-        CLLocation *newLocation = [locations lastObject];
-        if ((currLocation.coordinate.latitude != newLocation.coordinate.latitude) &&
-            (currLocation.coordinate.longitude != newLocation.coordinate.longitude))
-        {            
-            MKMapRect updateRect = [self.path addCoordinate:newLocation.coordinate];
+    CLLocation *newLocation = [locations lastObject];
+    if (![self isValidLocation:newLocation]) {
+        return;
+    }
+    if ((currLocation.coordinate.latitude != newLocation.coordinate.latitude) &&
+        (currLocation.coordinate.longitude != newLocation.coordinate.longitude))
+    {
+        MKMapRect updateRect = [self.path addLocation:newLocation];
+        
+        if (!MKMapRectIsNull(updateRect))
+        {
+            // Update map and speed and distance textfields
+            // Map
+            // Compute the currently visible map zoom scale
+            MKZoomScale currentZoomScale = (CGFloat)(self.map.bounds.size.width / self.map.visibleMapRect.size.width);
+            // Find out the line width at this zoom scale and outset the updateRect by that amount
+            CGFloat lineWidth = MKRoadWidthAtZoomScale(currentZoomScale);
+            updateRect = MKMapRectInset(updateRect, -lineWidth, -lineWidth);
+            // Ask the overlay view to update just the changed area.
+            [self.pathRenderer setNeedsDisplayInMapRect:updateRect];
+            // Update data
+            self.distance = [self.path distance];
+            self.speed = [self.path instantSpeed];
+            self.avgSpeed = [self.path averageSpeed];
+            // TO-DO: Save these data to tmp files!
             
-            if (!MKMapRectIsNull(updateRect))
-            {
-                // Update map and speed and distance textfields
-                // Map
-                // Compute the currently visible map zoom scale
-                MKZoomScale currentZoomScale = (CGFloat)(self.map.bounds.size.width / self.map.visibleMapRect.size.width);
-                // Find out the line width at this zoom scale and outset the updateRect by that amount
-                CGFloat lineWidth = MKRoadWidthAtZoomScale(currentZoomScale);
-                updateRect = MKMapRectInset(updateRect, -lineWidth, -lineWidth);
-                // Ask the overlay view to update just the changed area.
-                [self.pathRenderer setNeedsDisplayInMapRect:updateRect];
-                currLocation = newLocation;
-                // Speed
-                self.currSpeedTxt.text = [NSString stringWithFormat:@"Speed: %.2f km/h", newLocation.speed];
-                // TO-DO: save data to tmp files
-            }
-            //debug
-            NSArray *fields = [self.recordManager readRecord];
-            NSLog(@"read %lu: %@", [fields count], fields);
+            [self updateLabels];
+            // Move map with user location
+            currLocation = newLocation;
+            MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(currLocation.coordinate, 500, 500);
+            [self.map setRegion:region animated:NO];
         }
-    //}
+    }
+}
+
+- (BOOL)isValidLocation:(CLLocation *)location
+{
+    if (location.horizontalAccuracy < 0) {
+        return NO;
+    }
+    NSTimeInterval secondsSinceLastUpdate = [location.timestamp timeIntervalSinceDate:currLocation.timestamp];
+    if (secondsSinceLastUpdate < 0) {
+        return NO;
+    }
+    return YES;
+}
+
+- (void)updateLabels
+{
+    double tmp = 3.6 * self.speed;
+    if (tmp > 10.0)
+    {
+        self.currSpeedLabel.text = [NSString stringWithFormat:@"%.1f", tmp];
+    }
+    else
+    {
+        self.currSpeedLabel.text = [NSString stringWithFormat:@"%.2f", tmp];
+    }
+    tmp = self.distance/1000;
+    if (tmp > 10.0)
+    {
+        self.distanceLabel.text = [NSString stringWithFormat:@"%.1f", tmp];
+    }
+    else
+    {
+        self.distanceLabel.text = [NSString stringWithFormat:@"%.2f", tmp];
+    }
+    tmp = 3.6 * self.avgSpeed;
+    if (tmp > 10.0)
+    {
+        self.avgSpeedLabel.text = [NSString stringWithFormat:@"%.1f", tmp];
+    }
+    else
+    {
+        self.avgSpeedLabel.text = [NSString stringWithFormat:@"%.2f", tmp];
+    }
 }
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView
@@ -173,8 +275,8 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
     if (!self.pathRenderer)
     {
         _pathRenderer = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
-        self.pathRenderer.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.65];
-        self.pathRenderer.lineWidth = 6;
+        self.pathRenderer.strokeColor = [[UIColor alloc] initWithRed:66.0/255.0 green:204.0/255.0 blue:255.0/255.0 alpha:0.65];
+        self.pathRenderer.lineWidth = 6.5;
     }
     return self.pathRenderer;
 }

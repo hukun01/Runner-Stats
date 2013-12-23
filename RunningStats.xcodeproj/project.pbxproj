@@ -159,8 +159,8 @@
 			isa = PBXGroup;
 			children = (
 				46D4AAE618655EF200F787BA /* Other */,
-				46C6D4F718679F7B00CD5232 /* ViewController */,
 				46C6D4F018679ECF00CD5232 /* Model */,
+				46C6D4F718679F7B00CD5232 /* ViewController */,
 				46D4AABF18655E6700F787BA /* Main.storyboard */,
 				46D4AAB418655E6700F787BA /* Supporting Files */,
 			);

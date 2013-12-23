@@ -16,7 +16,8 @@
 - (id)init
 {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         NSString *docsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
         self.recordPath = [docsPath stringByAppendingPathComponent:@"record.csv"];
     }
@@ -26,8 +27,10 @@
 - (void)createRecord
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    if (![fileManager fileExistsAtPath:self.recordPath]) {
-        if (![fileManager createFileAtPath:self.recordPath contents:nil attributes:nil]) {
+    if (![fileManager fileExistsAtPath:self.recordPath])
+    {
+        if (![fileManager createFileAtPath:self.recordPath contents:nil attributes:nil])
+        {
             NSLog(@"Record creation failed.");
         }
     }
