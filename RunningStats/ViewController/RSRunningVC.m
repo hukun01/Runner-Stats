@@ -7,7 +7,6 @@
 //
 
 #import "RSRunningVC.h"
-#import "RSPath.h"
 
 #define DISCARD_ALERT_TAG 0
 #define SAVE_ALERT_TAG 1
@@ -54,7 +53,7 @@ static unsigned int sessionSeconds = 0;
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     self.locationManager.distanceFilter = 3.0f;
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
     //可能需要防抖动
     currLocation = [self.locationManager location];
     // map
@@ -192,8 +191,8 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
      didUpdateLocations:(NSArray *)locations
 {
     CLLocation *newLocation = [locations lastObject];
-    if (![self isValidLocation:newLocation]) {
-        return;
+    if ([self.path pointCount] == 0) {
+        [self.path saveCurrLocation:currLocation];
     }
     if ((currLocation.coordinate.latitude != newLocation.coordinate.latitude) &&
         (currLocation.coordinate.longitude != newLocation.coordinate.longitude))
@@ -224,18 +223,6 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
             [self.map setRegion:region animated:NO];
         }
     }
-}
-
-- (BOOL)isValidLocation:(CLLocation *)location
-{
-    if (location.horizontalAccuracy < 0) {
-        return NO;
-    }
-    NSTimeInterval secondsSinceLastUpdate = [location.timestamp timeIntervalSinceDate:currLocation.timestamp];
-    if (secondsSinceLastUpdate < 0) {
-        return NO;
-    }
-    return YES;
 }
 
 - (void)updateLabels

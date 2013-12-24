@@ -1,6 +1,7 @@
 
 
 #import <MapKit/MapKit.h>
+#import "CHCSVParser.h"
 
 @interface RSPath : NSObject <MKOverlay>
 {
@@ -15,8 +16,9 @@
 }
 
 - (void)saveCurrLocation:(CLLocation *)location;
-
+- (void)addALine:(NSArray *)newline;
 - (void)clearContents;
+- (BOOL)isValidLocation:(CLLocation *)location;
 
 // Add a location observation. A MKMapRect containing the newly added point
 // and the previously added point is returned so that the view can be updated
@@ -32,5 +34,4 @@
 @property (assign, nonatomic) NSUInteger pointCount;
 @property (assign, nonatomic) CLLocationDistance distance;
 @property (assign, nonatomic) CLLocationSpeed *speedArray;
-
 @end

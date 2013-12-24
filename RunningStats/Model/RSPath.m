@@ -5,6 +5,12 @@
 #define INITIAL_POINT_SPACE 1000
 #define TOO_BIG_DISTANCE 50
 #define MINIMUM_DELTA_METERS 5.0
+#define POINTS_TAG 0
+#define SPEEDS_TAG 1
+
+@interface RSPath()
+@property(nonatomic,strong) NSString *tmpFile;
+@end
 
 @implementation RSPath
 
@@ -15,26 +21,51 @@
 	self = [super init];
     if (self)
 	{
-        // initialize point storage and place this first coordinate in it
+        // Initialize point storage
         pointSpace = INITIAL_POINT_SPACE;
         points = malloc(sizeof(MKMapPoint) * pointSpace);
         pointCount = 0;
-        
+        // Initialize instant speeds storage
         speedSpace = INITIAL_POINT_SPACE;
         speedArray = malloc(sizeof(CLLocationSpeed) * speedSpace);
         speedCount = 0;
+        // Create a new tmpPath for tmp file
+        self.tmpFile = [[NSUUID new] UUIDString];
+        [self createTmpFile];
     }
     return self;
+}
+// There is always only one tmpFile in a session, with structure as follows.
+// timeInterval(int),speed(double)
+- (void)createTmpFile
+{
+    // Find the temp path
+    NSString *tmpPath = NSTemporaryDirectory();
+    if (!tmpPath) {
+        NSLog(@"There is no temp path available.");
+        return;
+    }
+    self.tmpFile = [tmpPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.csv",self.tmpFile]];
+    
+    // Create temp file
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if (![fileManager createFileAtPath:self.tmpFile contents:nil attributes:nil])
+    {
+        NSLog(@"Temp file creation failed.");
+    }
 }
 
 - (void)saveCurrLocation:(CLLocation *)location
 {
+    if (![self isValidLocation:location]) {
+        return;
+    }
     points[0] = MKMapPointForCoordinate([location coordinate]);
     pointCount = 1;
     speedArray[0] = location.speed;
     speedCount = 1;
     
-    // bite off up to 1/4 of the world to draw into.
+    // Bite off up to 1/4 of the world to draw into.
     
     MKMapPoint origin = points[0];
     origin.x -= MKMapSizeWorld.width / 8.0;
@@ -47,21 +78,53 @@
     boundingMapRect = MKMapRectIntersection(boundingMapRect, worldRect);
 }
 
+- (BOOL)isValidLocation:(CLLocation *)location
+{
+    // Skip old info
+    NSDate *eventDate = location.timestamp;
+    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
+    if (abs(howRecent) > 10.0) {
+        return NO;
+    }
+    if (location.horizontalAccuracy > TOO_BIG_DISTANCE || location.horizontalAccuracy < 0) {
+        return NO;
+    }
+    if (location.speed < 0) {
+        return NO;
+    }
+    return YES;
+}
+
+- (void)addALine:(NSArray *)newline
+{
+    CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:self.tmpFile];
+    [writer writeLineOfFields:newline];
+}
+
 - (void)clearContents
 {
+    // Clear points array
     memset(points, 0, sizeof(MKMapPoint) * pointCount);
+    // Clear speed array
+    memset(speedArray, 0, sizeof(CLLocationSpeed) * speedCount);
+    // Delete tmp file
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    [fileManager removeItemAtPath:self.tmpFile error:nil];
+    // Re-create a new empty tmp file
+    [self createTmpFile];
 }
 
 - (MKMapRect)addLocation:(CLLocation *)location
 {
+    MKMapRect updateRect = MKMapRectNull;
+    if (![self isValidLocation:location]) {
+        return updateRect;
+    }
     // Convert a CLLocationCoordinate2D to an MKMapPoint
     MKMapPoint newPoint = MKMapPointForCoordinate([location coordinate]);
     MKMapPoint prevPoint = points[pointCount - 1];
-    
     // Get the distance between this new point and the previous point.
     CLLocationDistance metersApart = MKMetersBetweenMapPoints(newPoint, prevPoint);
-    MKMapRect updateRect = MKMapRectNull;
-    
     // If the distance is too far, skip it
     if (metersApart > TOO_BIG_DISTANCE) {
         return updateRect;
@@ -73,17 +136,17 @@
         // Grow the points array if necessary
         if (pointSpace == pointCount)
         {
-            pointSpace *= 2;
-            points = realloc(points, sizeof(MKMapPoint) * pointSpace);
+            [self reallocArrayWithOptions:POINTS_TAG];
+        }
+        if (speedSpace == speedCount) {
+            [self reallocArrayWithOptions:SPEEDS_TAG];
         }
         // Add the new point to the points array
         points[pointCount] = newPoint;
         pointCount++;
         // Add new speed
-        if (location.speed >= 0) {
-            speedArray[speedCount] = location.speed;
-            speedCount++;
-        }
+        speedArray[speedCount] = location.speed;
+        speedCount++;
         // Compute MKMapRect bounding prevPoint and newPoint
         double minX = MIN(newPoint.x, prevPoint.x);
         double minY = MIN(newPoint.y, prevPoint.y);
@@ -93,6 +156,20 @@
         updateRect = MKMapRectMake(minX, minY, maxX - minX, maxY - minY);
     }
     return updateRect;
+}
+
+- (void)reallocArrayWithOptions:(NSUInteger)option
+{
+    if (option == POINTS_TAG)
+    {
+        pointSpace *= 2;
+        points = realloc(points, sizeof(MKMapPoint) * pointSpace);
+    }
+    else if (option == SPEEDS_TAG)
+    {
+        speedSpace *= 2;
+        speedArray = realloc(speedArray, sizeof(CLLocationSpeed) * speedSpace);
+    }
 }
 
 - (CLLocationSpeed)averageSpeed

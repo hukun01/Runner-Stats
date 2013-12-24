@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "CHCSVParser.h"
 #import "RSRecordManager.h"
+#import "RSPath.h"
 
 @interface RSRunningVC : UIViewController
 <MKMapViewDelegate, CLLocationManagerDelegate, UIAlertViewDelegate>
