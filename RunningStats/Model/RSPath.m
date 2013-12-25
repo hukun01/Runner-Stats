@@ -9,7 +9,9 @@
 #define SPEEDS_TAG 1
 
 @interface RSPath()
-@property(nonatomic,strong) NSString *tmpFile;
+@property(nonatomic, strong) NSString *tmpFile;
+@property(nonatomic, strong) NSString *tmpPath;
+@property(nonatomic, strong) NSFileManager *fileManager;
 @end
 
 @implementation RSPath
@@ -29,8 +31,9 @@
         speedSpace = INITIAL_POINT_SPACE;
         speedArray = malloc(sizeof(CLLocationSpeed) * speedSpace);
         speedCount = 0;
-        // Create a new tmpPath for tmp file
-        self.tmpFile = [[NSUUID new] UUIDString];
+        // Initialize file management related variables
+        self.fileManager = [NSFileManager defaultManager];
+        self.tmpPath = NSTemporaryDirectory();
         [self createTmpFile];
     }
     return self;
@@ -39,20 +42,44 @@
 // timeInterval(int),speed(double)
 - (void)createTmpFile
 {
-    // Find the temp path
-    NSString *tmpPath = NSTemporaryDirectory();
-    if (!tmpPath) {
+    // Create a new tmpPath for tmp file
+    self.tmpFile = [[NSUUID new] UUIDString];
+    if (!self.tmpPath) {
         NSLog(@"There is no temp path available.");
         return;
     }
-    self.tmpFile = [tmpPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.csv",self.tmpFile]];
+    self.tmpFile = [self.tmpPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.csv",self.tmpFile]];
     
     // Create temp file
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    if (![fileManager createFileAtPath:self.tmpFile contents:nil attributes:nil])
+    if (![self.fileManager createFileAtPath:self.tmpFile contents:nil attributes:nil])
     {
-        NSLog(@"Temp file creation failed.");
+        NSLog(@"Temp creation failed.");
     }
+    else
+    {
+        NSLog(@"Temp creation succeeded %@", self.tmpFile);
+    }
+}
+
+- (void)clearContents
+{
+    // Clear points array
+    memset(points, 0, sizeof(MKMapPoint) * pointCount);
+    // Clear speed array
+    memset(speedArray, 0, sizeof(CLLocationSpeed) * speedCount);
+    
+    NSArray *tmpFiles = [self.fileManager contentsOfDirectoryAtPath:self.tmpPath error:NULL];
+    for (NSString *filename in tmpFiles) {
+        if ([self.fileManager removeItemAtPath:[self.tmpPath stringByAppendingPathComponent:filename] error:NULL])
+        {
+            NSLog(@"Delete %@", filename);
+        }
+        else {
+            NSLog(@"Delete temp failed.");
+        }
+    }
+    // Re-create a new empty tmp file
+    [self createTmpFile];
 }
 
 - (void)saveCurrLocation:(CLLocation *)location
@@ -78,40 +105,10 @@
     boundingMapRect = MKMapRectIntersection(boundingMapRect, worldRect);
 }
 
-- (BOOL)isValidLocation:(CLLocation *)location
-{
-    // Skip old info
-    NSDate *eventDate = location.timestamp;
-    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
-    if (abs(howRecent) > 10.0) {
-        return NO;
-    }
-    if (location.horizontalAccuracy > TOO_BIG_DISTANCE || location.horizontalAccuracy < 0) {
-        return NO;
-    }
-    if (location.speed < 0) {
-        return NO;
-    }
-    return YES;
-}
-
 - (void)addALine:(NSArray *)newline
 {
     CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:self.tmpFile];
     [writer writeLineOfFields:newline];
-}
-
-- (void)clearContents
-{
-    // Clear points array
-    memset(points, 0, sizeof(MKMapPoint) * pointCount);
-    // Clear speed array
-    memset(speedArray, 0, sizeof(CLLocationSpeed) * speedCount);
-    // Delete tmp file
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    [fileManager removeItemAtPath:self.tmpFile error:nil];
-    // Re-create a new empty tmp file
-    [self createTmpFile];
 }
 
 - (MKMapRect)addLocation:(CLLocation *)location
@@ -170,6 +167,23 @@
         speedSpace *= 2;
         speedArray = realloc(speedArray, sizeof(CLLocationSpeed) * speedSpace);
     }
+}
+
+- (BOOL)isValidLocation:(CLLocation *)location
+{
+    // Skip old info
+    NSDate *eventDate = location.timestamp;
+    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
+    if (abs(howRecent) > 10.0) {
+        return NO;
+    }
+    if (location.horizontalAccuracy > TOO_BIG_DISTANCE || location.horizontalAccuracy < 0) {
+        return NO;
+    }
+    if (location.speed < 0) {
+        return NO;
+    }
+    return YES;
 }
 
 - (CLLocationSpeed)averageSpeed

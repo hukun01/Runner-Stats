@@ -86,6 +86,7 @@ static unsigned int sessionSeconds = 0;
     self.startButton.hidden = YES;
     self.stopButton.hidden = NO;
     self.saveButton.hidden = NO;
+    [self restoreUI];
 }
 
 - (void)startTimer
@@ -154,7 +155,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
         {
             // Save current session
             // TO-DO: save tmp files to disk
-            // Do not remove overlays
+            // Do not: remove overlays and restore labels, leave them there
             [self.path clearContents];
         }
     }
@@ -163,7 +164,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
 - (void)stopSession
 {
     [self.locationManager stopUpdatingLocation];
-    // Restore UI
+    // Restore buttons
     self.startButton.hidden = NO;
     self.stopButton.hidden = YES;
     self.saveButton.hidden = YES;
