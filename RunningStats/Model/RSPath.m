@@ -34,7 +34,6 @@
         // Initialize file management related variables
         self.fileManager = [NSFileManager defaultManager];
         self.tmpPath = NSTemporaryDirectory();
-        [self createTmpFile];
     }
     return self;
 }
@@ -78,11 +77,9 @@
             NSLog(@"Delete temp failed.");
         }
     }
-    // Re-create a new empty tmp file
-    [self createTmpFile];
 }
 
-- (void)saveCurrLocation:(CLLocation *)location
+- (void)saveFirstLocation:(CLLocation *)location
 {
     if (![self isValidLocation:location]) {
         return;
@@ -93,7 +90,6 @@
     speedCount = 1;
     
     // Bite off up to 1/4 of the world to draw into.
-    
     MKMapPoint origin = points[0];
     origin.x -= MKMapSizeWorld.width / 8.0;
     origin.y -= MKMapSizeWorld.height / 8.0;
@@ -103,6 +99,9 @@
     boundingMapRect = (MKMapRect) { origin, size };
     MKMapRect worldRect = MKMapRectMake(0, 0, MKMapSizeWorld.width, MKMapSizeWorld.height);
     boundingMapRect = MKMapRectIntersection(boundingMapRect, worldRect);
+    
+    // Create temp file for current session
+    [self createTmpFile];NSLog(@"Create Temp..");
 }
 
 - (void)addALine:(NSArray *)newline

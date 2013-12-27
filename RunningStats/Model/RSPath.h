@@ -15,7 +15,7 @@
     CLLocationDistance distance;
 }
 
-- (void)saveCurrLocation:(CLLocation *)location;
+- (void)saveFirstLocation:(CLLocation *)location;
 - (void)addALine:(NSArray *)newline;
 - (void)clearContents;
 - (BOOL)isValidLocation:(CLLocation *)location;

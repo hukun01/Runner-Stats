@@ -10,6 +10,7 @@
 
 #define DISCARD_ALERT_TAG 0
 #define SAVE_ALERT_TAG 1
+#define MAP_REGION_SIZE 330
 
 @interface RSRunningVC ()
 @property (strong, nonatomic) IBOutlet MKMapView *map;
@@ -59,8 +60,7 @@ static unsigned int sessionSeconds = 0;
     // map
     self.map.showsUserLocation = YES;
     self.map.delegate = self;
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(currLocation.coordinate, 1500, 1500);
-    [self.map setRegion:region animated:YES];
+    [self renewMapRegion];
     // path
     self.path = [[RSPath alloc] init];
     // UI
@@ -71,22 +71,23 @@ static unsigned int sessionSeconds = 0;
     [self.recordManager createRecord];
 }
 
+# pragma Start Session
 - (IBAction)startSession:(id)sender
 {
     [self.locationManager startUpdatingLocation];
-    [self.path saveCurrLocation:currLocation];
+    [self.path saveFirstLocation:currLocation];
     if ([[self.map overlays] count] != 0) {
         [self.map removeOverlays:[self.map overlays]];
     }
     [self.map addOverlay:self.path];
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(currLocation.coordinate, 500, 500);
-    [self.map setRegion:region animated:YES];
+    [self renewMapRegion];
     // start a timer
     [self startTimer];
+    
+    // UI
     self.startButton.hidden = YES;
-    self.stopButton.hidden = NO;
     self.saveButton.hidden = NO;
-    [self restoreUI];
+    self.stopButton.hidden = NO;
 }
 
 - (void)startTimer
@@ -120,6 +121,7 @@ static unsigned int sessionSeconds = 0;
     return [NSString stringWithFormat:@"%02d:%02d:%02d",hours, minutes, seconds];
 }
 
+#pragma Discard Session
 - (IBAction)discardSession:(id)sender
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Discard?" message:@"Do you want to stop and discard this session?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Discard", nil];
@@ -147,8 +149,6 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
             // TO-DO: delete tmp files
             // Remove overlay, clear path
             [self.map removeOverlays:[self.map overlays]];
-            [self.path clearContents];
-            [self restoreUI];
         }
         // save session
         else if (alertView.tag == SAVE_ALERT_TAG)
@@ -156,7 +156,6 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
             // Save current session
             // TO-DO: save tmp files to disk
             // Do not: remove overlays and restore labels, leave them there
-            [self.path clearContents];
         }
     }
 }
@@ -164,11 +163,9 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
 - (void)stopSession
 {
     [self.locationManager stopUpdatingLocation];
-    // Restore buttons
-    self.startButton.hidden = NO;
-    self.stopButton.hidden = YES;
-    self.saveButton.hidden = YES;
     [self stopTimer];
+    [self.path clearContents];
+    [self restoreUI];
 }
 
 - (void)restoreUI
@@ -177,6 +174,10 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
     self.currSpeedLabel.text = @"0.00";
     self.avgSpeedLabel.text = @"0.00";
     self.distanceLabel.text = @"0.00";
+    // Restore buttons
+    self.startButton.hidden = NO;
+    self.stopButton.hidden = YES;
+    self.saveButton.hidden = YES;
 }
 
 - (void)stopTimer
@@ -188,12 +189,14 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
     sessionSeconds = 0;
 }
 
+
+
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations
 {
     CLLocation *newLocation = [locations lastObject];
     if ([self.path pointCount] == 0) {
-        [self.path saveCurrLocation:currLocation];
+        [self.path saveFirstLocation:currLocation];
     }
     if ((currLocation.coordinate.latitude != newLocation.coordinate.latitude) &&
         (currLocation.coordinate.longitude != newLocation.coordinate.longitude))
@@ -220,10 +223,15 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
             [self updateLabels];
             // Move map with user location
             currLocation = newLocation;
-            MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(currLocation.coordinate, 500, 500);
-            [self.map setRegion:region animated:NO];
+            [self renewMapRegion];
         }
     }
+}
+
+- (void)renewMapRegion
+{
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(currLocation.coordinate, MAP_REGION_SIZE, MAP_REGION_SIZE);
+    [self.map setRegion:region animated:YES];
 }
 
 - (void)updateLabels
