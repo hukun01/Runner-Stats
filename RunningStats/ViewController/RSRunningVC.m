@@ -71,7 +71,7 @@ static unsigned int sessionSeconds = 0;
     [self.recordManager createRecord];
 }
 
-# pragma Start Session
+# pragma mark Start Session
 - (IBAction)startSession:(id)sender
 {
     [self.locationManager startUpdatingLocation];
@@ -92,11 +92,7 @@ static unsigned int sessionSeconds = 0;
 
 - (void)startTimer
 {
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
-                                               target:self
-                                             selector:@selector(timerTick)
-                                             userInfo:nil
-                                              repeats:YES];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerTick) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
 }
 
@@ -121,7 +117,7 @@ static unsigned int sessionSeconds = 0;
     return [NSString stringWithFormat:@"%02d:%02d:%02d",hours, minutes, seconds];
 }
 
-#pragma Discard Session
+#pragma mark Discard Session
 - (IBAction)discardSession:(id)sender
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Discard?" message:@"Do you want to stop and discard this session?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Discard", nil];
@@ -149,13 +145,14 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
             // TO-DO: delete tmp files
             // Remove overlay, clear path
             [self.map removeOverlays:[self.map overlays]];
+            [self.path clearContents];
         }
         // save session
         else if (alertView.tag == SAVE_ALERT_TAG)
         {
             // Save current session
             // TO-DO: save tmp files to disk
-            // Do not: remove overlays and restore labels, leave them there
+            [self.path saveTmpAsValidRecord];
         }
     }
 }
@@ -164,7 +161,6 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     [self.locationManager stopUpdatingLocation];
     [self stopTimer];
-    [self.path clearContents];
     [self restoreUI];
 }
 
@@ -217,7 +213,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
             // Update data
             self.distance = [self.path distance];
             self.speed = [self.path instantSpeed];
-            self.avgSpeed = [self.path averageSpeed];
+            self.avgSpeed = self.path.averageSpeed;
             // TO-DO: Save these data to tmp files!
             
             [self updateLabels];
@@ -271,7 +267,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
     if (!self.pathRenderer)
     {
         _pathRenderer = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
-        self.pathRenderer.strokeColor = [[UIColor alloc] initWithRed:66.0/255.0 green:204.0/255.0 blue:255.0/255.0 alpha:0.65];
+        self.pathRenderer.strokeColor = [[UIColor alloc] initWithRed:66.0/255.0 green:204.0/255.0 blue:255.0/255.0 alpha:0.75];
         self.pathRenderer.lineWidth = 6.5;
     }
     return self.pathRenderer;

@@ -4,7 +4,7 @@
 
 #define INITIAL_POINT_SPACE 1000
 #define TOO_BIG_DISTANCE 50
-#define MINIMUM_DELTA_METERS 5.0
+#define MINIMUM_DELTA_METERS 1.0
 #define POINTS_TAG 0
 #define SPEEDS_TAG 1
 
@@ -12,10 +12,10 @@
 @property(nonatomic, strong) NSString *tmpFile;
 @property(nonatomic, strong) NSString *tmpPath;
 @property(nonatomic, strong) NSFileManager *fileManager;
+@property(nonatomic, strong) NSDate *dateOfLastEvent;
 @end
 
 @implementation RSPath
-
 @synthesize points, pointCount, speedArray, distance;
 
 - (id)init
@@ -31,14 +31,17 @@
         speedSpace = INITIAL_POINT_SPACE;
         speedArray = malloc(sizeof(CLLocationSpeed) * speedSpace);
         speedCount = 0;
+        self.averageSpeed = 0.0;
         // Initialize file management related variables
         self.fileManager = [NSFileManager defaultManager];
         self.tmpPath = NSTemporaryDirectory();
+        // Initialize timeInterval
+        self.dateOfLastEvent = [NSDate date];
     }
     return self;
 }
 // There is always only one tmpFile in a session, with structure as follows.
-// timeInterval(int),speed(double)
+// timeInterval(double),instantSpeed(double)
 - (void)createTmpFile
 {
     // Create a new tmpPath for tmp file
@@ -101,13 +104,21 @@
     boundingMapRect = MKMapRectIntersection(boundingMapRect, worldRect);
     
     // Create temp file for current session
-    [self createTmpFile];NSLog(@"Create Temp..");
+    [self createTmpFile];
+    // Write to temp file
+    [self addALineByLocation:location];
 }
 
-- (void)addALine:(NSArray *)newline
+- (void)addALineByLocation:(CLLocation *)location
 {
     CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:self.tmpFile];
+    
+    NSNumber *timeInterval = [NSNumber numberWithDouble:[self.dateOfLastEvent timeIntervalSinceDate:location.timestamp]];
+    NSNumber *instantSpeed = [NSNumber numberWithDouble:location.speed];
+    NSArray *newline = @[timeInterval, instantSpeed];
+    
     [writer writeLineOfFields:newline];
+    self.dateOfLastEvent = location.timestamp;
 }
 
 - (MKMapRect)addLocation:(CLLocation *)location
@@ -143,6 +154,9 @@
         // Add new speed
         speedArray[speedCount] = location.speed;
         speedCount++;
+        [self updateAverageSpeed];
+        // Write to temp file
+        [self addALineByLocation:location];
         // Compute MKMapRect bounding prevPoint and newPoint
         double minX = MIN(newPoint.x, prevPoint.x);
         double minY = MIN(newPoint.y, prevPoint.y);
@@ -182,16 +196,37 @@
     if (location.speed < 0) {
         return NO;
     }
+    if (location.speed > 20) {
+        return NO;
+    }
     return YES;
 }
 
-- (CLLocationSpeed)averageSpeed
+- (void) saveTmpAsValidRecord
 {
-    double result = 0;
-    for (int i=0; i<speedCount; ++i) {
-        result += speedArray[i];
+    NSString *docsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
+    [dateformatter setDateFormat: @"yyyy-MM-dd"];
+    NSString *recordName = [docsPath stringByAppendingPathComponent:
+                            [NSString stringWithFormat:@"%@.csv",[dateformatter stringFromDate:self.dateOfLastEvent]]];
+    // Move tmp file to document directory
+    if ([self.fileManager fileExistsAtPath:recordName]) {
+        if(![self.fileManager removeItemAtPath:recordName error:NULL])
+            NSLog(@"Remove duplicate file failed.");
+        else
+            NSLog(@"Remove duplicate file.");
     }
-    return result / speedCount;
+    if (![self.fileManager moveItemAtPath:self.tmpFile toPath:recordName error:NULL])
+        NSLog(@"Save tmp failed.");
+    else
+        NSLog(@"Save %@.", recordName);
+    
+}
+
+- (CLLocationSpeed)updateAverageSpeed
+{
+    self.averageSpeed = self.averageSpeed * (speedCount-1) / speedCount;
+    return self.averageSpeed;
 }
 
 - (CLLocationSpeed)instantSpeed
