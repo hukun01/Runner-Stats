@@ -69,13 +69,22 @@ static unsigned int sessionSeconds = 0;
     // Create a record if not exist
     self.recordManager = [[RSRecordManager alloc] init];
     [self.recordManager createRecord];
+    NSArray *allRecords = [self.recordManager getAllRecords];
+    for (NSString *s in allRecords) {
+        NSLog([s description]);
+    }
 }
 
 # pragma mark Start Session
 - (IBAction)startSession:(id)sender
 {
     [self.locationManager startUpdatingLocation];
-    [self.path saveFirstLocation:currLocation];
+    while(![self.path saveFirstLocation:currLocation])
+    {
+        NSLog(@"Why");
+        currLocation = [self.locationManager location];
+    }
+    
     if ([[self.map overlays] count] != 0) {
         [self.map removeOverlays:[self.map overlays]];
     }
@@ -152,6 +161,8 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
         {
             // Save current session
             // TO-DO: save tmp files to disk
+            // Remain all data
+            // make it unable to zoom
             [self.path saveTmpAsValidRecord];
         }
     }
@@ -192,6 +203,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     CLLocation *newLocation = [locations lastObject];
     if ([self.path pointCount] == 0) {
+        NSLog(@"WHY?");
         [self.path saveFirstLocation:currLocation];
     }
     if ((currLocation.coordinate.latitude != newLocation.coordinate.latitude) &&

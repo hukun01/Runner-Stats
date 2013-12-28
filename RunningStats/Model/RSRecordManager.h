@@ -15,6 +15,7 @@
 // Date,Distance,Duration,AvgSpeed
 - (void)createRecord;
 - (NSArray *)readRecord;
+- (NSArray *)getAllRecords;
 // newline points to a NSArray separated by comma
 - (void)addALine:(NSArray *)newline;
 

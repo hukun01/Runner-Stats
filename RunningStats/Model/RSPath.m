@@ -82,11 +82,11 @@
     }
 }
 
-- (void)saveFirstLocation:(CLLocation *)location
+- (BOOL)saveFirstLocation:(CLLocation *)location
 {
-    if (![self isValidLocation:location]) {
-        return;
-    }
+//    if (![self isValidLocation:location])
+//        return NO;
+    
     points[0] = MKMapPointForCoordinate([location coordinate]);
     pointCount = 1;
     speedArray[0] = location.speed;
@@ -107,6 +107,7 @@
     [self createTmpFile];
     // Write to temp file
     [self addALineByLocation:location];
+    return YES;
 }
 
 - (void)addALineByLocation:(CLLocation *)location
@@ -202,7 +203,7 @@
     return YES;
 }
 
-- (void) saveTmpAsValidRecord
+- (void)saveTmpAsValidRecord
 {
     NSString *docsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];

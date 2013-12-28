@@ -41,6 +41,12 @@
     return [NSArray arrayWithContentsOfCSVFile:self.recordPath];
 }
 
+- (NSArray *)getAllRecords
+{
+    NSString *docsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    return [[NSFileManager defaultManager] contentsOfDirectoryAtPath:docsPath error:NULL];
+}
+
 - (void)addALine:(NSArray *)newline
 {
     CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:self.recordPath];

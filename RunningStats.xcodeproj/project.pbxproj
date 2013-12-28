@@ -10,6 +10,7 @@
 		15A3F798A6CB417B9C2C0F91 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B49D21AA1849DCAC899F2D /* libPods.a */; };
 		46AC5AFB18656098006CAAD1 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AC5AFA18656098006CAAD1 /* AudioToolbox.framework */; };
 		46AC5AFD1865648E006CAAD1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AC5AFC1865648E006CAAD1 /* MapKit.framework */; };
+		46C47DF7186F6F4000A990B0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 46C47DF6186F6F4000A990B0 /* README.md */; };
 		46C6D4F518679ECF00CD5232 /* RSPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C6D4F218679ECF00CD5232 /* RSPath.m */; };
 		46C6D4F618679ECF00CD5232 /* RSRecordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C6D4F418679ECF00CD5232 /* RSRecordManager.m */; };
 		46C6D4FC18679F7B00CD5232 /* RSRunningVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C6D4F918679F7B00CD5232 /* RSRunningVC.m */; };
@@ -43,6 +44,7 @@
 		46AC5AF918656062006CAAD1 /* RunningStats.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = RunningStats.entitlements; sourceTree = "<group>"; };
 		46AC5AFA18656098006CAAD1 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		46AC5AFC1865648E006CAAD1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		46C47DF6186F6F4000A990B0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		46C6D4F118679ECF00CD5232 /* RSPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSPath.h; sourceTree = "<group>"; };
 		46C6D4F218679ECF00CD5232 /* RSPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSPath.m; sourceTree = "<group>"; };
 		46C6D4F318679ECF00CD5232 /* RSRecordManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSRecordManager.h; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 		46D4AAA118655E6700F787BA = {
 			isa = PBXGroup;
 			children = (
+				46C47DF6186F6F4000A990B0 /* README.md */,
 				46D4AAB318655E6700F787BA /* RunningStats */,
 				46D4AAD518655E6800F787BA /* RunningStatsTests */,
 				46D4AAAC18655E6700F787BA /* Frameworks */,
@@ -305,6 +308,7 @@
 			files = (
 				46D4AAC918655E6700F787BA /* Images.xcassets in Resources */,
 				46D4AAB818655E6700F787BA /* InfoPlist.strings in Resources */,
+				46C47DF7186F6F4000A990B0 /* README.md in Resources */,
 				46D4AAC118655E6700F787BA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

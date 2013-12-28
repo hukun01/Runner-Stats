@@ -15,7 +15,7 @@
     CLLocationDistance distance;
 }
 
-- (void)saveFirstLocation:(CLLocation *)location;
+- (BOOL)saveFirstLocation:(CLLocation *)location;
 - (void)clearContents;
 - (void) saveTmpAsValidRecord;
 
