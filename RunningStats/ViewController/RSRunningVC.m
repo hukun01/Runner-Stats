@@ -217,8 +217,8 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
             // TO-DO: save tmp files to disk
             // Remain all data
             // make it unable to zoom
-            [self.path saveTmpAsData];
             [self saveSessionAsRecord];
+            [self.path saveTmpAsData];
             [self restoreButtons];
         }
     }
@@ -258,16 +258,20 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
 
 - (void)saveSessionAsRecord
 {
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[self.path tmpFile]]) {
+        NSLog(@"Temp file not exists, nonvalid session.");
+        return;
+    }
     NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
     [dateformatter setTimeZone:[NSTimeZone localTimeZone]];
     [dateformatter setDateFormat: @"yyyy-MM-dd HH:mm:ss"];
     NSTimeInterval duration = -[self.startDate timeIntervalSinceNow];
-    NSString *_durStr = [self timeFormatted:(int)duration];
-    NSString *_startDateString = [dateformatter stringFromDate:self.startDate];
-    NSString *_disStr = [NSString stringWithFormat:@"%.2f",self.distance];
-    NSString *_avgSpdStr = [NSString stringWithFormat:@"%.2f",self.avgSpeed];
+    NSString *durStr = [self timeFormatted:(int)duration];
+    NSString *startDateString = [dateformatter stringFromDate:self.startDate];
+    NSString *disStr = [NSString stringWithFormat:@"%.2f",[self.path distance]];
+    NSString *avgSpdStr = [NSString stringWithFormat:@"%.2f",3.6 * [self.path distance] / duration];
     
-    NSArray *newRecord = @[_startDateString, _disStr, _durStr, _avgSpdStr];
+    NSArray *newRecord = @[startDateString, disStr, durStr, avgSpdStr];
     [self.recordManager addALine:newRecord];
 }
 

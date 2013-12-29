@@ -33,4 +33,5 @@
 @property (assign, nonatomic) NSUInteger pointCount;
 @property (assign, nonatomic) CLLocationDistance distance;
 @property (assign, nonatomic) CLLocationSpeed *speedArray;
+@property(nonatomic, strong) NSString *tmpFile;
 @end
