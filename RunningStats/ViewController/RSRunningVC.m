@@ -16,28 +16,28 @@
 @property (strong, nonatomic) IBOutlet MKMapView *map;
 // TextField to display instant data
 @property (strong, nonatomic) IBOutlet UILabel *timerLabel;
-@property (strong, nonatomic) NSTimer *timer;
 @property (strong, nonatomic) IBOutlet UILabel *currSpeedLabel;
-@property (assign, nonatomic, setter = setSpeed:) CLLocationSpeed speed;
 @property (strong, nonatomic) IBOutlet UILabel *distanceLabel;
-@property (assign, nonatomic, setter = setDistance:) CLLocationDistance distance;
 @property (strong, nonatomic) IBOutlet UILabel *avgSpeedLabel;
+// Data
+@property (strong, nonatomic) NSTimer *timer;
+@property (assign, nonatomic, setter = setSpeed:) CLLocationSpeed speed;
+@property (assign, nonatomic, setter = setDistance:) CLLocationDistance distance;
 @property (assign, nonatomic, setter = setAvgSpeed:) CLLocationSpeed avgSpeed;
 @property (assign, nonatomic, setter = setSeconds:) NSInteger sessionSeconds;
-
-// Start a session
-@property (strong, nonatomic) IBOutlet UIButton *startButton;
 @property (strong, nonatomic) NSDate *startDate;
+@property (nonatomic, assign) BOOL isRunning;
+// Buttons
+@property (strong, nonatomic) IBOutlet UIButton *startButton;
 // Stop and discard a session
 @property (strong, nonatomic) IBOutlet UIButton *stopButton;
 // Stop and save a session
 @property (strong, nonatomic) IBOutlet UIButton *saveButton;
-
+// Others
 @property (nonatomic, strong) RSRecordManager *recordManager;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) RSPath *path;
 @property (nonatomic, strong) MKPolylineRenderer *pathRenderer;
-@property (nonatomic, assign) BOOL isRunning;
 
 @end
 
