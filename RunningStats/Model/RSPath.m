@@ -9,8 +9,7 @@
 #define SPEEDS_TAG 1
 
 @interface RSPath()
-@property(nonatomic, strong) NSString *tmpFile;
-@property(nonatomic, strong) NSString *tmpPath;
+@property(nonatomic, strong) NSString *tmpDocPath;
 @property(nonatomic, strong) NSFileManager *fileManager;
 @property(nonatomic, strong) NSDate *dateOfLastEvent;
 @end
@@ -34,7 +33,7 @@
         self.distance = 0.0;
         // Initialize file management related variables
         self.fileManager = [NSFileManager defaultManager];
-        self.tmpPath = NSTemporaryDirectory();
+        self.tmpDocPath = NSTemporaryDirectory();
         // Initialize timeInterval
         self.dateOfLastEvent = [NSDate date];
     }
@@ -42,16 +41,16 @@
 }
 // There is always only one tmpFile in a session, with structure as follows.
 
-// timeInterval(double),instantSpeed(double)
+// timeInterval(double), currentDistance(double), instantSpeed(double)
 - (void)createTmpFile
 {
     // Create a new tmpPath for tmp file
     self.tmpFile = [[NSUUID new] UUIDString];
-    if (!self.tmpPath) {
+    if (!self.tmpDocPath) {
         NSLog(@"There is no temp path available.");
         return;
     }
-    self.tmpFile = [self.tmpPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.csv",self.tmpFile]];
+    self.tmpFile = [self.tmpDocPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.csv",self.tmpFile]];
     
     // Create temp file
     if (![self.fileManager createFileAtPath:self.tmpFile contents:nil attributes:nil])
@@ -76,9 +75,9 @@
     // Reset all data
     self.distance = 0.0;
     
-    NSArray *tmpFiles = [self.fileManager contentsOfDirectoryAtPath:self.tmpPath error:NULL];
+    NSArray *tmpFiles = [self.fileManager contentsOfDirectoryAtPath:self.tmpDocPath error:NULL];
     for (NSString *filename in tmpFiles) {
-        if ([self.fileManager removeItemAtPath:[self.tmpPath stringByAppendingPathComponent:filename] error:NULL])
+        if ([self.fileManager removeItemAtPath:[self.tmpDocPath stringByAppendingPathComponent:filename] error:NULL])
         {
             NSLog(@"Delete %@", filename);
         }
@@ -122,10 +121,11 @@
 {
     CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:self.tmpFile];
     
-    double _timeInterval = [self.dateOfLastEvent timeIntervalSinceDate:location.timestamp];
-    NSString *_timeIntervalStr = [NSString stringWithFormat:@"%.2f", _timeInterval];
-    NSString *_instantSpeedStr = [NSString stringWithFormat:@"%.2f", location.speed];
-    NSArray *newline = @[_timeIntervalStr, _instantSpeedStr];
+    double timeInterval = [self.dateOfLastEvent timeIntervalSinceDate:location.timestamp];
+    NSString *timeIntervalStr = [NSString stringWithFormat:@"%.2f", timeInterval];
+    NSString *disStr = [NSString stringWithFormat:@"%.2f",[self distance]];
+    NSString *instantSpeedStr = [NSString stringWithFormat:@"%.2f", location.speed];
+    NSArray *newline = @[timeIntervalStr, disStr, instantSpeedStr];
     
     [writer writeLineOfFields:newline];
     self.dateOfLastEvent = location.timestamp;
