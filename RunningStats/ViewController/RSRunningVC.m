@@ -46,50 +46,47 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.map.delegate = self;
 }
-
+//
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
+        NSLog(@"InitWithCoder?");
         [self setUp];
     }
     return self;
 }
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    // Put some code to here
-    // Lazy load.
-}
-
+//
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//    // Put some code to here for lazy-load.
+//}
+//
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
-    if (!self.map.userLocationVisible)
-    {
-        self.map.showsUserLocation = YES;
-        [self renewMapRegion];
-    }
+    [self resetData];
+    [self restoreButtons];
+    // Refresh userLocation
+    self.map.showsUserLocation = NO;
+    self.map.showsUserLocation = YES;
+    [self renewMapRegion];
 }
 
 - (void)setUp
 {
+    NSLog(@"Setup.");
     // locationManager
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     self.locationManager.distanceFilter = 3.0;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-    // map
-    self.map.delegate = self;
+    
     //可能需要防抖动
     currLocation = [self.locationManager location];
-    // path
-    self.path = [[RSPath alloc] init];
-    // data
-    [self resetData];
-    [self restoreButtons];
-    
     // Create a record if not exist
     self.recordManager = [[RSRecordManager alloc] init];
 //    if (![[NSFileManager defaultManager] removeItemAtPath:[self.recordManager recordPath] error:NULL])
@@ -98,12 +95,13 @@
         NSLog(@"Create record.csv failed.");
 }
 
-# pragma mark Start Session
+# pragma mark - Start Session
 - (IBAction)startSession:(id)sender
 {
     // Clear the data of last event
     if ([[self.map overlays] count] != 0) {
         [self.map removeOverlays:[self.map overlays]];
+        NSLog(@"Remove overlays");
     }
     [self.path clearContents];
     [self resetData];
@@ -127,11 +125,60 @@
     for (NSString *s in allRecords) {
         NSLog(@"%d: %@",i++,[s description]);
     }
-    
     self.tabBarController.tabBar.hidden = YES;
 }
 
-#pragma mark Discard Session
+- (void)locationManager:(CLLocationManager *)manager
+     didUpdateLocations:(NSArray *)locations
+{
+    CLLocation *newLocation = [locations lastObject];
+    if (!self.path)
+    {
+        self.path = [[RSPath alloc] init];
+    }
+    if ([self.path pointCount] == 0) {
+        currLocation = newLocation;
+        if (![self.path saveFirstLocation:currLocation])
+        {
+            NSLog(@"Why");
+        }
+        else
+        {
+            [self.map addOverlay:self.path];
+            NSLog(@"Add overlay");
+        }
+    }
+    if ((currLocation.coordinate.latitude != newLocation.coordinate.latitude) &&
+        (currLocation.coordinate.longitude != newLocation.coordinate.longitude))
+    {
+        MKMapRect updateRect = [self.path addLocation:newLocation];
+        
+        if (!MKMapRectIsNull(updateRect))
+        {
+            // Update map and speed and distance textfields
+            // Map
+            // Compute the currently visible map zoom scale
+            MKZoomScale currentZoomScale = (CGFloat)(self.map.bounds.size.width / self.map.visibleMapRect.size.width);
+            // Find out the line width at this zoom scale and outset the updateRect by that amount
+            CGFloat lineWidth = MKRoadWidthAtZoomScale(currentZoomScale);
+            updateRect = MKMapRectInset(updateRect, -lineWidth, -lineWidth);
+            // Ask the overlay view to update just the changed area.
+            [self.pathRenderer setNeedsDisplayInMapRect:updateRect];
+            // Update data
+            self.distance = [self.path distance] / 1000;
+            self.speed = 3.6 * [self.path instantSpeed];
+            NSTimeInterval duration = -[self.startDate timeIntervalSinceNow];
+            self.avgSpeed = 3.6 * [self.path distance] / duration;
+            // Move map with user location
+            currLocation = newLocation;
+            [self renewMapRegion];
+        }
+        else
+            NSLog(@"Nonvalid location.");
+    }
+}
+
+#pragma mark - Discard and Save Session
 - (IBAction)discardSession:(id)sender
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Discard?" message:@"Do you want to stop and discard this session?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Discard", nil];
@@ -159,9 +206,9 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
             // TO-DO: delete tmp files
             // Remove overlay, clear path
             [self.map removeOverlays:[self.map overlays]];
+            [self.path clearContents];
             [self resetData];
             [self restoreButtons];
-            [self.path clearContents];
         }
         // save session
         else if (alertView.tag == SAVE_ALERT_TAG)
@@ -207,7 +254,6 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
         [self.timer invalidate];
         self.timer = nil;
     }
-    self.sessionSeconds = 0;
 }
 
 - (void)saveSessionAsRecord
@@ -218,55 +264,11 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
     NSTimeInterval duration = -[self.startDate timeIntervalSinceNow];
     NSString *_durStr = [self timeFormatted:(int)duration];
     NSString *_startDateString = [dateformatter stringFromDate:self.startDate];
-    NSNumber *_dis = [NSNumber numberWithDouble:self.distance];
-    NSNumber *_avgSpd = [NSNumber numberWithDouble:self.avgSpeed];
+    NSString *_disStr = [NSString stringWithFormat:@"%.2f",self.distance];
+    NSString *_avgSpdStr = [NSString stringWithFormat:@"%.2f",self.avgSpeed];
     
-    NSArray *newRecord = @[_startDateString, _dis, _durStr, _avgSpd];
+    NSArray *newRecord = @[_startDateString, _disStr, _durStr, _avgSpdStr];
     [self.recordManager addALine:newRecord];
-}
-
-- (void)locationManager:(CLLocationManager *)manager
-     didUpdateLocations:(NSArray *)locations
-{
-    CLLocation *newLocation = [locations lastObject];
-    
-    if ([self.path pointCount] == 0) {
-        currLocation = newLocation;
-        if (![self.path saveFirstLocation:currLocation])
-        {
-            NSLog(@"Why");
-        }
-        else
-            [self.map addOverlay:self.path];
-    }
-    if ((currLocation.coordinate.latitude != newLocation.coordinate.latitude) &&
-        (currLocation.coordinate.longitude != newLocation.coordinate.longitude))
-    {
-        MKMapRect updateRect = [self.path addLocation:newLocation];
-        
-        if (!MKMapRectIsNull(updateRect))
-        {
-            // Update map and speed and distance textfields
-            // Map
-            // Compute the currently visible map zoom scale
-            MKZoomScale currentZoomScale = (CGFloat)(self.map.bounds.size.width / self.map.visibleMapRect.size.width);
-            // Find out the line width at this zoom scale and outset the updateRect by that amount
-            CGFloat lineWidth = MKRoadWidthAtZoomScale(currentZoomScale);
-            updateRect = MKMapRectInset(updateRect, -lineWidth, -lineWidth);
-            // Ask the overlay view to update just the changed area.
-            [self.pathRenderer setNeedsDisplayInMapRect:updateRect];
-            // Update data
-            self.distance = [self.path distance] / 1000;
-            self.speed = 3.6 * [self.path instantSpeed];
-            NSTimeInterval duration = -[self.startDate timeIntervalSinceNow];
-            self.avgSpeed = 3.6 * self.distance / duration;
-            // Move map with user location
-            currLocation = newLocation;
-            [self renewMapRegion];
-        }
-        else
-            NSLog(@"Nonvalid location.");
-    }
 }
 
 #pragma mark Stable utility functions
