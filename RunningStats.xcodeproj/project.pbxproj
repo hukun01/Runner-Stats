@@ -103,6 +103,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46C47DFA1870009200A990B0 /* Documents */ = {
+			isa = PBXGroup;
+			children = (
+				46C47DF6186F6F4000A990B0 /* README.md */,
+				46C47DF8186FFFC400A990B0 /* Known bug.md */,
+			);
+			name = Documents;
+			sourceTree = "<group>";
+		};
 		46C6D4F018679ECF00CD5232 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,8 +137,7 @@
 		46D4AAA118655E6700F787BA = {
 			isa = PBXGroup;
 			children = (
-				46C47DF8186FFFC400A990B0 /* Known bug.md */,
-				46C47DF6186F6F4000A990B0 /* README.md */,
+				46C47DFA1870009200A990B0 /* Documents */,
 				46D4AAB318655E6700F787BA /* RunningStats */,
 				46D4AAD518655E6800F787BA /* RunningStatsTests */,
 				46D4AAAC18655E6700F787BA /* Frameworks */,
