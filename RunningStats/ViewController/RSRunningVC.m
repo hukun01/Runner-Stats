@@ -258,7 +258,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
 
 - (void)saveSessionAsRecord
 {
-    if (![[NSFileManager defaultManager] fileExistsAtPath:[self.path tmpFile]]) {
+    if (![self.path doesTmpFileExists]) {
         NSLog(@"Temp file not exists, nonvalid session.");
         return;
     }
