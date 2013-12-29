@@ -5,4 +5,4 @@ Running Stats is an iPhone app, which helps you record the data of every run, in
 
 I run 5 kilometers for every test! :-D
 
------- master branch is for current runnable version.
+------ master branch is for current bug-free runnable version.
