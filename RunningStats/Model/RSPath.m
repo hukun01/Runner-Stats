@@ -12,6 +12,7 @@
 @property(nonatomic, strong) NSString *tmpDocPath;
 @property(nonatomic, strong) NSFileManager *fileManager;
 @property(nonatomic, strong) NSDate *dateOfLastEvent;
+@property(nonatomic, strong) NSString *tmpFile;
 @end
 
 @implementation RSPath
@@ -235,6 +236,11 @@
     }
     else
         NSLog(@"Tmp file has not been created.");
+}
+
+- (BOOL)doesTmpFileExists
+{
+    return [self.fileManager fileExistsAtPath:[self tmpFile]];
 }
 
 - (CLLocationSpeed)instantSpeed
