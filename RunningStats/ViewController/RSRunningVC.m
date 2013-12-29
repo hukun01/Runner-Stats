@@ -323,7 +323,6 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
 
 - (void)timerTick
 {
-    // Update sessionSeconds
     self.sessionSeconds += 1;
 }
 
