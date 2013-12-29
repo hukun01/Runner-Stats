@@ -122,9 +122,10 @@
 {
     CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:self.tmpFile];
     
-    NSNumber *timeInterval = [NSNumber numberWithDouble:[self.dateOfLastEvent timeIntervalSinceDate:location.timestamp]];
-    NSNumber *instantSpeed = [NSNumber numberWithDouble:location.speed];
-    NSArray *newline = @[timeInterval, instantSpeed];
+    double _timeInterval = [self.dateOfLastEvent timeIntervalSinceDate:location.timestamp];
+    NSString *_timeIntervalStr = [NSString stringWithFormat:@"%.2f", _timeInterval];
+    NSString *_instantSpeedStr = [NSString stringWithFormat:@"%.2f", location.speed];
+    NSArray *newline = @[_timeIntervalStr, _instantSpeedStr];
     
     [writer writeLineOfFields:newline];
     self.dateOfLastEvent = location.timestamp;

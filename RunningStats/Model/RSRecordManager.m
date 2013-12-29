@@ -79,6 +79,7 @@
     }
     NSRange range = {0, [allRecords count]-2};
     NSArray *newAllRecords = [allRecords subarrayWithRange:range];
+    
     if (![[NSFileManager defaultManager] removeItemAtPath:[self recordPath] error:NULL])
         NSLog(@"Remove current record failed.");
     if (![self createRecord]) {
