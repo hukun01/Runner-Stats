@@ -17,7 +17,8 @@
 
 - (BOOL)saveFirstLocation:(CLLocation *)location;
 - (void)clearContents;
-- (void) saveTmpAsValidRecord;
+- (void)saveTmpAsData;
+- (BOOL)isValidLocation:(CLLocation *)location;
 
 // Add a location observation. A MKMapRect containing the newly added point
 // and the previously added point is returned so that the view can be updated
@@ -26,12 +27,10 @@
 // MKMapRectNull will be returned.
 //
 - (MKMapRect)addLocation:(CLLocation *)location;
-- (CLLocationSpeed)updateAverageSpeed;
 - (CLLocationSpeed)instantSpeed;
 
 @property (assign, nonatomic) MKMapPoint *points;
 @property (assign, nonatomic) NSUInteger pointCount;
 @property (assign, nonatomic) CLLocationDistance distance;
 @property (assign, nonatomic) CLLocationSpeed *speedArray;
-@property(nonatomic, assign) CLLocationSpeed averageSpeed;
 @end

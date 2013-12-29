@@ -12,11 +12,13 @@
 @interface RSRecordManager : NSObject <CHCSVParserDelegate>
 // Create if not exists an empty record named record.csv, in which there is one empty line
 // There is always only one record.csv whose structure is as followed.
+
 // Date,Distance,Duration,AvgSpeed
-- (void)createRecord;
+- (BOOL)createRecord;
 - (NSArray *)readRecord;
-- (NSArray *)getAllRecords;
 // newline points to a NSArray separated by comma
 - (void)addALine:(NSArray *)newline;
+
+@property(nonatomic,strong) NSString *recordPath;
 
 @end

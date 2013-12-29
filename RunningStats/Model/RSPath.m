@@ -4,7 +4,7 @@
 
 #define INITIAL_POINT_SPACE 1000
 #define TOO_BIG_DISTANCE 50
-#define MINIMUM_DELTA_METERS 1.0
+#define MINIMUM_DELTA_METERS 5.0
 #define POINTS_TAG 0
 #define SPEEDS_TAG 1
 
@@ -31,7 +31,7 @@
         speedSpace = INITIAL_POINT_SPACE;
         speedArray = malloc(sizeof(CLLocationSpeed) * speedSpace);
         speedCount = 0;
-        self.averageSpeed = 0.0;
+        self.distance = 0.0;
         // Initialize file management related variables
         self.fileManager = [NSFileManager defaultManager];
         self.tmpPath = NSTemporaryDirectory();
@@ -41,6 +41,7 @@
     return self;
 }
 // There is always only one tmpFile in a session, with structure as follows.
+
 // timeInterval(double),instantSpeed(double)
 - (void)createTmpFile
 {
@@ -67,8 +68,13 @@
 {
     // Clear points array
     memset(points, 0, sizeof(MKMapPoint) * pointCount);
+    pointCount = 0;
     // Clear speed array
     memset(speedArray, 0, sizeof(CLLocationSpeed) * speedCount);
+    speedCount = 0;
+    
+    // Reset all data
+    self.distance = 0.0;
     
     NSArray *tmpFiles = [self.fileManager contentsOfDirectoryAtPath:self.tmpPath error:NULL];
     for (NSString *filename in tmpFiles) {
@@ -84,8 +90,8 @@
 
 - (BOOL)saveFirstLocation:(CLLocation *)location
 {
-//    if (![self isValidLocation:location])
-//        return NO;
+    if (![self isValidLocation:location])
+        return NO;
     
     points[0] = MKMapPointForCoordinate([location coordinate]);
     pointCount = 1;
@@ -106,7 +112,9 @@
     // Create temp file for current session
     [self createTmpFile];
     // Write to temp file
+    self.dateOfLastEvent = location.timestamp;
     [self addALineByLocation:location];
+    
     return YES;
 }
 
@@ -140,7 +148,7 @@
     
     if (metersApart > MINIMUM_DELTA_METERS)
     {
-        distance += metersApart;
+        self.distance += metersApart;
         // Grow the points array if necessary
         if (pointSpace == pointCount)
         {
@@ -155,7 +163,6 @@
         // Add new speed
         speedArray[speedCount] = location.speed;
         speedCount++;
-        [self updateAverageSpeed];
         // Write to temp file
         [self addALineByLocation:location];
         // Compute MKMapRect bounding prevPoint and newPoint
@@ -186,11 +193,11 @@
 - (BOOL)isValidLocation:(CLLocation *)location
 {
     // Skip old info
-    NSDate *eventDate = location.timestamp;
-    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
-    if (abs(howRecent) > 10.0) {
-        return NO;
-    }
+//    NSDate *eventDate = location.timestamp;
+//    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
+//    if (abs(howRecent) > 10.0) {
+//        return NO;
+//    }
     if (location.horizontalAccuracy > TOO_BIG_DISTANCE || location.horizontalAccuracy < 0) {
         return NO;
     }
@@ -203,31 +210,30 @@
     return YES;
 }
 
-- (void)saveTmpAsValidRecord
+- (void)saveTmpAsData
 {
     NSString *docsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
+    [dateformatter setTimeZone:[NSTimeZone localTimeZone]];
     [dateformatter setDateFormat: @"yyyy-MM-dd"];
     NSString *recordName = [docsPath stringByAppendingPathComponent:
                             [NSString stringWithFormat:@"%@.csv",[dateformatter stringFromDate:self.dateOfLastEvent]]];
     // Move tmp file to document directory
-    if ([self.fileManager fileExistsAtPath:recordName]) {
-        if(![self.fileManager removeItemAtPath:recordName error:NULL])
-            NSLog(@"Remove duplicate file failed.");
+    if ([self.fileManager fileExistsAtPath:self.tmpFile]) {
+        if ([self.fileManager fileExistsAtPath:recordName]) {
+            if(![self.fileManager removeItemAtPath:recordName error:NULL])
+                NSLog(@"Remove duplicate file failed.");
+            else
+                NSLog(@"Remove duplicate file.");
+        }
+        
+        if (![self.fileManager moveItemAtPath:self.tmpFile toPath:recordName error:NULL])
+            NSLog(@"Move tmp to doc failed.");
         else
-            NSLog(@"Remove duplicate file.");
+            NSLog(@"Move tmp to doc as %@.", recordName);
     }
-    if (![self.fileManager moveItemAtPath:self.tmpFile toPath:recordName error:NULL])
-        NSLog(@"Save tmp failed.");
     else
-        NSLog(@"Save %@.", recordName);
-    
-}
-
-- (CLLocationSpeed)updateAverageSpeed
-{
-    self.averageSpeed = self.averageSpeed * (speedCount-1) / speedCount;
-    return self.averageSpeed;
+        NSLog(@"Tmp file has not been created.");
 }
 
 - (CLLocationSpeed)instantSpeed

@@ -18,14 +18,16 @@
 @property (strong, nonatomic) IBOutlet UILabel *timerLabel;
 @property (strong, nonatomic) NSTimer *timer;
 @property (strong, nonatomic) IBOutlet UILabel *currSpeedLabel;
-@property (assign, nonatomic) CLLocationSpeed speed;
+@property (assign, nonatomic, setter = setSpeed:) CLLocationSpeed speed;
 @property (strong, nonatomic) IBOutlet UILabel *distanceLabel;
-@property (assign, nonatomic) CLLocationDistance distance;
+@property (assign, nonatomic, setter = setDistance:) CLLocationDistance distance;
 @property (strong, nonatomic) IBOutlet UILabel *avgSpeedLabel;
-@property (assign, nonatomic) CLLocationSpeed avgSpeed;
+@property (assign, nonatomic, setter = setAvgSpeed:) CLLocationSpeed avgSpeed;
+@property (assign, nonatomic, setter = setSeconds:) NSInteger sessionSeconds;
 
 // Start a session
 @property (strong, nonatomic) IBOutlet UIButton *startButton;
+@property (strong, nonatomic) NSDate *startDate;
 // Stop and discard a session
 @property (strong, nonatomic) IBOutlet UIButton *stopButton;
 // Stop and save a session
@@ -40,12 +42,35 @@
 @end
 
 @implementation RSRunningVC
-static unsigned int sessionSeconds = 0;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setUp];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder:aDecoder]) {
+        [self setUp];
+    }
+    return self;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    // Put some code to here
+    // Lazy load.
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (!self.map.userLocationVisible)
+    {
+        self.map.showsUserLocation = YES;
+        [self renewMapRegion];
+    }
 }
 
 - (void)setUp
@@ -53,77 +78,57 @@ static unsigned int sessionSeconds = 0;
     // locationManager
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
-    self.locationManager.distanceFilter = 3.0f;
+    self.locationManager.distanceFilter = 3.0;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+    // map
+    self.map.delegate = self;
     //可能需要防抖动
     currLocation = [self.locationManager location];
-    // map
-    self.map.showsUserLocation = YES;
-    self.map.delegate = self;
-    [self renewMapRegion];
     // path
     self.path = [[RSPath alloc] init];
-    // UI
-    self.saveButton.hidden = YES;
-    self.stopButton.hidden = YES;
+    // data
+    [self resetData];
+    [self restoreButtons];
+    
     // Create a record if not exist
     self.recordManager = [[RSRecordManager alloc] init];
-    [self.recordManager createRecord];
-    NSArray *allRecords = [self.recordManager getAllRecords];
-    for (NSString *s in allRecords) {
-        NSLog([s description]);
-    }
+//    if (![[NSFileManager defaultManager] removeItemAtPath:[self.recordManager recordPath] error:NULL])
+//        NSLog(@"remove failed");
+    if (![self.recordManager createRecord])
+        NSLog(@"Create record.csv failed.");
 }
 
 # pragma mark Start Session
 - (IBAction)startSession:(id)sender
 {
-    [self.locationManager startUpdatingLocation];
-    while(![self.path saveFirstLocation:currLocation])
-    {
-        NSLog(@"Why");
-        currLocation = [self.locationManager location];
-    }
-    
+    // Clear the data of last event
     if ([[self.map overlays] count] != 0) {
         [self.map removeOverlays:[self.map overlays]];
     }
-    [self.map addOverlay:self.path];
+    [self.path clearContents];
+    [self resetData];
+    
+    [self.locationManager startUpdatingLocation];
+    self.startDate = [NSDate date];
     [self renewMapRegion];
     // start a timer
     [self startTimer];
     
-    // UI
+    // Hide some UI elements
     self.startButton.hidden = YES;
     self.saveButton.hidden = NO;
     self.stopButton.hidden = NO;
-}
-
-- (void)startTimer
-{
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerTick) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
-}
-
-- (void)timerTick
-{
-    // Update sessionSeconds
-    sessionSeconds += 1;
-    // Update timerLabel
-    [self updateTimerLabel];
-}
-
-- (void)updateTimerLabel
-{
-    self.timerLabel.text = [self timeFormatted:sessionSeconds];
-}
-
-- (NSString *)timeFormatted:(int)totalSeconds
-{
-    int seconds = totalSeconds % 60;
-    int minutes = (totalSeconds / 60) % 60;
-    int hours = totalSeconds / 3600;
-    return [NSString stringWithFormat:@"%02d:%02d:%02d",hours, minutes, seconds];
+    self.map.zoomEnabled = NO;
+    
+    // debug
+    NSLog(@"Start Session:");
+    NSArray *allRecords = [self.recordManager readRecord];
+    int i=0;
+    for (NSString *s in allRecords) {
+        NSLog(@"%d: %@",i++,[s description]);
+    }
+    
+    self.tabBarController.tabBar.hidden = YES;
 }
 
 #pragma mark Discard Session
@@ -154,6 +159,8 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
             // TO-DO: delete tmp files
             // Remove overlay, clear path
             [self.map removeOverlays:[self.map overlays]];
+            [self resetData];
+            [self restoreButtons];
             [self.path clearContents];
         }
         // save session
@@ -163,7 +170,9 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
             // TO-DO: save tmp files to disk
             // Remain all data
             // make it unable to zoom
-            [self.path saveTmpAsValidRecord];
+            [self.path saveTmpAsData];
+            [self saveSessionAsRecord];
+            [self restoreButtons];
         }
     }
 }
@@ -172,19 +181,24 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     [self.locationManager stopUpdatingLocation];
     [self stopTimer];
-    [self restoreUI];
+    self.map.zoomEnabled = YES;
 }
 
-- (void)restoreUI
+- (void)resetData
 {
-    [self updateTimerLabel];
-    self.currSpeedLabel.text = @"0.00";
-    self.avgSpeedLabel.text = @"0.00";
-    self.distanceLabel.text = @"0.00";
+    self.speed = 0.0;
+    self.distance = 0.0;
+    self.avgSpeed = 0.0;
+    self.sessionSeconds = 0;
+}
+
+- (void)restoreButtons
+{
     // Restore buttons
     self.startButton.hidden = NO;
     self.stopButton.hidden = YES;
     self.saveButton.hidden = YES;
+    self.tabBarController.tabBar.hidden = NO;
 }
 
 - (void)stopTimer
@@ -193,18 +207,37 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
         [self.timer invalidate];
         self.timer = nil;
     }
-    sessionSeconds = 0;
+    self.sessionSeconds = 0;
 }
 
-
+- (void)saveSessionAsRecord
+{
+    NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
+    [dateformatter setTimeZone:[NSTimeZone localTimeZone]];
+    [dateformatter setDateFormat: @"yyyy-MM-dd HH:mm:ss"];
+    NSTimeInterval duration = -[self.startDate timeIntervalSinceNow];
+    NSString *_durStr = [self timeFormatted:(int)duration];
+    NSString *_startDateString = [dateformatter stringFromDate:self.startDate];
+    NSNumber *_dis = [NSNumber numberWithDouble:self.distance];
+    NSNumber *_avgSpd = [NSNumber numberWithDouble:self.avgSpeed];
+    
+    NSArray *newRecord = @[_startDateString, _dis, _durStr, _avgSpd];
+    [self.recordManager addALine:newRecord];
+}
 
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations
 {
     CLLocation *newLocation = [locations lastObject];
+    
     if ([self.path pointCount] == 0) {
-        NSLog(@"WHY?");
-        [self.path saveFirstLocation:currLocation];
+        currLocation = newLocation;
+        if (![self.path saveFirstLocation:currLocation])
+        {
+            NSLog(@"Why");
+        }
+        else
+            [self.map addOverlay:self.path];
     }
     if ((currLocation.coordinate.latitude != newLocation.coordinate.latitude) &&
         (currLocation.coordinate.longitude != newLocation.coordinate.longitude))
@@ -223,54 +256,77 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
             // Ask the overlay view to update just the changed area.
             [self.pathRenderer setNeedsDisplayInMapRect:updateRect];
             // Update data
-            self.distance = [self.path distance];
-            self.speed = [self.path instantSpeed];
-            self.avgSpeed = self.path.averageSpeed;
-            // TO-DO: Save these data to tmp files!
-            
-            [self updateLabels];
+            self.distance = [self.path distance] / 1000;
+            self.speed = 3.6 * [self.path instantSpeed];
+            NSTimeInterval duration = -[self.startDate timeIntervalSinceNow];
+            self.avgSpeed = 3.6 * self.distance / duration;
             // Move map with user location
             currLocation = newLocation;
             [self renewMapRegion];
         }
+        else
+            NSLog(@"Nonvalid location.");
     }
 }
 
+#pragma mark Stable utility functions
 - (void)renewMapRegion
 {
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(currLocation.coordinate, MAP_REGION_SIZE, MAP_REGION_SIZE);
     [self.map setRegion:region animated:YES];
 }
 
-- (void)updateLabels
+- (void)setSpeed:(CLLocationSpeed)speed
 {
-    double tmp = 3.6 * self.speed;
-    if (tmp > 10.0)
-    {
-        self.currSpeedLabel.text = [NSString stringWithFormat:@"%.1f", tmp];
-    }
+    _speed = speed;
+    if (speed > 10.0)
+        self.currSpeedLabel.text = [NSString stringWithFormat:@"%.1f", speed];
     else
-    {
-        self.currSpeedLabel.text = [NSString stringWithFormat:@"%.2f", tmp];
-    }
-    tmp = self.distance/1000;
-    if (tmp > 10.0)
-    {
-        self.distanceLabel.text = [NSString stringWithFormat:@"%.1f", tmp];
-    }
+        self.currSpeedLabel.text = [NSString stringWithFormat:@"%.2f", speed];
+}
+
+- (void)setDistance:(CLLocationDistance)distance
+{
+    _distance = distance;
+    if (distance > 10.0)
+        self.distanceLabel.text = [NSString stringWithFormat:@"%.1f", distance];
     else
-    {
-        self.distanceLabel.text = [NSString stringWithFormat:@"%.2f", tmp];
-    }
-    tmp = 3.6 * self.avgSpeed;
-    if (tmp > 10.0)
-    {
-        self.avgSpeedLabel.text = [NSString stringWithFormat:@"%.1f", tmp];
-    }
+        self.distanceLabel.text = [NSString stringWithFormat:@"%.2f", distance];
+}
+
+- (void)setAvgSpeed:(CLLocationSpeed)avgSpeed
+{
+    _avgSpeed = avgSpeed;
+    if (avgSpeed > 10.0)
+        self.avgSpeedLabel.text = [NSString stringWithFormat:@"%.1f", avgSpeed];
     else
-    {
-        self.avgSpeedLabel.text = [NSString stringWithFormat:@"%.2f", tmp];
-    }
+        self.avgSpeedLabel.text = [NSString stringWithFormat:@"%.2f", avgSpeed];
+}
+
+- (void)setSeconds:(NSInteger)sessionSeconds
+{
+    _sessionSeconds = sessionSeconds;
+    self.timerLabel.text = [self timeFormatted:sessionSeconds];
+}
+
+- (void)startTimer
+{
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerTick) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
+}
+
+- (void)timerTick
+{
+    // Update sessionSeconds
+    self.sessionSeconds += 1;
+}
+
+- (NSString *)timeFormatted:(int)totalSeconds
+{
+    int seconds = totalSeconds % 60;
+    int minutes = (totalSeconds / 60) % 60;
+    int hours = totalSeconds / 3600;
+    return [NSString stringWithFormat:@"%02d:%02d:%02d",hours, minutes, seconds];
 }
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView
@@ -284,7 +340,6 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
     }
     return self.pathRenderer;
 }
-
 
 - (NSUInteger)supportedInterfaceOrientations
 {
