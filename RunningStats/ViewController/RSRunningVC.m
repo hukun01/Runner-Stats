@@ -34,10 +34,10 @@
 @property (strong, nonatomic) IBOutlet UIButton *saveButton;
 
 @property (nonatomic, strong) RSRecordManager *recordManager;
-
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) RSPath *path;
 @property (nonatomic, strong) MKPolylineRenderer *pathRenderer;
+@property (nonatomic, assign) BOOL isRunning;
 
 @end
 
@@ -48,6 +48,7 @@
     [super viewDidLoad];
     
     self.map.delegate = self;
+    NSLog(@"ViewDidLoad");
 }
 //
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -68,12 +69,14 @@
 {
     [super viewDidAppear:animated];
     
-    [self resetData];
-    [self restoreButtons];
+    if (!self.isRunning) {
+        [self restoreUI];
+    }
     // Refresh userLocation
     self.map.showsUserLocation = NO;
     self.map.showsUserLocation = YES;
     [self renewMapRegion];
+    NSLog(@"ViewDidAppear");
 }
 
 - (void)setUp
@@ -84,7 +87,8 @@
     self.locationManager.delegate = self;
     self.locationManager.distanceFilter = 3.0;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-    
+    // data
+    [self resetData];
     //可能需要防抖动
     currLocation = [self.locationManager location];
     // Create a record if not exist
@@ -98,6 +102,7 @@
 # pragma mark - Start Session
 - (IBAction)startSession:(id)sender
 {
+    self.isRunning = YES;
     // Clear the data of last event
     if ([[self.map overlays] count] != 0) {
         [self.map removeOverlays:[self.map overlays]];
@@ -208,7 +213,6 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
             [self.map removeOverlays:[self.map overlays]];
             [self.path clearContents];
             [self resetData];
-            [self restoreButtons];
         }
         // save session
         else if (alertView.tag == SAVE_ALERT_TAG)
@@ -219,7 +223,6 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
             // make it unable to zoom
             [self saveSessionAsRecord];
             [self.path saveTmpAsData];
-            [self restoreButtons];
         }
     }
 }
@@ -228,7 +231,8 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     [self.locationManager stopUpdatingLocation];
     [self stopTimer];
-    self.map.zoomEnabled = YES;
+    [self restoreUI];
+    self.isRunning = NO;
 }
 
 - (void)resetData
@@ -239,13 +243,14 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
     self.sessionSeconds = 0;
 }
 
-- (void)restoreButtons
+- (void)restoreUI
 {
     // Restore buttons
     self.startButton.hidden = NO;
     self.stopButton.hidden = YES;
     self.saveButton.hidden = YES;
     self.tabBarController.tabBar.hidden = NO;
+    self.map.zoomEnabled = YES;
 }
 
 - (void)stopTimer
