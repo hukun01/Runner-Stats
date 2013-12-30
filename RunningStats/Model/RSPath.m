@@ -16,10 +16,10 @@
 @property (assign, nonatomic) NSUInteger speedSpace;
 @property (assign, nonatomic) NSUInteger speedCount;
 
-@property(nonatomic, strong) NSString *tmpDocPath;
-@property(nonatomic, strong) NSFileManager *fileManager;
-@property(nonatomic, strong) NSDate *dateOfLastEvent;
-@property(nonatomic, strong) NSString *tmpFile;
+@property(strong, nonatomic) NSString *tmpDocPath;
+@property(strong, nonatomic) NSFileManager *fileManager;
+@property(strong, nonatomic) NSDate *dateOfLastEvent;
+@property(strong, nonatomic) NSString *tmpFile;
 @end
 
 @implementation RSPath

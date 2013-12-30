@@ -19,6 +19,6 @@
 // newline points to a NSArray separated by comma
 - (void)addALine:(NSArray *)newline;
 
-@property(nonatomic,strong) NSString *recordPath;
+@property(strong, nonatomic) NSString *recordPath;
 
 @end

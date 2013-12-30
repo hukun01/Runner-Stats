@@ -25,8 +25,9 @@
 @property (assign, nonatomic, setter = setDistance:) CLLocationDistance distance;
 @property (assign, nonatomic, setter = setAvgSpeed:) CLLocationSpeed avgSpeed;
 @property (assign, nonatomic, setter = setSeconds:) NSInteger sessionSeconds;
+@property (assign, nonatomic) BOOL isRunning;
+@property (strong, nonatomic) CLLocation *currLocation;
 @property (strong, nonatomic) NSDate *startDate;
-@property (nonatomic, assign) BOOL isRunning;
 // Buttons
 @property (strong, nonatomic) IBOutlet UIButton *startButton;
 // Stop and discard a session
@@ -34,10 +35,10 @@
 // Stop and save a session
 @property (strong, nonatomic) IBOutlet UIButton *saveButton;
 // Others
-@property (nonatomic, strong) RSRecordManager *recordManager;
-@property (nonatomic, strong) CLLocationManager *locationManager;
-@property (nonatomic, strong) RSPath *path;
-@property (nonatomic, strong) MKPolylineRenderer *pathRenderer;
+@property (strong, nonatomic) RSRecordManager *recordManager;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) RSPath *path;
+@property (strong, nonatomic) MKPolylineRenderer *pathRenderer;
 
 @end
 
@@ -71,9 +72,8 @@
     self.map.showsUserLocation = YES;
     [self renewMapRegion];
     
-    if (!self.map.userLocationVisible)
-    {
-        currLocation = [self.locationManager location];
+    if (!self.map.userLocationVisible) {
+        self.currLocation = [self.locationManager location];
         [self renewMapRegion];
     }
 }
@@ -81,19 +81,19 @@
 - (void)setUp
 {
     // locationManager
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate = self;
-    self.locationManager.distanceFilter = 3.0;
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+    _locationManager = [[CLLocationManager alloc] init];
+    _locationManager.delegate = self;
+    _locationManager.distanceFilter = 3.0;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
     // data
     [self resetData];
     //可能需要防抖动
-    currLocation = [self.locationManager location];
+    _currLocation = [_locationManager location];
     // Create a record if not exist
-    self.recordManager = [[RSRecordManager alloc] init];
+    _recordManager = [[RSRecordManager alloc] init];
 //    if (![[NSFileManager defaultManager] removeItemAtPath:[self.recordManager recordPath] error:NULL])
 //        NSLog(@"remove failed");
-    if (![self.recordManager createRecord])
+    if (![_recordManager createRecord])
         NSLog(@"Create record.csv failed.");
 }
 
@@ -139,8 +139,8 @@
         self.path = [[RSPath alloc] init];
     }
     if ([self.path pointCount] == 0) {
-        currLocation = newLocation;
-        if (![self.path saveFirstLocation:currLocation]) {
+        self.currLocation = newLocation;
+        if (![self.path saveFirstLocation:self.currLocation]) {
             NSLog(@"Why");
         }
         else {
@@ -148,8 +148,8 @@
             NSLog(@"Add overlay");
         }
     }
-    if ((currLocation.coordinate.latitude != newLocation.coordinate.latitude) &&
-        (currLocation.coordinate.longitude != newLocation.coordinate.longitude)) {
+    if ((self.currLocation.coordinate.latitude != newLocation.coordinate.latitude) &&
+        (self.currLocation.coordinate.longitude != newLocation.coordinate.longitude)) {
         MKMapRect updateRect = [self.path addLocation:newLocation];
         
         if (!MKMapRectIsNull(updateRect)) {
@@ -166,7 +166,7 @@
             self.distance = [self.path distance] / 1000;
             self.speed = 3.6 * [self.path instantSpeed];
             // Move map with user location
-            currLocation = newLocation;
+            self.currLocation = newLocation;
             [self renewMapRegion];
         }
         else {
@@ -274,10 +274,10 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
     [self.recordManager addALine:newRecord];
 }
 
-#pragma mark Stable utility functions
+#pragma mark - Stable utility functions
 - (void)renewMapRegion
 {
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(currLocation.coordinate, MAP_REGION_SIZE, MAP_REGION_SIZE);
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.currLocation.coordinate, MAP_REGION_SIZE, MAP_REGION_SIZE);
     [self.map setRegion:region animated:YES];
 }
 
