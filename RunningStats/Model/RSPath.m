@@ -9,6 +9,13 @@
 #define SPEEDS_TAG 1
 
 @interface RSPath()
+
+@property (assign, nonatomic) MKMapPoint *points;
+@property (assign, nonatomic) NSUInteger pointSpace;
+@property (assign, nonatomic) CLLocationSpeed *speedArray;
+@property (assign, nonatomic) NSUInteger speedSpace;
+@property (assign, nonatomic) NSUInteger speedCount;
+
 @property(nonatomic, strong) NSString *tmpDocPath;
 @property(nonatomic, strong) NSFileManager *fileManager;
 @property(nonatomic, strong) NSDate *dateOfLastEvent;
@@ -16,7 +23,7 @@
 @end
 
 @implementation RSPath
-@synthesize points, pointCount, speedArray, distance;
+@synthesize points, pointCount;
 
 - (id)init
 {
@@ -24,13 +31,13 @@
     if (self)
 	{
         // Initialize point storage
-        pointSpace = INITIAL_POINT_SPACE;
-        points = malloc(sizeof(MKMapPoint) * pointSpace);
+        self.pointSpace = INITIAL_POINT_SPACE;
+        points = malloc(sizeof(MKMapPoint) * self.pointSpace);
         pointCount = 0;
         // Initialize instant speeds storage
-        speedSpace = INITIAL_POINT_SPACE;
-        speedArray = malloc(sizeof(CLLocationSpeed) * speedSpace);
-        speedCount = 0;
+        self.speedSpace = INITIAL_POINT_SPACE;
+        self.speedArray = malloc(sizeof(CLLocationSpeed) * self.speedSpace);
+        self.speedCount = 0;
         self.distance = 0.0;
         // Initialize file management related variables
         self.fileManager = [NSFileManager defaultManager];
@@ -70,8 +77,8 @@
     memset(points, 0, sizeof(MKMapPoint) * pointCount);
     pointCount = 0;
     // Clear speed array
-    memset(speedArray, 0, sizeof(CLLocationSpeed) * speedCount);
-    speedCount = 0;
+    memset(self.speedArray, 0, sizeof(CLLocationSpeed) * self.speedCount);
+    self.speedCount = 0;
     
     // Reset all data
     self.distance = 0.0;
@@ -95,8 +102,8 @@
     
     points[0] = MKMapPointForCoordinate([location coordinate]);
     pointCount = 1;
-    speedArray[0] = location.speed;
-    speedCount = 1;
+    self.speedArray[0] = location.speed;
+    self.speedCount = 1;
     
     // Bite off up to 1/4 of the world to draw into.
     MKMapPoint origin = points[0];
@@ -122,7 +129,7 @@
 {
     CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:self.tmpFile];
     
-    double timeInterval = [self.dateOfLastEvent timeIntervalSinceDate:location.timestamp];
+    double timeInterval = ABS([self.dateOfLastEvent timeIntervalSinceDate:location.timestamp]);
     NSString *timeIntervalStr = [NSString stringWithFormat:@"%.2f", timeInterval];
     NSString *disStr = [NSString stringWithFormat:@"%.2f",[self distance]];
     NSString *instantSpeedStr = [NSString stringWithFormat:@"%.2f", location.speed];
@@ -130,16 +137,18 @@
     
     [writer writeLineOfFields:newline];
     self.dateOfLastEvent = location.timestamp;
+    
+    NSLog(@"%@",newline);
 }
 
-- (MKMapRect)addLocation:(CLLocation *)location
+- (MKMapRect)addLocation:(CLLocation *)newlocation
 {
     MKMapRect updateRect = MKMapRectNull;
-    if (![self isValidLocation:location]) {
+    if (![self isValidLocation:newlocation]) {
         return updateRect;
     }
     // Convert a CLLocationCoordinate2D to an MKMapPoint
-    MKMapPoint newPoint = MKMapPointForCoordinate([location coordinate]);
+    MKMapPoint newPoint = MKMapPointForCoordinate([newlocation coordinate]);
     MKMapPoint prevPoint = points[pointCount - 1];
     // Get the distance between this new point and the previous point.
     CLLocationDistance metersApart = MKMetersBetweenMapPoints(newPoint, prevPoint);
@@ -148,25 +157,23 @@
         return updateRect;
     }
     
-    if (metersApart > MINIMUM_DELTA_METERS)
-    {
+    if (metersApart > MINIMUM_DELTA_METERS) {
         self.distance += metersApart;
         // Grow the points array if necessary
-        if (pointSpace == pointCount)
-        {
+        if (self.pointSpace == pointCount) {
             [self reallocArrayWithOptions:POINTS_TAG];
         }
-        if (speedSpace == speedCount) {
+        if (self.speedSpace == self.speedCount) {
             [self reallocArrayWithOptions:SPEEDS_TAG];
         }
         // Add the new point to the points array
         points[pointCount] = newPoint;
         pointCount++;
         // Add new speed
-        speedArray[speedCount] = location.speed;
-        speedCount++;
+        self.speedArray[self.speedCount] = newlocation.speed;
+        self.speedCount++;
         // Write to temp file
-        [self addALineByLocation:location];
+        [self addALineByLocation:newlocation];
         // Compute MKMapRect bounding prevPoint and newPoint
         double minX = MIN(newPoint.x, prevPoint.x);
         double minY = MIN(newPoint.y, prevPoint.y);
@@ -175,38 +182,36 @@
         
         updateRect = MKMapRectMake(minX, minY, maxX - minX, maxY - minY);
     }
+    else {
+        NSLog(@"Too close");
+    }
     return updateRect;
 }
 
 - (void)reallocArrayWithOptions:(NSUInteger)option
 {
-    if (option == POINTS_TAG)
-    {
-        pointSpace *= 2;
-        points = realloc(points, sizeof(MKMapPoint) * pointSpace);
+    if (option == POINTS_TAG) {
+        self.pointSpace *= 2;
+        points = realloc(points, sizeof(MKMapPoint) * self.pointSpace);
     }
-    else if (option == SPEEDS_TAG)
-    {
-        speedSpace *= 2;
-        speedArray = realloc(speedArray, sizeof(CLLocationSpeed) * speedSpace);
+    else if (option == SPEEDS_TAG) {
+        self.speedSpace *= 2;
+        self.speedArray = realloc(self.speedArray, sizeof(CLLocationSpeed) * self.speedSpace);
     }
 }
 
 - (BOOL)isValidLocation:(CLLocation *)location
 {
-    // Skip old info
-//    NSDate *eventDate = location.timestamp;
-//    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
-//    if (abs(howRecent) > 10.0) {
-//        return NO;
-//    }
     if (location.horizontalAccuracy > TOO_BIG_DISTANCE || location.horizontalAccuracy < 0) {
+        NSLog(@"horizontal error");
         return NO;
     }
     if (location.speed < 0) {
+        NSLog(@"speed too low");
         return NO;
     }
     if (location.speed > 20) {
+        NSLog(@"speed too high");
         return NO;
     }
     return YES;
@@ -245,7 +250,7 @@
 
 - (CLLocationSpeed)instantSpeed
 {
-    return speedArray[speedCount -1];
+    return self.speedArray[self.speedCount -1];
 }
 
 - (CLLocationCoordinate2D)coordinate

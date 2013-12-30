@@ -163,6 +163,7 @@
         <image name="RunningBar" width="30" height="30"/>
         <image name="StatsBar" width="30" height="30"/>
     </resources>
+    <color key="tintColor" red="0.25882352941176384" green="0.4957230839416058" blue="1" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

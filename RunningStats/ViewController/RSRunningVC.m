@@ -48,23 +48,16 @@
     [super viewDidLoad];
     
     self.map.delegate = self;
-    NSLog(@"ViewDidLoad");
 }
 //
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
-        NSLog(@"InitWithCoder?");
         [self setUp];
     }
     return self;
 }
-//
-//- (void)viewWillAppear:(BOOL)animated
-//{
-//    // Put some code to here for lazy-load.
-//}
-//
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -72,16 +65,21 @@
     if (!self.isRunning) {
         [self restoreUI];
     }
+    
     // Refresh userLocation
     self.map.showsUserLocation = NO;
     self.map.showsUserLocation = YES;
     [self renewMapRegion];
-    NSLog(@"ViewDidAppear");
+    
+    if (!self.map.userLocationVisible)
+    {
+        currLocation = [self.locationManager location];
+        [self renewMapRegion];
+    }
 }
 
 - (void)setUp
 {
-    NSLog(@"Setup.");
     // locationManager
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
@@ -137,29 +135,24 @@
      didUpdateLocations:(NSArray *)locations
 {
     CLLocation *newLocation = [locations lastObject];
-    if (!self.path)
-    {
+    if (!self.path) {
         self.path = [[RSPath alloc] init];
     }
     if ([self.path pointCount] == 0) {
         currLocation = newLocation;
-        if (![self.path saveFirstLocation:currLocation])
-        {
+        if (![self.path saveFirstLocation:currLocation]) {
             NSLog(@"Why");
         }
-        else
-        {
+        else {
             [self.map addOverlay:self.path];
             NSLog(@"Add overlay");
         }
     }
     if ((currLocation.coordinate.latitude != newLocation.coordinate.latitude) &&
-        (currLocation.coordinate.longitude != newLocation.coordinate.longitude))
-    {
+        (currLocation.coordinate.longitude != newLocation.coordinate.longitude)) {
         MKMapRect updateRect = [self.path addLocation:newLocation];
         
-        if (!MKMapRectIsNull(updateRect))
-        {
+        if (!MKMapRectIsNull(updateRect)) {
             // Update map and speed and distance textfields
             // Map
             // Compute the currently visible map zoom scale
@@ -172,15 +165,16 @@
             // Update data
             self.distance = [self.path distance] / 1000;
             self.speed = 3.6 * [self.path instantSpeed];
-            NSTimeInterval duration = -[self.startDate timeIntervalSinceNow];
-            self.avgSpeed = 3.6 * [self.path distance] / duration;
             // Move map with user location
             currLocation = newLocation;
             [self renewMapRegion];
         }
-        else
+        else {
             NSLog(@"Nonvalid location.");
+        }
     }
+    NSTimeInterval duration = ABS([self.startDate timeIntervalSinceNow]);
+    self.avgSpeed = 3.6 * [self.path distance] / duration;
 }
 
 #pragma mark - Discard and Save Session
@@ -270,7 +264,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
     NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
     [dateformatter setTimeZone:[NSTimeZone localTimeZone]];
     [dateformatter setDateFormat: @"yyyy-MM-dd HH:mm:ss"];
-    NSTimeInterval duration = -[self.startDate timeIntervalSinceNow];
+    NSTimeInterval duration = ABS([self.startDate timeIntervalSinceNow]);
     NSString *durStr = [self timeFormatted:(int)duration];
     NSString *startDateString = [dateformatter stringFromDate:self.startDate];
     NSString *disStr = [NSString stringWithFormat:@"%.2f",[self.path distance]];

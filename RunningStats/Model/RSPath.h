@@ -7,12 +7,7 @@
 {
     MKMapPoint *points;
     NSUInteger pointCount;
-    NSUInteger pointSpace;
     MKMapRect boundingMapRect;
-    CLLocationSpeed *speedArray;
-    NSUInteger speedCount;
-    NSUInteger speedSpace;
-    CLLocationDistance distance;
 }
 
 - (BOOL)saveFirstLocation:(CLLocation *)location;
@@ -27,11 +22,9 @@
 // the previously added coordinate it will not be added to the list and 
 // MKMapRectNull will be returned.
 //
-- (MKMapRect)addLocation:(CLLocation *)location;
+- (MKMapRect)addLocation:(CLLocation *)newlocation;
 - (CLLocationSpeed)instantSpeed;
 
-@property (assign, nonatomic) MKMapPoint *points;
 @property (assign, nonatomic) NSUInteger pointCount;
 @property (assign, nonatomic) CLLocationDistance distance;
-@property (assign, nonatomic) CLLocationSpeed *speedArray;
 @end
