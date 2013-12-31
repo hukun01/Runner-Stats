@@ -14,10 +14,10 @@
             buildForProfiling = "YES">
             <BuildableReference
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "libPods.a"
+               BuildableName = "libPods-Appirater.a"
                BuildableIdentifier = "primary"
-               BlueprintName = "Pods"
-               BlueprintIdentifier = "92975770DD2E43B88942EDE9">
+               BlueprintName = "Pods-Appirater"
+               BlueprintIdentifier = "8EB0A36D4C534DCF99651CD0">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

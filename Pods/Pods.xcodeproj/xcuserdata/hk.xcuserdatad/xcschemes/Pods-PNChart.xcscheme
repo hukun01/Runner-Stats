@@ -14,10 +14,10 @@
             buildForProfiling = "YES">
             <BuildableReference
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "libPods.a"
+               BuildableName = "libPods-PNChart.a"
                BuildableIdentifier = "primary"
-               BlueprintName = "Pods"
-               BlueprintIdentifier = "92975770DD2E43B88942EDE9">
+               BlueprintName = "Pods-PNChart"
+               BlueprintIdentifier = "66F3118F85224AB685D02ABA">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
