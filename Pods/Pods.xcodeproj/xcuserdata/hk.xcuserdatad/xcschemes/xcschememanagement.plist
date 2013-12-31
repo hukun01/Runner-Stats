@@ -9,6 +9,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-PNChart.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-TEAChart.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>79E4AC15700E4FF78627C7FB</key>
+		<key>1B11BD85DCDD4E2E8B801B57</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A536A85A365A413296901C69</key>
+		<key>573494145CD8420282CDF6CC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E4CC3124710C489E8FC3285D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FD7A4B8699C84A659EA6419C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

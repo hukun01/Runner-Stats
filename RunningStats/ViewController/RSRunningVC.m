@@ -50,7 +50,7 @@
     
     self.map.delegate = self;
 }
-//
+
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
@@ -67,12 +67,10 @@
         [self restoreUI];
     }
     
-    // Refresh userLocation
-    self.map.showsUserLocation = NO;
-    self.map.showsUserLocation = YES;
     [self renewMapRegion];
     
     if (!self.map.userLocationVisible) {
+        NSLog(@"User not in the screen.");
         self.currLocation = [self.locationManager location];
         [self renewMapRegion];
     }
@@ -80,14 +78,13 @@
 
 - (void)setUp
 {
-    // locationManager
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.delegate = self;
     _locationManager.distanceFilter = 3.0;
     _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
     // data
     [self resetData];
-    //可能需要防抖动
+    // TO-DO: Drop the initial invalid location
     _currLocation = [_locationManager location];
     // Create a record if not exist
     _recordManager = [[RSRecordManager alloc] init];
@@ -141,11 +138,9 @@
     if ([self.path pointCount] == 0) {
         self.currLocation = newLocation;
         if (![self.path saveFirstLocation:self.currLocation]) {
-            NSLog(@"Why");
         }
         else {
             [self.map addOverlay:self.path];
-            NSLog(@"Add overlay");
         }
     }
     if ((self.currLocation.coordinate.latitude != newLocation.coordinate.latitude) &&
@@ -169,9 +164,6 @@
             self.currLocation = newLocation;
             [self renewMapRegion];
         }
-        else {
-            NSLog(@"Nonvalid location.");
-        }
     }
     NSTimeInterval duration = ABS([self.startDate timeIntervalSinceNow]);
     self.avgSpeed = 3.6 * [self.path distance] / duration;
@@ -192,8 +184,7 @@
     [alert show];
 }
 
-- (void)alertView:(UIAlertView *)alertView
-clickedButtonAtIndex:(NSInteger)buttonIndex
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1)
     {

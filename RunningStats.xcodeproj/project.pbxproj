@@ -12,6 +12,10 @@
 		46AC5AFD1865648E006CAAD1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AC5AFC1865648E006CAAD1 /* MapKit.framework */; };
 		46C47DF7186F6F4000A990B0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 46C47DF6186F6F4000A990B0 /* README.md */; };
 		46C47DF9186FFFC400A990B0 /* Known bug.md in Resources */ = {isa = PBXBuildFile; fileRef = 46C47DF8186FFFC400A990B0 /* Known bug.md */; };
+		46C47DFD1871467700A990B0 /* RSSettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C47DFC1871467700A990B0 /* RSSettingsVC.m */; };
+		46C47E00187222A600A990B0 /* RSStatsFirstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C47DFF187222A600A990B0 /* RSStatsFirstVC.m */; };
+		46C47E051872268400A990B0 /* RSStatsSecondVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C47E041872268400A990B0 /* RSStatsSecondVC.m */; };
+		46C47E0818722F7100A990B0 /* RSSettingsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C47E0718722F7100A990B0 /* RSSettingsTVC.m */; };
 		46C6D4F518679ECF00CD5232 /* RSPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C6D4F218679ECF00CD5232 /* RSPath.m */; };
 		46C6D4F618679ECF00CD5232 /* RSRecordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C6D4F418679ECF00CD5232 /* RSRecordManager.m */; };
 		46C6D4FC18679F7B00CD5232 /* RSRunningVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C6D4F918679F7B00CD5232 /* RSRunningVC.m */; };
@@ -47,6 +51,15 @@
 		46AC5AFC1865648E006CAAD1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		46C47DF6186F6F4000A990B0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		46C47DF8186FFFC400A990B0 /* Known bug.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Known bug.md"; sourceTree = "<group>"; };
+		46C47DFB1871467700A990B0 /* RSSettingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSettingsVC.h; sourceTree = "<group>"; };
+		46C47DFC1871467700A990B0 /* RSSettingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSettingsVC.m; sourceTree = "<group>"; };
+		46C47DFE187222A600A990B0 /* RSStatsFirstVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSStatsFirstVC.h; sourceTree = "<group>"; };
+		46C47DFF187222A600A990B0 /* RSStatsFirstVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSStatsFirstVC.m; sourceTree = "<group>"; };
+		46C47E021872251200A990B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		46C47E031872268400A990B0 /* RSStatsSecondVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSStatsSecondVC.h; sourceTree = "<group>"; };
+		46C47E041872268400A990B0 /* RSStatsSecondVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSStatsSecondVC.m; sourceTree = "<group>"; };
+		46C47E0618722F7100A990B0 /* RSSettingsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSettingsTVC.h; sourceTree = "<group>"; };
+		46C47E0718722F7100A990B0 /* RSSettingsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSettingsTVC.m; sourceTree = "<group>"; };
 		46C6D4F118679ECF00CD5232 /* RSPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSPath.h; sourceTree = "<group>"; };
 		46C6D4F218679ECF00CD5232 /* RSPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSPath.m; sourceTree = "<group>"; };
 		46C6D4F318679ECF00CD5232 /* RSRecordManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSRecordManager.h; sourceTree = "<group>"; };
@@ -130,6 +143,14 @@
 				46C6D4F918679F7B00CD5232 /* RSRunningVC.m */,
 				46C6D4FA18679F7B00CD5232 /* RSStatsVC.h */,
 				46C6D4FB18679F7B00CD5232 /* RSStatsVC.m */,
+				46C47DFE187222A600A990B0 /* RSStatsFirstVC.h */,
+				46C47DFF187222A600A990B0 /* RSStatsFirstVC.m */,
+				46C47E031872268400A990B0 /* RSStatsSecondVC.h */,
+				46C47E041872268400A990B0 /* RSStatsSecondVC.m */,
+				46C47DFB1871467700A990B0 /* RSSettingsVC.h */,
+				46C47DFC1871467700A990B0 /* RSSettingsVC.m */,
+				46C47E0618722F7100A990B0 /* RSSettingsTVC.h */,
+				46C47E0718722F7100A990B0 /* RSSettingsTVC.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -373,10 +394,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46C47E00187222A600A990B0 /* RSStatsFirstVC.m in Sources */,
+				46C47E0818722F7100A990B0 /* RSSettingsTVC.m in Sources */,
 				46C6D4FC18679F7B00CD5232 /* RSRunningVC.m in Sources */,
 				46D4AABA18655E6700F787BA /* main.m in Sources */,
 				46C6D4F618679ECF00CD5232 /* RSRecordManager.m in Sources */,
+				46C47DFD1871467700A990B0 /* RSSettingsVC.m in Sources */,
 				46D4AAE918655EF200F787BA /* RSAppDelegate.m in Sources */,
+				46C47E051872268400A990B0 /* RSStatsSecondVC.m in Sources */,
 				46C6D4F518679ECF00CD5232 /* RSPath.m in Sources */,
 				46C6D4FD18679F7B00CD5232 /* RSStatsVC.m in Sources */,
 			);
@@ -413,6 +438,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				46D4AAC018655E6700F787BA /* Base */,
+				46C47E021872251200A990B0 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

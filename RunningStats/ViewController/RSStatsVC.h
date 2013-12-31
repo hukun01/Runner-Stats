@@ -8,6 +8,5 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RSStatsVC : UIViewController
-
+@interface RSStatsVC : UIViewController <UIScrollViewDelegate>
 @end
