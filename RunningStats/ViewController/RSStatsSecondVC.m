@@ -24,7 +24,6 @@
             self.barChart = [[PNBarChart alloc] initWithFrame:CGRectMake(0, 135.0, SCREEN_WIDTH, 200.0)];
             [self.barChart setXLabels:@[@"SEP 1",@"SEP 2",@"SEP 3",@"SEP 4",@"SEP 5"]];
             [self.barChart setYValues:@[@1,  @10, @2, @6, @3]];
-            [self.barChart strokeChart];
         }
     }
     return self;
@@ -34,7 +33,20 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [self.view addSubview:self.barChart];
     
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self.barChart strokeChart];
+    [self.view addSubview:self.barChart];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [self.barChart removeFromSuperview];
+    [super viewDidDisappear:animated];
 }
 @end

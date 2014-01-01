@@ -40,6 +40,9 @@
 @property (strong, nonatomic) RSPath *path;
 @property (strong, nonatomic) MKPolylineRenderer *pathRenderer;
 
+@property (strong, nonatomic) IBOutlet UILabel *test_statusLabel;
+
+
 @end
 
 @implementation RSRunningVC
@@ -49,6 +52,7 @@
     [super viewDidLoad];
     
     self.map.delegate = self;
+    [self.locationManager startUpdatingLocation];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -86,6 +90,9 @@
     [self resetData];
     // TO-DO: Drop the initial invalid location
     _currLocation = [_locationManager location];
+    
+    self.isRunning = NO;
+    
     // Create a record if not exist
     _recordManager = [[RSRecordManager alloc] init];
 //    if (![[NSFileManager defaultManager] removeItemAtPath:[self.recordManager recordPath] error:NULL])
@@ -106,7 +113,7 @@
     [self.path clearContents];
     [self resetData];
     
-    [self.locationManager startUpdatingLocation];
+    //[self.locationManager startUpdatingLocation];
     self.startDate = [NSDate date];
     [self renewMapRegion];
     // start a timer
@@ -131,6 +138,11 @@
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations
 {
+    [self renewMapRegion];
+    if (!self.isRunning) {
+        self.currLocation = [locations lastObject];
+        return;
+    }
     CLLocation *newLocation = [locations lastObject];
     if (!self.path) {
         self.path = [[RSPath alloc] init];
@@ -138,9 +150,11 @@
     if ([self.path pointCount] == 0) {
         self.currLocation = newLocation;
         if (![self.path saveFirstLocation:self.currLocation]) {
+            self.test_statusLabel.text = @"No valid location";
         }
         else {
             [self.map addOverlay:self.path];
+            self.test_statusLabel.text = @"Add overlay";
         }
     }
     if ((self.currLocation.coordinate.latitude != newLocation.coordinate.latitude) &&
@@ -162,7 +176,9 @@
             self.speed = 3.6 * [self.path instantSpeed];
             // Move map with user location
             self.currLocation = newLocation;
-            [self renewMapRegion];
+            
+            //debug
+            self.test_statusLabel.text = [NSString stringWithFormat:@"%.4f, %.4f", newLocation.coordinate.latitude, newLocation.coordinate.longitude];
         }
     }
     NSTimeInterval duration = ABS([self.startDate timeIntervalSinceNow]);
@@ -275,28 +291,34 @@
 - (void)setSpeed:(CLLocationSpeed)speed
 {
     _speed = speed;
-    if (speed > 10.0)
+    if (speed > 10.0) {
         self.currSpeedLabel.text = [NSString stringWithFormat:@"%.1f", speed];
-    else
+    }
+    else {
         self.currSpeedLabel.text = [NSString stringWithFormat:@"%.2f", speed];
+    }
 }
 
 - (void)setDistance:(CLLocationDistance)distance
 {
     _distance = distance;
-    if (distance > 10.0)
+    if (distance > 10.0) {
         self.distanceLabel.text = [NSString stringWithFormat:@"%.1f", distance];
-    else
+    }
+    else {
         self.distanceLabel.text = [NSString stringWithFormat:@"%.2f", distance];
+    }
 }
 
 - (void)setAvgSpeed:(CLLocationSpeed)avgSpeed
 {
     _avgSpeed = avgSpeed;
-    if (avgSpeed > 10.0)
+    if (avgSpeed > 10.0) {
         self.avgSpeedLabel.text = [NSString stringWithFormat:@"%.1f", avgSpeed];
-    else
+    }
+    else {
         self.avgSpeedLabel.text = [NSString stringWithFormat:@"%.2f", avgSpeed];
+    }
 }
 
 - (void)setSeconds:(NSInteger)sessionSeconds
@@ -327,8 +349,7 @@
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView
             rendererForOverlay:(id <MKOverlay>)overlay
 {
-    if (!self.pathRenderer)
-    {
+    if (!self.pathRenderer) {
         _pathRenderer = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
         self.pathRenderer.strokeColor = [[UIColor alloc] initWithRed:66.0/255.0 green:204.0/255.0 blue:255.0/255.0 alpha:0.75];
         self.pathRenderer.lineWidth = 6.5;

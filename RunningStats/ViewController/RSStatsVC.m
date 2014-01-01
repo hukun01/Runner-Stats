@@ -139,7 +139,6 @@
     page = page > 1 ? 1 : page;
     page = page < 0 ? 0 : page;
 	if (self.pageControl.currentPage != page) {
-        NSLog(@"Page #: %d", page);
 		UIViewController *oldViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
 		UIViewController *newViewController = [self.childViewControllers objectAtIndex:page];
 		[oldViewController viewWillDisappear:YES];

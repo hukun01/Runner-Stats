@@ -101,6 +101,12 @@
                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="18"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No session" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7nu-jG-QX4">
+                                <rect key="frame" x="20" y="191" width="286" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -113,6 +119,7 @@
                         <outlet property="saveButton" destination="Y4X-gG-Cmv" id="cfA-kM-3v6"/>
                         <outlet property="startButton" destination="XUg-bu-Lvn" id="Lpe-5p-cau"/>
                         <outlet property="stopButton" destination="7gt-yV-Crg" id="4UV-th-uv3"/>
+                        <outlet property="test_statusLabel" destination="7nu-jG-QX4" id="gRe-gx-Dgr"/>
                         <outlet property="timerLabel" destination="bgL-Vf-ugF" id="Ai9-DD-Who"/>
                     </connections>
                 </viewController>
