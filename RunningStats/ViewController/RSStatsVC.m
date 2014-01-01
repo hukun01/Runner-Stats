@@ -25,7 +25,7 @@
 	[self.currentStatsView setScrollEnabled:YES];
 	[self.currentStatsView setDelegate:self];
     
-    [self addChildViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"StatsFirstVC"]];
+    [self addChildViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"naviControllerForStatsFirstVC"]];
     [self addChildViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"StatsSecondVC"]];
 }
 

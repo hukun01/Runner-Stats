@@ -16,10 +16,11 @@
 @property (assign, nonatomic) NSUInteger speedSpace;
 @property (assign, nonatomic) NSUInteger speedCount;
 
-@property(strong, nonatomic) NSString *tmpDocPath;
-@property(strong, nonatomic) NSFileManager *fileManager;
-@property(strong, nonatomic) NSDate *dateOfLastEvent;
-@property(strong, nonatomic) NSString *tmpFile;
+@property (strong, nonatomic) NSString *tmpDocPath;
+@property (strong, nonatomic) NSFileManager *fileManager;
+@property (strong, nonatomic) NSDate *dateOfLastEvent;
+@property (strong, nonatomic) NSString *tmpFile;
+
 @end
 
 @implementation RSPath
@@ -124,7 +125,8 @@
     
     return YES;
 }
-
+// csv fields
+// timeInterval(double), currentDistance(double), instantSpeed(double)
 - (void)addALineByLocation:(CLLocation *)location
 {
     CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:self.tmpFile];

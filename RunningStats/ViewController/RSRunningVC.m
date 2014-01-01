@@ -77,6 +77,7 @@
         NSLog(@"User not in the screen.");
         self.currLocation = [self.locationManager location];
         [self renewMapRegion];
+        self.map.showsUserLocation = YES;
     }
 }
 
@@ -95,10 +96,14 @@
     
     // Create a record if not exist
     _recordManager = [[RSRecordManager alloc] init];
-//    if (![[NSFileManager defaultManager] removeItemAtPath:[self.recordManager recordPath] error:NULL])
-//        NSLog(@"remove failed");
+    
+    // debug
+    if (![[NSFileManager defaultManager] removeItemAtPath:[self.recordManager recordPath] error:NULL])
+        NSLog(@"remove failed");
     if (![_recordManager createRecord])
         NSLog(@"Create record.csv failed.");
+    self.path = [[RSPath alloc] init];
+    
 }
 
 # pragma mark - Start Session
@@ -119,8 +124,9 @@
     // start a timer
     [self startTimer];
     
-    // Hide some UI elements
+    // Change accessibility of some UI elements
     self.startButton.hidden = YES;
+    self.tabBarController.tabBar.hidden = YES;
     self.saveButton.hidden = NO;
     self.stopButton.hidden = NO;
     self.map.zoomEnabled = NO;
@@ -132,15 +138,14 @@
     for (NSString *s in allRecords) {
         NSLog(@"%d: %@",i++,[s description]);
     }
-    self.tabBarController.tabBar.hidden = YES;
 }
 
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations
 {
-    [self renewMapRegion];
     if (!self.isRunning) {
         self.currLocation = [locations lastObject];
+        [self renewMapRegion];
         return;
     }
     CLLocation *newLocation = [locations lastObject];
@@ -181,6 +186,7 @@
             self.test_statusLabel.text = [NSString stringWithFormat:@"%.4f, %.4f", newLocation.coordinate.latitude, newLocation.coordinate.longitude];
         }
     }
+    [self renewMapRegion];
     NSTimeInterval duration = ABS([self.startDate timeIntervalSinceNow]);
     self.avgSpeed = 3.6 * [self.path distance] / duration;
 }
@@ -272,9 +278,18 @@
     [dateformatter setTimeZone:[NSTimeZone localTimeZone]];
     [dateformatter setDateFormat: @"yyyy-MM-dd HH:mm:ss"];
     NSTimeInterval duration = ABS([self.startDate timeIntervalSinceNow]);
-    NSString *durStr = [self timeFormatted:(int)duration];
+    NSString *durStr = [NSString stringWithFormat:@"%d", (int)duration];
     NSString *startDateString = [dateformatter stringFromDate:self.startDate];
-    NSString *disStr = [NSString stringWithFormat:@"%.2f",[self.path distance]];
+    CLLocationDistance finalDistance = [self.path distance];
+    finalDistance /= 1000;
+    NSString *disStr;
+    if (finalDistance > 10.0) {
+        disStr = [NSString stringWithFormat:@"%.1f",finalDistance];
+    }
+    else {
+        disStr = [NSString stringWithFormat:@"%.2f",finalDistance];
+    }
+    
     NSString *avgSpdStr = [NSString stringWithFormat:@"%.2f",3.6 * [self.path distance] / duration];
     
     NSArray *newRecord = @[startDateString, disStr, durStr, avgSpdStr];
@@ -324,7 +339,7 @@
 - (void)setSeconds:(NSInteger)sessionSeconds
 {
     _sessionSeconds = sessionSeconds;
-    self.timerLabel.text = [self timeFormatted:sessionSeconds];
+    self.timerLabel.text = [self.recordManager timeFormatted:sessionSeconds withOption:FORMAT_HHMMSS];
 }
 
 - (void)startTimer
@@ -336,14 +351,6 @@
 - (void)timerTick
 {
     self.sessionSeconds += 1;
-}
-
-- (NSString *)timeFormatted:(int)totalSeconds
-{
-    int seconds = totalSeconds % 60;
-    int minutes = (totalSeconds / 60) % 60;
-    int hours = totalSeconds / 3600;
-    return [NSString stringWithFormat:@"%02d:%02d:%02d",hours, minutes, seconds];
 }
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView

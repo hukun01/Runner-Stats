@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
-@interface RSStatsFirstVC : UIViewController
+@interface RSStatsFirstVC : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end
