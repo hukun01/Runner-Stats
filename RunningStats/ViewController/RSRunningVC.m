@@ -7,6 +7,7 @@
 //
 
 #import "RSRunningVC.h"
+#import "RSStatsFirstVC.h"
 
 #define DISCARD_ALERT_TAG 0
 #define SAVE_ALERT_TAG 1
@@ -52,7 +53,6 @@
     [super viewDidLoad];
     
     self.map.delegate = self;
-    [self.locationManager startUpdatingLocation];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -72,12 +72,12 @@
     }
     
     [self renewMapRegion];
+    self.map.showsUserLocation = YES;
+    self.currLocation = [self.locationManager location];
     
+    //debug
     if (!self.map.userLocationVisible) {
         NSLog(@"User not in the screen.");
-        self.currLocation = [self.locationManager location];
-        [self renewMapRegion];
-        self.map.showsUserLocation = YES;
     }
 }
 
@@ -98,18 +98,17 @@
     _recordManager = [[RSRecordManager alloc] init];
     
     // debug
-    if (![[NSFileManager defaultManager] removeItemAtPath:[self.recordManager recordPath] error:NULL])
-        NSLog(@"remove failed");
-    if (![_recordManager createRecord])
-        NSLog(@"Create record.csv failed.");
-    self.path = [[RSPath alloc] init];
-    
+//    if (![[NSFileManager defaultManager] removeItemAtPath:[self.recordManager recordPath] error:NULL])
+//        NSLog(@"remove failed");
+//    if (![_recordManager createRecord])
+//        NSLog(@"Create record.csv failed.");
 }
 
 # pragma mark - Start Session
 - (IBAction)startSession:(id)sender
 {
     self.isRunning = YES;
+    [self.locationManager startUpdatingLocation];
     // Clear the data of last event
     if ([[self.map overlays] count] != 0) {
         [self.map removeOverlays:[self.map overlays]];
@@ -140,14 +139,14 @@
     }
 }
 
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+{
+    _map.centerCoordinate = userLocation.location.coordinate;
+}
+
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations
 {
-    if (!self.isRunning) {
-        self.currLocation = [locations lastObject];
-        [self renewMapRegion];
-        return;
-    }
     CLLocation *newLocation = [locations lastObject];
     if (!self.path) {
         self.path = [[RSPath alloc] init];
@@ -294,12 +293,16 @@
     
     NSArray *newRecord = @[startDateString, disStr, durStr, avgSpdStr];
     [self.recordManager addALine:newRecord];
+
+    //debug
+    self.test_statusLabel.text = [NSString stringWithFormat:@"%@", newRecord];
 }
 
 #pragma mark - Stable utility functions
 - (void)renewMapRegion
 {
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.currLocation.coordinate, MAP_REGION_SIZE, MAP_REGION_SIZE);
+    
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.map.userLocation.coordinate, MAP_REGION_SIZE, MAP_REGION_SIZE);
     [self.map setRegion:region animated:YES];
 }
 

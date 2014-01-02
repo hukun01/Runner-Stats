@@ -8,10 +8,11 @@
 
 #import "RSStatsSecondVC.h"
 #import "PNChart.h"
+#import "TEAContributionGraph.h"
 
 @interface RSStatsSecondVC ()
-@property (strong, nonatomic) IBOutlet PNBarChart *barChart;
-//@property (strong, nonatomic) PNBarChart * barChart;
+@property (strong, nonatomic) PNBarChart *barChart;
+@property (strong, nonatomic) TEAContributionGraph *contributionGraph;
 @end
 
 @implementation RSStatsSecondVC
@@ -23,6 +24,7 @@ static int onceAnimated = 2;
     self = [super initWithCoder:aDecoder];
     if (self) {
         // Custom initialization
+        
     }
     return self;
 }
@@ -31,13 +33,34 @@ static int onceAnimated = 2;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    [self setupContributionGraph];
+    [self setupBarChart];
+    
+}
+
+- (void)setupContributionGraph
+{
+    self.contributionGraph = [[TEAContributionGraph alloc] initWithFrame:CGRectMake(65, 65, 190, 162)];
+    self.contributionGraph.backgroundColor = [UIColor whiteColor];
+    self.contributionGraph.width = 22;
+    self.contributionGraph.spacing = 6;
+    self.contributionGraph.data = @[@0, @1, @0, @0, @0, @4, @0, @5, @0, @0, @0, @3, @0, @0, @0, @5, @0, @0, @6, @0, @0, @0, @3, @0, @3, @0, @4, @0, @5, @0, @0];
+    [self.view addSubview:self.contributionGraph];
+}
+
+- (void)setupBarChart
+{
+    self.barChart = [[PNBarChart alloc] initWithFrame:CGRectMake(0, 235.0, SCREEN_WIDTH, 200.0)];
     // barChart UI
     UIColor *myGray = [[UIColor alloc] initWithRed:239.0/255.0 green:239.0/255.0 blue:244.0/255.0 alpha:1];
-    [self.barChart setBarBackgroundColor:myGray];
-    [self.barChart setStrokeColor:PNTwitterColor];
+    self.barChart.barBackgroundColor = myGray;
+    self.barChart.strokeColor = PNTwitterColor;
     // barChart data
-    [self.barChart setXLabels:@[@"SEP 1",@"SEP 2",@"SEP 3",@"SEP 4",@"SEP 5"]];
-    [self.barChart setYValues:@[@1,  @10, @2, @6, @13]];
+    self.barChart.xLabels = @[@"SEP",@"OCT",@"NOV",@"DEC",@"JAN"];
+    self.barChart.yValues = @[@1,  @10, @2, @6, @13];
+    [self.barChart strokeChart];
+    [self.view addSubview:self.barChart];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -54,7 +77,7 @@ static int onceAnimated = 2;
     [super viewDidAppear:animated];
     if (0 == onceAnimated) {
         --onceAnimated;
-        [self.barChart strokeChart];
+        //[self.barChart strokeChart];
     }
 }
 

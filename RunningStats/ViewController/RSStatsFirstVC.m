@@ -36,7 +36,6 @@
     if (self) {
         // Custom initialization
         _recordManager = [[RSRecordManager alloc] init];
-
     }
     return self;
 }
@@ -70,18 +69,16 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
     [self setup];
 }
 
 - (void)setup
 {
     [self.navigationItem setTitle:@"Summary"];
-
+    
     self.recordTableView.dataSource = self;
     self.recordTableView.delegate = self;
     self.records = [self.recordManager readRecord];
-    
     [self calcWholeDataForLabels];
 }
 
