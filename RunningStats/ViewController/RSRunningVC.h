@@ -14,8 +14,5 @@
 
 @interface RSRunningVC : UIViewController
 <MKMapViewDelegate, CLLocationManagerDelegate, UIAlertViewDelegate>
-{
-    CLLocation *currLocation;
-}
 
 @end

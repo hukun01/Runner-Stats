@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "CHCSVParser.h"
 
+#define FORMAT_HHMMSS 0
+#define FORMAT_MMSS 1
+
 @interface RSRecordManager : NSObject <CHCSVParserDelegate>
 // Create if not exists an empty record named record.csv, in which there is one empty line
 // There is always only one record.csv whose structure is as followed.
@@ -18,7 +21,9 @@
 - (NSArray *)readRecord;
 // newline points to a NSArray separated by comma
 - (void)addALine:(NSArray *)newline;
+- (NSString *)timeFormatted:(int)totalSeconds withOption:(NSInteger)option;
+- (NSString *)subStringFromDateString:(NSString *)dateString;
 
-@property(nonatomic,strong) NSString *recordPath;
+@property(strong, nonatomic) NSString *recordPath;
 
 @end
