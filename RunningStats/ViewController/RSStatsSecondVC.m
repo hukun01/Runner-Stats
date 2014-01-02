@@ -57,10 +57,10 @@ static int onceAnimated = 2;
     self.barChart.barBackgroundColor = myGray;
     self.barChart.strokeColor = PNTwitterColor;
     // barChart data
-    self.barChart.xLabels = @[@"SEP",@"OCT",@"NOV",@"DEC",@"JAN"];
-    self.barChart.yValues = @[@1,  @10, @2, @6, @13];
-    [self.barChart strokeChart];
-    [self.view addSubview:self.barChart];
+    self.barChart.xLabels = @[@"JAN", @"FEB", @"MAR", @"APR", @"MAY", @"JUN",
+                              @"JUL", @"AUG"];
+    self.barChart.yValues = @[@3, @7, @1, @3, @5, @1,
+                              @10, @2];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -77,7 +77,8 @@ static int onceAnimated = 2;
     [super viewDidAppear:animated];
     if (0 == onceAnimated) {
         --onceAnimated;
-        //[self.barChart strokeChart];
+        [self.barChart strokeChart];
+        [self.view addSubview:self.barChart];
     }
 }
 

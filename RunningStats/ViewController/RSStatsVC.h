@@ -9,4 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface RSStatsVC : UIViewController <UIScrollViewDelegate>
+
+@property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (strong, nonatomic) IBOutlet UIScrollView *currentStatsView;
 @end

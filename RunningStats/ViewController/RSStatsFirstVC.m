@@ -9,6 +9,7 @@
 #import "RSStatsFirstVC.h"
 #import "RSRecordManager.h"
 #import "RSRecordCell.h"
+#import "RSStatsVC.h"
 
 #define CELL_HEIGHT 44
 #define SECONDS_OF_HOUR 3600
@@ -56,8 +57,7 @@
             if ([segue.identifier isEqualToString:@"showRecordDetails"]) {
                 if ([segue.destinationViewController respondsToSelector:@selector(showRecordFromName:)]) {
                     NSArray *record = [self.records objectAtIndex:indexPath.row];
-                    NSString *recordFileName = [self.recordManager subStringFromDateString:[record firstObject]];
-                    recordFileName = [recordFileName stringByAppendingString:@".csv"];
+                    NSString *recordFileName = [[record firstObject] description];
                     [segue.destinationViewController performSelector:@selector(showRecordFromName:) withObject:recordFileName];
                 }
             }
@@ -80,6 +80,15 @@
     self.recordTableView.delegate = self;
     self.records = [self.recordManager readRecord];
     [self calcWholeDataForLabels];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    RSStatsVC *parentVC = (RSStatsVC *)self.navigationController.parentViewController;
+    parentVC.pageControl.hidden = NO;
+    parentVC.currentStatsView.scrollEnabled = YES;
 }
 
 - (void)calcWholeDataForLabels
@@ -127,8 +136,6 @@
 {
     NSString *CellIdentifier = [NSString stringWithFormat:@"recordCell"];
     RSRecordCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    //cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"accessory.png"]];
     
     // Set cell content labels
     cell.textLabel.text = [self cellTitleForIndex:indexPath.row];

@@ -53,6 +53,11 @@
     [super viewDidLoad];
     
     self.map.delegate = self;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(renewMapRegion)
+                                                 name:UIApplicationWillEnterForegroundNotification
+                                               object:nil];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -301,7 +306,6 @@
 #pragma mark - Stable utility functions
 - (void)renewMapRegion
 {
-    
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.map.userLocation.coordinate, MAP_REGION_SIZE, MAP_REGION_SIZE);
     [self.map setRegion:region animated:YES];
 }

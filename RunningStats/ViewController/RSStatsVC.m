@@ -10,8 +10,6 @@
 
 @interface RSStatsVC ()
 
-@property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
-@property (strong, nonatomic) IBOutlet UIScrollView *currentStatsView;
 @property (assign, nonatomic) NSUInteger lastPageNum;
 @end
 

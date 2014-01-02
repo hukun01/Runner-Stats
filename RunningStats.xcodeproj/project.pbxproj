@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		15A3F798A6CB417B9C2C0F91 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B49D21AA1849DCAC899F2D /* libPods.a */; };
+		46847A9518761397001D4D44 /* JBChartHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46847A8B18761397001D4D44 /* JBChartHeaderView.m */; };
+		46847A9618761397001D4D44 /* JBChartInformationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46847A8D18761397001D4D44 /* JBChartInformationView.m */; };
+		46847A9718761397001D4D44 /* JBLineChartFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46847A9218761397001D4D44 /* JBLineChartFooterView.m */; };
 		46AC5AFB18656098006CAAD1 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AC5AFA18656098006CAAD1 /* AudioToolbox.framework */; };
 		46AC5AFD1865648E006CAAD1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AC5AFC1865648E006CAAD1 /* MapKit.framework */; };
 		46C47DF7186F6F4000A990B0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 46C47DF6186F6F4000A990B0 /* README.md */; };
@@ -48,6 +51,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		46847A8A18761397001D4D44 /* JBChartHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBChartHeaderView.h; path = JBChartHelper/JBChartHeaderView.h; sourceTree = "<group>"; };
+		46847A8B18761397001D4D44 /* JBChartHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBChartHeaderView.m; path = JBChartHelper/JBChartHeaderView.m; sourceTree = "<group>"; };
+		46847A8C18761397001D4D44 /* JBChartInformationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBChartInformationView.h; path = JBChartHelper/JBChartInformationView.h; sourceTree = "<group>"; };
+		46847A8D18761397001D4D44 /* JBChartInformationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBChartInformationView.m; path = JBChartHelper/JBChartInformationView.m; sourceTree = "<group>"; };
+		46847A8E18761397001D4D44 /* JBColorConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBColorConstants.h; path = JBChartHelper/JBColorConstants.h; sourceTree = "<group>"; };
+		46847A8F18761397001D4D44 /* JBConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBConstants.h; path = JBChartHelper/JBConstants.h; sourceTree = "<group>"; };
+		46847A9018761397001D4D44 /* JBFontConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBFontConstants.h; path = JBChartHelper/JBFontConstants.h; sourceTree = "<group>"; };
+		46847A9118761397001D4D44 /* JBLineChartFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBLineChartFooterView.h; path = JBChartHelper/JBLineChartFooterView.h; sourceTree = "<group>"; };
+		46847A9218761397001D4D44 /* JBLineChartFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBLineChartFooterView.m; path = JBChartHelper/JBLineChartFooterView.m; sourceTree = "<group>"; };
+		46847A9318761397001D4D44 /* JBStringConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBStringConstants.h; path = JBChartHelper/JBStringConstants.h; sourceTree = "<group>"; };
+		46847A9418761397001D4D44 /* JBUIConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBUIConstants.h; path = JBChartHelper/JBUIConstants.h; sourceTree = "<group>"; };
 		46AC5AF918656062006CAAD1 /* RunningStats.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = RunningStats.entitlements; sourceTree = "<group>"; };
 		46AC5AFA18656098006CAAD1 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		46AC5AFC1865648E006CAAD1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -122,6 +136,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46847A981876139D001D4D44 /* JBChartHelper */ = {
+			isa = PBXGroup;
+			children = (
+				46847A8A18761397001D4D44 /* JBChartHeaderView.h */,
+				46847A8B18761397001D4D44 /* JBChartHeaderView.m */,
+				46847A8C18761397001D4D44 /* JBChartInformationView.h */,
+				46847A8D18761397001D4D44 /* JBChartInformationView.m */,
+				46847A8E18761397001D4D44 /* JBColorConstants.h */,
+				46847A8F18761397001D4D44 /* JBConstants.h */,
+				46847A9018761397001D4D44 /* JBFontConstants.h */,
+				46847A9118761397001D4D44 /* JBLineChartFooterView.h */,
+				46847A9218761397001D4D44 /* JBLineChartFooterView.m */,
+				46847A9318761397001D4D44 /* JBStringConstants.h */,
+				46847A9418761397001D4D44 /* JBUIConstants.h */,
+			);
+			name = JBChartHelper;
+			sourceTree = "<group>";
+		};
 		46C47DFA1870009200A990B0 /* Documents */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,8 +235,9 @@
 		46D4AAB318655E6700F787BA /* RunningStats */ = {
 			isa = PBXGroup;
 			children = (
-				46D4AAE618655EF200F787BA /* Other */,
+				46D4AAE618655EF200F787BA /* AppDelegate */,
 				46C6D4F018679ECF00CD5232 /* Model */,
+				46847A981876139D001D4D44 /* JBChartHelper */,
 				46C6D4F718679F7B00CD5232 /* ViewController */,
 				46D4AABF18655E6700F787BA /* Main.storyboard */,
 				46D4AAB418655E6700F787BA /* Supporting Files */,
@@ -243,12 +276,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		46D4AAE618655EF200F787BA /* Other */ = {
+		46D4AAE618655EF200F787BA /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
 				46D4AAE718655EF200F787BA /* RSAppDelegate.h */,
 				46D4AAE818655EF200F787BA /* RSAppDelegate.m */,
 			);
+			name = AppDelegate;
 			path = Other;
 			sourceTree = "<group>";
 		};
@@ -409,12 +443,15 @@
 				46C6D4FC18679F7B00CD5232 /* RSRunningVC.m in Sources */,
 				46CBDC841874912C00E3E5B7 /* RSRecordCell.m in Sources */,
 				46D4AABA18655E6700F787BA /* main.m in Sources */,
+				46847A9718761397001D4D44 /* JBLineChartFooterView.m in Sources */,
 				46CBDC871874BEA800E3E5B7 /* RSRecordDetailsVC.m in Sources */,
 				46C6D4F618679ECF00CD5232 /* RSRecordManager.m in Sources */,
 				46C47DFD1871467700A990B0 /* RSSettingsVC.m in Sources */,
 				46D4AAE918655EF200F787BA /* RSAppDelegate.m in Sources */,
 				46C47E051872268400A990B0 /* RSStatsSecondVC.m in Sources */,
+				46847A9518761397001D4D44 /* JBChartHeaderView.m in Sources */,
 				46C6D4F518679ECF00CD5232 /* RSPath.m in Sources */,
+				46847A9618761397001D4D44 /* JBChartInformationView.m in Sources */,
 				46C6D4FD18679F7B00CD5232 /* RSStatsVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -65,6 +65,11 @@
     return [NSArray arrayWithContentsOfCSVFile:self.recordPath];
 }
 
+- (NSArray *)readRecordDetailsByPath:(NSString *)path
+{
+    return [NSArray arrayWithContentsOfCSVFile:path];
+}
+
 - (void)addALine:(NSArray *)newline
 {
     // Need to check if there is already a record with same date
@@ -99,7 +104,6 @@
     NSDateFormatter* df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSDate *date = [df dateFromString:dateString];
-    [df setDateFormat:@"yyyy-MM-dd"];
     return [df stringFromDate:date];
 }
 
