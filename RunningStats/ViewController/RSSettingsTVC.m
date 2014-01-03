@@ -34,7 +34,7 @@
 {
     [super viewWillAppear:animated];
     
-    RSSettingsVC *parentVC = (RSSettingsVC *)self.navigationController.parentViewController;
+    RSSettingsVC *parentVC = (RSSettingsVC *)self.parentViewController;
 
     parentVC.scrollView.scrollEnabled = YES;
     parentVC.descriptionLabel.hidden = NO;

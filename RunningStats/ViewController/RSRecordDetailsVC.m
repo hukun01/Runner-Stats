@@ -15,7 +15,7 @@
 #import "RSStatsVC.h"
 
 #define NUMBER_OF_XY_POINTS 60
-#define NUMBER_OF_SECTION_POINTS 30
+#define NUMBER_OF_SECTION_POINTS 25
 
 // Numerics
 CGFloat const kJBLineChartViewControllerChartHeight = 300.0f;
@@ -130,7 +130,6 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
     headerView.titleLabel.textColor = kJBColorLineChartHeader;
     headerView.titleLabel.shadowColor = [UIColor colorWithWhite:1.0 alpha:0.25];
     headerView.titleLabel.shadowOffset = CGSizeMake(0, 1);
-    //headerView.subtitleLabel.text = [self getHeaderSubTitleFromRecord:self.record];
     headerView.subtitleLabel.text = [NSString stringWithFormat:@"Max Speed: %.1f km/h", self.maxSpeed * 3.6];
     headerView.subtitleLabel.textColor = kJBColorLineChartHeader;
     headerView.subtitleLabel.shadowColor = [UIColor colorWithWhite:1.0 alpha:0.25];
@@ -154,7 +153,7 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
 
 - (void)configureInfoView
 {
-    self.infoView = [[JBChartInformationView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, CGRectGetMaxY(self.lineChart.frame), self.view.bounds.size.width, self.view.bounds.size.height - CGRectGetMaxY(self.lineChart.frame) - CGRectGetMaxY(self.navigationController.navigationBar.frame)) layout:JBChartInformationViewLayoutVertical];
+    self.infoView = [[JBChartInformationView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, CGRectGetMaxY(self.lineChart.frame), self.view.bounds.size.width, 150) layout:JBChartInformationViewLayoutVertical];//y: self.view.bounds.size.height - CGRectGetMaxY(self.lineChart.frame) - CGRectGetMaxY(self.navigationController.navigationBar.frame)
     [self.infoView setValueAndUnitTextColor:[UIColor colorWithWhite:1.0 alpha:0.75]];
     [self.infoView setTitleTextColor:[UIColor blackColor]];
     [self.infoView setValueAndUnitTextColor:PNTwitterColor];

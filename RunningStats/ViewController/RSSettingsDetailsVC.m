@@ -26,7 +26,7 @@
     [self.webView loadRequest:request];
     self.webView.scrollView.showsHorizontalScrollIndicator = NO;
     
-    RSSettingsVC *parentVC = (RSSettingsVC *)self.navigationController.parentViewController;
+    RSSettingsVC *parentVC = (RSSettingsVC *)self.parentViewController.navigationController.parentViewController;
     parentVC.scrollView.scrollEnabled = NO;
     parentVC.descriptionLabel.hidden = YES;
 }

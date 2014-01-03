@@ -40,6 +40,7 @@
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) RSPath *path;
 @property (strong, nonatomic) MKPolylineRenderer *pathRenderer;
+@property (strong, nonatomic) IBOutlet UINavigationItem *myNavigationItem;
 
 @property (strong, nonatomic) IBOutlet UILabel *test_statusLabel;
 
@@ -53,11 +54,12 @@
     [super viewDidLoad];
     
     self.map.delegate = self;
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(renewMapRegion)
                                                  name:UIApplicationWillEnterForegroundNotification
                                                object:nil];
+    self.myNavigationItem.title = @"Running Stats";
+
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder

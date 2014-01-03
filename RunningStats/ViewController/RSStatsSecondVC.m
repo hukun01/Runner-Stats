@@ -13,6 +13,7 @@
 @interface RSStatsSecondVC ()
 @property (strong, nonatomic) PNBarChart *barChart;
 @property (strong, nonatomic) TEAContributionGraph *contributionGraph;
+@property (strong, nonatomic) IBOutlet UINavigationItem *myNavigationItem;
 @end
 
 @implementation RSStatsSecondVC
@@ -34,9 +35,9 @@ static int onceAnimated = 2;
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    self.myNavigationItem.title = @"Running Frequency";
     [self setupContributionGraph];
     [self setupBarChart];
-    
 }
 
 - (void)setupContributionGraph
