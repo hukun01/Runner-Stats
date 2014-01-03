@@ -7,688 +7,637 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00D935E379434151AA57DFD1 /* TEAClockChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 3430C8EFEB484C99BD16C806 /* TEAClockChart.h */; };
-		01D5D286467E47AB9F284335 /* Pods-Appirater-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E78B2DBCCAB34A86B739D8FF /* Pods-Appirater-dummy.m */; };
-		03B6C83FA49141A89DE31E00 /* id.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 8210424EFBED433A9A93CDD2 /* id.lproj */; };
-		079B01B4C65D49B5A7F12FFE /* zh-Hant.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 504CD96F747646DD98A46D85 /* zh-Hant.lproj */; };
-		09A7B23AFB4548969EC8D408 /* PNLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = AD41313760EF4B08804FA324 /* PNLineChart.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		0D71A1CDC4D848F68534C838 /* PNLineChartDataItem.h in Headers */ = {isa = PBXBuildFile; fileRef = F58CBFC5395E471D8364E988 /* PNLineChartDataItem.h */; };
-		1D0C94A6ABC84B8E8A79ADE5 /* ko.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 684A498DF3894964B22B33D3 /* ko.lproj */; };
-		1D17634506CF43BF941214D8 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CCABD85C5F4E0CA1F4CAD4 /* Pods-dummy.m */; };
-		20691286C6A14AEB93D9DF34 /* PNBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDE2CB2A52E42CD93EA385D /* PNBarChart.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		20A82B1A65304673BB75B97F /* he.lproj in Resources */ = {isa = PBXBuildFile; fileRef = CDEFA42321834C35B9108CCC /* he.lproj */; };
-		217DA1A3306F4A61A9E55BE3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A60DFC7F98048A2B3E5B08E /* Foundation.framework */; };
-		220C4316484E432CB0857506 /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 966918205F2F49F1815C529D /* en.lproj */; };
-		2419324332AD48D1B4E1D818 /* ja.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 7B07E93F14FA4BF0B391F174 /* ja.lproj */; };
-		259833A56C1F4903B73BF92F /* Appirater.h in Headers */ = {isa = PBXBuildFile; fileRef = 8447C15CA38A43398D625C3F /* Appirater.h */; };
-		2703A9FF4A8741B894A65991 /* TEABarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F92C8FF20F4924A7A81FE7 /* TEABarChart.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		2E1520F979144EA6B0CA232D /* JBBarChartView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8985CC1BD6934CE588934825 /* JBBarChartView.h */; };
-		2E7F297D7F5D4FE694D1F53F /* tr.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 6B1200E334DC49CEB44B470E /* tr.lproj */; };
-		3073D6EA37A0488C9ECC8488 /* PNBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 485FA87811CD418DB41D0F66 /* PNBar.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		3611FF9F5B6A4CCEAF596E95 /* PNLineChartDataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F811F49E8449298CA89894 /* PNLineChartDataItem.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		383F9283F13540BE9B7F7F33 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C36E66CD43D40AEA864F133 /* QuartzCore.framework */; };
-		3923409F31094133B8EF6A46 /* PNChartLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C27140B347B4D4192AF78FE /* PNChartLabel.h */; };
-		39A3EC6C4F584EDEBBF9529C /* UICountingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 99CEBB6C73ED4233BCF2861F /* UICountingLabel.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		3B0AE49071844CA8A5727E99 /* PNColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BA53F3A9EDD4C1AA5ABAE1A /* PNColor.h */; };
-		3C5CC36F5A7841BBAE4E970A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17FE9F45F31B418CA9F5F2EE /* UIKit.framework */; };
-		3CDEF0B018E6413FB9FFF5B7 /* Pods-JBChartView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A2FED822B946FEB52DE7B8 /* Pods-JBChartView-dummy.m */; };
-		456DF4F1B5034A4C96E7C303 /* nl.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 2B1B8F00F52A4146918EE5CA /* nl.lproj */; };
-		4689B84CF2674FF88A89C413 /* TEATimeRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B994266BC142E2B57D2FC8 /* TEATimeRange.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		479A0814AD014EB6B754A6B0 /* AppiraterDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = C03FF833DCB74DCDB0E45ADE /* AppiraterDelegate.h */; };
-		4889F99042064AE9BC9C8E75 /* it.lproj in Resources */ = {isa = PBXBuildFile; fileRef = E21CF53100784700AA00E18E /* it.lproj */; };
-		4A478859522748B1BD2DDDA5 /* PNChartDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = DA5A765BD09E46A7BBF511EE /* PNChartDelegate.h */; };
-		4BA63251AC6C4622BB27C67A /* sv.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 71873505A473488586033561 /* sv.lproj */; };
-		4D6CF4CB6C474964A54EC655 /* PNBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 737E9922B8234E00BE59C74C /* PNBar.h */; };
-		4EDD573B8EBD47AE85E8CE0D /* PNLineChartData.m in Sources */ = {isa = PBXBuildFile; fileRef = BF17F1333DE84CBD9A7457E9 /* PNLineChartData.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		52285EC48C0B4BB283AC9625 /* TEAClockChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 387257A90C674C47A2FD938B /* TEAClockChart.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		52BC1350B13140CAABD5BB6D /* JBLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F499027B6142508478A743 /* JBLineChartView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		54FC595BF07642469A427FE6 /* TEABarChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EDB6488B31B49748378EBA4 /* TEABarChart.h */; };
-		55958604654B4E5BA4C4EEF8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A60DFC7F98048A2B3E5B08E /* Foundation.framework */; };
-		56FE67F120354BA4914A3759 /* UICountingLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = CEEBA4E5AF5B4E20A0BBE512 /* UICountingLabel.h */; };
-		5D1736B23E8D43C885E81D5E /* JBChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = F99B6F89908B4052BAFA1024 /* JBChartView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		5E9ADBADE3A74AE9805CED80 /* libPods-PNChart.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F24C88F0F04F0199AD75C3 /* libPods-PNChart.a */; };
-		609E65F287F44669B8C3F21F /* libPods-TEAChart.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B06A7150C7C1491C94B91551 /* libPods-TEAChart.a */; };
-		64DB4DEDBC734356B92158D6 /* Pods-PNChart-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 111159AEC1004592A5868328 /* Pods-PNChart-dummy.m */; };
-		69F6CE3CFDA14D7BA9B966C8 /* JBLineChartView.h in Headers */ = {isa = PBXBuildFile; fileRef = 40981E27E3CA44E6BEF8A1AE /* JBLineChartView.h */; };
-		6BDEB1066B254CDE8E4B87C2 /* es.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 4AD19B2F87FD474685275B4D /* es.lproj */; };
-		6C38A22D1696476E8055CAC8 /* ro.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 924F01F7AF2840B4896C4D90 /* ro.lproj */; };
-		6F3B9A3BECD545419844CCF0 /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F47DC4B145F641FC9DB896D0 /* CHCSVParser.m */; };
-		6FEB59194A61475CBC852A88 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CC2CE5104DB4BDAB065BBB5 /* SystemConfiguration.framework */; };
-		70BA928D119D49FBA4F55649 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A60DFC7F98048A2B3E5B08E /* Foundation.framework */; };
-		71FCA8FA0AE641C68FA3892A /* zh-Hans.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 996BEC0E20894D50A269EA12 /* zh-Hans.lproj */; };
-		76377867165B42AB89B0F482 /* libPods-CHCSVParser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FEDECBC7207A401E986D1E0D /* libPods-CHCSVParser.a */; };
-		7D37AF1516C14A7AAC3A7CFC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A60DFC7F98048A2B3E5B08E /* Foundation.framework */; };
-		7EE565CA65924472BB0F4D63 /* JBBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28810F16D3B84E718E5C99EE /* JBBarChartView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		81C4B09577D8471398DD778C /* el.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 6C814A4FC43F40EBB5389D62 /* el.lproj */; };
-		81F2D33EC97B4791A6D53922 /* TEAChart.h in Headers */ = {isa = PBXBuildFile; fileRef = EFCB1AC0DB0444E8885FF69A /* TEAChart.h */; };
-		86A62F6851F14836928A6012 /* JBChartView.h in Headers */ = {isa = PBXBuildFile; fileRef = 33C469350F4B491F98938A8F /* JBChartView.h */; };
-		893651AA5D934656A07D2CA2 /* Pods-TEAChart-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B01237D2152F4362B3A3A088 /* Pods-TEAChart-dummy.m */; };
-		898BFBCE98584EB1B794639F /* pl.lproj in Resources */ = {isa = PBXBuildFile; fileRef = C1C37645D2744DCABA3F11AC /* pl.lproj */; };
-		8BAFED4D08154B7A8587023E /* PNBarChart.h in Headers */ = {isa = PBXBuildFile; fileRef = F48721E8E14A4647B59659B8 /* PNBarChart.h */; };
-		8C3DFC6C750E4AC88DC79414 /* ca.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 4433F178C887422E838FF9FF /* ca.lproj */; };
-		8D92998A3CE943D6BE034CD7 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6097CAFFB548D2BC9889DD /* Appirater.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		963FE1CBC74D442399E2A859 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 205D50565D8B4DB3B561D056 /* CFNetwork.framework */; };
-		97C1499CBDEA4DC2A982DD2E /* libPods-Appirater.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CCC0F4C31AC49FA84BC1D9F /* libPods-Appirater.a */; };
-		98F9940399EC4C4E87797A1D /* CHCSVParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BBAAE52D760469A82C1554C /* CHCSVParser.h */; };
-		9A085DE800CE4597838D79BE /* TEAContributionGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = 1585E8D32FD84933B4D0CE0D /* TEAContributionGraph.h */; };
-		9BD4ED0B531E41A1B84CC93F /* TEATimeRange.h in Headers */ = {isa = PBXBuildFile; fileRef = 977B80B633904F429456D563 /* TEATimeRange.h */; };
-		9F703791FD034452A87ADAEE /* PNLineChartData.h in Headers */ = {isa = PBXBuildFile; fileRef = 5028AC22903844DCBD412C76 /* PNLineChartData.h */; };
-		A51C9C9F204048CE815BA820 /* pt.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 11C7C41E02B948A79D094825 /* pt.lproj */; };
-		A68619E7DBF44A5D84BD1088 /* da.lproj in Resources */ = {isa = PBXBuildFile; fileRef = DC66A373A05D4A0C8E897947 /* da.lproj */; };
-		A6DA6D691B954AA59901E2A9 /* Pods-CHCSVParser-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E24CD4898E3245D6A778BBD5 /* Pods-CHCSVParser-dummy.m */; };
-		B14FFC9A5AC94F6B9D08A99A /* de.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 6CF5FEE3C45D4544A9C0757B /* de.lproj */; };
-		B92E13BA1CDB4B1885F3DAEC /* PNCircleChart.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E7C6EE1DBB48CA905E2FBD /* PNCircleChart.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		B94EF2A0CB04472082A7E150 /* nb.lproj in Resources */ = {isa = PBXBuildFile; fileRef = EB5A97E2E6BE4EB590731249 /* nb.lproj */; };
-		BCA605F11EA14220BA598F2E /* PNCircleChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 35E856E660084E7A858A87E2 /* PNCircleChart.h */; };
-		C036BB29CD134867AACF77FB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A60DFC7F98048A2B3E5B08E /* Foundation.framework */; };
-		C4FB6EEE62504C26AE182AA2 /* libPods-JBChartView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDDC29EE24CD476083969947 /* libPods-JBChartView.a */; };
-		CAED5DBD9BE043129AF047E3 /* cs.lproj in Resources */ = {isa = PBXBuildFile; fileRef = A3675B8FEF3C498B9366D197 /* cs.lproj */; };
-		D116ED0E70A9461EAD72D889 /* PNChartLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1923C7A170024C5E9D39843F /* PNChartLabel.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		D46F623D36EC47F3927E0DBE /* PNColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D2388631B84C77A26DFB17 /* PNColor.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		D71248D802E143B79EF496F7 /* sk.lproj in Resources */ = {isa = PBXBuildFile; fileRef = A6B77113592F4CE4A7B56839 /* sk.lproj */; };
-		D82D76E71B89436ABEFB8C63 /* ru.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 644A597514CB4A6C9D2A1716 /* ru.lproj */; };
-		DB49423A9D924B13A3387037 /* TEAContributionGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = D243D8D8914A4BCFBE73B994 /* TEAContributionGraph.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		DF34012F79124912AF272512 /* fi.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 2D5A46855BFC4E7EABB8FD0B /* fi.lproj */; };
-		E718D18D8D3C4E0E8CEBBAF8 /* PNLineChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 725729028AE040198B1D7B8F /* PNLineChart.h */; };
-		EAC163FB8CB1405E852AE0B0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A60DFC7F98048A2B3E5B08E /* Foundation.framework */; };
-		ED869FAA973341978E6E41B9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1F82C60971E4CCDBCC3A0E9 /* CoreGraphics.framework */; };
-		FA1EA2073BC0491B94A38AD0 /* PNChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 425F0B9A890C49C28EF090C9 /* PNChart.h */; };
-		FE4653535A97498A88CC6E37 /* fr.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 8D2941F4B8AD46299C78BEE8 /* fr.lproj */; };
-		FEC33E3F6F684627A6DA99C1 /* hu.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 779CB3044ED042918E5EF61E /* hu.lproj */; };
+		012B73B2B2E246018F54F73B /* PNLineChartDataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B5F4A93EBC498793C0E597 /* PNLineChartDataItem.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		0397398991ED40D1BD3E4DDC /* fr.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 2A277373BE294A5D8F41005E /* fr.lproj */; };
+		06125B3CF8F24CC49E118C8C /* TEAClockChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FEB848444914616BE17327A /* TEAClockChart.h */; };
+		0CDE289DD71D432DAB229B7A /* PNCircleChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A391A93FEED4BDEA194ECE4 /* PNCircleChart.h */; };
+		166D7728207A4B1F8E81508A /* ca.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 826A0B85D375457EABAA2569 /* ca.lproj */; };
+		1C6FF9528DAA41509F84F6BF /* libPods-JBChartView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10CF4C486B814C4D93115325 /* libPods-JBChartView.a */; };
+		1C9347454C4345B1A36B4343 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7BE1CDB0AB34E9E8CF0E7A9 /* CoreGraphics.framework */; };
+		1E8BE3D1E91D46EEAC5C12BA /* TEABarChart.h in Headers */ = {isa = PBXBuildFile; fileRef = FFCF1A1ABAA84D4790AD47B7 /* TEABarChart.h */; };
+		206F1FD9F6D049B98E9AD6DD /* libPods-Appirater.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9909F8824C949CC94FF1E60 /* libPods-Appirater.a */; };
+		3382C2D89FF24F8B96A6DF1E /* TEAContributionGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = 067A4C0A4A25406E91C0AB91 /* TEAContributionGraph.h */; };
+		33C7C295666D456980F3697C /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 57921893193943E49E6AB00F /* en.lproj */; };
+		34A87FDC7A2045B880442417 /* he.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 6C0063C8D2A944649501B57E /* he.lproj */; };
+		38ADC27A335B4660A9FFCE67 /* id.lproj in Resources */ = {isa = PBXBuildFile; fileRef = D910AB22AB69447684AE0522 /* id.lproj */; };
+		3BCA5D16AB464FFBAB335E7B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CC544FC43334B04B028CE1F /* Foundation.framework */; };
+		3DACADC18C41482BB9776C56 /* JBChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BCFA0020668414C8EA4DC70 /* JBChartView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		3EC3D36FFDB34339996BE26A /* cs.lproj in Resources */ = {isa = PBXBuildFile; fileRef = A9DE1A66F2CE4620900C353E /* cs.lproj */; };
+		4099C70AF2684B2CBAE47EB0 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D140A77DE9114D32B58E6DA3 /* Pods-dummy.m */; };
+		40C8FC46037F40FAB007FE67 /* PNLineChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 88406AEE796147F982FFE923 /* PNLineChart.h */; };
+		4453DC71A90848FAA1A073AF /* PNLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = F929EFBFFE1146BBBB915C5D /* PNLineChart.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		49FDE5A8615B46F5A8ABF837 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CC544FC43334B04B028CE1F /* Foundation.framework */; };
+		4A6155D52308439CB569A13F /* Pods-PNChart-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B4C99526174D46CF80ED57D5 /* Pods-PNChart-dummy.m */; };
+		4B11EA9A790F44439CD53F1A /* PNBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A300D5FE9B4570AE64F986 /* PNBar.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		4EF765B0137944DA84AC4026 /* ro.lproj in Resources */ = {isa = PBXBuildFile; fileRef = CAE1CBBB32CB47019A100A07 /* ro.lproj */; };
+		5217244DCB7F447892C5C2C8 /* PNChartDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = F2C6F0F01BAC43C79574544D /* PNChartDelegate.h */; };
+		52E2919D7F3A4F53A3290C1A /* UICountingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C3CAB39172934667B68F3C3E /* UICountingLabel.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		5868445446AC4AA99B3E58BB /* da.lproj in Resources */ = {isa = PBXBuildFile; fileRef = D1C6EA338D154B8EA9CE8162 /* da.lproj */; };
+		6074B524D44A4F3C94E105BB /* libPods-TEAChart.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F762633692004286A8903CDD /* libPods-TEAChart.a */; };
+		611213D2A3CD42B68ADED99B /* libPods-PNChart.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FDF4A5E077C0450DBC904BA0 /* libPods-PNChart.a */; };
+		64592FC3F966486881794118 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CC544FC43334B04B028CE1F /* Foundation.framework */; };
+		68023C5D736A442FB79FE1CF /* hu.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 3FA7E460F81B4AAD981F7050 /* hu.lproj */; };
+		6C4C9062896E4EE2A76B4DBB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DACD495814404CE5B92BD212 /* CFNetwork.framework */; };
+		6F1C0C70BB1549FC88953C31 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CC544FC43334B04B028CE1F /* Foundation.framework */; };
+		737ED21B9AB64533AA38CCA5 /* pl.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 7BA9478D72244965A3CDAFA8 /* pl.lproj */; };
+		74DCE11B56544A35B290B096 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 213900FC97D043D99A9B64D4 /* QuartzCore.framework */; };
+		7569AA9F98844EC9B498D400 /* nb.lproj in Resources */ = {isa = PBXBuildFile; fileRef = BE91CEB671F7441699425DDC /* nb.lproj */; };
+		76224808023E4A368D6936D1 /* CHCSVParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 2859F0DB3AE14DA2A907509A /* CHCSVParser.h */; };
+		76884B7D6C094AC9AF009DC2 /* Pods-TEAChart-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C5336D07952643AD89DCDD96 /* Pods-TEAChart-dummy.m */; };
+		7E059643CCCD42F68E4A4082 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 695EAF4EFBDD49D4BFC8560B /* SystemConfiguration.framework */; };
+		85C8DE807E9A4B2683C6310C /* ko.lproj in Resources */ = {isa = PBXBuildFile; fileRef = FF6297022CE84AE9A6B44B4A /* ko.lproj */; };
+		946192B8CF324571B2D1987C /* el.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 5FD5B96894A24CA4A383297F /* el.lproj */; };
+		96EC49682D244BB18CBC0A03 /* es.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 4C90C6C5FCE344ACA6910A24 /* es.lproj */; };
+		9771014078644AE0A1DB51BC /* pt.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 02A92273708342EF83D472DE /* pt.lproj */; };
+		97E52B3E3C6B4E90A0AC7B41 /* JBLineChartView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ADD18D6FABC4D45969FD640 /* JBLineChartView.h */; };
+		9B4C73E285954AF799D2D14F /* PNLineChartDataItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F2E0B25486428E9292C6EA /* PNLineChartDataItem.h */; };
+		9FBA8F299286405D81D11F53 /* PNColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C36269D3F5844748D2B5B21 /* PNColor.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		9FD922B423FC48D0BB884C98 /* Pods-Appirater-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0EB1B25B5F4C2FBDB666A9 /* Pods-Appirater-dummy.m */; };
+		A107768C2503418FB4BB7E25 /* JBChartView.h in Headers */ = {isa = PBXBuildFile; fileRef = 89085039AD8346E593AD2A2B /* JBChartView.h */; };
+		A1B15EF1B4AD4E508C2011F4 /* sk.lproj in Resources */ = {isa = PBXBuildFile; fileRef = EFB4BABCF39A45279877D577 /* sk.lproj */; };
+		A454D2D608D041AEBE08A3EB /* TEAChart.h in Headers */ = {isa = PBXBuildFile; fileRef = F71D34C9710D4E059799A2FA /* TEAChart.h */; };
+		A91A7C673DCE4078BABC5C4B /* TEAClockChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 2779169C36C14AFC8B9FF3DC /* TEAClockChart.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		AACC34064C00419593040528 /* AppiraterDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = E0066DEB3D684B8E8074A6E3 /* AppiraterDelegate.h */; };
+		AE76C3C2A6674948ABE89A70 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CC544FC43334B04B028CE1F /* Foundation.framework */; };
+		B016FDD5E7654B62AFD24FFD /* TEAContributionGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 65215F3750564B7B967B70F5 /* TEAContributionGraph.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		B05A5EA007CC4A02B4D53E31 /* Pods-CHCSVParser-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D2F1F6EDAA480FAA5D1919 /* Pods-CHCSVParser-dummy.m */; };
+		B2A3D4A8B1104C92B2519143 /* PNCircleChart.m in Sources */ = {isa = PBXBuildFile; fileRef = C60F8AAABACC4EFB906EFB44 /* PNCircleChart.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		B5D49B4B165C41218B291F9D /* zh-Hant.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 9A2E09D37A284500B3BA79B9 /* zh-Hant.lproj */; };
+		B5D5F35E498C4CAC9F74547D /* fi.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 49CA471120E949EB94221E72 /* fi.lproj */; };
+		B81F0C93C70C440C898E93E6 /* PNBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = CA765F6444864E578F7C4F92 /* PNBarChart.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		B965BA52007C4903B2E84A66 /* PNChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 48E92702B2EF41B5BCE53B7F /* PNChart.h */; };
+		B9D61C32EA5A4840845B8088 /* JBBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = BAADAF5693D14AFE81D12140 /* JBBarChartView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		BFA6608E76D44CCE8C738840 /* it.lproj in Resources */ = {isa = PBXBuildFile; fileRef = F36E1E4BD8704BE7A584F86F /* it.lproj */; };
+		C0CE9807C273406B90766A2A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6A974F406AC48C3AFE923BC /* UIKit.framework */; };
+		C671AA57A1684C49BB61C822 /* JBBarChartView.h in Headers */ = {isa = PBXBuildFile; fileRef = 9389FB87858F4AEDB9AC2C74 /* JBBarChartView.h */; };
+		C7DD42BEC79B4BD2926B86F0 /* PNChartLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 74967B3830764CF6BA9C5459 /* PNChartLabel.h */; };
+		CCACEC6BB7BF4ECE91669644 /* JBLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4AFD22F3C744A084859F98 /* JBLineChartView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		CFBE43F54F16457A86D968F5 /* PNLineChartData.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA022784D794E808DF92211 /* PNLineChartData.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		D2BBA7AE66034AA1BE143958 /* ja.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 10FB00CC096847148DD47BEA /* ja.lproj */; };
+		D2EFB781C55F46268C261BB0 /* Pods-JBChartView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F268324F9B64F60BB612C36 /* Pods-JBChartView-dummy.m */; };
+		D44BB34DD78C41908FB702B1 /* PNChartLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC88B7F04D04CA3AA627B19 /* PNChartLabel.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		D57F4B8338464D43BE9A35FE /* TEATimeRange.h in Headers */ = {isa = PBXBuildFile; fileRef = DF8E5A4EA3EC43DC85060479 /* TEATimeRange.h */; };
+		D697A264595B4F06ADF61580 /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 039F73B5ECFC41A0BF6EFB28 /* CHCSVParser.m */; };
+		D6CD343E6FFB4C70BA8666E1 /* Appirater.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ADD4E138C8B4F309151B1B1 /* Appirater.h */; };
+		D9CE5246CA4446D9AC6485E4 /* TEABarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = F385F5A3E0F840D093E92961 /* TEABarChart.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		DB53B955FF1542C5A444940F /* PNBarChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F7B728188C14C6DA714A0CC /* PNBarChart.h */; };
+		DD7613C7BD49431AA5FA1F55 /* sv.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 17A4D44809FA4209AEB2B88A /* sv.lproj */; };
+		DD898743E2A040A7AD6D306B /* libPods-CHCSVParser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 446B67CDC4294C8F93B5C841 /* libPods-CHCSVParser.a */; };
+		E2E62F8FD0874FA6AABCDD71 /* tr.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 31353AB3946B4AC7B5077AAF /* tr.lproj */; };
+		E6E29C68B8954847AD3DAAE4 /* nl.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 89E21E360CB34F95A24C294E /* nl.lproj */; };
+		EA693A12B0ED4666945B063B /* UICountingLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D0DAA40207F42DF8ADAF754 /* UICountingLabel.h */; };
+		EAF848B568CB4C8C91D6A333 /* TEATimeRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1FB12DFEB34C3C8C231F86 /* TEATimeRange.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		EE9218C3DB2445EF8255D24E /* zh-Hans.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 2B2620F0C1DB44E897611146 /* zh-Hans.lproj */; };
+		F4C85A9AA20349DE9252CB3B /* de.lproj in Resources */ = {isa = PBXBuildFile; fileRef = B0B36846B7E34CBA935A7D53 /* de.lproj */; };
+		F62F165B80F143DBA59574C0 /* ru.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 85CC09CA203B4B23BE95A8EB /* ru.lproj */; };
+		F7411E8D51824A8082EC9654 /* PNLineChartData.h in Headers */ = {isa = PBXBuildFile; fileRef = E6201AF773694A5F90A1E3BA /* PNLineChartData.h */; };
+		F79BC4D85DFF4F5DBAAF8C99 /* PNBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EE020693E694345A09559D0 /* PNBar.h */; };
+		F97102CC05C448D4A2ECE5B5 /* PNColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 76D0B38DC8D84116A18E1528 /* PNColor.h */; };
+		F9AFA31CAD8F456F9B78001A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CC544FC43334B04B028CE1F /* Foundation.framework */; };
+		FB50669F533F42A3B2C869DF /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F5CE6242FA45E38C2AFE1A /* Appirater.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4A85109F05524CF98DBEA2D8 /* PBXContainerItemProxy */ = {
+		19308633597F409790B7EF46 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = DECA18F4C1D24415B521D08D /* Project object */;
+			containerPortal = C1E46D4E057E4CE0B4F90B06 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = A0995B4970544C8E9D9D7AD3;
-			remoteInfo = "Pods-Appirater";
-		};
-		708933039AC141E89A3886A2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DECA18F4C1D24415B521D08D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 00BD3FCC48B44B2FBA999838;
-			remoteInfo = "Pods-CHCSVParser";
-		};
-		94FC102DF7164155BFD69D5C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DECA18F4C1D24415B521D08D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 29AD1E5FB7494A4ABE1968DE;
-			remoteInfo = "Pods-TEAChart";
-		};
-		9AD3080C5A88442F85F2B011 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DECA18F4C1D24415B521D08D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2C8F3EDE64EA4E12A959E7D4;
+			remoteGlobalIDString = F34FA1041DF84B09966FAA0F;
 			remoteInfo = Appirater;
 		};
-		DF887A4A79E34562BB5A73AA /* PBXContainerItemProxy */ = {
+		26CE03711BCA46FFA089870D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = DECA18F4C1D24415B521D08D /* Project object */;
+			containerPortal = C1E46D4E057E4CE0B4F90B06 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 5E47742D8F96480D91ED87DD;
-			remoteInfo = "Pods-PNChart";
+			remoteGlobalIDString = D175F1172E014DBAA8AED845;
+			remoteInfo = "Pods-TEAChart";
 		};
-		F8CDFC61DBF24C85811D7B01 /* PBXContainerItemProxy */ = {
+		364AB624C1DC4171B45CDDBD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = DECA18F4C1D24415B521D08D /* Project object */;
+			containerPortal = C1E46D4E057E4CE0B4F90B06 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D56F53842E1B45318D095C37;
+			remoteGlobalIDString = BF7AA66F04A442FC85E49E39;
 			remoteInfo = "Pods-JBChartView";
+		};
+		463209BF45FF4D539763DD39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C1E46D4E057E4CE0B4F90B06 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5C030918B0D84FDE813DEC89;
+			remoteInfo = "Pods-CHCSVParser";
+		};
+		87CB93EFF69442C7B0C2D050 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C1E46D4E057E4CE0B4F90B06 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 77FC5D89A703415989E5C99B;
+			remoteInfo = "Pods-Appirater";
+		};
+		A8A26E251FC9431DBBA99D68 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C1E46D4E057E4CE0B4F90B06 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 351C628089124AAB89F956AB;
+			remoteInfo = "Pods-PNChart";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		01F92C8FF20F4924A7A81FE7 /* TEABarChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TEABarChart.m; path = TEAChart/TEABarChart.m; sourceTree = "<group>"; };
-		04CCABD85C5F4E0CA1F4CAD4 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
-		08E86353E74449A38C08CE67 /* Pods-PNChart.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PNChart.xcconfig"; sourceTree = "<group>"; };
-		0A60DFC7F98048A2B3E5B08E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		111159AEC1004592A5868328 /* Pods-PNChart-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PNChart-dummy.m"; sourceTree = "<group>"; };
-		11C7C41E02B948A79D094825 /* pt.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = pt.lproj; sourceTree = "<group>"; };
-		1585E8D32FD84933B4D0CE0D /* TEAContributionGraph.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TEAContributionGraph.h; path = TEAChart/TEAContributionGraph.h; sourceTree = "<group>"; };
-		17FE9F45F31B418CA9F5F2EE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		1923C7A170024C5E9D39843F /* PNChartLabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNChartLabel.m; path = PNChartDemo/PNChart/PNChartLabel.m; sourceTree = "<group>"; };
-		1B6097CAFFB548D2BC9889DD /* Appirater.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = Appirater.m; sourceTree = "<group>"; };
-		205D50565D8B4DB3B561D056 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
-		28810F16D3B84E718E5C99EE /* JBBarChartView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JBBarChartView.m; path = Classes/JBBarChartView.m; sourceTree = "<group>"; };
-		2A2ED7443C3A4339865B8BE5 /* Pods-TEAChart-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TEAChart-prefix.pch"; sourceTree = "<group>"; };
-		2B1B8F00F52A4146918EE5CA /* nl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = nl.lproj; sourceTree = "<group>"; };
-		2D5A46855BFC4E7EABB8FD0B /* fi.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = fi.lproj; sourceTree = "<group>"; };
-		33C469350F4B491F98938A8F /* JBChartView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JBChartView.h; path = Classes/JBChartView.h; sourceTree = "<group>"; };
-		3430C8EFEB484C99BD16C806 /* TEAClockChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TEAClockChart.h; path = TEAChart/TEAClockChart.h; sourceTree = "<group>"; };
-		34D2388631B84C77A26DFB17 /* PNColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNColor.m; path = PNChartDemo/PNChart/PNColor.m; sourceTree = "<group>"; };
-		35E856E660084E7A858A87E2 /* PNCircleChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNCircleChart.h; path = PNChartDemo/PNChart/PNCircleChart.h; sourceTree = "<group>"; };
-		387257A90C674C47A2FD938B /* TEAClockChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TEAClockChart.m; path = TEAChart/TEAClockChart.m; sourceTree = "<group>"; };
-		40981E27E3CA44E6BEF8A1AE /* JBLineChartView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JBLineChartView.h; path = Classes/JBLineChartView.h; sourceTree = "<group>"; };
-		425F0B9A890C49C28EF090C9 /* PNChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNChart.h; path = PNChartDemo/PNChart/PNChart.h; sourceTree = "<group>"; };
-		4433F178C887422E838FF9FF /* ca.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = ca.lproj; sourceTree = "<group>"; };
-		485FA87811CD418DB41D0F66 /* PNBar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNBar.m; path = PNChartDemo/PNChart/PNBar.m; sourceTree = "<group>"; };
-		4AD19B2F87FD474685275B4D /* es.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = es.lproj; sourceTree = "<group>"; };
-		4B34B925D91A4AE8B05E1912 /* Pods-CHCSVParser-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CHCSVParser-prefix.pch"; sourceTree = "<group>"; };
-		4BA9C9ADB08046EEAD5E5847 /* Pods-Appirater-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Appirater-prefix.pch"; sourceTree = "<group>"; };
-		4C5E1529803649988E4C94F1 /* Pods-Appirater-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Appirater-Private.xcconfig"; sourceTree = "<group>"; };
-		5028AC22903844DCBD412C76 /* PNLineChartData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNLineChartData.h; path = PNChartDemo/PNChart/PNLineChartData.h; sourceTree = "<group>"; };
-		504CD96F747646DD98A46D85 /* zh-Hant.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = "zh-Hant.lproj"; sourceTree = "<group>"; };
-		53F24C88F0F04F0199AD75C3 /* libPods-PNChart.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PNChart.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5D90DE0F54B347C5981726FD /* Pods-CHCSVParser-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CHCSVParser-Private.xcconfig"; sourceTree = "<group>"; };
-		644A597514CB4A6C9D2A1716 /* ru.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = ru.lproj; sourceTree = "<group>"; };
-		684A498DF3894964B22B33D3 /* ko.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = ko.lproj; sourceTree = "<group>"; };
-		6B1200E334DC49CEB44B470E /* tr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = tr.lproj; sourceTree = "<group>"; };
-		6C814A4FC43F40EBB5389D62 /* el.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = el.lproj; sourceTree = "<group>"; };
-		6CCC0F4C31AC49FA84BC1D9F /* libPods-Appirater.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Appirater.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6CF5FEE3C45D4544A9C0757B /* de.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = de.lproj; sourceTree = "<group>"; };
-		6F2B382304A94C9CB0B34E1F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		71873505A473488586033561 /* sv.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = sv.lproj; sourceTree = "<group>"; };
-		725729028AE040198B1D7B8F /* PNLineChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNLineChart.h; path = PNChartDemo/PNChart/PNLineChart.h; sourceTree = "<group>"; };
-		737E9922B8234E00BE59C74C /* PNBar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNBar.h; path = PNChartDemo/PNChart/PNBar.h; sourceTree = "<group>"; };
-		75F499027B6142508478A743 /* JBLineChartView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JBLineChartView.m; path = Classes/JBLineChartView.m; sourceTree = "<group>"; };
-		779CB3044ED042918E5EF61E /* hu.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = hu.lproj; sourceTree = "<group>"; };
-		7B07E93F14FA4BF0B391F174 /* ja.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = ja.lproj; sourceTree = "<group>"; };
-		7E87A7F8EFF84FFFAD9B6D98 /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
-		7F1AE3EC03114C09832F0E09 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
-		8210424EFBED433A9A93CDD2 /* id.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = id.lproj; sourceTree = "<group>"; };
-		8447C15CA38A43398D625C3F /* Appirater.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Appirater.h; sourceTree = "<group>"; };
-		8985CC1BD6934CE588934825 /* JBBarChartView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JBBarChartView.h; path = Classes/JBBarChartView.h; sourceTree = "<group>"; };
-		8BA53F3A9EDD4C1AA5ABAE1A /* PNColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNColor.h; path = PNChartDemo/PNChart/PNColor.h; sourceTree = "<group>"; };
-		8BBAAE52D760469A82C1554C /* CHCSVParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CHCSVParser.h; path = CHCSVParser/CHCSVParser.h; sourceTree = "<group>"; };
-		8C27140B347B4D4192AF78FE /* PNChartLabel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNChartLabel.h; path = PNChartDemo/PNChart/PNChartLabel.h; sourceTree = "<group>"; };
-		8CC2CE5104DB4BDAB065BBB5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
-		8D2941F4B8AD46299C78BEE8 /* fr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = fr.lproj; sourceTree = "<group>"; };
-		924F01F7AF2840B4896C4D90 /* ro.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = ro.lproj; sourceTree = "<group>"; };
-		9266EDF3680343688480063A /* Pods-PNChart-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PNChart-prefix.pch"; sourceTree = "<group>"; };
-		966918205F2F49F1815C529D /* en.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = en.lproj; sourceTree = "<group>"; };
-		977B80B633904F429456D563 /* TEATimeRange.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TEATimeRange.h; path = TEAChart/TEATimeRange.h; sourceTree = "<group>"; };
-		996BEC0E20894D50A269EA12 /* zh-Hans.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = "zh-Hans.lproj"; sourceTree = "<group>"; };
-		99B994266BC142E2B57D2FC8 /* TEATimeRange.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TEATimeRange.m; path = TEAChart/TEATimeRange.m; sourceTree = "<group>"; };
-		99CEBB6C73ED4233BCF2861F /* UICountingLabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = UICountingLabel.m; path = PNChartDemo/PNChart/ThirdPart/UICountingLabel.m; sourceTree = "<group>"; };
-		9A5E232B35E34D61B472E3FF /* Pods-PNChart-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PNChart-Private.xcconfig"; sourceTree = "<group>"; };
-		9C36E66CD43D40AEA864F133 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
-		9EDB6488B31B49748378EBA4 /* TEABarChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TEABarChart.h; path = TEAChart/TEABarChart.h; sourceTree = "<group>"; };
-		A1F82C60971E4CCDBCC3A0E9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		A3675B8FEF3C498B9366D197 /* cs.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = cs.lproj; sourceTree = "<group>"; };
-		A420B91768DD4039AC229DDD /* Pods-TEAChart.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TEAChart.xcconfig"; sourceTree = "<group>"; };
-		A5AE7B39CDE649B098C8487E /* Pods-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-environment.h"; sourceTree = "<group>"; };
-		A6B77113592F4CE4A7B56839 /* sk.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = sk.lproj; sourceTree = "<group>"; };
-		A9DBC806F8404CCEA1C322DB /* Appirater.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Appirater.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		AD41313760EF4B08804FA324 /* PNLineChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNLineChart.m; path = PNChartDemo/PNChart/PNLineChart.m; sourceTree = "<group>"; };
-		B01237D2152F4362B3A3A088 /* Pods-TEAChart-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TEAChart-dummy.m"; sourceTree = "<group>"; };
-		B06A7150C7C1491C94B91551 /* libPods-TEAChart.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TEAChart.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1B72434DFBF48AEBB93CFD6 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
-		BF17F1333DE84CBD9A7457E9 /* PNLineChartData.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNLineChartData.m; path = PNChartDemo/PNChart/PNLineChartData.m; sourceTree = "<group>"; };
-		C03FF833DCB74DCDB0E45ADE /* AppiraterDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AppiraterDelegate.h; sourceTree = "<group>"; };
-		C1A2FED822B946FEB52DE7B8 /* Pods-JBChartView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JBChartView-dummy.m"; sourceTree = "<group>"; };
-		C1C37645D2744DCABA3F11AC /* pl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = pl.lproj; sourceTree = "<group>"; };
-		C8E7C6EE1DBB48CA905E2FBD /* PNCircleChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNCircleChart.m; path = PNChartDemo/PNChart/PNCircleChart.m; sourceTree = "<group>"; };
-		CDDC29EE24CD476083969947 /* libPods-JBChartView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JBChartView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CDEFA42321834C35B9108CCC /* he.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = he.lproj; sourceTree = "<group>"; };
-		CEEBA4E5AF5B4E20A0BBE512 /* UICountingLabel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = UICountingLabel.h; path = PNChartDemo/PNChart/ThirdPart/UICountingLabel.h; sourceTree = "<group>"; };
-		D243D8D8914A4BCFBE73B994 /* TEAContributionGraph.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TEAContributionGraph.m; path = TEAChart/TEAContributionGraph.m; sourceTree = "<group>"; };
-		D976C58179A24F84AB1EED26 /* Pods-Appirater.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Appirater.xcconfig"; sourceTree = "<group>"; };
-		DA5A765BD09E46A7BBF511EE /* PNChartDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNChartDelegate.h; path = PNChartDemo/PNChart/PNChartDelegate.h; sourceTree = "<group>"; };
-		DC66A373A05D4A0C8E897947 /* da.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = da.lproj; sourceTree = "<group>"; };
-		E21CF53100784700AA00E18E /* it.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = it.lproj; sourceTree = "<group>"; };
-		E24CD4898E3245D6A778BBD5 /* Pods-CHCSVParser-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CHCSVParser-dummy.m"; sourceTree = "<group>"; };
-		E4D7B7CCE8E64C689830C7D9 /* Pods-JBChartView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JBChartView-prefix.pch"; sourceTree = "<group>"; };
-		E4F811F49E8449298CA89894 /* PNLineChartDataItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNLineChartDataItem.m; path = PNChartDemo/PNChart/PNLineChartDataItem.m; sourceTree = "<group>"; };
-		E678F64FEBE14F9289D4E029 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.xcconfig; sourceTree = "<group>"; };
-		E78B2DBCCAB34A86B739D8FF /* Pods-Appirater-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Appirater-dummy.m"; sourceTree = "<group>"; };
-		E90E2E0D5FB14C0192BBEEFD /* Pods-JBChartView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JBChartView.xcconfig"; sourceTree = "<group>"; };
-		EA72AFDD47E645A682588765 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		EB5A97E2E6BE4EB590731249 /* nb.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = nb.lproj; sourceTree = "<group>"; };
-		EFCB1AC0DB0444E8885FF69A /* TEAChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TEAChart.h; path = TEAChart/TEAChart.h; sourceTree = "<group>"; };
-		F410034FB83D43CE991B2957 /* Pods-TEAChart-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TEAChart-Private.xcconfig"; sourceTree = "<group>"; };
-		F47DC4B145F641FC9DB896D0 /* CHCSVParser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CHCSVParser.m; path = CHCSVParser/CHCSVParser.m; sourceTree = "<group>"; };
-		F48721E8E14A4647B59659B8 /* PNBarChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNBarChart.h; path = PNChartDemo/PNChart/PNBarChart.h; sourceTree = "<group>"; };
-		F58CBFC5395E471D8364E988 /* PNLineChartDataItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNLineChartDataItem.h; path = PNChartDemo/PNChart/PNLineChartDataItem.h; sourceTree = "<group>"; };
-		F99B6F89908B4052BAFA1024 /* JBChartView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JBChartView.m; path = Classes/JBChartView.m; sourceTree = "<group>"; };
-		FC23F36E68194963AE9CB6FE /* Pods-CHCSVParser.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CHCSVParser.xcconfig"; sourceTree = "<group>"; };
-		FEDECBC7207A401E986D1E0D /* libPods-CHCSVParser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CHCSVParser.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF30DA9BAFCF4E7FB36BFC87 /* Pods-JBChartView-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JBChartView-Private.xcconfig"; sourceTree = "<group>"; };
-		FFDE2CB2A52E42CD93EA385D /* PNBarChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNBarChart.m; path = PNChartDemo/PNChart/PNBarChart.m; sourceTree = "<group>"; };
+		02A92273708342EF83D472DE /* pt.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = pt.lproj; sourceTree = "<group>"; };
+		039F73B5ECFC41A0BF6EFB28 /* CHCSVParser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CHCSVParser.m; path = CHCSVParser/CHCSVParser.m; sourceTree = "<group>"; };
+		04F2EB46404C42988CED260C /* Pods-PNChart-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PNChart-prefix.pch"; sourceTree = "<group>"; };
+		067A4C0A4A25406E91C0AB91 /* TEAContributionGraph.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TEAContributionGraph.h; path = TEAChart/TEAContributionGraph.h; sourceTree = "<group>"; };
+		0D0DAA40207F42DF8ADAF754 /* UICountingLabel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = UICountingLabel.h; path = PNChartDemo/PNChart/ThirdPart/UICountingLabel.h; sourceTree = "<group>"; };
+		10CF4C486B814C4D93115325 /* libPods-JBChartView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JBChartView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		10FB00CC096847148DD47BEA /* ja.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = ja.lproj; sourceTree = "<group>"; };
+		132B3974872849D29CF68268 /* Pods-TEAChart-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TEAChart-Private.xcconfig"; sourceTree = "<group>"; };
+		17A4D44809FA4209AEB2B88A /* sv.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = sv.lproj; sourceTree = "<group>"; };
+		17F2E0B25486428E9292C6EA /* PNLineChartDataItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNLineChartDataItem.h; path = PNChartDemo/PNChart/PNLineChartDataItem.h; sourceTree = "<group>"; };
+		1F7B728188C14C6DA714A0CC /* PNBarChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNBarChart.h; path = PNChartDemo/PNChart/PNBarChart.h; sourceTree = "<group>"; };
+		213900FC97D043D99A9B64D4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		24F000AD79D74A3982A21808 /* Pods-JBChartView-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JBChartView-Private.xcconfig"; sourceTree = "<group>"; };
+		2685734AE130425F81ADBA00 /* Pods-JBChartView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JBChartView.xcconfig"; sourceTree = "<group>"; };
+		26D2F1F6EDAA480FAA5D1919 /* Pods-CHCSVParser-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CHCSVParser-dummy.m"; sourceTree = "<group>"; };
+		2779169C36C14AFC8B9FF3DC /* TEAClockChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TEAClockChart.m; path = TEAChart/TEAClockChart.m; sourceTree = "<group>"; };
+		2859F0DB3AE14DA2A907509A /* CHCSVParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CHCSVParser.h; path = CHCSVParser/CHCSVParser.h; sourceTree = "<group>"; };
+		2A277373BE294A5D8F41005E /* fr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = fr.lproj; sourceTree = "<group>"; };
+		2A391A93FEED4BDEA194ECE4 /* PNCircleChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNCircleChart.h; path = PNChartDemo/PNChart/PNCircleChart.h; sourceTree = "<group>"; };
+		2B2620F0C1DB44E897611146 /* zh-Hans.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = "zh-Hans.lproj"; sourceTree = "<group>"; };
+		301C2F7A4AE543DE91099095 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.xcconfig; sourceTree = "<group>"; };
+		31353AB3946B4AC7B5077AAF /* tr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = tr.lproj; sourceTree = "<group>"; };
+		36A550C5BC1B40368B2FFB4A /* Appirater.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Appirater.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		3ADD18D6FABC4D45969FD640 /* JBLineChartView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JBLineChartView.h; path = Classes/JBLineChartView.h; sourceTree = "<group>"; };
+		3ADD4E138C8B4F309151B1B1 /* Appirater.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Appirater.h; sourceTree = "<group>"; };
+		3FA7E460F81B4AAD981F7050 /* hu.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = hu.lproj; sourceTree = "<group>"; };
+		3FEB848444914616BE17327A /* TEAClockChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TEAClockChart.h; path = TEAChart/TEAClockChart.h; sourceTree = "<group>"; };
+		446B67CDC4294C8F93B5C841 /* libPods-CHCSVParser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CHCSVParser.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		48E92702B2EF41B5BCE53B7F /* PNChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNChart.h; path = PNChartDemo/PNChart/PNChart.h; sourceTree = "<group>"; };
+		49CA471120E949EB94221E72 /* fi.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = fi.lproj; sourceTree = "<group>"; };
+		49EE6383576F442185BEDC9A /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		4B24DC3948024EC7BA7D5B12 /* Pods-Appirater-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Appirater-prefix.pch"; sourceTree = "<group>"; };
+		4C90C6C5FCE344ACA6910A24 /* es.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = es.lproj; sourceTree = "<group>"; };
+		57921893193943E49E6AB00F /* en.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = en.lproj; sourceTree = "<group>"; };
+		5FD5B96894A24CA4A383297F /* el.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = el.lproj; sourceTree = "<group>"; };
+		62923B82D95D49E2A6136186 /* Pods-PNChart-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PNChart-Private.xcconfig"; sourceTree = "<group>"; };
+		65215F3750564B7B967B70F5 /* TEAContributionGraph.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TEAContributionGraph.m; path = TEAChart/TEAContributionGraph.m; sourceTree = "<group>"; };
+		695EAF4EFBDD49D4BFC8560B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		6C0063C8D2A944649501B57E /* he.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = he.lproj; sourceTree = "<group>"; };
+		74967B3830764CF6BA9C5459 /* PNChartLabel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNChartLabel.h; path = PNChartDemo/PNChart/PNChartLabel.h; sourceTree = "<group>"; };
+		75C2644FEB52491687596594 /* Pods-TEAChart.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TEAChart.xcconfig"; sourceTree = "<group>"; };
+		7610B8F29B514E58814182E1 /* Pods-Appirater-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Appirater-Private.xcconfig"; sourceTree = "<group>"; };
+		76D0B38DC8D84116A18E1528 /* PNColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNColor.h; path = PNChartDemo/PNChart/PNColor.h; sourceTree = "<group>"; };
+		7BA9478D72244965A3CDAFA8 /* pl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = pl.lproj; sourceTree = "<group>"; };
+		7BCFA0020668414C8EA4DC70 /* JBChartView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JBChartView.m; path = Classes/JBChartView.m; sourceTree = "<group>"; };
+		7F268324F9B64F60BB612C36 /* Pods-JBChartView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JBChartView-dummy.m"; sourceTree = "<group>"; };
+		826A0B85D375457EABAA2569 /* ca.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = ca.lproj; sourceTree = "<group>"; };
+		85CC09CA203B4B23BE95A8EB /* ru.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = ru.lproj; sourceTree = "<group>"; };
+		88406AEE796147F982FFE923 /* PNLineChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNLineChart.h; path = PNChartDemo/PNChart/PNLineChart.h; sourceTree = "<group>"; };
+		89085039AD8346E593AD2A2B /* JBChartView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JBChartView.h; path = Classes/JBChartView.h; sourceTree = "<group>"; };
+		89E21E360CB34F95A24C294E /* nl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = nl.lproj; sourceTree = "<group>"; };
+		8AC88B7F04D04CA3AA627B19 /* PNChartLabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNChartLabel.m; path = PNChartDemo/PNChart/PNChartLabel.m; sourceTree = "<group>"; };
+		8EE020693E694345A09559D0 /* PNBar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNBar.h; path = PNChartDemo/PNChart/PNBar.h; sourceTree = "<group>"; };
+		9389FB87858F4AEDB9AC2C74 /* JBBarChartView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JBBarChartView.h; path = Classes/JBBarChartView.h; sourceTree = "<group>"; };
+		93A300D5FE9B4570AE64F986 /* PNBar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNBar.m; path = PNChartDemo/PNChart/PNBar.m; sourceTree = "<group>"; };
+		9A2E09D37A284500B3BA79B9 /* zh-Hant.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = "zh-Hant.lproj"; sourceTree = "<group>"; };
+		9C36269D3F5844748D2B5B21 /* PNColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNColor.m; path = PNChartDemo/PNChart/PNColor.m; sourceTree = "<group>"; };
+		9CC544FC43334B04B028CE1F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		9D4AFD22F3C744A084859F98 /* JBLineChartView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JBLineChartView.m; path = Classes/JBLineChartView.m; sourceTree = "<group>"; };
+		9E1FB12DFEB34C3C8C231F86 /* TEATimeRange.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TEATimeRange.m; path = TEAChart/TEATimeRange.m; sourceTree = "<group>"; };
+		9EFAEFEA5E1947D9A0727453 /* Pods-CHCSVParser.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CHCSVParser.xcconfig"; sourceTree = "<group>"; };
+		A1CC13776D9B4754ACDEAAF0 /* Pods-JBChartView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JBChartView-prefix.pch"; sourceTree = "<group>"; };
+		A7039AC22CDE42D182F58ABC /* Pods-Appirater.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Appirater.xcconfig"; sourceTree = "<group>"; };
+		A9DE1A66F2CE4620900C353E /* cs.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = cs.lproj; sourceTree = "<group>"; };
+		B0B36846B7E34CBA935A7D53 /* de.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = de.lproj; sourceTree = "<group>"; };
+		B104F7BD11D84ADBA380A54E /* Pods-CHCSVParser-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CHCSVParser-Private.xcconfig"; sourceTree = "<group>"; };
+		B4C99526174D46CF80ED57D5 /* Pods-PNChart-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PNChart-dummy.m"; sourceTree = "<group>"; };
+		B4F6D19C66314033927C246C /* Pods-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-environment.h"; sourceTree = "<group>"; };
+		B7B91E7882E5473991ABD133 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
+		BAADAF5693D14AFE81D12140 /* JBBarChartView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JBBarChartView.m; path = Classes/JBBarChartView.m; sourceTree = "<group>"; };
+		BE0EB1B25B5F4C2FBDB666A9 /* Pods-Appirater-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Appirater-dummy.m"; sourceTree = "<group>"; };
+		BE91CEB671F7441699425DDC /* nb.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = nb.lproj; sourceTree = "<group>"; };
+		C3CAB39172934667B68F3C3E /* UICountingLabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = UICountingLabel.m; path = PNChartDemo/PNChart/ThirdPart/UICountingLabel.m; sourceTree = "<group>"; };
+		C5336D07952643AD89DCDD96 /* Pods-TEAChart-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TEAChart-dummy.m"; sourceTree = "<group>"; };
+		C60F8AAABACC4EFB906EFB44 /* PNCircleChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNCircleChart.m; path = PNChartDemo/PNChart/PNCircleChart.m; sourceTree = "<group>"; };
+		C95F71DBB6FE4AC58EEAA4E1 /* Pods-CHCSVParser-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CHCSVParser-prefix.pch"; sourceTree = "<group>"; };
+		CA765F6444864E578F7C4F92 /* PNBarChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNBarChart.m; path = PNChartDemo/PNChart/PNBarChart.m; sourceTree = "<group>"; };
+		CAE1CBBB32CB47019A100A07 /* ro.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = ro.lproj; sourceTree = "<group>"; };
+		CD49067B2DF84D24A73ABB9F /* Pods-PNChart.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PNChart.xcconfig"; sourceTree = "<group>"; };
+		D140A77DE9114D32B58E6DA3 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
+		D1C6EA338D154B8EA9CE8162 /* da.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = da.lproj; sourceTree = "<group>"; };
+		D4430056FF2A479B94AF4CC3 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
+		D910AB22AB69447684AE0522 /* id.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = id.lproj; sourceTree = "<group>"; };
+		DACD495814404CE5B92BD212 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
+		DF8E5A4EA3EC43DC85060479 /* TEATimeRange.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TEATimeRange.h; path = TEAChart/TEATimeRange.h; sourceTree = "<group>"; };
+		E0066DEB3D684B8E8074A6E3 /* AppiraterDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AppiraterDelegate.h; sourceTree = "<group>"; };
+		E5B5F4A93EBC498793C0E597 /* PNLineChartDataItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNLineChartDataItem.m; path = PNChartDemo/PNChart/PNLineChartDataItem.m; sourceTree = "<group>"; };
+		E6201AF773694A5F90A1E3BA /* PNLineChartData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNLineChartData.h; path = PNChartDemo/PNChart/PNLineChartData.h; sourceTree = "<group>"; };
+		E6A974F406AC48C3AFE923BC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		E7BE1CDB0AB34E9E8CF0E7A9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		E9909F8824C949CC94FF1E60 /* libPods-Appirater.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Appirater.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBA022784D794E808DF92211 /* PNLineChartData.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNLineChartData.m; path = PNChartDemo/PNChart/PNLineChartData.m; sourceTree = "<group>"; };
+		EBA097BCC993411181E8FCEA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF65CFE7DF7C4101B10A8C46 /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
+		EFB4BABCF39A45279877D577 /* sk.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = sk.lproj; sourceTree = "<group>"; };
+		F2C6F0F01BAC43C79574544D /* PNChartDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PNChartDelegate.h; path = PNChartDemo/PNChart/PNChartDelegate.h; sourceTree = "<group>"; };
+		F2F5CE6242FA45E38C2AFE1A /* Appirater.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = Appirater.m; sourceTree = "<group>"; };
+		F36E1E4BD8704BE7A584F86F /* it.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = it.lproj; sourceTree = "<group>"; };
+		F385F5A3E0F840D093E92961 /* TEABarChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TEABarChart.m; path = TEAChart/TEABarChart.m; sourceTree = "<group>"; };
+		F60866BB50A14865BD2C7B0A /* Pods-TEAChart-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TEAChart-prefix.pch"; sourceTree = "<group>"; };
+		F71D34C9710D4E059799A2FA /* TEAChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TEAChart.h; path = TEAChart/TEAChart.h; sourceTree = "<group>"; };
+		F762633692004286A8903CDD /* libPods-TEAChart.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TEAChart.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F929EFBFFE1146BBBB915C5D /* PNLineChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PNLineChart.m; path = PNChartDemo/PNChart/PNLineChart.m; sourceTree = "<group>"; };
+		FDF4A5E077C0450DBC904BA0 /* libPods-PNChart.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PNChart.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF6297022CE84AE9A6B44B4A /* ko.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = ko.lproj; sourceTree = "<group>"; };
+		FFCF1A1ABAA84D4790AD47B7 /* TEABarChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TEABarChart.h; path = TEAChart/TEABarChart.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		451956DC9A5D423C912761CD /* Frameworks */ = {
+		15A656B2DA5F405C81A77843 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				217DA1A3306F4A61A9E55BE3 /* Foundation.framework in Frameworks */,
-				97C1499CBDEA4DC2A982DD2E /* libPods-Appirater.a in Frameworks */,
-				76377867165B42AB89B0F482 /* libPods-CHCSVParser.a in Frameworks */,
-				C4FB6EEE62504C26AE182AA2 /* libPods-JBChartView.a in Frameworks */,
-				5E9ADBADE3A74AE9805CED80 /* libPods-PNChart.a in Frameworks */,
-				609E65F287F44669B8C3F21F /* libPods-TEAChart.a in Frameworks */,
+				1C9347454C4345B1A36B4343 /* CoreGraphics.framework in Frameworks */,
+				AE76C3C2A6674948ABE89A70 /* Foundation.framework in Frameworks */,
+				74DCE11B56544A35B290B096 /* QuartzCore.framework in Frameworks */,
+				C0CE9807C273406B90766A2A /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5BD7287536EA4BC99FC5078B /* Frameworks */ = {
+		2ADF8E03C36345AAAEF9BDEB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C036BB29CD134867AACF77FB /* Foundation.framework in Frameworks */,
+				6F1C0C70BB1549FC88953C31 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5C6A278EA88E47A180E63D14 /* Frameworks */ = {
+		66B944132E944AC2942B617F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		64F599E587AF4E209D4521AD /* Frameworks */ = {
+		85BB50842DB84A209D65DCC6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED869FAA973341978E6E41B9 /* CoreGraphics.framework in Frameworks */,
-				7D37AF1516C14A7AAC3A7CFC /* Foundation.framework in Frameworks */,
-				383F9283F13540BE9B7F7F33 /* QuartzCore.framework in Frameworks */,
-				3C5CC36F5A7841BBAE4E970A /* UIKit.framework in Frameworks */,
+				49FDE5A8615B46F5A8ABF837 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		65D806A0888542DF91D6E8D6 /* Frameworks */ = {
+		B8FA680F0AAE4CDAB49C9D38 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				963FE1CBC74D442399E2A859 /* CFNetwork.framework in Frameworks */,
-				70BA928D119D49FBA4F55649 /* Foundation.framework in Frameworks */,
-				6FEB59194A61475CBC852A88 /* SystemConfiguration.framework in Frameworks */,
+				64592FC3F966486881794118 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E4330D147B1E404DB4CEF210 /* Frameworks */ = {
+		D1F99D4A6EA945E69AF8243C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAC163FB8CB1405E852AE0B0 /* Foundation.framework in Frameworks */,
+				6C4C9062896E4EE2A76B4DBB /* CFNetwork.framework in Frameworks */,
+				F9AFA31CAD8F456F9B78001A /* Foundation.framework in Frameworks */,
+				7E059643CCCD42F68E4A4082 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EEDF1081D78D46A99E681F30 /* Frameworks */ = {
+		DE491607F6DB4939BE28729D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55958604654B4E5BA4C4EEF8 /* Foundation.framework in Frameworks */,
+				3BCA5D16AB464FFBAB335E7B /* Foundation.framework in Frameworks */,
+				206F1FD9F6D049B98E9AD6DD /* libPods-Appirater.a in Frameworks */,
+				DD898743E2A040A7AD6D306B /* libPods-CHCSVParser.a in Frameworks */,
+				1C6FF9528DAA41509F84F6BF /* libPods-JBChartView.a in Frameworks */,
+				611213D2A3CD42B68ADED99B /* libPods-PNChart.a in Frameworks */,
+				6074B524D44A4F3C94E105BB /* libPods-TEAChart.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1E9EABF5FD0C428E85FC7E4D /* Pods */ = {
+		1DE696EBF8624A7C858F209A /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				E678F64FEBE14F9289D4E029 /* Pods.xcconfig */,
-				7E87A7F8EFF84FFFAD9B6D98 /* Pods-acknowledgements.markdown */,
-				7F1AE3EC03114C09832F0E09 /* Pods-acknowledgements.plist */,
-				04CCABD85C5F4E0CA1F4CAD4 /* Pods-dummy.m */,
-				A5AE7B39CDE649B098C8487E /* Pods-environment.h */,
-				B1B72434DFBF48AEBB93CFD6 /* Pods-resources.sh */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		38E59E05A95E43DFB210974B /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				D976C58179A24F84AB1EED26 /* Pods-Appirater.xcconfig */,
-				4C5E1529803649988E4C94F1 /* Pods-Appirater-Private.xcconfig */,
-				E78B2DBCCAB34A86B739D8FF /* Pods-Appirater-dummy.m */,
-				4BA9C9ADB08046EEAD5E5847 /* Pods-Appirater-prefix.pch */,
-			);
-			name = "Support Files";
-			sourceTree = SOURCE_ROOT;
-		};
-		3DF6CCA6A4C04DC3849EADF4 = {
-			isa = PBXGroup;
-			children = (
-				EA72AFDD47E645A682588765 /* Podfile */,
-				9B4D20BB3898468D8FE34B9B /* Frameworks */,
-				CF712C088BB3421F93EA9CAF /* Pods */,
-				90F3DDBA30A74A3C8767BC45 /* Products */,
-				A0A01897F62542DE8CD04A97 /* Targets Support Files */,
-			);
-			sourceTree = "<group>";
-		};
-		48E78C3C36B94F7980A9D0FA /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				A420B91768DD4039AC229DDD /* Pods-TEAChart.xcconfig */,
-				F410034FB83D43CE991B2957 /* Pods-TEAChart-Private.xcconfig */,
-				B01237D2152F4362B3A3A088 /* Pods-TEAChart-dummy.m */,
-				2A2ED7443C3A4339865B8BE5 /* Pods-TEAChart-prefix.pch */,
-			);
-			name = "Support Files";
-			sourceTree = SOURCE_ROOT;
-		};
-		4926B5C74D5A41D0B6F2E5D8 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				205D50565D8B4DB3B561D056 /* CFNetwork.framework */,
-				A1F82C60971E4CCDBCC3A0E9 /* CoreGraphics.framework */,
-				0A60DFC7F98048A2B3E5B08E /* Foundation.framework */,
-				9C36E66CD43D40AEA864F133 /* QuartzCore.framework */,
-				8CC2CE5104DB4BDAB065BBB5 /* SystemConfiguration.framework */,
-				17FE9F45F31B418CA9F5F2EE /* UIKit.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		539F225FF0FA4989B2F62060 /* CHCSVParser */ = {
-			isa = PBXGroup;
-			children = (
-				8BBAAE52D760469A82C1554C /* CHCSVParser.h */,
-				F47DC4B145F641FC9DB896D0 /* CHCSVParser.m */,
-				B1A14983B8E94F82A53E17CF /* Support Files */,
-			);
-			path = CHCSVParser;
-			sourceTree = "<group>";
-		};
-		5C3BFD45D6CB44CABE9735C3 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				4433F178C887422E838FF9FF /* ca.lproj */,
-				A3675B8FEF3C498B9366D197 /* cs.lproj */,
-				DC66A373A05D4A0C8E897947 /* da.lproj */,
-				6CF5FEE3C45D4544A9C0757B /* de.lproj */,
-				6C814A4FC43F40EBB5389D62 /* el.lproj */,
-				966918205F2F49F1815C529D /* en.lproj */,
-				4AD19B2F87FD474685275B4D /* es.lproj */,
-				2D5A46855BFC4E7EABB8FD0B /* fi.lproj */,
-				8D2941F4B8AD46299C78BEE8 /* fr.lproj */,
-				CDEFA42321834C35B9108CCC /* he.lproj */,
-				779CB3044ED042918E5EF61E /* hu.lproj */,
-				8210424EFBED433A9A93CDD2 /* id.lproj */,
-				E21CF53100784700AA00E18E /* it.lproj */,
-				7B07E93F14FA4BF0B391F174 /* ja.lproj */,
-				684A498DF3894964B22B33D3 /* ko.lproj */,
-				EB5A97E2E6BE4EB590731249 /* nb.lproj */,
-				2B1B8F00F52A4146918EE5CA /* nl.lproj */,
-				C1C37645D2744DCABA3F11AC /* pl.lproj */,
-				11C7C41E02B948A79D094825 /* pt.lproj */,
-				924F01F7AF2840B4896C4D90 /* ro.lproj */,
-				644A597514CB4A6C9D2A1716 /* ru.lproj */,
-				A6B77113592F4CE4A7B56839 /* sk.lproj */,
-				71873505A473488586033561 /* sv.lproj */,
-				6B1200E334DC49CEB44B470E /* tr.lproj */,
-				996BEC0E20894D50A269EA12 /* zh-Hans.lproj */,
-				504CD96F747646DD98A46D85 /* zh-Hant.lproj */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		7D5CCBCE1FD14ADDB90B7B14 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				E90E2E0D5FB14C0192BBEEFD /* Pods-JBChartView.xcconfig */,
-				FF30DA9BAFCF4E7FB36BFC87 /* Pods-JBChartView-Private.xcconfig */,
-				C1A2FED822B946FEB52DE7B8 /* Pods-JBChartView-dummy.m */,
-				E4D7B7CCE8E64C689830C7D9 /* Pods-JBChartView-prefix.pch */,
-			);
-			name = "Support Files";
-			sourceTree = SOURCE_ROOT;
-		};
-		90F3DDBA30A74A3C8767BC45 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A9DBC806F8404CCEA1C322DB /* Appirater.bundle */,
-				6F2B382304A94C9CB0B34E1F /* libPods.a */,
-				6CCC0F4C31AC49FA84BC1D9F /* libPods-Appirater.a */,
-				FEDECBC7207A401E986D1E0D /* libPods-CHCSVParser.a */,
-				CDDC29EE24CD476083969947 /* libPods-JBChartView.a */,
-				53F24C88F0F04F0199AD75C3 /* libPods-PNChart.a */,
-				B06A7150C7C1491C94B91551 /* libPods-TEAChart.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		9A5F1607ABC44E39AE502E7D /* JBChartView */ = {
-			isa = PBXGroup;
-			children = (
-				8985CC1BD6934CE588934825 /* JBBarChartView.h */,
-				28810F16D3B84E718E5C99EE /* JBBarChartView.m */,
-				33C469350F4B491F98938A8F /* JBChartView.h */,
-				F99B6F89908B4052BAFA1024 /* JBChartView.m */,
-				40981E27E3CA44E6BEF8A1AE /* JBLineChartView.h */,
-				75F499027B6142508478A743 /* JBLineChartView.m */,
-				7D5CCBCE1FD14ADDB90B7B14 /* Support Files */,
-			);
-			path = JBChartView;
-			sourceTree = "<group>";
-		};
-		9B4D20BB3898468D8FE34B9B /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				4926B5C74D5A41D0B6F2E5D8 /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A0A01897F62542DE8CD04A97 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				1E9EABF5FD0C428E85FC7E4D /* Pods */,
+				E246D92B0AB540A38FD499EC /* Pods */,
 			);
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		AC31470DED334E77AD05148E /* Support Files */ = {
+		3284A1780D35435988686FEE /* Appirater */ = {
 			isa = PBXGroup;
 			children = (
-				08E86353E74449A38C08CE67 /* Pods-PNChart.xcconfig */,
-				9A5E232B35E34D61B472E3FF /* Pods-PNChart-Private.xcconfig */,
-				111159AEC1004592A5868328 /* Pods-PNChart-dummy.m */,
-				9266EDF3680343688480063A /* Pods-PNChart-prefix.pch */,
-			);
-			name = "Support Files";
-			sourceTree = SOURCE_ROOT;
-		};
-		B1A14983B8E94F82A53E17CF /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				FC23F36E68194963AE9CB6FE /* Pods-CHCSVParser.xcconfig */,
-				5D90DE0F54B347C5981726FD /* Pods-CHCSVParser-Private.xcconfig */,
-				E24CD4898E3245D6A778BBD5 /* Pods-CHCSVParser-dummy.m */,
-				4B34B925D91A4AE8B05E1912 /* Pods-CHCSVParser-prefix.pch */,
-			);
-			name = "Support Files";
-			sourceTree = SOURCE_ROOT;
-		};
-		B7AD93AF83F54A8489A6CE0E /* Appirater */ = {
-			isa = PBXGroup;
-			children = (
-				8447C15CA38A43398D625C3F /* Appirater.h */,
-				1B6097CAFFB548D2BC9889DD /* Appirater.m */,
-				C03FF833DCB74DCDB0E45ADE /* AppiraterDelegate.h */,
-				5C3BFD45D6CB44CABE9735C3 /* Resources */,
-				38E59E05A95E43DFB210974B /* Support Files */,
+				3ADD4E138C8B4F309151B1B1 /* Appirater.h */,
+				F2F5CE6242FA45E38C2AFE1A /* Appirater.m */,
+				E0066DEB3D684B8E8074A6E3 /* AppiraterDelegate.h */,
+				3D0F649C62A343EDB99B3C5C /* Resources */,
+				AC1F9E346E1442CFAE869C43 /* Support Files */,
 			);
 			path = Appirater;
 			sourceTree = "<group>";
 		};
-		B8EB725FACEC460580F8D2B0 /* PNChart */ = {
+		3D0F649C62A343EDB99B3C5C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				737E9922B8234E00BE59C74C /* PNBar.h */,
-				485FA87811CD418DB41D0F66 /* PNBar.m */,
-				F48721E8E14A4647B59659B8 /* PNBarChart.h */,
-				FFDE2CB2A52E42CD93EA385D /* PNBarChart.m */,
-				425F0B9A890C49C28EF090C9 /* PNChart.h */,
-				DA5A765BD09E46A7BBF511EE /* PNChartDelegate.h */,
-				8C27140B347B4D4192AF78FE /* PNChartLabel.h */,
-				1923C7A170024C5E9D39843F /* PNChartLabel.m */,
-				35E856E660084E7A858A87E2 /* PNCircleChart.h */,
-				C8E7C6EE1DBB48CA905E2FBD /* PNCircleChart.m */,
-				8BA53F3A9EDD4C1AA5ABAE1A /* PNColor.h */,
-				34D2388631B84C77A26DFB17 /* PNColor.m */,
-				725729028AE040198B1D7B8F /* PNLineChart.h */,
-				AD41313760EF4B08804FA324 /* PNLineChart.m */,
-				5028AC22903844DCBD412C76 /* PNLineChartData.h */,
-				BF17F1333DE84CBD9A7457E9 /* PNLineChartData.m */,
-				F58CBFC5395E471D8364E988 /* PNLineChartDataItem.h */,
-				E4F811F49E8449298CA89894 /* PNLineChartDataItem.m */,
-				CEEBA4E5AF5B4E20A0BBE512 /* UICountingLabel.h */,
-				99CEBB6C73ED4233BCF2861F /* UICountingLabel.m */,
-				AC31470DED334E77AD05148E /* Support Files */,
+				826A0B85D375457EABAA2569 /* ca.lproj */,
+				A9DE1A66F2CE4620900C353E /* cs.lproj */,
+				D1C6EA338D154B8EA9CE8162 /* da.lproj */,
+				B0B36846B7E34CBA935A7D53 /* de.lproj */,
+				5FD5B96894A24CA4A383297F /* el.lproj */,
+				57921893193943E49E6AB00F /* en.lproj */,
+				4C90C6C5FCE344ACA6910A24 /* es.lproj */,
+				49CA471120E949EB94221E72 /* fi.lproj */,
+				2A277373BE294A5D8F41005E /* fr.lproj */,
+				6C0063C8D2A944649501B57E /* he.lproj */,
+				3FA7E460F81B4AAD981F7050 /* hu.lproj */,
+				D910AB22AB69447684AE0522 /* id.lproj */,
+				F36E1E4BD8704BE7A584F86F /* it.lproj */,
+				10FB00CC096847148DD47BEA /* ja.lproj */,
+				FF6297022CE84AE9A6B44B4A /* ko.lproj */,
+				BE91CEB671F7441699425DDC /* nb.lproj */,
+				89E21E360CB34F95A24C294E /* nl.lproj */,
+				7BA9478D72244965A3CDAFA8 /* pl.lproj */,
+				02A92273708342EF83D472DE /* pt.lproj */,
+				CAE1CBBB32CB47019A100A07 /* ro.lproj */,
+				85CC09CA203B4B23BE95A8EB /* ru.lproj */,
+				EFB4BABCF39A45279877D577 /* sk.lproj */,
+				17A4D44809FA4209AEB2B88A /* sv.lproj */,
+				31353AB3946B4AC7B5077AAF /* tr.lproj */,
+				2B2620F0C1DB44E897611146 /* zh-Hans.lproj */,
+				9A2E09D37A284500B3BA79B9 /* zh-Hant.lproj */,
 			);
-			path = PNChart;
+			name = Resources;
 			sourceTree = "<group>";
 		};
-		CF712C088BB3421F93EA9CAF /* Pods */ = {
+		3FD60C8AE6AF4FE097BCDA94 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				B7AD93AF83F54A8489A6CE0E /* Appirater */,
-				539F225FF0FA4989B2F62060 /* CHCSVParser */,
-				9A5F1607ABC44E39AE502E7D /* JBChartView */,
-				B8EB725FACEC460580F8D2B0 /* PNChart */,
-				D83B4F5B749D4883B9E565B1 /* TEAChart */,
+				75C2644FEB52491687596594 /* Pods-TEAChart.xcconfig */,
+				132B3974872849D29CF68268 /* Pods-TEAChart-Private.xcconfig */,
+				C5336D07952643AD89DCDD96 /* Pods-TEAChart-dummy.m */,
+				F60866BB50A14865BD2C7B0A /* Pods-TEAChart-prefix.pch */,
+			);
+			name = "Support Files";
+			sourceTree = SOURCE_ROOT;
+		};
+		492A2F4F7452438B8526A60D /* CHCSVParser */ = {
+			isa = PBXGroup;
+			children = (
+				2859F0DB3AE14DA2A907509A /* CHCSVParser.h */,
+				039F73B5ECFC41A0BF6EFB28 /* CHCSVParser.m */,
+				50B71636FAC848AEA2ACB65D /* Support Files */,
+			);
+			path = CHCSVParser;
+			sourceTree = "<group>";
+		};
+		4F33601A078F4EAD89CADFF1 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				DACD495814404CE5B92BD212 /* CFNetwork.framework */,
+				E7BE1CDB0AB34E9E8CF0E7A9 /* CoreGraphics.framework */,
+				9CC544FC43334B04B028CE1F /* Foundation.framework */,
+				213900FC97D043D99A9B64D4 /* QuartzCore.framework */,
+				695EAF4EFBDD49D4BFC8560B /* SystemConfiguration.framework */,
+				E6A974F406AC48C3AFE923BC /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		50B71636FAC848AEA2ACB65D /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9EFAEFEA5E1947D9A0727453 /* Pods-CHCSVParser.xcconfig */,
+				B104F7BD11D84ADBA380A54E /* Pods-CHCSVParser-Private.xcconfig */,
+				26D2F1F6EDAA480FAA5D1919 /* Pods-CHCSVParser-dummy.m */,
+				C95F71DBB6FE4AC58EEAA4E1 /* Pods-CHCSVParser-prefix.pch */,
+			);
+			name = "Support Files";
+			sourceTree = SOURCE_ROOT;
+		};
+		54AD958EAF364AB5AC2AEB10 /* TEAChart */ = {
+			isa = PBXGroup;
+			children = (
+				FFCF1A1ABAA84D4790AD47B7 /* TEABarChart.h */,
+				F385F5A3E0F840D093E92961 /* TEABarChart.m */,
+				F71D34C9710D4E059799A2FA /* TEAChart.h */,
+				3FEB848444914616BE17327A /* TEAClockChart.h */,
+				2779169C36C14AFC8B9FF3DC /* TEAClockChart.m */,
+				067A4C0A4A25406E91C0AB91 /* TEAContributionGraph.h */,
+				65215F3750564B7B967B70F5 /* TEAContributionGraph.m */,
+				DF8E5A4EA3EC43DC85060479 /* TEATimeRange.h */,
+				9E1FB12DFEB34C3C8C231F86 /* TEATimeRange.m */,
+				3FD60C8AE6AF4FE097BCDA94 /* Support Files */,
+			);
+			path = TEAChart;
+			sourceTree = "<group>";
+		};
+		5FE9F3228A2C495288496DB7 = {
+			isa = PBXGroup;
+			children = (
+				49EE6383576F442185BEDC9A /* Podfile */,
+				91B96150D14A477DA6709DF4 /* Frameworks */,
+				DE57B6D9BF014AD5BB4F92C8 /* Pods */,
+				8B46F2E163AE40C68EC25B71 /* Products */,
+				1DE696EBF8624A7C858F209A /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		8B46F2E163AE40C68EC25B71 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				36A550C5BC1B40368B2FFB4A /* Appirater.bundle */,
+				EBA097BCC993411181E8FCEA /* libPods.a */,
+				E9909F8824C949CC94FF1E60 /* libPods-Appirater.a */,
+				446B67CDC4294C8F93B5C841 /* libPods-CHCSVParser.a */,
+				10CF4C486B814C4D93115325 /* libPods-JBChartView.a */,
+				FDF4A5E077C0450DBC904BA0 /* libPods-PNChart.a */,
+				F762633692004286A8903CDD /* libPods-TEAChart.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		91B96150D14A477DA6709DF4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4F33601A078F4EAD89CADFF1 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A815663CF70940FCB4979DAA /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2685734AE130425F81ADBA00 /* Pods-JBChartView.xcconfig */,
+				24F000AD79D74A3982A21808 /* Pods-JBChartView-Private.xcconfig */,
+				7F268324F9B64F60BB612C36 /* Pods-JBChartView-dummy.m */,
+				A1CC13776D9B4754ACDEAAF0 /* Pods-JBChartView-prefix.pch */,
+			);
+			name = "Support Files";
+			sourceTree = SOURCE_ROOT;
+		};
+		AC1F9E346E1442CFAE869C43 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A7039AC22CDE42D182F58ABC /* Pods-Appirater.xcconfig */,
+				7610B8F29B514E58814182E1 /* Pods-Appirater-Private.xcconfig */,
+				BE0EB1B25B5F4C2FBDB666A9 /* Pods-Appirater-dummy.m */,
+				4B24DC3948024EC7BA7D5B12 /* Pods-Appirater-prefix.pch */,
+			);
+			name = "Support Files";
+			sourceTree = SOURCE_ROOT;
+		};
+		C877DC72F77A4276B2F1321F /* JBChartView */ = {
+			isa = PBXGroup;
+			children = (
+				9389FB87858F4AEDB9AC2C74 /* JBBarChartView.h */,
+				BAADAF5693D14AFE81D12140 /* JBBarChartView.m */,
+				89085039AD8346E593AD2A2B /* JBChartView.h */,
+				7BCFA0020668414C8EA4DC70 /* JBChartView.m */,
+				3ADD18D6FABC4D45969FD640 /* JBLineChartView.h */,
+				9D4AFD22F3C744A084859F98 /* JBLineChartView.m */,
+				A815663CF70940FCB4979DAA /* Support Files */,
+			);
+			path = JBChartView;
+			sourceTree = "<group>";
+		};
+		D5873F3106024E49A03A52E9 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				CD49067B2DF84D24A73ABB9F /* Pods-PNChart.xcconfig */,
+				62923B82D95D49E2A6136186 /* Pods-PNChart-Private.xcconfig */,
+				B4C99526174D46CF80ED57D5 /* Pods-PNChart-dummy.m */,
+				04F2EB46404C42988CED260C /* Pods-PNChart-prefix.pch */,
+			);
+			name = "Support Files";
+			sourceTree = SOURCE_ROOT;
+		};
+		DE57B6D9BF014AD5BB4F92C8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3284A1780D35435988686FEE /* Appirater */,
+				492A2F4F7452438B8526A60D /* CHCSVParser */,
+				C877DC72F77A4276B2F1321F /* JBChartView */,
+				F4E3617A3D614639880FC6DF /* PNChart */,
+				54AD958EAF364AB5AC2AEB10 /* TEAChart */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		D83B4F5B749D4883B9E565B1 /* TEAChart */ = {
+		E246D92B0AB540A38FD499EC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9EDB6488B31B49748378EBA4 /* TEABarChart.h */,
-				01F92C8FF20F4924A7A81FE7 /* TEABarChart.m */,
-				EFCB1AC0DB0444E8885FF69A /* TEAChart.h */,
-				3430C8EFEB484C99BD16C806 /* TEAClockChart.h */,
-				387257A90C674C47A2FD938B /* TEAClockChart.m */,
-				1585E8D32FD84933B4D0CE0D /* TEAContributionGraph.h */,
-				D243D8D8914A4BCFBE73B994 /* TEAContributionGraph.m */,
-				977B80B633904F429456D563 /* TEATimeRange.h */,
-				99B994266BC142E2B57D2FC8 /* TEATimeRange.m */,
-				48E78C3C36B94F7980A9D0FA /* Support Files */,
+				301C2F7A4AE543DE91099095 /* Pods.xcconfig */,
+				EF65CFE7DF7C4101B10A8C46 /* Pods-acknowledgements.markdown */,
+				D4430056FF2A479B94AF4CC3 /* Pods-acknowledgements.plist */,
+				D140A77DE9114D32B58E6DA3 /* Pods-dummy.m */,
+				B4F6D19C66314033927C246C /* Pods-environment.h */,
+				B7B91E7882E5473991ABD133 /* Pods-resources.sh */,
 			);
-			path = TEAChart;
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F4E3617A3D614639880FC6DF /* PNChart */ = {
+			isa = PBXGroup;
+			children = (
+				8EE020693E694345A09559D0 /* PNBar.h */,
+				93A300D5FE9B4570AE64F986 /* PNBar.m */,
+				1F7B728188C14C6DA714A0CC /* PNBarChart.h */,
+				CA765F6444864E578F7C4F92 /* PNBarChart.m */,
+				48E92702B2EF41B5BCE53B7F /* PNChart.h */,
+				F2C6F0F01BAC43C79574544D /* PNChartDelegate.h */,
+				74967B3830764CF6BA9C5459 /* PNChartLabel.h */,
+				8AC88B7F04D04CA3AA627B19 /* PNChartLabel.m */,
+				2A391A93FEED4BDEA194ECE4 /* PNCircleChart.h */,
+				C60F8AAABACC4EFB906EFB44 /* PNCircleChart.m */,
+				76D0B38DC8D84116A18E1528 /* PNColor.h */,
+				9C36269D3F5844748D2B5B21 /* PNColor.m */,
+				88406AEE796147F982FFE923 /* PNLineChart.h */,
+				F929EFBFFE1146BBBB915C5D /* PNLineChart.m */,
+				E6201AF773694A5F90A1E3BA /* PNLineChartData.h */,
+				EBA022784D794E808DF92211 /* PNLineChartData.m */,
+				17F2E0B25486428E9292C6EA /* PNLineChartDataItem.h */,
+				E5B5F4A93EBC498793C0E597 /* PNLineChartDataItem.m */,
+				0D0DAA40207F42DF8ADAF754 /* UICountingLabel.h */,
+				C3CAB39172934667B68F3C3E /* UICountingLabel.m */,
+				D5873F3106024E49A03A52E9 /* Support Files */,
+			);
+			path = PNChart;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		239A587234164E6A95158223 /* Headers */ = {
+		6930C0A588694F4381AA0015 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				259833A56C1F4903B73BF92F /* Appirater.h in Headers */,
-				479A0814AD014EB6B754A6B0 /* AppiraterDelegate.h in Headers */,
+				76224808023E4A368D6936D1 /* CHCSVParser.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4A6D76BF83974F65A4805F39 /* Headers */ = {
+		775E817828834F19A1B25BC5 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54FC595BF07642469A427FE6 /* TEABarChart.h in Headers */,
-				81F2D33EC97B4791A6D53922 /* TEAChart.h in Headers */,
-				00D935E379434151AA57DFD1 /* TEAClockChart.h in Headers */,
-				9A085DE800CE4597838D79BE /* TEAContributionGraph.h in Headers */,
-				9BD4ED0B531E41A1B84CC93F /* TEATimeRange.h in Headers */,
+				F79BC4D85DFF4F5DBAAF8C99 /* PNBar.h in Headers */,
+				DB53B955FF1542C5A444940F /* PNBarChart.h in Headers */,
+				B965BA52007C4903B2E84A66 /* PNChart.h in Headers */,
+				5217244DCB7F447892C5C2C8 /* PNChartDelegate.h in Headers */,
+				C7DD42BEC79B4BD2926B86F0 /* PNChartLabel.h in Headers */,
+				0CDE289DD71D432DAB229B7A /* PNCircleChart.h in Headers */,
+				F97102CC05C448D4A2ECE5B5 /* PNColor.h in Headers */,
+				40C8FC46037F40FAB007FE67 /* PNLineChart.h in Headers */,
+				F7411E8D51824A8082EC9654 /* PNLineChartData.h in Headers */,
+				9B4C73E285954AF799D2D14F /* PNLineChartDataItem.h in Headers */,
+				EA693A12B0ED4666945B063B /* UICountingLabel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AC5E58AB278643BC91F185C1 /* Headers */ = {
+		811B91BADD564EC3809C1C2A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D6CF4CB6C474964A54EC655 /* PNBar.h in Headers */,
-				8BAFED4D08154B7A8587023E /* PNBarChart.h in Headers */,
-				FA1EA2073BC0491B94A38AD0 /* PNChart.h in Headers */,
-				4A478859522748B1BD2DDDA5 /* PNChartDelegate.h in Headers */,
-				3923409F31094133B8EF6A46 /* PNChartLabel.h in Headers */,
-				BCA605F11EA14220BA598F2E /* PNCircleChart.h in Headers */,
-				3B0AE49071844CA8A5727E99 /* PNColor.h in Headers */,
-				E718D18D8D3C4E0E8CEBBAF8 /* PNLineChart.h in Headers */,
-				9F703791FD034452A87ADAEE /* PNLineChartData.h in Headers */,
-				0D71A1CDC4D848F68534C838 /* PNLineChartDataItem.h in Headers */,
-				56FE67F120354BA4914A3759 /* UICountingLabel.h in Headers */,
+				C671AA57A1684C49BB61C822 /* JBBarChartView.h in Headers */,
+				A107768C2503418FB4BB7E25 /* JBChartView.h in Headers */,
+				97E52B3E3C6B4E90A0AC7B41 /* JBLineChartView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D07C34FAD0354C2A9ED484D8 /* Headers */ = {
+		CA8B733F88684A1DAFA72D42 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E1520F979144EA6B0CA232D /* JBBarChartView.h in Headers */,
-				86A62F6851F14836928A6012 /* JBChartView.h in Headers */,
-				69F6CE3CFDA14D7BA9B966C8 /* JBLineChartView.h in Headers */,
+				1E8BE3D1E91D46EEAC5C12BA /* TEABarChart.h in Headers */,
+				A454D2D608D041AEBE08A3EB /* TEAChart.h in Headers */,
+				06125B3CF8F24CC49E118C8C /* TEAClockChart.h in Headers */,
+				3382C2D89FF24F8B96A6DF1E /* TEAContributionGraph.h in Headers */,
+				D57F4B8338464D43BE9A35FE /* TEATimeRange.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DEDEBF6B2CA5422F89EC451C /* Headers */ = {
+		D7300E1579964AA0B096D80F /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98F9940399EC4C4E87797A1D /* CHCSVParser.h in Headers */,
+				D6CD343E6FFB4C70BA8666E1 /* Appirater.h in Headers */,
+				AACC34064C00419593040528 /* AppiraterDelegate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		00BD3FCC48B44B2FBA999838 /* Pods-CHCSVParser */ = {
+		351C628089124AAB89F956AB /* Pods-PNChart */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 159CCDAB31D940838F39D3AF /* Build configuration list for PBXNativeTarget "Pods-CHCSVParser" */;
+			buildConfigurationList = 5DF8E75BBE33436A90D3946A /* Build configuration list for PBXNativeTarget "Pods-PNChart" */;
 			buildPhases = (
-				54B0FF6921724735BF317DFE /* Sources */,
-				5BD7287536EA4BC99FC5078B /* Frameworks */,
-				DEDEBF6B2CA5422F89EC451C /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-CHCSVParser";
-			productName = "Pods-CHCSVParser";
-			productReference = FEDECBC7207A401E986D1E0D /* libPods-CHCSVParser.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		29AD1E5FB7494A4ABE1968DE /* Pods-TEAChart */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 263BF89ACDB2430CABA5194D /* Build configuration list for PBXNativeTarget "Pods-TEAChart" */;
-			buildPhases = (
-				24153370D5FB4492A2641BCF /* Sources */,
-				E4330D147B1E404DB4CEF210 /* Frameworks */,
-				4A6D76BF83974F65A4805F39 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-TEAChart";
-			productName = "Pods-TEAChart";
-			productReference = B06A7150C7C1491C94B91551 /* libPods-TEAChart.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		2C8F3EDE64EA4E12A959E7D4 /* Appirater */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8709F016F1914718AEBC4AF5 /* Build configuration list for PBXNativeTarget "Appirater" */;
-			buildPhases = (
-				430A754894C64FAAB38B6E39 /* Sources */,
-				5C6A278EA88E47A180E63D14 /* Frameworks */,
-				3AD911AE39F94591A50E4336 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Appirater;
-			productName = Appirater;
-			productReference = A9DBC806F8404CCEA1C322DB /* Appirater.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
-		5E47742D8F96480D91ED87DD /* Pods-PNChart */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7E41EE987C96448E9F203861 /* Build configuration list for PBXNativeTarget "Pods-PNChart" */;
-			buildPhases = (
-				2D5A4C5E0A6C4FAEB1801DD4 /* Sources */,
-				64F599E587AF4E209D4521AD /* Frameworks */,
-				AC5E58AB278643BC91F185C1 /* Headers */,
+				21751DC378014B5F8F2FA5CF /* Sources */,
+				15A656B2DA5F405C81A77843 /* Frameworks */,
+				775E817828834F19A1B25BC5 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -696,55 +645,72 @@
 			);
 			name = "Pods-PNChart";
 			productName = "Pods-PNChart";
-			productReference = 53F24C88F0F04F0199AD75C3 /* libPods-PNChart.a */;
+			productReference = FDF4A5E077C0450DBC904BA0 /* libPods-PNChart.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		5FAAAD7C60034110AF1C5289 /* Pods */ = {
+		468773C9AC4341DCB9B3474A /* Pods */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0FFA4F2B7CE14E769693E09F /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildConfigurationList = B2069A65D4034FA4A9DC7B53 /* Build configuration list for PBXNativeTarget "Pods" */;
 			buildPhases = (
-				97034E297317499E96950F55 /* Sources */,
-				451956DC9A5D423C912761CD /* Frameworks */,
+				F019CF3BC1A04EB2963B739A /* Sources */,
+				DE491607F6DB4939BE28729D /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				EBECE72D65E843849A112898 /* PBXTargetDependency */,
-				31B90528C5BB4758BF978A25 /* PBXTargetDependency */,
-				63F7151BF27647FB970F398B /* PBXTargetDependency */,
-				48D5DA9A42244D66A9B48845 /* PBXTargetDependency */,
-				F7F81F61184B4D059C33A7AE /* PBXTargetDependency */,
+				FC95D1B77438474EA5697321 /* PBXTargetDependency */,
+				20CBBA8CE4C240258C1EDB23 /* PBXTargetDependency */,
+				1B6EC3E2231C40DF981F1CF7 /* PBXTargetDependency */,
+				FA2C94DCFB6A494891B5C43F /* PBXTargetDependency */,
+				DBC6F4A1149640BDB32EA249 /* PBXTargetDependency */,
 			);
 			name = Pods;
 			productName = Pods;
-			productReference = 6F2B382304A94C9CB0B34E1F /* libPods.a */;
+			productReference = EBA097BCC993411181E8FCEA /* libPods.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		A0995B4970544C8E9D9D7AD3 /* Pods-Appirater */ = {
+		5C030918B0D84FDE813DEC89 /* Pods-CHCSVParser */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F9AA3ACF2B57408E9C5C4E6B /* Build configuration list for PBXNativeTarget "Pods-Appirater" */;
+			buildConfigurationList = 9B52E610C8724F34821F04E5 /* Build configuration list for PBXNativeTarget "Pods-CHCSVParser" */;
 			buildPhases = (
-				A51EB148151148CDB51CC2EA /* Sources */,
-				65D806A0888542DF91D6E8D6 /* Frameworks */,
-				239A587234164E6A95158223 /* Headers */,
+				11A217BCD72D46BC8EE84CE9 /* Sources */,
+				B8FA680F0AAE4CDAB49C9D38 /* Frameworks */,
+				6930C0A588694F4381AA0015 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				2E7A2317B3BC401FA2F0FB11 /* PBXTargetDependency */,
+			);
+			name = "Pods-CHCSVParser";
+			productName = "Pods-CHCSVParser";
+			productReference = 446B67CDC4294C8F93B5C841 /* libPods-CHCSVParser.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		77FC5D89A703415989E5C99B /* Pods-Appirater */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE4BFA3377384918A5E45899 /* Build configuration list for PBXNativeTarget "Pods-Appirater" */;
+			buildPhases = (
+				751BAFB44B394A1BB2BA0204 /* Sources */,
+				D1F99D4A6EA945E69AF8243C /* Frameworks */,
+				D7300E1579964AA0B096D80F /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BFD5E66CB2FB476E8C986A28 /* PBXTargetDependency */,
 			);
 			name = "Pods-Appirater";
 			productName = "Pods-Appirater";
-			productReference = 6CCC0F4C31AC49FA84BC1D9F /* libPods-Appirater.a */;
+			productReference = E9909F8824C949CC94FF1E60 /* libPods-Appirater.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		D56F53842E1B45318D095C37 /* Pods-JBChartView */ = {
+		BF7AA66F04A442FC85E49E39 /* Pods-JBChartView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D35F4F713EAD460FAF430EE3 /* Build configuration list for PBXNativeTarget "Pods-JBChartView" */;
+			buildConfigurationList = D7BCE092133B435B979B4216 /* Build configuration list for PBXNativeTarget "Pods-JBChartView" */;
 			buildPhases = (
-				A2BEB058CA8B4F45AF7C8726 /* Sources */,
-				EEDF1081D78D46A99E681F30 /* Frameworks */,
-				D07C34FAD0354C2A9ED484D8 /* Headers */,
+				820FC8CE350749C19D24ECAD /* Sources */,
+				2ADF8E03C36345AAAEF9BDEB /* Frameworks */,
+				811B91BADD564EC3809C1C2A /* Headers */,
 			);
 			buildRules = (
 			);
@@ -752,189 +718,294 @@
 			);
 			name = "Pods-JBChartView";
 			productName = "Pods-JBChartView";
-			productReference = CDDC29EE24CD476083969947 /* libPods-JBChartView.a */;
+			productReference = 10CF4C486B814C4D93115325 /* libPods-JBChartView.a */;
 			productType = "com.apple.product-type.library.static";
+		};
+		D175F1172E014DBAA8AED845 /* Pods-TEAChart */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1B276FA2CD994CDEB5AB2137 /* Build configuration list for PBXNativeTarget "Pods-TEAChart" */;
+			buildPhases = (
+				E2F9418028924FEE9C19A8F1 /* Sources */,
+				85BB50842DB84A209D65DCC6 /* Frameworks */,
+				CA8B733F88684A1DAFA72D42 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-TEAChart";
+			productName = "Pods-TEAChart";
+			productReference = F762633692004286A8903CDD /* libPods-TEAChart.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		F34FA1041DF84B09966FAA0F /* Appirater */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2984B32F852D4D35BCE4D3E1 /* Build configuration list for PBXNativeTarget "Appirater" */;
+			buildPhases = (
+				517742E222A5439692348E52 /* Sources */,
+				66B944132E944AC2942B617F /* Frameworks */,
+				A6F4BCD85A1E4903889DA7B0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Appirater;
+			productName = Appirater;
+			productReference = 36A550C5BC1B40368B2FFB4A /* Appirater.bundle */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		DECA18F4C1D24415B521D08D /* Project object */ = {
+		C1E46D4E057E4CE0B4F90B06 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0500;
 			};
-			buildConfigurationList = E9E7275C239B4F1B86B18669 /* Build configuration list for PBXProject "Pods" */;
+			buildConfigurationList = 5D18A4826C194FDEAABC4B72 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 3DF6CCA6A4C04DC3849EADF4;
-			productRefGroup = 90F3DDBA30A74A3C8767BC45 /* Products */;
+			mainGroup = 5FE9F3228A2C495288496DB7;
+			productRefGroup = 8B46F2E163AE40C68EC25B71 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2C8F3EDE64EA4E12A959E7D4 /* Appirater */,
-				5FAAAD7C60034110AF1C5289 /* Pods */,
-				A0995B4970544C8E9D9D7AD3 /* Pods-Appirater */,
-				00BD3FCC48B44B2FBA999838 /* Pods-CHCSVParser */,
-				D56F53842E1B45318D095C37 /* Pods-JBChartView */,
-				5E47742D8F96480D91ED87DD /* Pods-PNChart */,
-				29AD1E5FB7494A4ABE1968DE /* Pods-TEAChart */,
+				F34FA1041DF84B09966FAA0F /* Appirater */,
+				468773C9AC4341DCB9B3474A /* Pods */,
+				77FC5D89A703415989E5C99B /* Pods-Appirater */,
+				5C030918B0D84FDE813DEC89 /* Pods-CHCSVParser */,
+				BF7AA66F04A442FC85E49E39 /* Pods-JBChartView */,
+				351C628089124AAB89F956AB /* Pods-PNChart */,
+				D175F1172E014DBAA8AED845 /* Pods-TEAChart */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		3AD911AE39F94591A50E4336 /* Resources */ = {
+		A6F4BCD85A1E4903889DA7B0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C3DFC6C750E4AC88DC79414 /* ca.lproj in Resources */,
-				CAED5DBD9BE043129AF047E3 /* cs.lproj in Resources */,
-				A68619E7DBF44A5D84BD1088 /* da.lproj in Resources */,
-				B14FFC9A5AC94F6B9D08A99A /* de.lproj in Resources */,
-				81C4B09577D8471398DD778C /* el.lproj in Resources */,
-				220C4316484E432CB0857506 /* en.lproj in Resources */,
-				6BDEB1066B254CDE8E4B87C2 /* es.lproj in Resources */,
-				DF34012F79124912AF272512 /* fi.lproj in Resources */,
-				FE4653535A97498A88CC6E37 /* fr.lproj in Resources */,
-				20A82B1A65304673BB75B97F /* he.lproj in Resources */,
-				FEC33E3F6F684627A6DA99C1 /* hu.lproj in Resources */,
-				03B6C83FA49141A89DE31E00 /* id.lproj in Resources */,
-				4889F99042064AE9BC9C8E75 /* it.lproj in Resources */,
-				2419324332AD48D1B4E1D818 /* ja.lproj in Resources */,
-				1D0C94A6ABC84B8E8A79ADE5 /* ko.lproj in Resources */,
-				B94EF2A0CB04472082A7E150 /* nb.lproj in Resources */,
-				456DF4F1B5034A4C96E7C303 /* nl.lproj in Resources */,
-				898BFBCE98584EB1B794639F /* pl.lproj in Resources */,
-				A51C9C9F204048CE815BA820 /* pt.lproj in Resources */,
-				6C38A22D1696476E8055CAC8 /* ro.lproj in Resources */,
-				D82D76E71B89436ABEFB8C63 /* ru.lproj in Resources */,
-				D71248D802E143B79EF496F7 /* sk.lproj in Resources */,
-				4BA63251AC6C4622BB27C67A /* sv.lproj in Resources */,
-				2E7F297D7F5D4FE694D1F53F /* tr.lproj in Resources */,
-				71FCA8FA0AE641C68FA3892A /* zh-Hans.lproj in Resources */,
-				079B01B4C65D49B5A7F12FFE /* zh-Hant.lproj in Resources */,
+				166D7728207A4B1F8E81508A /* ca.lproj in Resources */,
+				3EC3D36FFDB34339996BE26A /* cs.lproj in Resources */,
+				5868445446AC4AA99B3E58BB /* da.lproj in Resources */,
+				F4C85A9AA20349DE9252CB3B /* de.lproj in Resources */,
+				946192B8CF324571B2D1987C /* el.lproj in Resources */,
+				33C7C295666D456980F3697C /* en.lproj in Resources */,
+				96EC49682D244BB18CBC0A03 /* es.lproj in Resources */,
+				B5D5F35E498C4CAC9F74547D /* fi.lproj in Resources */,
+				0397398991ED40D1BD3E4DDC /* fr.lproj in Resources */,
+				34A87FDC7A2045B880442417 /* he.lproj in Resources */,
+				68023C5D736A442FB79FE1CF /* hu.lproj in Resources */,
+				38ADC27A335B4660A9FFCE67 /* id.lproj in Resources */,
+				BFA6608E76D44CCE8C738840 /* it.lproj in Resources */,
+				D2BBA7AE66034AA1BE143958 /* ja.lproj in Resources */,
+				85C8DE807E9A4B2683C6310C /* ko.lproj in Resources */,
+				7569AA9F98844EC9B498D400 /* nb.lproj in Resources */,
+				E6E29C68B8954847AD3DAAE4 /* nl.lproj in Resources */,
+				737ED21B9AB64533AA38CCA5 /* pl.lproj in Resources */,
+				9771014078644AE0A1DB51BC /* pt.lproj in Resources */,
+				4EF765B0137944DA84AC4026 /* ro.lproj in Resources */,
+				F62F165B80F143DBA59574C0 /* ru.lproj in Resources */,
+				A1B15EF1B4AD4E508C2011F4 /* sk.lproj in Resources */,
+				DD7613C7BD49431AA5FA1F55 /* sv.lproj in Resources */,
+				E2E62F8FD0874FA6AABCDD71 /* tr.lproj in Resources */,
+				EE9218C3DB2445EF8255D24E /* zh-Hans.lproj in Resources */,
+				B5D49B4B165C41218B291F9D /* zh-Hant.lproj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		24153370D5FB4492A2641BCF /* Sources */ = {
+		11A217BCD72D46BC8EE84CE9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				893651AA5D934656A07D2CA2 /* Pods-TEAChart-dummy.m in Sources */,
-				2703A9FF4A8741B894A65991 /* TEABarChart.m in Sources */,
-				52285EC48C0B4BB283AC9625 /* TEAClockChart.m in Sources */,
-				DB49423A9D924B13A3387037 /* TEAContributionGraph.m in Sources */,
-				4689B84CF2674FF88A89C413 /* TEATimeRange.m in Sources */,
+				D697A264595B4F06ADF61580 /* CHCSVParser.m in Sources */,
+				B05A5EA007CC4A02B4D53E31 /* Pods-CHCSVParser-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2D5A4C5E0A6C4FAEB1801DD4 /* Sources */ = {
+		21751DC378014B5F8F2FA5CF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3073D6EA37A0488C9ECC8488 /* PNBar.m in Sources */,
-				20691286C6A14AEB93D9DF34 /* PNBarChart.m in Sources */,
-				D116ED0E70A9461EAD72D889 /* PNChartLabel.m in Sources */,
-				B92E13BA1CDB4B1885F3DAEC /* PNCircleChart.m in Sources */,
-				D46F623D36EC47F3927E0DBE /* PNColor.m in Sources */,
-				09A7B23AFB4548969EC8D408 /* PNLineChart.m in Sources */,
-				4EDD573B8EBD47AE85E8CE0D /* PNLineChartData.m in Sources */,
-				3611FF9F5B6A4CCEAF596E95 /* PNLineChartDataItem.m in Sources */,
-				64DB4DEDBC734356B92158D6 /* Pods-PNChart-dummy.m in Sources */,
-				39A3EC6C4F584EDEBBF9529C /* UICountingLabel.m in Sources */,
+				4B11EA9A790F44439CD53F1A /* PNBar.m in Sources */,
+				B81F0C93C70C440C898E93E6 /* PNBarChart.m in Sources */,
+				D44BB34DD78C41908FB702B1 /* PNChartLabel.m in Sources */,
+				B2A3D4A8B1104C92B2519143 /* PNCircleChart.m in Sources */,
+				9FBA8F299286405D81D11F53 /* PNColor.m in Sources */,
+				4453DC71A90848FAA1A073AF /* PNLineChart.m in Sources */,
+				CFBE43F54F16457A86D968F5 /* PNLineChartData.m in Sources */,
+				012B73B2B2E246018F54F73B /* PNLineChartDataItem.m in Sources */,
+				4A6155D52308439CB569A13F /* Pods-PNChart-dummy.m in Sources */,
+				52E2919D7F3A4F53A3290C1A /* UICountingLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		430A754894C64FAAB38B6E39 /* Sources */ = {
+		517742E222A5439692348E52 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		54B0FF6921724735BF317DFE /* Sources */ = {
+		751BAFB44B394A1BB2BA0204 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F3B9A3BECD545419844CCF0 /* CHCSVParser.m in Sources */,
-				A6DA6D691B954AA59901E2A9 /* Pods-CHCSVParser-dummy.m in Sources */,
+				FB50669F533F42A3B2C869DF /* Appirater.m in Sources */,
+				9FD922B423FC48D0BB884C98 /* Pods-Appirater-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		97034E297317499E96950F55 /* Sources */ = {
+		820FC8CE350749C19D24ECAD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D17634506CF43BF941214D8 /* Pods-dummy.m in Sources */,
+				B9D61C32EA5A4840845B8088 /* JBBarChartView.m in Sources */,
+				3DACADC18C41482BB9776C56 /* JBChartView.m in Sources */,
+				CCACEC6BB7BF4ECE91669644 /* JBLineChartView.m in Sources */,
+				D2EFB781C55F46268C261BB0 /* Pods-JBChartView-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A2BEB058CA8B4F45AF7C8726 /* Sources */ = {
+		E2F9418028924FEE9C19A8F1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7EE565CA65924472BB0F4D63 /* JBBarChartView.m in Sources */,
-				5D1736B23E8D43C885E81D5E /* JBChartView.m in Sources */,
-				52BC1350B13140CAABD5BB6D /* JBLineChartView.m in Sources */,
-				3CDEF0B018E6413FB9FFF5B7 /* Pods-JBChartView-dummy.m in Sources */,
+				76884B7D6C094AC9AF009DC2 /* Pods-TEAChart-dummy.m in Sources */,
+				D9CE5246CA4446D9AC6485E4 /* TEABarChart.m in Sources */,
+				A91A7C673DCE4078BABC5C4B /* TEAClockChart.m in Sources */,
+				B016FDD5E7654B62AFD24FFD /* TEAContributionGraph.m in Sources */,
+				EAF848B568CB4C8C91D6A333 /* TEATimeRange.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A51EB148151148CDB51CC2EA /* Sources */ = {
+		F019CF3BC1A04EB2963B739A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D92998A3CE943D6BE034CD7 /* Appirater.m in Sources */,
-				01D5D286467E47AB9F284335 /* Pods-Appirater-dummy.m in Sources */,
+				4099C70AF2684B2CBAE47EB0 /* Pods-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2E7A2317B3BC401FA2F0FB11 /* PBXTargetDependency */ = {
+		1B6EC3E2231C40DF981F1CF7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2C8F3EDE64EA4E12A959E7D4 /* Appirater */;
-			targetProxy = 9AD3080C5A88442F85F2B011 /* PBXContainerItemProxy */;
+			target = BF7AA66F04A442FC85E49E39 /* Pods-JBChartView */;
+			targetProxy = 364AB624C1DC4171B45CDDBD /* PBXContainerItemProxy */;
 		};
-		31B90528C5BB4758BF978A25 /* PBXTargetDependency */ = {
+		20CBBA8CE4C240258C1EDB23 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 00BD3FCC48B44B2FBA999838 /* Pods-CHCSVParser */;
-			targetProxy = 708933039AC141E89A3886A2 /* PBXContainerItemProxy */;
+			target = 5C030918B0D84FDE813DEC89 /* Pods-CHCSVParser */;
+			targetProxy = 463209BF45FF4D539763DD39 /* PBXContainerItemProxy */;
 		};
-		48D5DA9A42244D66A9B48845 /* PBXTargetDependency */ = {
+		BFD5E66CB2FB476E8C986A28 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5E47742D8F96480D91ED87DD /* Pods-PNChart */;
-			targetProxy = DF887A4A79E34562BB5A73AA /* PBXContainerItemProxy */;
+			target = F34FA1041DF84B09966FAA0F /* Appirater */;
+			targetProxy = 19308633597F409790B7EF46 /* PBXContainerItemProxy */;
 		};
-		63F7151BF27647FB970F398B /* PBXTargetDependency */ = {
+		DBC6F4A1149640BDB32EA249 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D56F53842E1B45318D095C37 /* Pods-JBChartView */;
-			targetProxy = F8CDFC61DBF24C85811D7B01 /* PBXContainerItemProxy */;
+			target = D175F1172E014DBAA8AED845 /* Pods-TEAChart */;
+			targetProxy = 26CE03711BCA46FFA089870D /* PBXContainerItemProxy */;
 		};
-		EBECE72D65E843849A112898 /* PBXTargetDependency */ = {
+		FA2C94DCFB6A494891B5C43F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A0995B4970544C8E9D9D7AD3 /* Pods-Appirater */;
-			targetProxy = 4A85109F05524CF98DBEA2D8 /* PBXContainerItemProxy */;
+			target = 351C628089124AAB89F956AB /* Pods-PNChart */;
+			targetProxy = A8A26E251FC9431DBBA99D68 /* PBXContainerItemProxy */;
 		};
-		F7F81F61184B4D059C33A7AE /* PBXTargetDependency */ = {
+		FC95D1B77438474EA5697321 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 29AD1E5FB7494A4ABE1968DE /* Pods-TEAChart */;
-			targetProxy = 94FC102DF7164155BFD69D5C /* PBXContainerItemProxy */;
+			target = 77FC5D89A703415989E5C99B /* Pods-Appirater */;
+			targetProxy = 87CB93EFF69442C7B0C2D050 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		139976DF884D42F3AB0235A0 /* Debug */ = {
+		09692416A93D42BEACDA304B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9A5E232B35E34D61B472E3FF /* Pods-PNChart-Private.xcconfig */;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		18A22F62F71B44438211F4C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 301C2F7A4AE543DE91099095 /* Pods.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		22F8452FF987445795187BCC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62923B82D95D49E2A6136186 /* Pods-PNChart-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-PNChart-prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2E6FEE100852492E972EF691 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62923B82D95D49E2A6136186 /* Pods-PNChart-Private.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
@@ -961,9 +1032,218 @@
 			};
 			name = Debug;
 		};
-		3022235138634C3D85CD13B8 /* Release */ = {
+		4CE1B44DC3B24A5C9102BBD5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5D90DE0F54B347C5981726FD /* Pods-CHCSVParser-Private.xcconfig */;
+			baseConfigurationReference = 132B3974872849D29CF68268 /* Pods-TEAChart-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-TEAChart-prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		57A508595E114541B6FC1EF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 301C2F7A4AE543DE91099095 /* Pods.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		6B41CA15E2CB42CCB72D5A96 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7610B8F29B514E58814182E1 /* Pods-Appirater-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-Appirater-prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6CBC2C7CBB7A4EBCBB35AD07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24F000AD79D74A3982A21808 /* Pods-JBChartView-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-JBChartView-prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6E52FEB3B0BC40408AF941A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7610B8F29B514E58814182E1 /* Pods-Appirater-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-Appirater-prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		791393EE4AFA4292B4A9A4A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 132B3974872849D29CF68268 /* Pods-TEAChart-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-TEAChart-prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9B5C39845A114384B8CC1076 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B7959BA3B09946B58C6E8836 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B104F7BD11D84ADBA380A54E /* Pods-CHCSVParser-Private.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
@@ -992,9 +1272,19 @@
 			};
 			name = Release;
 		};
-		3D7150422CC745B2807F75A4 /* Debug */ = {
+		D39DD75225E2490F9367D1C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5D90DE0F54B347C5981726FD /* Pods-CHCSVParser-Private.xcconfig */;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		DA70A5D4FB274E0FA29B348E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B104F7BD11D84ADBA380A54E /* Pods-CHCSVParser-Private.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
@@ -1021,9 +1311,9 @@
 			};
 			name = Debug;
 		};
-		4690FFF12E644A9FA3B7054C /* Debug */ = {
+		F40F21348FCA410393E09C37 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4C5E1529803649988E4C94F1 /* Pods-Appirater-Private.xcconfig */;
+			baseConfigurationReference = 24F000AD79D74A3982A21808 /* Pods-JBChartView-Private.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
@@ -1033,7 +1323,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-Appirater-prefix.pch";
+				GCC_PREFIX_HEADER = "Pods-JBChartView-prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1050,17 +1340,7 @@
 			};
 			name = Debug;
 		};
-		5BB345F297A147C9A8354E0A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		63A1DB42AE784AF19C58C38F /* Debug */ = {
+		FC600FB067DC457FB678BAB3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1096,362 +1376,82 @@
 			};
 			name = Debug;
 		};
-		66E20B223D5E42A791BF346E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FF30DA9BAFCF4E7FB36BFC87 /* Pods-JBChartView-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				COPY_PHASE_STRIP = NO;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-JBChartView-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		74BE5DDE8F934864925717E5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		7A8574C670E4469B9F1C275B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F410034FB83D43CE991B2957 /* Pods-TEAChart-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				COPY_PHASE_STRIP = NO;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-TEAChart-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		842715E14F094EC48354C4D2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E678F64FEBE14F9289D4E029 /* Pods.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				COPY_PHASE_STRIP = YES;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_CFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		A9425390DC564AFA86D8FB05 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E678F64FEBE14F9289D4E029 /* Pods.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				COPY_PHASE_STRIP = NO;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		B113CB5D342B4473982996BC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = NO;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				COPY_PHASE_STRIP = NO;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				STRIP_INSTALLED_PRODUCT = NO;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		B81E71F9F1EA4D539469CA50 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4C5E1529803649988E4C94F1 /* Pods-Appirater-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				COPY_PHASE_STRIP = YES;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-Appirater-prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_CFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		CE1B1F80FDC548B59E48E527 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F410034FB83D43CE991B2957 /* Pods-TEAChart-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				COPY_PHASE_STRIP = YES;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-TEAChart-prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_CFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		CF431075A5C547E2B30BCA0D /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FF30DA9BAFCF4E7FB36BFC87 /* Pods-JBChartView-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				COPY_PHASE_STRIP = YES;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-JBChartView-prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_CFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		F546CB8816FE487C8A83D22E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9A5E232B35E34D61B472E3FF /* Pods-PNChart-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				COPY_PHASE_STRIP = YES;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-PNChart-prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_CFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0FFA4F2B7CE14E769693E09F /* Build configuration list for PBXNativeTarget "Pods" */ = {
+		1B276FA2CD994CDEB5AB2137 /* Build configuration list for PBXNativeTarget "Pods-TEAChart" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A9425390DC564AFA86D8FB05 /* Debug */,
-				842715E14F094EC48354C4D2 /* Release */,
+				4CE1B44DC3B24A5C9102BBD5 /* Debug */,
+				791393EE4AFA4292B4A9A4A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		159CCDAB31D940838F39D3AF /* Build configuration list for PBXNativeTarget "Pods-CHCSVParser" */ = {
+		2984B32F852D4D35BCE4D3E1 /* Build configuration list for PBXNativeTarget "Appirater" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3D7150422CC745B2807F75A4 /* Debug */,
-				3022235138634C3D85CD13B8 /* Release */,
+				D39DD75225E2490F9367D1C1 /* Debug */,
+				09692416A93D42BEACDA304B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		263BF89ACDB2430CABA5194D /* Build configuration list for PBXNativeTarget "Pods-TEAChart" */ = {
+		5D18A4826C194FDEAABC4B72 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7A8574C670E4469B9F1C275B /* Debug */,
-				CE1B1F80FDC548B59E48E527 /* Release */,
+				FC600FB067DC457FB678BAB3 /* Debug */,
+				9B5C39845A114384B8CC1076 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7E41EE987C96448E9F203861 /* Build configuration list for PBXNativeTarget "Pods-PNChart" */ = {
+		5DF8E75BBE33436A90D3946A /* Build configuration list for PBXNativeTarget "Pods-PNChart" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				139976DF884D42F3AB0235A0 /* Debug */,
-				F546CB8816FE487C8A83D22E /* Release */,
+				2E6FEE100852492E972EF691 /* Debug */,
+				22F8452FF987445795187BCC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8709F016F1914718AEBC4AF5 /* Build configuration list for PBXNativeTarget "Appirater" */ = {
+		9B52E610C8724F34821F04E5 /* Build configuration list for PBXNativeTarget "Pods-CHCSVParser" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5BB345F297A147C9A8354E0A /* Debug */,
-				74BE5DDE8F934864925717E5 /* Release */,
+				DA70A5D4FB274E0FA29B348E /* Debug */,
+				B7959BA3B09946B58C6E8836 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D35F4F713EAD460FAF430EE3 /* Build configuration list for PBXNativeTarget "Pods-JBChartView" */ = {
+		B2069A65D4034FA4A9DC7B53 /* Build configuration list for PBXNativeTarget "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				66E20B223D5E42A791BF346E /* Debug */,
-				CF431075A5C547E2B30BCA0D /* Release */,
+				57A508595E114541B6FC1EF3 /* Debug */,
+				18A22F62F71B44438211F4C4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E9E7275C239B4F1B86B18669 /* Build configuration list for PBXProject "Pods" */ = {
+		D7BCE092133B435B979B4216 /* Build configuration list for PBXNativeTarget "Pods-JBChartView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				63A1DB42AE784AF19C58C38F /* Debug */,
-				B113CB5D342B4473982996BC /* Release */,
+				F40F21348FCA410393E09C37 /* Debug */,
+				6CBC2C7CBB7A4EBCBB35AD07 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F9AA3ACF2B57408E9C5C4E6B /* Build configuration list for PBXNativeTarget "Pods-Appirater" */ = {
+		EE4BFA3377384918A5E45899 /* Build configuration list for PBXNativeTarget "Pods-Appirater" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4690FFF12E644A9FA3B7054C /* Debug */,
-				B81E71F9F1EA4D539469CA50 /* Release */,
+				6E52FEB3B0BC40408AF941A6 /* Debug */,
+				6B41CA15E2CB42CCB72D5A96 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = DECA18F4C1D24415B521D08D /* Project object */;
+	rootObject = C1E46D4E057E4CE0B4F90B06 /* Project object */;
 }

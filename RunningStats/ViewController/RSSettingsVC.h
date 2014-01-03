@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface RSSettingsVC : UIViewController
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;
 
 @end

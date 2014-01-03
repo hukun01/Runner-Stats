@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#define SUPPORT_URL @0
+#define LIBRARIES_URL @1
+
 @interface RSSettingsTVC : UITableViewController
 
 @end
