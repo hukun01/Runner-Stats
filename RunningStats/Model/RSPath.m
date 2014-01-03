@@ -126,7 +126,7 @@
     return YES;
 }
 // csv fields
-// timeInterval(double), currentDistance(double), instantSpeed(double)
+// timeInterval(double, seconds), currentDistance(double, meters), instantSpeed(double, meters/seconds)
 - (void)addALineByLocation:(CLLocation *)location
 {
     CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:self.tmpFile];

@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "JBLineChartView.h"
 #import "JBConstants.h"
+#import "RSConstants.h"
 
 @interface RSRecordDetailsVC : UIViewController <JBLineChartViewDelegate, JBLineChartViewDataSource>
 

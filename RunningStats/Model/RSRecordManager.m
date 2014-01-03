@@ -62,7 +62,9 @@
 
 - (NSArray *)readRecord
 {
-    return [NSArray arrayWithContentsOfCSVFile:self.recordPath];
+    NSArray *allRecords = [NSArray arrayWithContentsOfCSVFile:self.recordPath];
+    NSRange range = {0, [allRecords count]-1};
+    return [allRecords subarrayWithRange:range];
 }
 
 - (NSArray *)readRecordDetailsByPath:(NSString *)path
@@ -76,9 +78,6 @@
     NSArray *allRecords = [self readRecord];
     if ([allRecords count] > 1) {
         NSArray *recentRecord = [allRecords objectAtIndex:([allRecords count]-2)];
-        // debug
-        NSLog(@"0 of %lu: %@", [allRecords count], recentRecord);
-        
         NSString *recentRecordDate = [recentRecord firstObject];
         recentRecordDate = [[recentRecordDate componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] firstObject];
         NSString *newRecordDate = [newline firstObject];
@@ -114,7 +113,7 @@
     if ([allRecords count] == 1) {
         return;
     }
-    NSRange range = {0, [allRecords count]-2};
+    NSRange range = {0, [allRecords count]-1};
     NSArray *newAllRecords = [allRecords subarrayWithRange:range];
     
     if (![[NSFileManager defaultManager] removeItemAtPath:[self recordPath] error:NULL])

@@ -12,7 +12,6 @@
 #import "RSStatsVC.h"
 
 #define CELL_HEIGHT 44
-#define SECONDS_OF_HOUR 3600
 
 @interface RSStatsFirstVC ()
 @property (strong, nonatomic) IBOutlet UITableView *recordTableView;
@@ -23,8 +22,10 @@
 @property (strong, nonatomic) IBOutlet UILabel *durationLabel;
 @property (strong, nonatomic) IBOutlet UILabel *avgSpeedLabel;
 @property (strong, nonatomic) IBOutlet UILabel *avgPaceLabel;
+
 @property (strong, nonatomic) IBOutlet UILabel *distanceUnitLabel;
 @property (strong, nonatomic) IBOutlet UILabel *paceUnitLabel;
+@property (strong, nonatomic) IBOutlet UILabel *speedUnitLabel;
 
 
 @end
@@ -43,9 +44,7 @@
 
 - (void)setRecords:(NSArray *)records
 {
-    NSRange range = {0, [records count]-1};
-    
-    _records = [records subarrayWithRange:range];
+    _records = records;
     [self.recordTableView reloadData];
 }
 
@@ -74,11 +73,12 @@
 
 - (void)setup
 {
-    [self.navigationItem setTitle:@"Summary"];
-    
+    [self.navigationItem setTitle:NSLocalizedString(@"Second_1_NavigationBarTitle", nil)];
+    // setup table view
     self.recordTableView.dataSource = self;
     self.recordTableView.delegate = self;
     self.records = [self.recordManager readRecord];
+    // setup data
     [self calcWholeDataForLabels];
 }
 
@@ -91,33 +91,49 @@
     parentVC.currentStatsView.scrollEnabled = YES;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    // setup unit labels
+    self.distanceUnitLabel.text = RS_DISTANCE_UNIT_STRING;
+    self.paceUnitLabel.text = RS_PACE_UNIT_STRING;
+    self.speedUnitLabel.text = RS_SPEED_UNIT_STRING;
+}
+
 - (void)calcWholeDataForLabels
 {
-    CLLocationDistance wholeKilometers = 0.0;
+    CLLocationDistance wholeMeters = 0.0;
     NSTimeInterval wholeSeconds = 0.0;
     CLLocationSpeed averageSpeed = 0.0;
-    
-    for (NSArray *record in self.records) {
-        wholeKilometers += [[record objectAtIndex:1] doubleValue];
-        wholeSeconds += [[record objectAtIndex:2] intValue];
-        averageSpeed += [[record lastObject] doubleValue];
+    if ([self.records count] > 1) {
+        for (NSArray *record in self.records) {
+            wholeMeters += [[record objectAtIndex:1] doubleValue];
+            wholeSeconds += [[record objectAtIndex:2] intValue];
+            averageSpeed += [[record lastObject] doubleValue];
+        }
     }
     
-    if (wholeKilometers > 10.0) {
-        self.distanceLabel.text = [NSString stringWithFormat:@"%.1f", wholeKilometers];
+    wholeMeters /= RS_UNIT;
+    
+    if (wholeMeters > 10.0) {
+        self.distanceLabel.text = [NSString stringWithFormat:@"%.1f", wholeMeters];
     }
     else {
-        self.distanceLabel.text = [NSString stringWithFormat:@"%.2f", wholeKilometers];
+        self.distanceLabel.text = [NSString stringWithFormat:@"%.2f", wholeMeters];
     }
     
     NSString *wholeDurationString = [self.recordManager timeFormatted:wholeSeconds withOption:FORMAT_HHMMSS];
     self.durationLabel.text = wholeDurationString;
     
-    int pace = wholeSeconds / wholeKilometers;
+    int pace = 0;
+    if ([self.records count] > 1) {
+        averageSpeed /= [self.records count];
+        averageSpeed *= (SECONDS_OF_HOUR/RS_UNIT);
+        pace = wholeSeconds / wholeMeters;
+    }
     NSString *averagePaceString = [self.recordManager timeFormatted:pace withOption:FORMAT_MMSS];
     self.avgPaceLabel.text = averagePaceString;
-    
-    averageSpeed /= [self.records count];
     
     if (averageSpeed > 10.0) {
         self.avgSpeedLabel.text = [NSString stringWithFormat:@"%.1f", averageSpeed];
@@ -138,6 +154,9 @@
     RSRecordCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Set cell content labels
+    if (indexPath.row >= [self.records count]) {
+        return cell;
+    }
     cell.textLabel.text = [self cellTitleForIndex:indexPath.row];
     cell.distanceLabel.text = [[self.records objectAtIndex:indexPath.row] objectAtIndex:1];
     int seconds = [[[self.records objectAtIndex:indexPath.row] objectAtIndex:2] intValue];
@@ -162,12 +181,6 @@
     NSString *s = [df stringFromDate:d];
     
     return s;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

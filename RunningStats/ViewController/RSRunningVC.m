@@ -41,15 +41,49 @@
 @property (strong, nonatomic) RSPath *path;
 @property (strong, nonatomic) MKPolylineRenderer *pathRenderer;
 @property (strong, nonatomic) IBOutlet UINavigationItem *myNavigationItem;
+@property (strong, nonatomic) AVSpeechSynthesizer *speaker;
+// Unit labels
+@property (strong, nonatomic) IBOutlet UILabel *distanceUnitLabel;
+@property (strong, nonatomic) IBOutlet UILabel *speedUnitLabel;
+@property (strong, nonatomic) IBOutlet UILabel *speedUnitLabel2;
+
 
 @property (strong, nonatomic) IBOutlet UILabel *test_statusLabel;
-@property (strong, nonatomic) NSString *speakContent;
-@property (strong, nonatomic) NSString *startText;
-
 
 @end
 
 @implementation RSRunningVC
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder:aDecoder]) {
+        [self setUp];
+    }
+    return self;
+}
+
+- (void)setUp
+{
+    _locationManager = [[CLLocationManager alloc] init];
+    _locationManager.delegate = self;
+    _locationManager.distanceFilter = 3.0;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+    [_locationManager startUpdatingLocation];
+    
+    // data
+    [self resetData];
+    _currLocation = [_locationManager location];
+    self.isRunning = NO;
+    // Create a record if not exist
+    _recordManager = [[RSRecordManager alloc] init];
+    
+//    if (![_recordManager createRecord]) {
+//        NSLog(@"Create record.csv failed.");
+//    }
+    // debug
+    //    if (![[NSFileManager defaultManager] removeItemAtPath:[self.recordManager recordPath] error:NULL])
+    //        NSLog(@"remove failed");
+}
 
 - (void)viewDidLoad
 {
@@ -60,50 +94,25 @@
                                              selector:@selector(renewMapRegion)
                                                  name:UIApplicationWillEnterForegroundNotification
                                                object:nil];
-    self.myNavigationItem.title = @"Running Stats";
-    
-    //debug
-    self.startText = @". Start running.";//@"。开始";//
-    self.speakContent = [@"5, 4, 3, 2, 1" stringByAppendingString:self.startText];
-    //self.audioPlayer.delegate = self;
-    
-    [self configureAVAudioSession];
+    self.myNavigationItem.title = NSLocalizedString(@"FirstNavigationBarTitle", nil);
 }
 
-- (void) configureAVAudioSession
+- (BOOL)configureAVAudioSession
 {
-    //get your app's audioSession singleton object
+    self.speaker = [[AVSpeechSynthesizer alloc] init];
     AVAudioSession* session = [AVAudioSession sharedInstance];
-    
     //error handling
     BOOL success;
-    NSError* error;
-    
     //set the audioSession category.
     //Needs to be Record or PlayAndRecord to use audioRouteOverride:
-    
     success = [session setCategory:AVAudioSessionCategoryPlayAndRecord
-                             error:&error];
-    
-    if (!success)  NSLog(@"AVAudioSession error setting category:%@",error);
-    
+                             error:NULL];
     //set the audioSession override
     success = [session overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker
-                                         error:&error];
-    if (!success)  NSLog(@"AVAudioSession error overrideOutputAudioPort:%@",error);
-    
+                                         error:NULL];
     //activate the audio session
-    success = [session setActive:YES error:&error];
-    if (!success) NSLog(@"AVAudioSession error activating: %@",error);
-    else NSLog(@"audioSession active");
-    
-}
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    if (self = [super initWithCoder:aDecoder]) {
-        [self setUp];
-    }
-    return self;
+    success = [session setActive:YES error:NULL];
+    return success;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -113,44 +122,39 @@
     if (!self.isRunning) {
         [self restoreUI];
     }
-    
     [self renewMapRegion];
     self.map.showsUserLocation = YES;
     self.currLocation = [self.locationManager location];
-    
-    //debug
-    if (!self.map.userLocationVisible) {
-        NSLog(@"User not in the screen.");
-    }
-    
-    AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:self.speakContent];
-    utterance.rate = AVSpeechUtteranceMinimumSpeechRate;//(AVSpeechUtteranceDefaultSpeechRate + 2.0 * AVSpeechUtteranceMinimumSpeechRate) / 3.0;
-    AVSpeechSynthesizer *speaker = [[AVSpeechSynthesizer alloc] init];
-    [speaker speakUtterance:utterance];
+
+    [self updateUnitLabels];
 }
 
-- (void)setUp
+- (void)updateUnitLabels
 {
-    _locationManager = [[CLLocationManager alloc] init];
-    _locationManager.delegate = self;
-    _locationManager.distanceFilter = 3.0;
-    _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-    [_locationManager startUpdatingLocation];
-    // data
-    [self resetData];
-    // TO-DO: Drop the initial invalid location
-    _currLocation = [_locationManager location];
-    
-    self.isRunning = NO;
-    
-    // Create a record if not exist
-    _recordManager = [[RSRecordManager alloc] init];
-    
-    // debug
-//    if (![[NSFileManager defaultManager] removeItemAtPath:[self.recordManager recordPath] error:NULL])
-//        NSLog(@"remove failed");
-//    if (![_recordManager createRecord])
-//        NSLog(@"Create record.csv failed.");
+    self.distanceUnitLabel.text = RS_DISTANCE_UNIT_STRING;
+    self.speedUnitLabel.text = RS_SPEED_UNIT_SHORT_STRING;
+    self.speedUnitLabel2.text = self.speedUnitLabel.text;
+}
+
+- (void)speakCountDown
+{
+    NSString *countDownString = [self countDownString];
+    AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:countDownString];
+    utterance.rate = AVSpeechUtteranceMinimumSpeechRate;
+    if (self.speaker && utterance) {
+        [self.speaker speakUtterance:utterance];
+    }
+}
+
+- (NSString *)countDownString
+{
+    int countDown = RS_COUNT_DOWN;
+    NSString *result = [[NSString alloc] init];
+    for (; countDown > 0; --countDown) {
+        result = [result stringByAppendingString:[NSString stringWithFormat:@"%d, ", countDown]];
+    }
+    result = [result stringByAppendingString:NSLocalizedString(@"StartRunningText", nil)];
+    return result;
 }
 
 # pragma mark - Start Session
@@ -158,18 +162,18 @@
 {
     self.isRunning = YES;
     [self.locationManager startUpdatingLocation];
+    if ([self configureAVAudioSession] && RS_VOICE_ON) {
+        [self speakCountDown];
+    }
     // Clear the data of last event
     if ([[self.map overlays] count] != 0) {
         [self.map removeOverlays:[self.map overlays]];
-        NSLog(@"Remove overlays");
     }
     [self.path clearContents];
     [self resetData];
     
-    //[self.locationManager startUpdatingLocation];
     self.startDate = [NSDate date];
     [self renewMapRegion];
-    // start a timer
     [self startTimer];
     
     // Change accessibility of some UI elements
@@ -178,14 +182,6 @@
     self.saveButton.hidden = NO;
     self.stopButton.hidden = NO;
     self.map.zoomEnabled = NO;
-    
-    // debug
-    NSLog(@"Start Session:");
-    NSArray *allRecords = [self.recordManager readRecord];
-    int i=0;
-    for (NSString *s in allRecords) {
-        NSLog(@"%d: %@",i++,[s description]);
-    }
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
@@ -228,8 +224,8 @@
         // Ask the overlay view to update just the changed area.
         [self.pathRenderer setNeedsDisplayInMapRect:updateRect];
         // Update data
-        self.distance = [self.path distance] / 1000;
-        self.speed = 3.6 * [self.path instantSpeed];
+        self.distance = [self.path distance] / RS_UNIT;
+        self.speed = (SECONDS_OF_HOUR/RS_UNIT) * [self.path instantSpeed];
         // Move map with user location
         self.currLocation = newLocation;
         
@@ -238,25 +234,35 @@
     }
     // if the distance is small, also display speed if it is valid, but do not store it
     else if ([self.path isValidLocation:newLocation]) {
-        self.speed = 3.6 * newLocation.speed;
+        self.speed = (SECONDS_OF_HOUR/RS_UNIT) * newLocation.speed;
     }
     
     [self renewMapRegion];
     NSTimeInterval duration = ABS([self.startDate timeIntervalSinceNow]);
-    self.avgSpeed = 3.6 * [self.path distance] / duration;
+    self.avgSpeed = (SECONDS_OF_HOUR/RS_UNIT) * [self.path distance] / duration;
 }
 
 #pragma mark - Discard and Save Session
 - (IBAction)discardSession:(id)sender
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Discard?" message:@"Do you want to stop and discard this session?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Discard", nil];
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:NSLocalizedString(@"DiscardTitle", nil)
+                          message:NSLocalizedString(@"Do you want to Discard", nil)
+                          delegate:self
+                          cancelButtonTitle:NSLocalizedString(@"CancelOption", nil)
+                          otherButtonTitles:NSLocalizedString(@"DiscardOption", nil), nil];
     alert.tag = DISCARD_ALERT_TAG;
     [alert show];
 }
 
 - (IBAction)saveSession:(id)sender
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Save?" message:@"Do you want to stop and save this session?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Save", nil];
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:NSLocalizedString(@"SaveTitle", nil)
+                          message:NSLocalizedString(@"Do you want to Save", nil)
+                          delegate:self
+                          cancelButtonTitle:NSLocalizedString(@"CancelOption", nil)
+                          otherButtonTitles:NSLocalizedString(@"SaveOption", nil), nil];
     alert.tag = SAVE_ALERT_TAG;
     [alert show];
 }
@@ -323,10 +329,11 @@
     }
 }
 
+// In record, the measure unit of distance is meters,
+// the unit of speed is meters/seconds
 - (void)saveSessionAsRecord
 {
     if (![self.path doesTmpFileExists]) {
-        NSLog(@"Temp file not exists, nonvalid session.");
         return;
     }
     NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
@@ -336,7 +343,6 @@
     NSString *durStr = [NSString stringWithFormat:@"%d", (int)duration];
     NSString *startDateString = [dateformatter stringFromDate:self.startDate];
     CLLocationDistance finalDistance = [self.path distance];
-    finalDistance /= 1000;
     NSString *disStr;
     if (finalDistance > 10.0) {
         disStr = [NSString stringWithFormat:@"%.1f",finalDistance];
@@ -345,7 +351,7 @@
         disStr = [NSString stringWithFormat:@"%.2f",finalDistance];
     }
     
-    NSString *avgSpdStr = [NSString stringWithFormat:@"%.2f",3.6 * [self.path distance] / duration];
+    NSString *avgSpdStr = [NSString stringWithFormat:@"%.2f",[self.path distance] / duration];
     
     NSArray *newRecord = @[startDateString, disStr, durStr, avgSpdStr];
     [self.recordManager addALine:newRecord];

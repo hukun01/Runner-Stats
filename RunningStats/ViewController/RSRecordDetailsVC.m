@@ -130,7 +130,7 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
     headerView.titleLabel.textColor = kJBColorLineChartHeader;
     headerView.titleLabel.shadowColor = [UIColor colorWithWhite:1.0 alpha:0.25];
     headerView.titleLabel.shadowOffset = CGSizeMake(0, 1);
-    headerView.subtitleLabel.text = [NSString stringWithFormat:@"Max Speed: %.1f km/h", self.maxSpeed * 3.6];
+    headerView.subtitleLabel.text = [NSLocalizedString(@"Max Speed", nil) stringByAppendingString:[[NSString stringWithFormat:@": %.1f ", self.maxSpeed * SECONDS_OF_HOUR/RS_UNIT] stringByAppendingString:RS_SPEED_UNIT_STRING]];
     headerView.subtitleLabel.textColor = kJBColorLineChartHeader;
     headerView.subtitleLabel.shadowColor = [UIColor colorWithWhite:1.0 alpha:0.25];
     headerView.subtitleLabel.shadowOffset = CGSizeMake(0, 1);
@@ -144,7 +144,7 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
     footerView.leftLabel.text = [NSString stringWithFormat:@"%d", 0];
     footerView.leftLabel.textColor = [UIColor blackColor];
     CLLocationDistance distance = [[[self.recordData lastObject] objectAtIndex:1] doubleValue];
-    footerView.rightLabel.text = [NSString stringWithFormat:@"%.2f km", distance/1000.0];
+    footerView.rightLabel.text = [[NSString stringWithFormat:@"%.2f ", distance/RS_UNIT] stringByAppendingString:RS_DISTANCE_UNIT_STRING];
     footerView.rightLabel.textColor = [UIColor blackColor];
     footerView.sectionCount = NUMBER_OF_SECTION_POINTS;
     footerView.footerSeparatorColor = [UIColor blackColor];
@@ -153,8 +153,7 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
 
 - (void)configureInfoView
 {
-    self.infoView = [[JBChartInformationView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, CGRectGetMaxY(self.lineChart.frame), self.view.bounds.size.width, 150) layout:JBChartInformationViewLayoutVertical];//y: self.view.bounds.size.height - CGRectGetMaxY(self.lineChart.frame) - CGRectGetMaxY(self.navigationController.navigationBar.frame)
-    [self.infoView setValueAndUnitTextColor:[UIColor colorWithWhite:1.0 alpha:0.75]];
+    self.infoView = [[JBChartInformationView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, CGRectGetMaxY(self.lineChart.frame), self.view.bounds.size.width, 150) layout:JBChartInformationViewLayoutVertical];    [self.infoView setValueAndUnitTextColor:[UIColor colorWithWhite:1.0 alpha:0.75]];
     [self.infoView setTitleTextColor:[UIColor blackColor]];
     [self.infoView setValueAndUnitTextColor:PNTwitterColor];
     [self.infoView setTextShadowColor:nil];
@@ -185,8 +184,6 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
     self.record = recordDate;
     NSString *docsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     self.recordPath = [docsPath stringByAppendingPathComponent:[[self getRecordNameFromRecordDate:recordDate] stringByAppendingString:@".csv"]];
-    //[self configureChartByRecordData:[recordData subarrayWithRange:range]];
-    //[self.lineChart strokeChart];
     
     // TO-DO: Draw figures: lineChart and barChart
     // lineChart for duration-speed
@@ -205,9 +202,9 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
 - (void)lineChartView:(JBLineChartView *)lineChartView didSelectChartAtIndex:(NSInteger)index
 {
     NSArray *row = [self.recordData objectAtIndex:index];
-    NSNumber *valueNumber = [NSNumber numberWithDouble:[[row lastObject] doubleValue] * 3.6 ];
-    [self.infoView setValueText:[NSString stringWithFormat:@"%.2f", [valueNumber doubleValue]] unitText:@" km/h"];
-    [self.infoView setTitleText:[NSString stringWithFormat:@"%.2f", [[row objectAtIndex:1] doubleValue]/1000] unitText:@" km"];
+    NSNumber *valueNumber = [NSNumber numberWithDouble:[[row lastObject] doubleValue] * SECONDS_OF_HOUR/RS_UNIT];
+    [self.infoView setValueText:[NSString stringWithFormat:@"%.2f", [valueNumber doubleValue]] unitText:[@" " stringByAppendingString:RS_SPEED_UNIT_STRING]];
+    [self.infoView setTitleText:[NSString stringWithFormat:@"%.2f", [[row objectAtIndex:1] doubleValue]/1000] unitText:[@" " stringByAppendingString:RS_DISTANCE_UNIT_STRING]];
     [self.infoView setHidden:NO animated:YES];
 }
 
@@ -232,32 +229,5 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
 {
     return PNTwitterColor;
 }
-
-//- (void)configureChartByRecordData:(NSArray *)recordData
-//{
-//    NSMutableArray *xLabels = [[NSMutableArray alloc] init];
-//    NSMutableArray *speedArray = [[NSMutableArray alloc] init];
-//    
-//    CLLocationDistance distanceBound = 0.0;
-//    for (NSArray *recordLine in recordData) {
-//        CLLocationDistance currentDistance = [[recordLine objectAtIndex:1] doubleValue];
-//        if (currentDistance - distanceBound > 30) {
-//            [xLabels addObject:[NSString stringWithFormat:@"%.1f", currentDistance/1000]];
-//            distanceBound = currentDistance;
-//        }
-//        CLLocationSpeed speed = [[recordLine lastObject] doubleValue];
-//        speed *= 3.6;
-//        [speedArray addObject:[NSString stringWithFormat:@"%.1f", speed]];
-//    }
-//    self.lineChart.xLabels = xLabels;
-//    PNLineChartData *data = [PNLineChartData new];
-//    data.color = PNTwitterColor;
-//    data.itemCount = [xLabels count];
-//    data.getData = ^(NSUInteger index) {
-//        CGFloat yValue = [[speedArray objectAtIndex:index] floatValue];
-//        return [PNLineChartDataItem dataItemWithY:yValue];
-//    };
-//    self.lineChart.chartData = @[data];
-//}
 
 @end

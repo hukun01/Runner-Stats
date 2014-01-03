@@ -19,7 +19,7 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         // Custom initialization
-        NSLog(@"Settings");
+
     }
     return self;
 }
@@ -28,7 +28,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.navigationItem.title = @"Settings";
+    self.navigationItem.title = NSLocalizedString(@"Settings", nil);
     [self addChildViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"SettingsTVC"]];
     UITableViewController *settingsTVC = [[self childViewControllers] firstObject];
     if (settingsTVC.view.superview == nil) {
@@ -36,12 +36,6 @@
         settingsTVC.view.frame = frame;
         [self.scrollView addSubview:settingsTVC.tableView];
     }
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

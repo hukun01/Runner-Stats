@@ -37,7 +37,7 @@
         self.url = [NSURL URLWithString:@"http://lifexplorer.me/projects/running-stats/#respond"];
     }
     else {
-        self.url = [NSURL URLWithString:@"http://lifexplorer.me/solution-to-problem-that-uiscrollview-cant-scroll/#page"];
+        self.url = [NSURL URLWithString:@"http://lifexplorer.me/projects/running-stats/libraries-used-in-running-stats/#page"];
     }
 }
 

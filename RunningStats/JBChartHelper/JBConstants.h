@@ -6,8 +6,10 @@
 //  Copyright (c) 2013 Jawbone. All rights reserved.
 //
 
-#import "JBStringConstants.h"
-#import "JBUIConstants.h"
 #import "JBColorConstants.h"
 #import "JBFontConstants.h"
-#import "JBStringConstants.h"
+
+#pragma mark - Numerics
+
+#define kJBNumericDefaultPadding 10.0f
+#define kJBNumericDefaultAnimationDuration 0.25f

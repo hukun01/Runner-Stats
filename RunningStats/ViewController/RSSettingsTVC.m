@@ -10,24 +10,36 @@
 #import "RSSettingsVC.h"
 
 @interface RSSettingsTVC ()
+@property (strong, nonatomic) IBOutlet UISegmentedControl *measureUnitSegControl;
+@property (strong, nonatomic) IBOutlet UISwitch *voiceSwitch;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *countDownSegControl;
 
 @end
 
 @implementation RSSettingsTVC
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithStyle:style];
+    self = [super initWithCoder:aDecoder];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
 }
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.tableView.scrollEnabled = NO;
+    
+    // read user preferences if it exists
+    [self setupUserDefaults];
+}
+
+- (void)setupUserDefaults
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.measureUnitSegControl.selectedSegmentIndex = [defaults integerForKey:@"measureUnit"];
+    self.voiceSwitch.on = [defaults boolForKey:@"voiceSwitch"];
+    self.countDownSegControl.selectedSegmentIndex = [defaults integerForKey:@"countDown"];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -40,9 +52,28 @@
     parentVC.descriptionLabel.hidden = NO;
 }
 
-#pragma mark - Navigation
+- (IBAction)changeMeasureUnit
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:self.measureUnitSegControl.selectedSegmentIndex forKey:@"measureUnit"];
+    [defaults synchronize];
+}
 
-// In a story board-based application, you will often want to do a little preparation before navigation
+- (IBAction)toggleVoiceSwitch
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:self.voiceSwitch.on forKey:@"voiceSwitch"];
+    [defaults synchronize];
+}
+
+- (IBAction)changeCountDown
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:self.countDownSegControl.selectedSegmentIndex forKey:@"countDown"];
+    [defaults synchronize];
+}
+
+# pragma mark - segue tableview delegate
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([sender isKindOfClass:[UITableViewCell class]]) {
@@ -64,15 +95,10 @@
     }
 }
 
-- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
-    
-    if([cell.reuseIdentifier isEqualToString:@"rateMe"]) {
-        NSLog(@"");
+    if (indexPath.section == 1 && indexPath.row == 0) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://itunes.apple.com/app/id378458261?at=10l6dK"]];
     }
-    
-    return cell;
 }
-
 @end

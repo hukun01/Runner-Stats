@@ -24,7 +24,7 @@ static int onceAnimated = 2;
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        // Custom initialization
+
         
     }
     return self;
@@ -35,7 +35,7 @@ static int onceAnimated = 2;
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.myNavigationItem.title = @"Running Frequency";
+    self.myNavigationItem.title = NSLocalizedString(@"Running Frequency", nil);
     [self setupContributionGraph];
     [self setupBarChart];
 }

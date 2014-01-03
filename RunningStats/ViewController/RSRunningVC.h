@@ -13,8 +13,9 @@
 #import "CHCSVParser.h"
 #import "RSRecordManager.h"
 #import "RSPath.h"
+#import "RSConstants.h"
 
 @interface RSRunningVC : UIViewController
-<MKMapViewDelegate, CLLocationManagerDelegate, UIAlertViewDelegate, AVAudioPlayerDelegate>
+<MKMapViewDelegate, CLLocationManagerDelegate, UIAlertViewDelegate, AVSpeechSynthesizerDelegate>
 
 @end
