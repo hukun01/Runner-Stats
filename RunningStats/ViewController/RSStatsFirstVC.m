@@ -55,10 +55,10 @@
         NSIndexPath *indexPath = [self.recordTableView indexPathForCell:sender];
         if (indexPath) {
             if ([segue.identifier isEqualToString:@"showRecordDetails"]) {
-                if ([segue.destinationViewController respondsToSelector:@selector(showRecordFromName:)]) {
+                if ([segue.destinationViewController respondsToSelector:@selector(showRecordFromDate:)]) {
                     NSArray *record = [self.records objectAtIndex:indexPath.row];
                     NSString *recordFileName = [[record firstObject] description];
-                    [segue.destinationViewController performSelector:@selector(showRecordFromName:) withObject:recordFileName];
+                    [segue.destinationViewController performSelector:@selector(showRecordFromDate:) withObject:recordFileName];
                 }
             }
         }

@@ -24,7 +24,7 @@ typedef NS_ENUM(NSInteger, JBChartInformationViewLayout){
 @property (nonatomic, assign, readonly) JBChartInformationViewLayout layout; // read-only (must be set in init..)
 
 // Content
-- (void)setTitleText:(NSString *)titleText;
+- (void)setTitleText:(NSString *)titleText unitText:(NSString *)unitText;
 - (void)setValueText:(NSString *)valueText unitText:(NSString *)unitText;
 
 // Color

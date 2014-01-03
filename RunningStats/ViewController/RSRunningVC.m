@@ -92,6 +92,7 @@
     _locationManager.delegate = self;
     _locationManager.distanceFilter = 3.0;
     _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+    [_locationManager startUpdatingLocation];
     // data
     [self resetData];
     // TO-DO: Drop the initial invalid location
@@ -153,6 +154,10 @@
      didUpdateLocations:(NSArray *)locations
 {
     CLLocation *newLocation = [locations lastObject];
+    if (!self.isRunning) {
+        self.currLocation = newLocation;
+        return;
+    }
     if (!self.path) {
         self.path = [[RSPath alloc] init];
     }
@@ -166,30 +171,33 @@
             self.test_statusLabel.text = @"Add overlay";
         }
     }
-    if ((self.currLocation.coordinate.latitude != newLocation.coordinate.latitude) &&
-        (self.currLocation.coordinate.longitude != newLocation.coordinate.longitude)) {
-        MKMapRect updateRect = [self.path addLocation:newLocation];
+    
+    MKMapRect updateRect = [self.path addLocation:newLocation];
+    
+    if (!MKMapRectIsNull(updateRect)) {
+        // Update map and speed and distance textfields
+        // Map
+        // Compute the currently visible map zoom scale
+        MKZoomScale currentZoomScale = (CGFloat)(self.map.bounds.size.width / self.map.visibleMapRect.size.width);
+        // Find out the line width at this zoom scale and outset the updateRect by that amount
+        CGFloat lineWidth = MKRoadWidthAtZoomScale(currentZoomScale);
+        updateRect = MKMapRectInset(updateRect, -lineWidth, -lineWidth);
+        // Ask the overlay view to update just the changed area.
+        [self.pathRenderer setNeedsDisplayInMapRect:updateRect];
+        // Update data
+        self.distance = [self.path distance] / 1000;
+        self.speed = 3.6 * [self.path instantSpeed];
+        // Move map with user location
+        self.currLocation = newLocation;
         
-        if (!MKMapRectIsNull(updateRect)) {
-            // Update map and speed and distance textfields
-            // Map
-            // Compute the currently visible map zoom scale
-            MKZoomScale currentZoomScale = (CGFloat)(self.map.bounds.size.width / self.map.visibleMapRect.size.width);
-            // Find out the line width at this zoom scale and outset the updateRect by that amount
-            CGFloat lineWidth = MKRoadWidthAtZoomScale(currentZoomScale);
-            updateRect = MKMapRectInset(updateRect, -lineWidth, -lineWidth);
-            // Ask the overlay view to update just the changed area.
-            [self.pathRenderer setNeedsDisplayInMapRect:updateRect];
-            // Update data
-            self.distance = [self.path distance] / 1000;
-            self.speed = 3.6 * [self.path instantSpeed];
-            // Move map with user location
-            self.currLocation = newLocation;
-            
-            //debug
-            self.test_statusLabel.text = [NSString stringWithFormat:@"%.4f, %.4f", newLocation.coordinate.latitude, newLocation.coordinate.longitude];
-        }
+        //debug
+        self.test_statusLabel.text = [NSString stringWithFormat:@"%.4f, %.4f", newLocation.coordinate.latitude, newLocation.coordinate.longitude];
     }
+    // if the distance is small, also display speed if it is valid, but do not store it
+    else if ([self.path isValidLocation:newLocation]) {
+        self.speed = 3.6 * newLocation.speed;
+    }
+    
     [self renewMapRegion];
     NSTimeInterval duration = ABS([self.startDate timeIntervalSinceNow]);
     self.avgSpeed = 3.6 * [self.path distance] / duration;

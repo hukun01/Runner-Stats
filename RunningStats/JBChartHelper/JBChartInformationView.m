@@ -139,9 +139,10 @@ static UIColor *kJBChartInformationViewShadowColor = nil;
 
 #pragma mark - Setters
 
-- (void)setTitleText:(NSString *)titleText
+- (void)setTitleText:(NSString *)titleText unitText:(NSString *)unitText
 {
-    self.titleLabel.text = titleText;
+    
+    self.titleLabel.text = [titleText stringByAppendingString:unitText];
     self.separatorView.hidden = !(titleText != nil);
 }
 
