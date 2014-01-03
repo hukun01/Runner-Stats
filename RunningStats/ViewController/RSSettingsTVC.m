@@ -62,8 +62,17 @@
             }
         }
     }
-
 }
 
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    
+    if([cell.reuseIdentifier isEqualToString:@"rateMe"]) {
+        NSLog(@"");
+    }
+    
+    return cell;
+}
 
 @end

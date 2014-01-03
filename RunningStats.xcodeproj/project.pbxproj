@@ -39,6 +39,7 @@
 		46D4AADC18655E6800F787BA /* RunningStatsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D4AADB18655E6800F787BA /* RunningStatsTests.m */; };
 		46D4AAE918655EF200F787BA /* RSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D4AAE818655EF200F787BA /* RSAppDelegate.m */; };
 		46EEB9BD1876346800A9E83A /* RSSettingsDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EEB9BC1876346800A9E83A /* RSSettingsDetailsVC.m */; };
+		46EEB9BF187734CB00A9E83A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46EEB9BE187734CB00A9E83A /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		46D4AAE818655EF200F787BA /* RSAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAppDelegate.m; sourceTree = "<group>"; };
 		46EEB9BB1876346800A9E83A /* RSSettingsDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSettingsDetailsVC.h; sourceTree = "<group>"; };
 		46EEB9BC1876346800A9E83A /* RSSettingsDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSettingsDetailsVC.m; sourceTree = "<group>"; };
+		46EEB9BE187734CB00A9E83A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		88B49D21AA1849DCAC899F2D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD14B5FDF5AD4CE1832846E7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46EEB9BF187734CB00A9E83A /* AVFoundation.framework in Frameworks */,
 				46AC5AFD1865648E006CAAD1 /* MapKit.framework in Frameworks */,
 				46D4AAB018655E6700F787BA /* CoreGraphics.framework in Frameworks */,
 				46D4AAB218655E6700F787BA /* UIKit.framework in Frameworks */,
@@ -226,6 +229,7 @@
 		46D4AAAC18655E6700F787BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				46EEB9BE187734CB00A9E83A /* AVFoundation.framework */,
 				46AC5AFC1865648E006CAAD1 /* MapKit.framework */,
 				46AC5AFA18656098006CAAD1 /* AudioToolbox.framework */,
 				46D4AAAD18655E6700F787BA /* Foundation.framework */,

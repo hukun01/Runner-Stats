@@ -43,6 +43,8 @@
 @property (strong, nonatomic) IBOutlet UINavigationItem *myNavigationItem;
 
 @property (strong, nonatomic) IBOutlet UILabel *test_statusLabel;
+@property (strong, nonatomic) NSString *speakContent;
+@property (strong, nonatomic) NSString *startText;
 
 
 @end
@@ -59,9 +61,43 @@
                                                  name:UIApplicationWillEnterForegroundNotification
                                                object:nil];
     self.myNavigationItem.title = @"Running Stats";
-
+    
+    //debug
+    self.startText = @". Start running.";//@"。开始";//
+    self.speakContent = [@"5, 4, 3, 2, 1" stringByAppendingString:self.startText];
+    //self.audioPlayer.delegate = self;
+    
+    [self configureAVAudioSession];
 }
 
+- (void) configureAVAudioSession
+{
+    //get your app's audioSession singleton object
+    AVAudioSession* session = [AVAudioSession sharedInstance];
+    
+    //error handling
+    BOOL success;
+    NSError* error;
+    
+    //set the audioSession category.
+    //Needs to be Record or PlayAndRecord to use audioRouteOverride:
+    
+    success = [session setCategory:AVAudioSessionCategoryPlayAndRecord
+                             error:&error];
+    
+    if (!success)  NSLog(@"AVAudioSession error setting category:%@",error);
+    
+    //set the audioSession override
+    success = [session overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker
+                                         error:&error];
+    if (!success)  NSLog(@"AVAudioSession error overrideOutputAudioPort:%@",error);
+    
+    //activate the audio session
+    success = [session setActive:YES error:&error];
+    if (!success) NSLog(@"AVAudioSession error activating: %@",error);
+    else NSLog(@"audioSession active");
+    
+}
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
@@ -86,6 +122,11 @@
     if (!self.map.userLocationVisible) {
         NSLog(@"User not in the screen.");
     }
+    
+    AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:self.speakContent];
+    utterance.rate = AVSpeechUtteranceMinimumSpeechRate;//(AVSpeechUtteranceDefaultSpeechRate + 2.0 * AVSpeechUtteranceMinimumSpeechRate) / 3.0;
+    AVSpeechSynthesizer *speaker = [[AVSpeechSynthesizer alloc] init];
+    [speaker speakUtterance:utterance];
 }
 
 - (void)setUp

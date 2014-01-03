@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 #import "CHCSVParser.h"
 #import "RSRecordManager.h"
 #import "RSPath.h"
 
 @interface RSRunningVC : UIViewController
-<MKMapViewDelegate, CLLocationManagerDelegate, UIAlertViewDelegate>
+<MKMapViewDelegate, CLLocationManagerDelegate, UIAlertViewDelegate, AVAudioPlayerDelegate>
 
 @end
