@@ -89,13 +89,17 @@
     // setup data
     self.records = [self.recordManager readRecord];
     [self calcWholeDataForLabels];
+    [self setupUnitLabels];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
-    // setup unit labels
+}
+
+- (void)setupUnitLabels
+{
     self.distanceUnitLabel.text = RS_DISTANCE_UNIT_STRING;
     self.paceUnitLabel.text = RS_PACE_UNIT_STRING;
     self.speedUnitLabel.text = RS_SPEED_UNIT_STRING;

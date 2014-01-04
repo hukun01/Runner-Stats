@@ -9,6 +9,10 @@
 // First interface
 "FirstNavigationBarTitle" = "Running Stats";
 "StartRunningText" = " Start";
+"DistanceCovered" = "Distance %d ";
+"kilometers" = "kilometers";
+"miles" = "miles";
+"DurationText" = " Duration ";
 // alert view
 "DiscardTitle" = "Discard?";
 "Do you want to Discard" = "Do you want to stop and discard this session?";

@@ -25,6 +25,8 @@
     [super viewDidLoad];
     [self hideElementsOfParentVC];
     [self setupWebView];
+    CGAffineTransform transform = CGAffineTransformMakeScale(2.0f, 2.0f);
+    self.activityIndicator.transform = transform;
     self.activityIndicator.hidden = NO;
 }
 

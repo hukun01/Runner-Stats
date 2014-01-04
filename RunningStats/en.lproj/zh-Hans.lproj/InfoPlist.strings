@@ -1,2 +1,4 @@
 /* Localized versions of Info.plist keys */
 
+"CFBundleDisplayName" = "跑步统计";
+"CFBundleName" = "跑步统计";

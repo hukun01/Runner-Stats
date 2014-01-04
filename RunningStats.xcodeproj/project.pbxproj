@@ -312,9 +312,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		46D4AAA918655E6700F787BA /* RunningStats */ = {
+		46D4AAA918655E6700F787BA /* Running Stats */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 46D4AADF18655E6800F787BA /* Build configuration list for PBXNativeTarget "RunningStats" */;
+			buildConfigurationList = 46D4AADF18655E6800F787BA /* Build configuration list for PBXNativeTarget "Running Stats" */;
 			buildPhases = (
 				EBC60F89E9BA4C919B3C83BB /* Check Pods Manifest.lock */,
 				46D4AAA618655E6700F787BA /* Sources */,
@@ -326,7 +326,7 @@
 			);
 			dependencies = (
 			);
-			name = RunningStats;
+			name = "Running Stats";
 			productName = RunningStats;
 			productReference = 46D4AAAA18655E6700F787BA /* RunningStats.app */;
 			productType = "com.apple.product-type.application";
@@ -396,7 +396,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				46D4AAA918655E6700F787BA /* RunningStats */,
+				46D4AAA918655E6700F787BA /* Running Stats */,
 				46D4AACD18655E6800F787BA /* RunningStatsTests */,
 			);
 		};
@@ -496,7 +496,7 @@
 /* Begin PBXTargetDependency section */
 		46D4AAD418655E6800F787BA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 46D4AAA918655E6700F787BA /* RunningStats */;
+			target = 46D4AAA918655E6700F787BA /* Running Stats */;
 			targetProxy = 46D4AAD318655E6800F787BA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -710,7 +710,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		46D4AADF18655E6800F787BA /* Build configuration list for PBXNativeTarget "RunningStats" */ = {
+		46D4AADF18655E6800F787BA /* Build configuration list for PBXNativeTarget "Running Stats" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				46D4AAE018655E6800F787BA /* Debug */,

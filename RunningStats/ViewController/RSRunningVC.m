@@ -56,6 +56,10 @@
 @end
 
 @implementation RSRunningVC
+// add 1 after every feedback
+static int distanceBoundForVoice = 1;
+// number of seconds
+static int duration = 0;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -238,6 +242,9 @@
         [self.pathRenderer setNeedsDisplayInMapRect:updateRect];
         // Update data
         self.distance = [self.path distance] / RS_UNIT;
+        if (self.distance > distanceBoundForVoice) {
+            [self triggleVoiceFeedback];
+        }
         self.speed = (SECONDS_OF_HOUR/RS_UNIT) * [self.path instantSpeed];
         // Move map with user location
         self.currLocation = newLocation;
@@ -253,6 +260,21 @@
     [self renewMapRegion];
     NSTimeInterval duration = ABS([self.startDate timeIntervalSinceNow]);
     self.avgSpeed = (SECONDS_OF_HOUR/RS_UNIT) * [self.path distance] / duration;
+}
+
+// Speak the current distance and the duration for the last km or mile
+- (void)triggleVoiceFeedback
+{
+    NSString *distanceText = [[NSString stringWithFormat:NSLocalizedString(@"DistanceCovered", nil), distanceBoundForVoice] stringByAppendingString:RS_UNIT_VOICE];
+    NSString *durationText = [NSLocalizedString(@"DurationText", nil) stringByAppendingString:[self.recordManager timeFormatted:duration withOption:FORMAT_MMSS]];
+    NSString *feedBackString = [distanceText stringByAppendingString:durationText];
+    AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:feedBackString];
+    utterance.rate = AVSpeechUtteranceMinimumSpeechRate;
+    if (self.speaker && utterance) {
+        [self.speaker speakUtterance:utterance];
+    }
+    ++distanceBoundForVoice;
+    duration = 0;
 }
 
 #pragma mark - Discard and Save Session
@@ -325,6 +347,8 @@
     self.distance = 0.0;
     self.avgSpeed = 0.0;
     self.sessionSeconds = 0;
+    duration = 0;
+    distanceBoundForVoice = 1;
 }
 
 - (void)restoreUI
@@ -473,6 +497,7 @@
 - (void)timerTick
 {
     self.sessionSeconds += 1;
+    duration += 1;
 }
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView

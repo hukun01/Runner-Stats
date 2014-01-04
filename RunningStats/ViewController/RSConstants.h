@@ -12,6 +12,7 @@
 #define RunningStats_RSConstants_h
 
 #define RS_UNIT ([[NSUserDefaults standardUserDefaults] integerForKey:@"measureUnit"]==0 ? 1000.0 : 1609.34)
+#define RS_UNIT_VOICE ([[NSUserDefaults standardUserDefaults] integerForKey:@"measureUnit"]==0 ? NSLocalizedString(@"kilometers",nil) : NSLocalizedString(@"miles",nil))
 #define RS_DISTANCE_UNIT_STRING ([[NSUserDefaults standardUserDefaults] integerForKey:@"measureUnit"]==0 ? @"km" : @"mi")
 #define RS_SPEED_UNIT_STRING ([[NSUserDefaults standardUserDefaults] integerForKey:@"measureUnit"]==0 ? @"km/h" : @"mi/h")
 #define RS_SPEED_UNIT_SHORT_STRING  ([[NSUserDefaults standardUserDefaults] integerForKey:@"measureUnit"]==0 ? @"kph" : @"mph")

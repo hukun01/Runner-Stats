@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "46D4AAA918655E6700F787BA"
                BuildableName = "RunningStats.app"
-               BlueprintName = "RunningStats"
+               BlueprintName = "Running Stats"
                ReferencedContainer = "container:RunningStats.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,7 +44,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "46D4AAA918655E6700F787BA"
             BuildableName = "RunningStats.app"
-            BlueprintName = "RunningStats"
+            BlueprintName = "Running Stats"
             ReferencedContainer = "container:RunningStats.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,7 +63,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "46D4AAA918655E6700F787BA"
             BuildableName = "RunningStats.app"
-            BlueprintName = "RunningStats"
+            BlueprintName = "Running Stats"
             ReferencedContainer = "container:RunningStats.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -81,7 +81,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "46D4AAA918655E6700F787BA"
             BuildableName = "RunningStats.app"
-            BlueprintName = "RunningStats"
+            BlueprintName = "Running Stats"
             ReferencedContainer = "container:RunningStats.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
