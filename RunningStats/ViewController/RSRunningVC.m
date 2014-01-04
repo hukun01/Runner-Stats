@@ -42,11 +42,13 @@
 @property (strong, nonatomic) MKPolylineRenderer *pathRenderer;
 @property (strong, nonatomic) IBOutlet UINavigationItem *myNavigationItem;
 @property (strong, nonatomic) AVSpeechSynthesizer *speaker;
+@property (assign, nonatomic) BOOL voiceOn;
 // Unit labels
 @property (strong, nonatomic) IBOutlet UILabel *distanceUnitLabel;
 @property (strong, nonatomic) IBOutlet UILabel *speedUnitLabel;
 @property (strong, nonatomic) IBOutlet UILabel *speedUnitLabel2;
-
+// iAD banner
+@property (strong, nonatomic) ADBannerView *iAd;
 
 @property (strong, nonatomic) IBOutlet UILabel *test_statusLabel;
 
@@ -68,8 +70,6 @@
     _locationManager.delegate = self;
     _locationManager.distanceFilter = 3.0;
     _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-    [_locationManager startUpdatingLocation];
-    
     // data
     [self resetData];
     _currLocation = [_locationManager location];
@@ -77,12 +77,12 @@
     // Create a record if not exist
     _recordManager = [[RSRecordManager alloc] init];
     
+    // debug
+//    if (![[NSFileManager defaultManager] removeItemAtPath:[self.recordManager recordPath] error:NULL])
+//        NSLog(@"remove failed");
 //    if (![_recordManager createRecord]) {
 //        NSLog(@"Create record.csv failed.");
 //    }
-    // debug
-    //    if (![[NSFileManager defaultManager] removeItemAtPath:[self.recordManager recordPath] error:NULL])
-    //        NSLog(@"remove failed");
 }
 
 - (void)viewDidLoad
@@ -100,6 +100,7 @@
 - (BOOL)configureAVAudioSession
 {
     self.speaker = [[AVSpeechSynthesizer alloc] init];
+    self.speaker.delegate = self;
     AVAudioSession* session = [AVAudioSession sharedInstance];
     //error handling
     BOOL success;
@@ -125,7 +126,8 @@
     [self renewMapRegion];
     self.map.showsUserLocation = YES;
     self.currLocation = [self.locationManager location];
-
+    
+    self.voiceOn = RS_VOICE_ON;
     [self updateUnitLabels];
 }
 
@@ -150,6 +152,9 @@
 {
     int countDown = RS_COUNT_DOWN;
     NSString *result = [[NSString alloc] init];
+    if (countDown == 0) {
+        return result;
+    }
     for (; countDown > 0; --countDown) {
         result = [result stringByAppendingString:[NSString stringWithFormat:@"%d, ", countDown]];
     }
@@ -157,12 +162,19 @@
     return result;
 }
 
+- (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didFinishSpeechUtterance:(AVSpeechUtterance *)utterance
+{
+    if (self.isRunning) {
+        [self startTimer];
+    }
+}
+
 # pragma mark - Start Session
 - (IBAction)startSession:(id)sender
 {
     self.isRunning = YES;
     [self.locationManager startUpdatingLocation];
-    if ([self configureAVAudioSession] && RS_VOICE_ON) {
+    if (self.voiceOn && [self configureAVAudioSession]) {
         [self speakCountDown];
     }
     // Clear the data of last event
@@ -174,14 +186,21 @@
     
     self.startDate = [NSDate date];
     [self renewMapRegion];
-    [self startTimer];
+    //[self startTimer];
     
-    // Change accessibility of some UI elements
+    // Change accessibility of some UI elements and display iAd
     self.startButton.hidden = YES;
-    self.tabBarController.tabBar.hidden = YES;
     self.saveButton.hidden = NO;
     self.stopButton.hidden = NO;
     self.map.zoomEnabled = NO;
+    self.tabBarController.tabBar.hidden = YES;
+    [self setupADBanner];
+}
+- (void)setupADBanner
+{
+    self.iAd = [[ADBannerView alloc] initWithFrame:CGRectMake(0, 520, self.view.frame.size.width, 48)];
+
+    [self.view addSubview:self.iAd];
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
@@ -301,6 +320,9 @@
     [self stopTimer];
     [self restoreUI];
     self.isRunning = NO;
+    if (self.speaker.isSpeaking) {
+        [self.speaker stopSpeakingAtBoundary:AVSpeechBoundaryWord];
+    }
 }
 
 - (void)resetData

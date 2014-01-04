@@ -8,7 +8,7 @@
 
 // First interface
 "FirstNavigationBarTitle" = "Running Stats";
-"StartRunningText" = ".start running";
+"StartRunningText" = " Start";
    // alert view
 "DiscardTitle" = "Discard?";
 "Do you want to Discard" = "Do you want to stop and discard this session?";
@@ -23,5 +23,17 @@
 "Max Speed" = "Max Speed";
 // Second-2 interface
 "Running Frequency" = "Running Frequency";
+"JAN" = "JAN";
+"FEB" = "FEB";
+"MAR" = "MAR";
+"APR" = "APR";
+"MAY" = "MAY";
+"JUN" = "JUN";
+"JUL" = "JUL";
+"AUG" = "AUG";
+"SEP" = "SEP";
+"OCT" = "OCT";
+"NOV" = "NOV";
+"DEC" = "DEC";
 // Third interface
 "Settings" = "Settings";

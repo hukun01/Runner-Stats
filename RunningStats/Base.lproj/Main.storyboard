@@ -513,9 +513,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nYe-TJ-ofj">
-                                                    <rect key="frame" x="230" y="8" width="70" height="29"/>
+                                                    <rect key="frame" x="211" y="8" width="89" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <segments>
+                                                        <segment title="0"/>
                                                         <segment title="5"/>
                                                         <segment title="10"/>
                                                     </segments>
@@ -620,12 +621,17 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                             </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="RK9-T0-MBj">
+                                <rect key="frame" x="150" y="274" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="CsA-hp-4V7"/>
                     <connections>
-                        <outlet property="webView" destination="Ua3-50-SIk" id="yDZ-Jy-pHj"/>
+                        <outlet property="activityIndicator" destination="RK9-T0-MBj" id="9kK-Ox-CZs"/>
+                        <outlet property="webView" destination="Ua3-50-SIk" id="vgk-Ki-Fte"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3AP-pe-YPz" userLabel="First Responder" sceneMemberID="firstResponder"/>

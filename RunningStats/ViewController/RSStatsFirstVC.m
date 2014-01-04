@@ -77,9 +77,6 @@
     // setup table view
     self.recordTableView.dataSource = self;
     self.recordTableView.delegate = self;
-    self.records = [self.recordManager readRecord];
-    // setup data
-    [self calcWholeDataForLabels];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -89,6 +86,9 @@
     RSStatsVC *parentVC = (RSStatsVC *)self.navigationController.parentViewController;
     parentVC.pageControl.hidden = NO;
     parentVC.currentStatsView.scrollEnabled = YES;
+    // setup data
+    self.records = [self.recordManager readRecord];
+    [self calcWholeDataForLabels];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -158,7 +158,10 @@
         return cell;
     }
     cell.textLabel.text = [self cellTitleForIndex:indexPath.row];
-    cell.distanceLabel.text = [[self.records objectAtIndex:indexPath.row] objectAtIndex:1];
+    CLLocationDistance wholeDistance = [[[self.records objectAtIndex:indexPath.row] objectAtIndex:1] doubleValue];
+    wholeDistance /= RS_UNIT;
+    cell.distanceLabel.text = [NSString stringWithFormat:@"%.2f", wholeDistance];
+    cell.unitLabel.text = [@" " stringByAppendingString:RS_DISTANCE_UNIT_STRING];
     int seconds = [[[self.records objectAtIndex:indexPath.row] objectAtIndex:2] intValue];
     if (seconds >= SECONDS_OF_HOUR) {
         cell.durationLabel.text = [self.recordManager timeFormatted:seconds withOption:FORMAT_HHMMSS];

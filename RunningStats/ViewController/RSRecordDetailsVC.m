@@ -18,13 +18,14 @@
 #define NUMBER_OF_SECTION_POINTS 25
 
 // Numerics
-CGFloat const kJBLineChartViewControllerChartHeight = 300.0f;
+CGFloat const kJBLineChartViewControllerChartHeight = 250.0f;
 CGFloat const kJBLineChartViewControllerChartHeaderHeight = 70.0f;
 CGFloat const kJBLineChartViewControllerChartHeaderPadding = 10.0f;
 CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
 
 @interface RSRecordDetailsVC ()
 @property (strong, nonatomic) RSRecordManager *recordManager;
+@property (strong, nonatomic) JBChartHeaderView *headerView;
 @property (strong, nonatomic) JBLineChartView *lineChart;
 @property (strong, nonatomic) JBChartInformationView *infoView;
 @property (strong, nonatomic) NSString *record;
@@ -118,24 +119,29 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
 
 - (void)configureLineChart
 {
-    self.lineChart = [[JBLineChartView alloc] initWithFrame:CGRectMake(kJBNumericDefaultPadding, 50, self.view.bounds.size.width - (kJBNumericDefaultPadding * 2), kJBLineChartViewControllerChartHeight)];
+    if (!self.lineChart) {
+        self.lineChart = [[JBLineChartView alloc] initWithFrame:CGRectMake(kJBNumericDefaultPadding, 50, self.view.bounds.size.width - (kJBNumericDefaultPadding * 2), kJBLineChartViewControllerChartHeight)];
+    }
     self.lineChart.delegate = self;
     self.lineChart.dataSource = self;
 }
 
 - (void)configureHeaderView
 {
-    JBChartHeaderView *headerView = [[JBChartHeaderView alloc] initWithFrame:CGRectMake(kJBNumericDefaultPadding, ceil(self.view.bounds.size.height * 0.5) - ceil(kJBLineChartViewControllerChartHeaderHeight * 0.5), self.view.bounds.size.width - (kJBNumericDefaultPadding * 2), kJBLineChartViewControllerChartHeaderHeight)];
-    headerView.titleLabel.text = [self getHeaderTitleFromRecord:self.record];
-    headerView.titleLabel.textColor = kJBColorLineChartHeader;
-    headerView.titleLabel.shadowColor = [UIColor colorWithWhite:1.0 alpha:0.25];
-    headerView.titleLabel.shadowOffset = CGSizeMake(0, 1);
-    headerView.subtitleLabel.text = [NSLocalizedString(@"Max Speed", nil) stringByAppendingString:[[NSString stringWithFormat:@": %.1f ", self.maxSpeed * SECONDS_OF_HOUR/RS_UNIT] stringByAppendingString:RS_SPEED_UNIT_STRING]];
-    headerView.subtitleLabel.textColor = kJBColorLineChartHeader;
-    headerView.subtitleLabel.shadowColor = [UIColor colorWithWhite:1.0 alpha:0.25];
-    headerView.subtitleLabel.shadowOffset = CGSizeMake(0, 1);
-    headerView.separatorColor = kJBColorLineChartHeaderSeparatorColor;
-    self.lineChart.headerView = headerView;
+    if (!self.headerView) {
+        self.headerView = [[JBChartHeaderView alloc] initWithFrame:CGRectMake(kJBNumericDefaultPadding, ceil(self.view.bounds.size.height * 0.5) - ceil(kJBLineChartViewControllerChartHeaderHeight * 0.5), self.view.bounds.size.width - (kJBNumericDefaultPadding * 2), kJBLineChartViewControllerChartHeaderHeight)];
+    }
+    
+    self.headerView.titleLabel.text = [self getHeaderTitleFromRecord:self.record];
+    self.headerView.titleLabel.textColor = kJBColorLineChartHeader;
+    self.headerView.titleLabel.shadowColor = [UIColor colorWithWhite:1.0 alpha:0.25];
+    self.headerView.titleLabel.shadowOffset = CGSizeMake(0, 1);
+    self.headerView.subtitleLabel.text = [NSLocalizedString(@"Max Speed", nil) stringByAppendingString:[[NSString stringWithFormat:@": %.1f ", self.maxSpeed * SECONDS_OF_HOUR/RS_UNIT] stringByAppendingString:RS_SPEED_UNIT_STRING]];
+    self.headerView.subtitleLabel.textColor = kJBColorLineChartHeader;
+    self.headerView.subtitleLabel.shadowColor = [UIColor colorWithWhite:1.0 alpha:0.25];
+    self.headerView.subtitleLabel.shadowOffset = CGSizeMake(0, 1);
+    self.headerView.separatorColor = kJBColorLineChartHeaderSeparatorColor;
+    self.lineChart.headerView = self.headerView;
 }
 
 - (void)configureFooterView
@@ -153,7 +159,8 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
 
 - (void)configureInfoView
 {
-    self.infoView = [[JBChartInformationView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, CGRectGetMaxY(self.lineChart.frame), self.view.bounds.size.width, 150) layout:JBChartInformationViewLayoutVertical];    [self.infoView setValueAndUnitTextColor:[UIColor colorWithWhite:1.0 alpha:0.75]];
+    self.infoView = [[JBChartInformationView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, CGRectGetMaxY(self.lineChart.frame), self.view.bounds.size.width, 100) layout:JBChartInformationViewLayoutVertical];
+    [self.infoView setValueAndUnitTextColor:[UIColor colorWithWhite:1.0 alpha:0.75]];
     [self.infoView setTitleTextColor:[UIColor blackColor]];
     [self.infoView setValueAndUnitTextColor:PNTwitterColor];
     [self.infoView setTextShadowColor:nil];
@@ -184,11 +191,6 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
     self.record = recordDate;
     NSString *docsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     self.recordPath = [docsPath stringByAppendingPathComponent:[[self getRecordNameFromRecordDate:recordDate] stringByAppendingString:@".csv"]];
-    
-    // TO-DO: Draw figures: lineChart and barChart
-    // lineChart for duration-speed
-    // barChart for pace
-    // TO-DO: Use a dictionary to store {1 km : 06:00},{2 km : 06:15} ...
 }
 
 #pragma mark - JBLineChartViewDelegate
@@ -196,15 +198,35 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
 - (NSInteger)lineChartView:(JBLineChartView *)lineChartView heightForIndex:(NSInteger)index
 {
     NSArray *row = [self.recordData objectAtIndex:index];
+    // Since the API returns NSInteger, and my data is double type, I multiply a big number to make it like some integer
+    // and keep the relativity of line trend
     return [[row lastObject] floatValue] * 3600; // y-position of poinnt at index (x-axis)
 }
 
 - (void)lineChartView:(JBLineChartView *)lineChartView didSelectChartAtIndex:(NSInteger)index
 {
     NSArray *row = [self.recordData objectAtIndex:index];
-    NSNumber *valueNumber = [NSNumber numberWithDouble:[[row lastObject] doubleValue] * SECONDS_OF_HOUR/RS_UNIT];
-    [self.infoView setValueText:[NSString stringWithFormat:@"%.2f", [valueNumber doubleValue]] unitText:[@" " stringByAppendingString:RS_SPEED_UNIT_STRING]];
-    [self.infoView setTitleText:[NSString stringWithFormat:@"%.2f", [[row objectAtIndex:1] doubleValue]/1000] unitText:[@" " stringByAppendingString:RS_DISTANCE_UNIT_STRING]];
+    
+    NSNumber *speedValue = [NSNumber numberWithDouble:[[row lastObject] doubleValue] * SECONDS_OF_HOUR/RS_UNIT];
+    NSString *valueText = [[NSString alloc] init];
+    if ([speedValue doubleValue] > 10.0) {
+        valueText = [NSString stringWithFormat:@"%.1f", [speedValue doubleValue]];
+    }
+    else {
+        valueText = [NSString stringWithFormat:@"%.2f", [speedValue doubleValue]];
+    }
+    [self.infoView setValueText:valueText unitText:[@" " stringByAppendingString:RS_SPEED_UNIT_STRING]];
+    
+    CLLocationDistance distanceTitle = [[row objectAtIndex:1] doubleValue]/RS_UNIT;
+    NSString *titleText = [[NSString alloc] init];
+    if (distanceTitle > 10.0) {
+        titleText = [NSString stringWithFormat:@"%.1f", distanceTitle];
+    }
+    else {
+        titleText = [NSString stringWithFormat:@"%.2f", distanceTitle];
+    }
+    [self.infoView setTitleText:titleText unitText:[@" " stringByAppendingString:RS_DISTANCE_UNIT_STRING]];
+    
     [self.infoView setHidden:NO animated:YES];
 }
 

@@ -10,8 +10,10 @@
 #import "RSSettingsTVC.h"
 #import "RSSettingsVC.h"
 
-@interface RSSettingsDetailsVC ()
+@interface RSSettingsDetailsVC () <UIWebViewDelegate>
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+
 @property (strong, nonatomic) NSURL *url;
 
 @end
@@ -21,17 +23,45 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    NSURLRequest *request = [NSURLRequest requestWithURL:self.url];
-    [self.webView loadRequest:request];
-    self.webView.scrollView.showsHorizontalScrollIndicator = NO;
-    
+    [self hideElementsOfParentVC];
+    [self setupWebView];
+    self.activityIndicator.hidden = NO;
+}
+
+- (void)hideElementsOfParentVC
+{
     RSSettingsVC *parentVC = (RSSettingsVC *)self.parentViewController.navigationController.parentViewController;
     parentVC.scrollView.scrollEnabled = NO;
     parentVC.descriptionLabel.hidden = YES;
 }
 
--(void)showSettingDetailsByTag:(NSNumber *)tag
+- (void)setupWebView
+{
+    NSURLRequest *request = [NSURLRequest requestWithURL:self.url];
+    self.webView.delegate = self;
+    self.webView.scrollView.showsHorizontalScrollIndicator = NO;
+    [self.webView loadRequest:request];
+}
+
+#pragma mark - webview delegate
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    [self.activityIndicator startAnimating];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [self.activityIndicator stopAnimating];
+    self.activityIndicator.hidden = YES;
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    [self.activityIndicator stopAnimating];
+}
+
+#pragma mark - segue selector
+- (void)showSettingDetailsByTag:(NSNumber *)tag
 {
     if ([tag isEqualToNumber:SUPPORT_URL]) {
         self.url = [NSURL URLWithString:@"http://lifexplorer.me/projects/running-stats/#respond"];

@@ -10,12 +10,11 @@
 #import <MapKit/MapKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
-#import "CHCSVParser.h"
 #import "RSRecordManager.h"
 #import "RSPath.h"
 #import "RSConstants.h"
 
 @interface RSRunningVC : UIViewController
-<MKMapViewDelegate, CLLocationManagerDelegate, UIAlertViewDelegate, AVSpeechSynthesizerDelegate>
+<MKMapViewDelegate, CLLocationManagerDelegate, UIAlertViewDelegate, AVSpeechSynthesizerDelegate, ADBannerViewDelegate>
 
 @end

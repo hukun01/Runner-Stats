@@ -10,6 +10,9 @@
 #import "PNChart.h"
 #import "TEAContributionGraph.h"
 
+#define TEACHART_WIDTH 190
+#define TEACHART_HEIGHT 162
+
 @interface RSStatsSecondVC ()
 @property (strong, nonatomic) PNBarChart *barChart;
 @property (strong, nonatomic) TEAContributionGraph *contributionGraph;
@@ -42,7 +45,7 @@ static int onceAnimated = 2;
 
 - (void)setupContributionGraph
 {
-    self.contributionGraph = [[TEAContributionGraph alloc] initWithFrame:CGRectMake(65, 65, 190, 162)];
+    self.contributionGraph = [[TEAContributionGraph alloc] initWithFrame:CGRectMake(65, 65, TEACHART_WIDTH, TEACHART_HEIGHT)];
     self.contributionGraph.backgroundColor = [UIColor whiteColor];
     self.contributionGraph.width = 22;
     self.contributionGraph.spacing = 6;
@@ -58,8 +61,8 @@ static int onceAnimated = 2;
     self.barChart.barBackgroundColor = myGray;
     self.barChart.strokeColor = PNTwitterColor;
     // barChart data
-    self.barChart.xLabels = @[@"JAN", @"FEB", @"MAR", @"APR", @"MAY", @"JUN",
-                              @"JUL", @"AUG"];
+    self.barChart.xLabels = @[@"05:50", @"06:10", @"05:59", @"06:33", @"07:10", @"05:50",
+                              @"06:10", @"06:33"];
     self.barChart.yValues = @[@3, @7, @1, @3, @5, @1,
                               @10, @2];
 }

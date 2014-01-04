@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		15A3F798A6CB417B9C2C0F91 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B49D21AA1849DCAC899F2D /* libPods.a */; };
+		464282F218788487007E13F7 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 464282F118788487007E13F7 /* iAd.framework */; };
 		46847A9518761397001D4D44 /* JBChartHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46847A8B18761397001D4D44 /* JBChartHeaderView.m */; };
 		46847A9618761397001D4D44 /* JBChartInformationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46847A8D18761397001D4D44 /* JBChartInformationView.m */; };
 		46847A9718761397001D4D44 /* JBLineChartFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46847A9218761397001D4D44 /* JBLineChartFooterView.m */; };
@@ -54,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		464282F118788487007E13F7 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		46847A8A18761397001D4D44 /* JBChartHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBChartHeaderView.h; path = JBChartHelper/JBChartHeaderView.h; sourceTree = "<group>"; };
 		46847A8B18761397001D4D44 /* JBChartHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBChartHeaderView.m; path = JBChartHelper/JBChartHeaderView.m; sourceTree = "<group>"; };
 		46847A8C18761397001D4D44 /* JBChartInformationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBChartInformationView.h; path = JBChartHelper/JBChartInformationView.h; sourceTree = "<group>"; };
@@ -115,10 +117,10 @@
 		46EEB9D0187743E500A9E83A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		46EEB9D1187743E500A9E83A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		46EEB9D3187743E500A9E83A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		46EEB9D5187744BD00A9E83A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		46EEB9D7187744C500A9E83A /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		46EEB9D8187744C600A9E83A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		46EEB9D9187744C800A9E83A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = file; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		46EEB9D5187744BD00A9E83A /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		46EEB9D7187744C500A9E83A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		46EEB9D8187744C600A9E83A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		46EEB9D9187744C800A9E83A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		46EEB9DA1877769B00A9E83A /* RSConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSConstants.h; sourceTree = "<group>"; };
 		88B49D21AA1849DCAC899F2D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD14B5FDF5AD4CE1832846E7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				464282F218788487007E13F7 /* iAd.framework in Frameworks */,
 				46EEB9BF187734CB00A9E83A /* AVFoundation.framework in Frameworks */,
 				46AC5AFD1865648E006CAAD1 /* MapKit.framework in Frameworks */,
 				46D4AAB018655E6700F787BA /* CoreGraphics.framework in Frameworks */,
@@ -238,6 +241,7 @@
 		46D4AAAC18655E6700F787BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				464282F118788487007E13F7 /* iAd.framework */,
 				46EEB9BE187734CB00A9E83A /* AVFoundation.framework */,
 				46AC5AFC1865648E006CAAD1 /* MapKit.framework */,
 				46AC5AFA18656098006CAAD1 /* AudioToolbox.framework */,

@@ -94,11 +94,11 @@
         }
     }
 }
-
+// setup rate me table view cell
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 1 && indexPath.row == 0) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://itunes.apple.com/app/id378458261?at=10l6dK"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://itunes.apple.com/app/RunningStats"]];
     }
 }
 @end

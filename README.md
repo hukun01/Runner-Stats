@@ -5,4 +5,4 @@ Running Stats is an iPhone app, which helps you record the data of every run, in
 
 I run 5 kilometers for every test! :-D
 
------- stats branch is for displaying statistics data for every run.
+------ settings branch is for the settings bar.

@@ -12,6 +12,6 @@
 #import "JBConstants.h"
 #import "RSConstants.h"
 
-@interface RSRecordDetailsVC : UIViewController <JBLineChartViewDelegate, JBLineChartViewDataSource>
+@interface RSRecordDetailsVC : UIViewController <JBLineChartViewDelegate, JBLineChartViewDataSource, ADBannerViewDelegate>
 
 @end
