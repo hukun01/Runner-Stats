@@ -69,7 +69,9 @@
 
 - (NSArray *)readRecordDetailsByPath:(NSString *)path
 {
-    return [NSArray arrayWithContentsOfCSVFile:path];
+    NSArray *detailData = [NSArray arrayWithContentsOfCSVFile:path];
+    NSRange range = {0, [detailData count]-1};
+    return [detailData subarrayWithRange:range];
 }
 
 - (void)addALine:(NSArray *)newline

@@ -34,6 +34,8 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
 // flagPoint is for marking every kilometer or mile covered
 @property (assign, nonatomic) NSUInteger flagPoint;
 @property (assign, nonatomic) CLLocationSpeed maxSpeed;
+// iAD banner
+@property (strong, nonatomic) ADBannerView *iAd;
 @end
 
 @implementation RSRecordDetailsVC
@@ -54,8 +56,7 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
 	// Do any additional setup after loading the view.
     self.flagPoint = 1000;
     [self configureDataSource];
-    
-    if ([self.recordData count] <= 1) {
+    if ([self.recordData count] < 1) {
         return;
     }
 }
@@ -71,6 +72,8 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
     [self configureFooterView];
     // informationView
     [self configureInfoView];
+    // setup iAd banner
+    [self setupADBanner];
     
     [self.view addSubview:self.lineChart];
     [self.lineChart reloadData];
@@ -166,6 +169,41 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
     [self.infoView setTextShadowColor:nil];
     [self.infoView setSeparatorColor:[UIColor blackColor]];
     [self.view addSubview:self.infoView];
+}
+
+static bool bannerHasBeenLoaded = NO;
+
+- (void)setupADBanner
+{
+    self.iAd = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
+    
+    CGRect iAdFrame = self.iAd.frame;
+    iAdFrame.origin.y = self.view.frame.size.height-50;
+    self.iAd.frame = iAdFrame;
+    self.iAd.delegate = self;
+    [self.view addSubview:self.iAd];
+}
+
+#pragma mark - ADBanner delegate
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+{
+    // When error happens, if the ad has been there, just keep it
+    // otherwise, hide it.
+    if (!bannerHasBeenLoaded) {
+        self.iAd.hidden = YES;
+    }
+}
+
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner
+{
+    NSLog(@"Success233!");
+    bannerHasBeenLoaded = YES;
+    self.iAd.hidden = NO;
+}
+
+- (BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave
+{
+    return YES;
 }
 
 - (NSString *)getHeaderTitleFromRecord:(NSString *)record

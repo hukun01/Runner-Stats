@@ -41,6 +41,7 @@
 @property (strong, nonatomic) RSPath *path;
 @property (strong, nonatomic) MKPolylineRenderer *pathRenderer;
 @property (strong, nonatomic) IBOutlet UINavigationItem *myNavigationItem;
+// before start, count down related
 @property (strong, nonatomic) AVSpeechSynthesizer *speaker;
 @property (assign, nonatomic) BOOL voiceOn;
 // Unit labels
@@ -95,6 +96,7 @@
                                                  name:UIApplicationWillEnterForegroundNotification
                                                object:nil];
     self.myNavigationItem.title = NSLocalizedString(@"FirstNavigationBarTitle", nil);
+    [self setupADBanner];
 }
 
 - (BOOL)configureAVAudioSession
@@ -106,11 +108,9 @@
     BOOL success;
     //set the audioSession category.
     //Needs to be Record or PlayAndRecord to use audioRouteOverride:
-    success = [session setCategory:AVAudioSessionCategoryPlayAndRecord
-                             error:NULL];
+    success = [session setCategory:AVAudioSessionCategoryPlayAndRecord error:NULL];
     //set the audioSession override
-    success = [session overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker
-                                         error:NULL];
+    success = [session overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:NULL];
     //activate the audio session
     success = [session setActive:YES error:NULL];
     return success;
@@ -194,13 +194,7 @@
     self.stopButton.hidden = NO;
     self.map.zoomEnabled = NO;
     self.tabBarController.tabBar.hidden = YES;
-    [self setupADBanner];
-}
-- (void)setupADBanner
-{
-    self.iAd = [[ADBannerView alloc] initWithFrame:CGRectMake(0, 520, self.view.frame.size.width, 48)];
-
-    [self.view addSubview:self.iAd];
+    self.iAd.hidden = NO;
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
@@ -341,6 +335,7 @@
     self.saveButton.hidden = YES;
     self.tabBarController.tabBar.hidden = NO;
     self.map.zoomEnabled = YES;
+    self.iAd.hidden = YES;
 }
 
 - (void)stopTimer
@@ -380,6 +375,47 @@
 
     //debug
     self.test_statusLabel.text = [NSString stringWithFormat:@"%@", newRecord];
+}
+
+#pragma mark - ADBanner configuration
+- (void)setupADBanner
+{
+    self.iAd = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
+    self.iAd.hidden = YES;
+    
+    CGRect iAdFrame = self.iAd.frame;
+    iAdFrame.origin.y = self.view.frame.size.height-50;
+    NSLog(@"%f",iAdFrame.origin.y );
+    self.iAd.frame = iAdFrame;
+    self.iAd.delegate = self;
+    [self.view addSubview:self.iAd];
+}
+
+#pragma mark - ADBanner delegate
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+{
+    if (self.iAd.bannerLoaded) {
+        NSLog(@"Loaded!");
+    }
+    else {
+        NSLog(@"Some error about ads: %@", error);
+        if (!self.isRunning) {
+            self.iAd.hidden = YES;
+        }
+    }
+}
+
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner
+{
+    NSLog(@"Success!");
+    if (self.isRunning) {
+        self.iAd.hidden = NO;
+    }
+}
+
+- (BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave
+{
+    return YES;
 }
 
 #pragma mark - Stable utility functions
