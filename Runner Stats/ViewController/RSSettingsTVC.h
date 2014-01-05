@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RSSettingsDetailsVC.h"
 
 #define SUPPORT_URL @0
 #define LIBRARIES_URL @1

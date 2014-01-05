@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface RSSettingsDetailsVC : UIViewController
-
+- (void)showSettingDetailsByTag:(NSNumber *)tag;
 @end

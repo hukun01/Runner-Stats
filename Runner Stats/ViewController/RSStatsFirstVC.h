@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "RSConstants.h"
+#import "RSRecordDetailsVC.h"
 
 @interface RSStatsFirstVC : UIViewController <UITableViewDataSource, UITableViewDelegate>
 

@@ -13,5 +13,5 @@
 #import "RSConstants.h"
 
 @interface RSRecordDetailsVC : UIViewController <JBLineChartViewDelegate, JBLineChartViewDataSource, ADBannerViewDelegate>
-
+- (void)showRecordFromDate:(NSString *)recordDate;
 @end

@@ -170,6 +170,7 @@ static int duration = 0;
 {
     if (self.isRunning) {
         [self startTimer];
+        NSLog(@"When?");
     }
 }
 
@@ -190,7 +191,6 @@ static int duration = 0;
     
     self.startDate = [NSDate date];
     [self renewMapRegion];
-    //[self startTimer];
     
     // Change accessibility of some UI elements and display iAd
     self.startButton.hidden = YES;
@@ -265,6 +265,9 @@ static int duration = 0;
 // Speak the current distance and the duration for the last km or mile
 - (void)triggleVoiceFeedback
 {
+    if (!self.voiceOn) {
+        return;
+    }
     NSString *distanceText = [[NSString stringWithFormat:NSLocalizedString(@"DistanceCovered", nil), distanceBoundForVoice] stringByAppendingString:RS_UNIT_VOICE];
     NSString *durationText = [NSLocalizedString(@"DurationText", nil) stringByAppendingString:[self.recordManager timeFormatted:duration withOption:FORMAT_MMSS]];
     NSString *feedBackString = [distanceText stringByAppendingString:durationText];
@@ -332,10 +335,10 @@ static int duration = 0;
 
 - (void)stopSession
 {
+    self.isRunning = NO;
     [self.locationManager stopUpdatingLocation];
     [self stopTimer];
     [self restoreUI];
-    self.isRunning = NO;
     if (self.speaker.isSpeaking) {
         [self.speaker stopSpeakingAtBoundary:AVSpeechBoundaryWord];
     }
@@ -368,6 +371,14 @@ static int duration = 0;
         [self.timer invalidate];
         self.timer = nil;
     }
+}
+
+- (void)startTimer
+{
+    if (!_timer) {
+        _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerTick) userInfo:nil repeats:YES];
+    }
+    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
 }
 
 // In record, the measure unit of distance is meters,
@@ -486,12 +497,6 @@ static int duration = 0;
 {
     _sessionSeconds = sessionSeconds;
     self.timerLabel.text = [self.recordManager timeFormatted:sessionSeconds withOption:FORMAT_HHMMSS];
-}
-
-- (void)startTimer
-{
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerTick) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
 }
 
 - (void)timerTick
