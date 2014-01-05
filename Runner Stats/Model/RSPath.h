@@ -2,6 +2,7 @@
 
 #import <MapKit/MapKit.h>
 #import "CHCSVParser.h"
+#import "RSRecordManager.h"
 
 @interface RSPath : NSObject <MKOverlay>
 {

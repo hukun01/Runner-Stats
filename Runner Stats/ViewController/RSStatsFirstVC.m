@@ -161,12 +161,12 @@
     cell.distanceLabel.text = [NSString stringWithFormat:@"%.2f", wholeDistance];
     cell.unitLabel.text = [@" " stringByAppendingString:RS_DISTANCE_UNIT_STRING];
     int seconds = [[[self.records objectAtIndex:indexPath.row] objectAtIndex:2] intValue];
-    if (seconds >= SECONDS_OF_HOUR) {
+    //if (seconds >= SECONDS_OF_HOUR) {
         cell.durationLabel.text = [self.recordManager timeFormatted:seconds withOption:FORMAT_HHMMSS];
-    }
-    else {
-        cell.durationLabel.text = [self.recordManager timeFormatted:seconds withOption:FORMAT_MMSS];
-    }
+    //}
+    //else {
+    //    cell.durationLabel.text = [self.recordManager timeFormatted:seconds withOption:FORMAT_MMSS];
+    //}
     
     return cell;
 }

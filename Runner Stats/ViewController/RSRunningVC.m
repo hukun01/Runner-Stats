@@ -84,11 +84,11 @@ static int duration = 0;
     _isRunning = NO;
     
     // debug
-//    if (![[NSFileManager defaultManager] removeItemAtPath:[self.recordManager recordPath] error:NULL])
-//        NSLog(@"remove failed");
-//    if (![_recordManager createRecord]) {
-//        NSLog(@"Create record.csv failed.");
-//    }
+    if (![[NSFileManager defaultManager] removeItemAtPath:[self.recordManager recordPath] error:NULL])
+        NSLog(@"remove failed");
+    if (![_recordManager createRecord]) {
+        NSLog(@"Create record.csv failed.");
+    }
 }
 
 - (void)viewDidLoad
@@ -464,6 +464,7 @@ static int duration = 0;
 }
 
 #pragma mark - ADBanner configuration
+static bool bannerHasBeenLoaded = NO;
 - (void)setupADBanner
 {
     if (!self.iAd) {
@@ -480,20 +481,19 @@ static int duration = 0;
 #pragma mark - ADBanner delegate
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
 {
-    if (self.iAd.bannerLoaded) {
-        NSLog(@"Loaded!");
+    if (!self.isRunning) {
+        return;
     }
-    else {
+    if (!bannerHasBeenLoaded) {
         NSLog(@"Some error about ads: %@", error);
-        if (!self.isRunning) {
-            self.iAd.hidden = YES;
-        }
+        self.iAd.hidden = YES;
     }
 }
 
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner
 {
     NSLog(@"Success!");
+    bannerHasBeenLoaded = YES;
     if (self.isRunning) {
         self.iAd.hidden = NO;
     }

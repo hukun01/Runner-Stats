@@ -26,6 +26,7 @@
 "Max Speed" = "最高速度";
 // Second-2 interface
 "Running Frequency" = "跑步頻率";
+"barChartTitle" = "最近7週的運動時長";
 "JAN" = "一月";
 "FEB" = "二月";
 "MAR" = "三月";

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RSConstants.h"
 
-@interface RSStatsSecondVC : UIViewController
+@interface RSStatsSecondVC : UIViewController <ADBannerViewDelegate>
 
 @end

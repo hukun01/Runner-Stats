@@ -27,8 +27,8 @@
     return @[
              @[@"2013-12-15 16:28:00", @"5341", @"1850", @"3.3"],
              @[@"2014-01-01 16:30:00", @"5341", @"1800", @"3"],
-             //@[@"2014-01-02 16:32:00", @"5341", @"1802", @"2.3"],
-             @[@"2014-01-03 16:34:00", @"5129", @"1866", @"2.20"]
+             @[@"2014-01-03 16:34:00", @"5129", @"1866", @"2.20"],
+             @[@"2014-01-04 16:32:00", @"5341", @"1802", @"2.3"],
              ];
 }
 
@@ -133,7 +133,12 @@
     if (option == FORMAT_MMSS) {
         return [NSString stringWithFormat:@"%02d:%02d", minutes, seconds];
     }
-    return [NSString stringWithFormat:@"%02d:%02d:%02d",hours, minutes, seconds];
+    else if (option == FORMAT_HHMMSS) {
+        return [NSString stringWithFormat:@"%02d:%02d:%02d",hours, minutes, seconds];
+    }
+    else {
+        return [NSString stringWithFormat:@"%02d:%02d", hours, minutes];
+    }
 }
 
 @end

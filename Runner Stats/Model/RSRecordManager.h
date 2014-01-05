@@ -11,6 +11,7 @@
 
 #define FORMAT_HHMMSS 0
 #define FORMAT_MMSS 1
+#define FORMAT_HHMM 2
 
 @interface RSRecordManager : NSObject <CHCSVParserDelegate>
 // Create if not exists an empty record named record.csv, in which there is one empty line

@@ -177,7 +177,8 @@ static bool bannerHasBeenLoaded = NO;
 {
     if (!self.iAd) {
         self.iAd = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
-        self.iAd.hidden = YES;CGRect iAdFrame = self.iAd.frame;
+        self.iAd.hidden = YES;
+        CGRect iAdFrame = self.iAd.frame;
         iAdFrame.origin.y = self.view.frame.size.height-50;
         self.iAd.frame = iAdFrame;
         self.iAd.delegate = self;
@@ -206,6 +207,7 @@ static bool bannerHasBeenLoaded = NO;
 {
     return YES;
 }
+#pragma end
 
 - (NSString *)getHeaderTitleFromRecord:(NSString *)record
 {
