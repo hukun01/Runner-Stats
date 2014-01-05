@@ -8,81 +8,97 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 		<key>Pods-Appirater.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 		<key>Pods-CHCSVParser.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>Pods-JBChartView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 		<key>Pods-MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>6</integer>
 		</dict>
 		<key>Pods-PNChart.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>7</integer>
 		</dict>
 		<key>Pods-TEAChart.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>8</integer>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>205D28861BF145689C22E63C</key>
+		<key>12B61A5756BE4FDB948DBCA0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3AEB3B6C6C584A75A84CAFB6</key>
+		<key>17ABC4AFB50243F2B676A249</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6654A227454F4213BA094210</key>
+		<key>54C51B3664304008A3A07674</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8A071A1D54D544AD9EEA9238</key>
+		<key>93D05CA0FE6E4423AAAB11EB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A12B1C489EF844D099D6E2DE</key>
+		<key>B494716D5CD7443F8A9FC48B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B555A6F31D1D4D3FADED1359</key>
+		<key>D61008CD4B084B2BB150702A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CA263A26049B45C789691C78</key>
+		<key>DAA5B8BDB43547739E60376D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F15642CA60C3441EA6C19AA0</key>
+		<key>F513B7C7D01946B38E4F3D7C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
