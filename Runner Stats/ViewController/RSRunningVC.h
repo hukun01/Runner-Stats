@@ -13,7 +13,6 @@
 #import "RSRecordManager.h"
 #import "RSPath.h"
 #import "RSConstants.h"
-#import "MBProgressHUD.h"
 
 @interface RSRunningVC : UIViewController
 <MKMapViewDelegate, CLLocationManagerDelegate, UIAlertViewDelegate, AVSpeechSynthesizerDelegate, ADBannerViewDelegate>
