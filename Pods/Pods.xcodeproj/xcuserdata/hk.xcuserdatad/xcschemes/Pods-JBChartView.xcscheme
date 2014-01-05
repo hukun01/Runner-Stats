@@ -13,10 +13,10 @@
             buildForProfiling = "YES"
             buildForTesting = "YES">
             <BuildableReference
-               BuildableName = "libPods-TEAChart.a"
-               BlueprintIdentifier = "1F92189FC25240D090310D19"
+               BuildableName = "libPods-JBChartView.a"
+               BlueprintIdentifier = "56AAE1BC15EB4ED5920B2F3F"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BlueprintName = "Pods-TEAChart"
+               BlueprintName = "Pods-JBChartView"
                BuildableIdentifier = "primary">
             </BuildableReference>
          </BuildActionEntry>

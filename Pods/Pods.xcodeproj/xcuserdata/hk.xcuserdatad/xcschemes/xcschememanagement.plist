@@ -4,27 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Appirater.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-Appirater.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-CHCSVParser.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-JBChartView.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -47,42 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0EBCA764CBC24B69A7B23F27</key>
+		<key>1F92189FC25240D090310D19</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>22FC34BB84C943459DD648FB</key>
+		<key>2B124B013AA64705A0E48A6E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4245A465FBBD46C2909C2AFC</key>
+		<key>56AAE1BC15EB4ED5920B2F3F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4BA48D2DB95F4821AB55A611</key>
+		<key>9659C20A14714514A6F98C10</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5BE733E48C3A4D20931ABEEF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>5D9DC1727D5140C99F5E4ABD</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9E07613194484D06B8215B47</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>AA0AF555BEDA424EBD523A4E</key>
+		<key>F4CF9B6C29D942DCAB9EB173</key>
 		<dict>
 			<key>primary</key>
 			<true/>
