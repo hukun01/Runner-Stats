@@ -1,0 +1,138 @@
+
+/* Class = "IBUILabel"; text = "avg"; ObjectID = "3hA-Gu-um4"; */
+"3hA-Gu-um4.text" = "avg";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "4GA-aM-dfg"; */
+"4GA-aM-dfg.text" = "Label";
+
+/* Class = "IBUILabel"; text = "0.00"; ObjectID = "5wL-O2-Quz"; */
+"5wL-O2-Quz.text" = "0.00";
+
+/* Class = "IBUIButton"; normalTitle = "Discard"; ObjectID = "7gt-yV-Crg"; */
+"7gt-yV-Crg.normalTitle" = "放棄";
+
+/* Class = "IBUILabel"; text = "No session"; ObjectID = "7nu-jG-QX4"; */
+"7nu-jG-QX4.text" = "No session";
+
+/* Class = "IBUILabel"; text = "min/km"; ObjectID = "8fS-yQ-swe"; */
+"8fS-yQ-swe.text" = "min/km";
+
+/* Class = "IBUILabel"; text = "Measure Unit"; ObjectID = "Amf-s1-7TI"; */
+"Amf-s1-7TI.text" = "計量單位";
+
+/* Class = "IBUILabel"; text = "Avg. Pace"; ObjectID = "BZT-cK-7W6"; */
+"BZT-cK-7W6.text" = "平均節奏";
+
+/* Class = "IBUIViewController"; title = "RunningVC"; ObjectID = "CZ4-MO-1fc"; */
+"CZ4-MO-1fc.title" = "RunningVC";
+
+/* Class = "IBUILabel"; text = "LifeXplorer"; ObjectID = "DQF-PM-bpq"; */
+"DQF-PM-bpq.text" = "LifeXplorer";
+
+/* Class = "IBUILabel"; text = "0.00"; ObjectID = "Dw3-Q1-UQs"; */
+"Dw3-Q1-UQs.text" = "0.00";
+
+/* Class = "IBUILabel"; text = "Distance"; ObjectID = "I5W-ZR-owc"; */
+"I5W-ZR-owc.text" = "距離";
+
+/* Class = "IBUILabel"; text = "0.00"; ObjectID = "JbR-ag-bLZ"; */
+"JbR-ag-bLZ.text" = "0.00";
+
+/* Class = "IBUILabel"; text = "Open Source Libraries Used"; ObjectID = "JnA-8J-6cD"; */
+"JnA-8J-6cD.text" = "所用的開源庫";
+
+/* Class = "IBUILabel"; text = "Voice Feedback"; ObjectID = "KcC-g2-y4D"; */
+"KcC-g2-y4D.text" = "語音提示";
+
+/* Class = "IBUIViewController"; title = "StatsSecondVC"; ObjectID = "Kd3-60-NxG"; */
+"Kd3-60-NxG.title" = "StatsSecondVC";
+
+/* Class = "IBUINavigationItem"; title = "Title"; ObjectID = "Mgj-6U-GzS"; */
+"Mgj-6U-GzS.title" = "Title";
+
+/* Class = "IBUILabel"; text = "km/h"; ObjectID = "Phz-WY-cle"; */
+"Phz-WY-cle.text" = "km/h";
+
+/* Class = "IBUIViewController"; title = "StatsVC"; ObjectID = "QUy-BD-bpt"; */
+"QUy-BD-bpt.title" = "StatsVC";
+
+/* Class = "IBUILabel"; text = "Rate Me"; ObjectID = "RnO-SR-hBc"; */
+"RnO-SR-hBc.text" = "評價本應用";
+
+/* Class = "IBUINavigationItem"; title = "Title"; ObjectID = "U6H-gJ-pni"; */
+"U6H-gJ-pni.title" = "Title";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "W4T-vZ-4VA"; */
+"W4T-vZ-4VA.text" = "Label";
+
+/* Class = "IBUILabel"; text = "00:00:00"; ObjectID = "W7i-5o-QsX"; */
+"W7i-5o-QsX.text" = "00:00:00";
+
+/* Class = "IBUIButton"; normalTitle = "Start"; ObjectID = "XUg-bu-Lvn"; */
+"XUg-bu-Lvn.normalTitle" = "開始";
+
+/* Class = "IBUIButton"; normalTitle = "Save"; ObjectID = "Y4X-gG-Cmv"; */
+"Y4X-gG-Cmv.normalTitle" = "保存";
+
+/* Class = "IBUILabel"; text = "km"; ObjectID = "Y6e-kg-pMv"; */
+"Y6e-kg-pMv.text" = "km";
+
+/* Class = "IBUITabBarItem"; title = "Settings"; ObjectID = "YEx-C2-EzB"; */
+"YEx-C2-EzB.title" = "設定";
+
+/* Class = "IBUITabBarItem"; title = "Stats"; ObjectID = "Z7h-1E-pvt"; */
+"Z7h-1E-pvt.title" = "統計";
+
+/* Class = "IBUILabel"; text = "kph"; ObjectID = "Zer-NW-NdN"; */
+"Zer-NW-NdN.text" = "kph";
+
+/* Class = "IBUILabel"; text = "00:00:00"; ObjectID = "bgL-Vf-ugF"; */
+"bgL-Vf-ugF.text" = "00:00:00";
+
+/* Class = "IBUILabel"; text = "Avg. Speed"; ObjectID = "cY4-1H-wFe"; */
+"cY4-1H-wFe.text" = "平均速度";
+
+/* Class = "IBUILabel"; text = "App Support Page"; ObjectID = "d42-XJ-MrB"; */
+"d42-XJ-MrB.text" = "提建議給作者";
+
+/* Class = "IBUILabel"; text = "kph"; ObjectID = "dcW-5Q-9cD"; */
+"dcW-5Q-9cD.text" = "kph";
+
+/* Class = "IBUILabel"; text = "km"; ObjectID = "jJZ-lB-lcp"; */
+"jJZ-lB-lcp.text" = "km";
+
+/* Class = "IBUIViewController"; title = "StatsFirstVC"; ObjectID = "lhX-pn-w87"; */
+"lhX-pn-w87.title" = "StatsFirstVC";
+
+/* Class = "IBUILabel"; text = "km"; ObjectID = "oWA-lY-crh"; */
+"oWA-lY-crh.text" = "km";
+
+/* Class = "IBUILabel"; text = "Running Stats is a faithful recorder for your running activities. I wish it would support you to live a healthy life :-)"; ObjectID = "q1y-Jw-F86"; */
+"q1y-Jw-F86.text" = "我每周會跑十公里，所以寫了這個跑步統計。希望它會讓你更加熱愛跑步 :-)";
+
+/* Class = "IBUILabel"; text = "0.00"; ObjectID = "txX-DT-gCk"; */
+"txX-DT-gCk.text" = "0.00";
+
+/* Class = "IBUITabBarItem"; title = "Running"; ObjectID = "u1e-5L-l1D"; */
+"u1e-5L-l1D.title" = "跑步";
+
+/* Class = "IBUILabel"; text = "Duration"; ObjectID = "uw5-nT-cuY"; */
+"uw5-nT-cuY.text" = "時間";
+
+/* Class = "IBUILabel"; text = "0.00"; ObjectID = "web-Z5-FiK"; */
+"web-Z5-FiK.text" = "0.00";
+
+/* Class = "IBUIViewController"; title = "RecordDetailsVC"; ObjectID = "xMZ-ze-rkX"; */
+"xMZ-ze-rkX.title" = "RecordDetailsVC";
+
+/* Class = "IBUILabel"; text = "Countdown on Start"; ObjectID = "xpE-y0-AJy"; */
+"xpE-y0-AJy.text" = "開始前倒數計時";
+
+/* Class = "IBUISegmentedControl"; zSW-ur-pec.segmentTitles[0] = "km"; ObjectID = "zSW-ur-pec"; */
+"zSW-ur-pec.segmentTitles[0]" = "km";
+
+/* Class = "IBUISegmentedControl"; zSW-ur-pec.segmentTitles[1] = "mi"; ObjectID = "zSW-ur-pec"; */
+"zSW-ur-pec.segmentTitles[1]" = "mi";
+
+/* Class = "IBUILabel"; text = "00:00"; ObjectID = "zUL-zN-u32"; */
+"zUL-zN-u32.text" = "00:00";

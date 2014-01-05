@@ -1,0 +1,43 @@
+/* 
+  Localizable.strings
+  Runner Stats
+
+  Created by Mr. Who on 1/4/14.
+  Copyright (c) 2014 hk. All rights reserved.
+*/
+// First interface
+"FirstNavigationBarTitle" = "Runner Stats";
+"StartRunningText" = " Commencer";
+"DistanceCovered" = "Distance, %d ";
+"kilometers" = "kilomètres";
+"miles" = "milles";
+"DurationText" = ". Duration, ";
+// alert view
+"DiscardTitle" = "Abandonner?";
+"Do you want to Discard" = "Voulez-vous l’abandonner?";
+"CancelOption" = "Annuler";
+"DiscardOption" = "Abandonner";
+"SaveTitle" = "Sauver?";
+"Do you want to Save" = "Voulez-vous le sauver?";
+"SaveOption" = "Sauver";
+// Second-1 interface
+"Second_1_NavigationBarTitle" = "Résumé";
+// Second-1 details interface
+"Max Speed" = "vitesse de pointe";
+// Second-2 interface
+"Running Frequency" = "Fréquence de Course";
+"barChartTitle" = "Duration of Last 7 Weeks";
+"JAN" = "JAN";
+"FEB" = "FEB";
+"MAR" = "MAR";
+"APR" = "APR";
+"MAY" = "MAY";
+"JUN" = "JUN";
+"JUL" = "JUL";
+"AUG" = "AUG";
+"SEP" = "SEP";
+"OCT" = "OCT";
+"NOV" = "NOV";
+"DEC" = "DEC";
+// Third interface
+"Settings" = "Settings";
