@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   LastUpgradeVersion = "0500"
+   version = "1.3">
+   <BuildAction
+      parallelizeBuildables = "YES"
+      buildImplicitDependencies = "YES">
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForArchiving = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "936BEEE26289469CA06DD01F"
+               BlueprintName = "Pods-JBChartView"
+               BuildableName = "libPods-JBChartView.a">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      buildConfiguration = "Debug">
+      <Testables>
+      </Testables>
+   </TestAction>
+   <LaunchAction
+      useCustomWorkingDirectory = "NO"
+      launchStyle = "0"
+      ignoresPersistentStateOnLaunch = "NO"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      debugDocumentVersioning = "YES"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      allowLocationSimulation = "YES"
+      buildConfiguration = "Debug">
+      <AdditionalOptions>
+      </AdditionalOptions>
+   </LaunchAction>
+   <ProfileAction
+      useCustomWorkingDirectory = "NO"
+      savedToolIdentifier = ""
+      debugDocumentVersioning = "YES"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      buildConfiguration = "Release">
+   </ProfileAction>
+   <AnalyzeAction
+      buildConfiguration = "Debug">
+   </AnalyzeAction>
+   <ArchiveAction
+      revealArchiveInOrganizer = "YES"
+      buildConfiguration = "Release">
+   </ArchiveAction>
+</Scheme>

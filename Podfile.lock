@@ -1,0 +1,19 @@
+PODS:
+  - CHCSVParser (2.0.7)
+  - JBChartView (1.1.2)
+  - PNChart (0.3.1)
+  - TEAChart (0.0.2)
+
+DEPENDENCIES:
+  - CHCSVParser
+  - JBChartView (~> 1.1.0)
+  - PNChart (~> 0.3.1)
+  - TEAChart (~> 0.0.2)
+
+SPEC CHECKSUMS:
+  CHCSVParser: 30ac034cc0d37d9c783e7af96926270524836d70
+  JBChartView: 022262f16c5f58398849fdf326b17a431e95d6f5
+  PNChart: 2538e83bfda6809f2c50e95151edbc86f8425879
+  TEAChart: 579a8e5b8491ffdf27a2188bd345afa3631c3a03
+
+COCOAPODS: 0.29.0
