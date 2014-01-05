@@ -79,11 +79,11 @@ static int onceAnimated = 2;
     self.contributionGraph.width = 22;
     self.contributionGraph.spacing = 6;
     
-    self.contributionGraph.data = [self setupContributionGraphData];
+    [self setupContributionGraphData];
     [self.view addSubview:self.contributionGraph];
 }
 
-- (NSArray *)setupContributionGraphData
+- (void)setupContributionGraphData
 {
     NSMutableArray *result = [[NSMutableArray alloc] init];
     NSArray *recentRecords = [self readCurrentMonthRecord];
@@ -99,14 +99,30 @@ static int onceAnimated = 2;
             NSDate *recordDate = [df dateFromString:dateString1];
             days = [calendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:recordDate];
             // Fill the result array with 0(no-record date) and 1(record date)
-            for (int i=0; i<days-prevDays-1; ++i) {
+            for (int i=0; i < days-prevDays-1; ++i) {
                 [result addObject:@0];
             }
             [result addObject:@1];
             prevDays = days;
         }
     }
-    return result;
+    // Change today's rect to green color
+    NSArray *lastRow = [recentRecords lastObject];
+    NSString *recordDateOfLastRow = [lastRow firstObject];
+    NSDate *lastDate = [df dateFromString:recordDateOfLastRow];
+    df.dateFormat = @"yyyy-MM-dd";
+    NSString *lastString = [df stringFromDate:lastDate];
+    todayString = [df stringFromDate:[NSDate date]];
+    if ([lastString isEqualToString:todayString]) {
+        NSLog(@"WHY?");
+        [result replaceObjectAtIndex:[result count]-1 withObject:@5];
+    }
+    else {
+        NSLog(@"WHY22333?");
+        [result addObject:@5];
+    }
+    
+    self.contributionGraph.data = result;
 }
 
 - (BOOL)date:(NSString *)dateString1 isInSameMonthWithDate:(NSString *)dateString2
@@ -233,7 +249,6 @@ static int onceAnimated = 2;
 - (BOOL)inSameWeekBetweenDate:(NSDate *)oldDate andDate:(NSDate *)newDate
 {
     NSTimeInterval interval = [newDate timeIntervalSinceDate:oldDate];
-    NSLog(@"Interval: %f", interval);
     if (interval < 0) {
         return NO;
     }

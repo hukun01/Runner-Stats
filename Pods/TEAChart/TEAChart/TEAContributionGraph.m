@@ -34,9 +34,9 @@ static const NSInteger kDayInterval = 24 * 3600;
 {
     _colors = @[PNGrey,
                 PNTwitterColor,
-                PNTwitterColor,
-                PNTwitterColor,
-                PNTwitterColor];
+                [UIColor colorWithRed:0.549 green:0.776 blue:0.396 alpha:1], // for today
+                [UIColor colorWithRed:0.549 green:0.776 blue:0.396 alpha:1],
+                [UIColor colorWithRed:0.549 green:0.776 blue:0.396 alpha:1]];
 }
 
 - (void)drawRect:(CGRect)rect

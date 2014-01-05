@@ -6,7 +6,7 @@
   Copyright (c) 2014 hk. All rights reserved.
 */
 // First interface
-"FirstNavigationBarTitle" = "Running Stats";
+"FirstNavigationBarTitle" = "Runner Stats";
 "StartRunningText" = " Start";
 "DistanceCovered" = "Distance, %d ";
 "kilometers" = "kilometers";

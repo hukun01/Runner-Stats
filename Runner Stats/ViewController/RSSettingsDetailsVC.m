@@ -69,7 +69,7 @@
         self.url = [NSURL URLWithString:@"http://lifexplorer.me/projects/Runner-Stats/#respond"];
     }
     else {
-        self.url = [NSURL URLWithString:@"http://lifexplorer.me/projects/Runner-Stats/libraries-used-in-Runner-Stats/#page"];
+        self.url = [NSURL URLWithString:@"http://lifexplorer.me/projects/runner-stats/libraries-used-in-runner-stats-and-special-thanks/#page"];
     }
 }
 
