@@ -27,7 +27,6 @@
 		465237A41878DEA1000BFE5E /* JBChartInformationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4652379B1878DEA1000BFE5E /* JBChartInformationView.m */; };
 		465237A51878DEA1000BFE5E /* JBLineChartFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 465237A01878DEA1000BFE5E /* JBLineChartFooterView.m */; };
 		465237A91878DEC3000BFE5E /* Runner Stats-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 465237A61878DEC3000BFE5E /* Runner Stats-Info.plist */; };
-		465237AA1878DEC3000BFE5E /* RunningStats.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 465237A81878DEC3000BFE5E /* RunningStats.entitlements */; };
 		465237AC1878DECB000BFE5E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 465237AB1878DECB000BFE5E /* main.m */; };
 		465237AE1878DED1000BFE5E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 465237AD1878DED1000BFE5E /* Images.xcassets */; };
 		465237D21878E08F000BFE5E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 465237D41878E08F000BFE5E /* Localizable.strings */; };
@@ -38,29 +37,14 @@
 		46D4AAAE18655E6700F787BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D4AAAD18655E6700F787BA /* Foundation.framework */; };
 		46D4AAB018655E6700F787BA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D4AAAF18655E6700F787BA /* CoreGraphics.framework */; };
 		46D4AAB218655E6700F787BA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D4AAB118655E6700F787BA /* UIKit.framework */; };
-		46D4AAD018655E6800F787BA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D4AACF18655E6800F787BA /* XCTest.framework */; };
-		46D4AAD118655E6800F787BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D4AAAD18655E6700F787BA /* Foundation.framework */; };
-		46D4AAD218655E6800F787BA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D4AAB118655E6700F787BA /* UIKit.framework */; };
 		46EEB9BF187734CB00A9E83A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46EEB9BE187734CB00A9E83A /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		46D4AAD318655E6800F787BA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 46D4AAA218655E6700F787BA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 46D4AAA918655E6700F787BA;
-			remoteInfo = RunningStats;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		464282F118788487007E13F7 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		464B0ED51878E152000CF595 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "Runner Stats/zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		464B0ED61878E155000CF595 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "Runner Stats/zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		464B0ED81878E19D000CF595 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "Runner Stats/en.lproj/InfoPlist.strings"; sourceTree = SOURCE_ROOT; };
-		464B0EDA1878E1AF000CF595 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		464B0EDB1878E1B0000CF595 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		464B0EDC1878E1B0000CF595 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		465237641878DDB4000BFE5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Runner Stats/Base.lproj/Main.storyboard"; sourceTree = SOURCE_ROOT; };
 		465237671878DDCE000BFE5E /* RSConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSConstants.h; sourceTree = "<group>"; };
@@ -101,7 +85,6 @@
 		465237A21878DEA1000BFE5E /* JBUIConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBUIConstants.h; sourceTree = "<group>"; };
 		465237A61878DEC3000BFE5E /* Runner Stats-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Runner Stats-Info.plist"; path = "Runner Stats/Runner Stats-Info.plist"; sourceTree = SOURCE_ROOT; };
 		465237A71878DEC3000BFE5E /* Runner Stats-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Runner Stats-Prefix.pch"; path = "Runner Stats/Runner Stats-Prefix.pch"; sourceTree = SOURCE_ROOT; };
-		465237A81878DEC3000BFE5E /* RunningStats.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = RunningStats.entitlements; path = "Runner Stats/RunningStats.entitlements"; sourceTree = SOURCE_ROOT; };
 		465237AB1878DECB000BFE5E /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Runner Stats/main.m"; sourceTree = SOURCE_ROOT; };
 		465237AD1878DED1000BFE5E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Runner Stats/Images.xcassets"; sourceTree = SOURCE_ROOT; };
 		465237CB1878DF71000BFE5E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "Runner Stats/en.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -111,13 +94,15 @@
 		465237D71878E098000BFE5E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		46AC5AFA18656098006CAAD1 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		46AC5AFC1865648E006CAAD1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		46B76B101878E9C1009169D4 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "Runner Stats/zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		46B76B111878E9CE009169D4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "Runner Stats/zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		46B7D6C41878E44F000C5524 /* Runner Stats.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "Runner Stats.entitlements"; path = "Runner Stats/Runner Stats.entitlements"; sourceTree = SOURCE_ROOT; };
 		46C47DF6186F6F4000A990B0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		46C47DF8186FFFC400A990B0 /* Known bug.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Known bug.md"; sourceTree = "<group>"; };
 		46D4AAAA18655E6700F787BA /* Runner Stats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Runner Stats.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		46D4AAAD18655E6700F787BA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		46D4AAAF18655E6700F787BA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		46D4AAB118655E6700F787BA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		46D4AACE18655E6800F787BA /* Runner StatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Runner StatsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		46D4AACF18655E6800F787BA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		46EEB9BE187734CB00A9E83A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		88B49D21AA1849DCAC899F2D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,16 +122,6 @@
 				46D4AAAE18655E6700F787BA /* Foundation.framework in Frameworks */,
 				46AC5AFB18656098006CAAD1 /* AudioToolbox.framework in Frameworks */,
 				15A3F798A6CB417B9C2C0F91 /* libPods.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		46D4AACB18655E6800F787BA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				46D4AAD018655E6800F787BA /* XCTest.framework in Frameworks */,
-				46D4AAD218655E6800F787BA /* UIKit.framework in Frameworks */,
-				46D4AAD118655E6800F787BA /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,7 +220,6 @@
 			isa = PBXGroup;
 			children = (
 				46D4AAAA18655E6700F787BA /* Runner Stats.app */,
-				46D4AACE18655E6800F787BA /* Runner StatsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -285,11 +259,11 @@
 			children = (
 				465237D41878E08F000BFE5E /* Localizable.strings */,
 				464B0ED71878E19D000CF595 /* InfoPlist.strings */,
+				46B7D6C41878E44F000C5524 /* Runner Stats.entitlements */,
 				465237AB1878DECB000BFE5E /* main.m */,
 				465237AD1878DED1000BFE5E /* Images.xcassets */,
 				465237A61878DEC3000BFE5E /* Runner Stats-Info.plist */,
 				465237A71878DEC3000BFE5E /* Runner Stats-Prefix.pch */,
-				465237A81878DEC3000BFE5E /* RunningStats.entitlements */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -315,24 +289,6 @@
 			productName = RunningStats;
 			productReference = 46D4AAAA18655E6700F787BA /* Runner Stats.app */;
 			productType = "com.apple.product-type.application";
-		};
-		46D4AACD18655E6800F787BA /* Runner StatsTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 46D4AAE218655E6800F787BA /* Build configuration list for PBXNativeTarget "Runner StatsTests" */;
-			buildPhases = (
-				46D4AACA18655E6800F787BA /* Sources */,
-				46D4AACB18655E6800F787BA /* Frameworks */,
-				46D4AACC18655E6800F787BA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				46D4AAD418655E6800F787BA /* PBXTargetDependency */,
-			);
-			name = "Runner StatsTests";
-			productName = RunningStatsTests;
-			productReference = 46D4AACE18655E6800F787BA /* Runner StatsTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -361,9 +317,6 @@
 							};
 						};
 					};
-					46D4AACD18655E6800F787BA = {
-						TestTargetID = 46D4AAA918655E6700F787BA;
-					};
 				};
 			};
 			buildConfigurationList = 46D4AAA518655E6700F787BA /* Build configuration list for PBXProject "Runner Stats" */;
@@ -382,7 +335,6 @@
 			projectRoot = "";
 			targets = (
 				46D4AAA918655E6700F787BA /* Runner Stats */,
-				46D4AACD18655E6800F787BA /* Runner StatsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -392,7 +344,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				465237AA1878DEC3000BFE5E /* RunningStats.entitlements in Resources */,
 				464B0ED91878E19D000CF595 /* InfoPlist.strings in Resources */,
 				46C47DF7186F6F4000A990B0 /* README.md in Resources */,
 				465237AE1878DED1000BFE5E /* Images.xcassets in Resources */,
@@ -400,13 +351,6 @@
 				465237651878DDB4000BFE5E /* Main.storyboard in Resources */,
 				465237A91878DEC3000BFE5E /* Runner Stats-Info.plist in Resources */,
 				46C47DF9186FFFC400A990B0 /* Known bug.md in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		46D4AACC18655E6800F787BA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,31 +413,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		46D4AACA18655E6800F787BA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		46D4AAD418655E6800F787BA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 46D4AAA918655E6700F787BA /* Runner Stats */;
-			targetProxy = 46D4AAD318655E6800F787BA /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		464B0ED71878E19D000CF595 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				464B0ED81878E19D000CF595 /* en */,
-				464B0EDA1878E1AF000CF595 /* zh-Hans */,
-				464B0EDB1878E1B0000CF595 /* zh-Hant */,
 				464B0EDC1878E1B0000CF595 /* Base */,
+				46B76B101878E9C1009169D4 /* zh-Hant */,
+				46B76B111878E9CE009169D4 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -602,12 +531,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = RunningStats/RunningStats.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Runner Stats/Runner Stats.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "RunningStats/Runner Stats-Prefix.pch";
-				INFOPLIST_FILE = "RunningStats/Runner Stats-Info.plist";
+				GCC_PREFIX_HEADER = "Runner Stats/Runner Stats-Prefix.pch";
+				INFOPLIST_FILE = "Runner Stats/Runner Stats-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -620,57 +549,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = RunningStats/RunningStats.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Runner Stats/Runner Stats.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "RunningStats/Runner Stats-Prefix.pch";
-				INFOPLIST_FILE = "RunningStats/Runner Stats-Info.plist";
+				GCC_PREFIX_HEADER = "Runner Stats/Runner Stats-Prefix.pch";
+				INFOPLIST_FILE = "Runner Stats/Runner Stats-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		46D4AAE318655E6800F787BA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RunningStats.app/RunningStats";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "RunningStats/RunningStats-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "RunningStatsTests/Runner StatsTests-Info.plist";
-				PRODUCT_NAME = "Runner StatsTests";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		46D4AAE418655E6800F787BA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RunningStats.app/RunningStats";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "RunningStats/RunningStats-Prefix.pch";
-				INFOPLIST_FILE = "RunningStatsTests/Runner StatsTests-Info.plist";
-				PRODUCT_NAME = "Runner StatsTests";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
@@ -691,15 +578,6 @@
 			buildConfigurations = (
 				46D4AAE018655E6800F787BA /* Debug */,
 				46D4AAE118655E6800F787BA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		46D4AAE218655E6800F787BA /* Build configuration list for PBXNativeTarget "Runner StatsTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				46D4AAE318655E6800F787BA /* Debug */,
-				46D4AAE418655E6800F787BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
