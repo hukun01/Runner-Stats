@@ -1,0 +1,75 @@
+
+/* Class = "IBUILabel"; text = "avg"; ObjectID = "3hA-Gu-um4"; */
+"3hA-Gu-um4.text" = "avg";
+
+/* Class = "IBUILabel"; text = "0.00"; ObjectID = "5wL-O2-Quz"; */
+"5wL-O2-Quz.text" = "0.00";
+
+/* Class = "IBUILabel"; text = "avg.Pace"; ObjectID = "6zU-Gm-I6N"; */
+"6zU-Gm-I6N.text" = "avg.Pace";
+
+/* Class = "IBUIButton"; normalTitle = "Discard"; ObjectID = "7gt-yV-Crg"; */
+"7gt-yV-Crg.normalTitle" = "Discard";
+
+/* Class = "IBUIViewController"; title = "RunningVC"; ObjectID = "CZ4-MO-1fc"; */
+"CZ4-MO-1fc.title" = "RunningVC";
+
+/* Class = "IBUILabel"; text = "0.00"; ObjectID = "Dw3-Q1-UQs"; */
+"Dw3-Q1-UQs.text" = "0.00";
+
+/* Class = "IBUIViewController"; title = "StatsSecondVC"; ObjectID = "Kd3-60-NxG"; */
+"Kd3-60-NxG.title" = "StatsSecondVC";
+
+/* Class = "IBUIViewController"; title = "StatsVC"; ObjectID = "QUy-BD-bpt"; */
+"QUy-BD-bpt.title" = "StatsVC";
+
+/* Class = "IBUIButton"; normalTitle = "Start"; ObjectID = "XUg-bu-Lvn"; */
+"XUg-bu-Lvn.normalTitle" = "Start";
+
+/* Class = "IBUIButton"; normalTitle = "Save"; ObjectID = "Y4X-gG-Cmv"; */
+"Y4X-gG-Cmv.normalTitle" = "Save";
+
+/* Class = "IBUITabBarItem"; title = "Settings"; ObjectID = "YEx-C2-EzB"; */
+"YEx-C2-EzB.title" = "Settings";
+
+/* Class = "IBUITabBarItem"; title = "Stats"; ObjectID = "Z7h-1E-pvt"; */
+"Z7h-1E-pvt.title" = "Stats";
+
+/* Class = "IBUILabel"; text = "kph"; ObjectID = "Zer-NW-NdN"; */
+"Zer-NW-NdN.text" = "kph";
+
+/* Class = "IBUILabel"; text = "00:00:00"; ObjectID = "bgL-Vf-ugF"; */
+"bgL-Vf-ugF.text" = "00:00:00";
+
+/* Class = "IBUILabel"; text = "avg.Speed"; ObjectID = "bom-rs-oy6"; */
+"bom-rs-oy6.text" = "avg.Speed";
+
+/* Class = "IBUILabel"; text = "kph"; ObjectID = "dcW-5Q-9cD"; */
+"dcW-5Q-9cD.text" = "kph";
+
+/* Class = "IBUILabel"; text = "Summary"; ObjectID = "fed-cK-ZLe"; */
+"fed-cK-ZLe.text" = "Summary";
+
+/* Class = "IBUIViewController"; title = "StatsFirstVC"; ObjectID = "lhX-pn-w87"; */
+"lhX-pn-w87.title" = "StatsFirstVC";
+
+/* Class = "IBUILabel"; text = "km"; ObjectID = "oWA-lY-crh"; */
+"oWA-lY-crh.text" = "km";
+
+/* Class = "IBUILabel"; text = "Duration"; ObjectID = "sDg-gR-qkc"; */
+"sDg-gR-qkc.text" = "Duration";
+
+/* Class = "IBUILabel"; text = "Running Frequency"; ObjectID = "sc8-QO-IOJ"; */
+"sc8-QO-IOJ.text" = "Running Frequency";
+
+/* Class = "IBUILabel"; text = "0.00"; ObjectID = "txX-DT-gCk"; */
+"txX-DT-gCk.text" = "0.00";
+
+/* Class = "IBUITabBarItem"; title = "Running"; ObjectID = "u1e-5L-l1D"; */
+"u1e-5L-l1D.title" = "Running";
+
+/* Class = "IBUILabel"; text = "Distance"; ObjectID = "voe-II-hEy"; */
+"voe-II-hEy.text" = "Distance";
+
+/* Class = "IBUIViewController"; title = "RecordDetailsVC"; ObjectID = "xMZ-ze-rkX"; */
+"xMZ-ze-rkX.title" = "RecordDetailsVC";

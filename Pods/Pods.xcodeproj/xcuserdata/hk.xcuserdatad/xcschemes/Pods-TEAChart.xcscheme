@@ -1,53 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0500"
-   version = "1.3">
+   version = "1.3"
+   LastUpgradeVersion = "0500">
    <BuildAction
       buildImplicitDependencies = "YES"
       parallelizeBuildables = "YES">
       <BuildActionEntries>
          <BuildActionEntry
-            buildForProfiling = "YES"
-            buildForTesting = "YES"
-            buildForAnalyzing = "YES"
+            buildForArchiving = "YES"
             buildForRunning = "YES"
-            buildForArchiving = "YES">
+            buildForProfiling = "YES"
+            buildForAnalyzing = "YES"
+            buildForTesting = "YES">
             <BuildableReference
+               BlueprintName = "Pods-TEAChart"
                BuildableName = "libPods-TEAChart.a"
                BuildableIdentifier = "primary"
-               BlueprintName = "Pods-TEAChart"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BlueprintIdentifier = "C0C949C272FD44D4A496E1EE">
+               BlueprintIdentifier = "4245A465FBBD46C2909C2AFC">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
-      buildConfiguration = "Debug"
+      shouldUseLaunchSchemeArgsEnv = "YES"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      buildConfiguration = "Debug">
       <Testables>
       </Testables>
    </TestAction>
    <LaunchAction
       ignoresPersistentStateOnLaunch = "NO"
-      useCustomWorkingDirectory = "NO"
-      launchStyle = "0"
-      allowLocationSimulation = "YES"
-      buildConfiguration = "Debug"
-      debugDocumentVersioning = "YES"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB">
+      allowLocationSimulation = "YES"
+      debugDocumentVersioning = "YES"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      launchStyle = "0"
+      buildConfiguration = "Debug"
+      useCustomWorkingDirectory = "NO">
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
-      useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
-      debugDocumentVersioning = "YES"
       savedToolIdentifier = ""
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      debugDocumentVersioning = "YES"
+      buildConfiguration = "Release"
+      useCustomWorkingDirectory = "NO">
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

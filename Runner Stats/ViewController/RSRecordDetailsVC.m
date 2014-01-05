@@ -234,12 +234,12 @@ static bool bannerHasBeenLoaded = NO;
 
 #pragma mark - JBLineChartViewDelegate
 
-- (NSInteger)lineChartView:(JBLineChartView *)lineChartView heightForIndex:(NSInteger)index
+- (CGFloat)lineChartView:(JBLineChartView *)lineChartView heightForIndex:(NSInteger)index
 {
     NSArray *row = [self.recordData objectAtIndex:index];
     // Since the API returns NSInteger, and my data is double type, I multiply a big number to make it like some integer
     // and keep the relativity of line trend
-    return [[row lastObject] floatValue] * 3600;
+    return [[row lastObject] floatValue] * 100;
 }
 
 - (void)lineChartView:(JBLineChartView *)lineChartView didSelectChartAtIndex:(NSInteger)index
