@@ -81,6 +81,7 @@ static int duration = 0;
     self.isRunning = NO;
     // Create a record if not exist
     _recordManager = [[RSRecordManager alloc] init];
+    _isRunning = NO;
     
     // debug
 //    if (![[NSFileManager defaultManager] removeItemAtPath:[self.recordManager recordPath] error:NULL])
@@ -120,13 +121,18 @@ static int duration = 0;
     return success;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (!self.isRunning) {
+        [self restoreUI];
+    }
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
-    if (!self.isRunning) {
-        [self restoreUI];
-    }
     [self renewMapRegion];
     self.map.showsUserLocation = YES;
     self.currLocation = [self.locationManager location];
@@ -145,9 +151,14 @@ static int duration = 0;
 - (void)speakCountDown
 {
     NSString *countDownString = [self countDownString];
+    if ([countDownString isEqualToString:@""]) {
+        NSLog(@"NULL String");
+        return;
+    }
     AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:countDownString];
     utterance.rate = AVSpeechUtteranceMinimumSpeechRate;
     if (self.speaker && utterance) {
+        [utterance setPitchMultiplier:1.25];
         [self.speaker speakUtterance:utterance];
     }
 }
@@ -182,6 +193,12 @@ static int duration = 0;
     if (self.voiceOn && [self configureAVAudioSession]) {
         [self speakCountDown];
     }
+    //debug
+//    duration = 230;
+//    [self triggleVoiceFeedback];
+    //
+    //debug
+    self.test_statusLabel.text = @"Start";
     // Clear the data of last event
     if ([[self.map overlays] count] != 0) {
         [self.map removeOverlays:[self.map overlays]];
@@ -220,10 +237,12 @@ static int duration = 0;
     if ([self.path pointCount] == 0) {
         self.currLocation = newLocation;
         if (![self.path saveFirstLocation:self.currLocation]) {
+            //debug
             self.test_statusLabel.text = @"No valid location";
         }
         else {
             [self.map addOverlay:self.path];
+            //debug
             self.test_statusLabel.text = @"Add overlay";
         }
     }
@@ -254,6 +273,7 @@ static int duration = 0;
     }
     // if the distance is small, also display speed if it is valid, but do not store it
     else if ([self.path isValidLocation:newLocation]) {
+        self.test_statusLabel.text = @"Low speed but valid.";
         self.speed = (SECONDS_OF_HOUR/RS_UNIT) * newLocation.speed;
     }
     
@@ -269,15 +289,46 @@ static int duration = 0;
         return;
     }
     NSString *distanceText = [[NSString stringWithFormat:NSLocalizedString(@"DistanceCovered", nil), distanceBoundForVoice] stringByAppendingString:RS_UNIT_VOICE];
-    NSString *durationText = [NSLocalizedString(@"DurationText", nil) stringByAppendingString:[self.recordManager timeFormatted:duration withOption:FORMAT_MMSS]];
+    NSString *durationString = [[NSString alloc] init];
+    if (duration < SECONDS_OF_HOUR) {
+        durationString = [self timeFormatted:duration longerThanOneHour:NO];
+    }
+    else {
+        durationString = [self timeFormatted:duration longerThanOneHour:YES];
+    }
+    NSString *durationText = [NSLocalizedString(@"DurationText", nil) stringByAppendingString:durationString];
     NSString *feedBackString = [distanceText stringByAppendingString:durationText];
     AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:feedBackString];
-    utterance.rate = AVSpeechUtteranceMinimumSpeechRate;
+    utterance.rate = (AVSpeechUtteranceDefaultSpeechRate + AVSpeechUtteranceMinimumSpeechRate)/2;
     if (self.speaker && utterance) {
+        [utterance setPitchMultiplier:1.25];
         [self.speaker speakUtterance:utterance];
     }
     ++distanceBoundForVoice;
     duration = 0;
+    
+    //debug
+    NSLog(@"%@", feedBackString);
+}
+
+- (NSString *)timeFormatted:(int)totalSeconds longerThanOneHour:(BOOL)islonger
+{
+    int seconds = totalSeconds % 60;
+    int minutes = (totalSeconds / 60) % 60;
+    int hours = totalSeconds / 3600;
+    
+    if (!islonger) {
+        if (seconds == 0) {
+            return [NSString stringWithFormat:@"%d minutes", minutes];
+        }
+        return [NSString stringWithFormat:@"%d minutes, %d seconds", minutes, seconds];
+    }
+    else {
+        if (seconds == 0) {
+            return [NSString stringWithFormat:@"%d hours, %d minutes",hours, minutes];
+        }
+        return [NSString stringWithFormat:@"%d hours, %d minutes, %d seconds",hours, minutes, seconds];
+    }
 }
 
 #pragma mark - Discard and Save Session
@@ -375,8 +426,8 @@ static int duration = 0;
 
 - (void)startTimer
 {
-    if (!_timer) {
-        _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerTick) userInfo:nil repeats:YES];
+    if (!self.timer) {
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerTick) userInfo:nil repeats:YES];
     }
     [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
 }

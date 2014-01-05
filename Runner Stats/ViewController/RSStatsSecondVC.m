@@ -46,6 +46,12 @@ static int onceAnimated = 2;
     
     [self setupContributionGraph];
     [self setupBarChart];
+    
+    //debug
+    NSDate *today = [NSDate date];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSUInteger days = [calendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:today];
+    NSLog(@"%d",days);
 }
 
 - (void)setupContributionGraph
@@ -54,11 +60,48 @@ static int onceAnimated = 2;
     self.contributionGraph.backgroundColor = [UIColor whiteColor];
     self.contributionGraph.width = 22;
     self.contributionGraph.spacing = 6;
-    self.contributionGraph.data = @[@0, @1, @0, @0, @0, @4, @0, @5, @0, @0, @0, @3, @0, @0, @0, @5, @0, @0, @6, @0, @0, @0, @3, @0, @3, @0, @4, @0, @5, @0, @0];
+    
+    self.contributionGraph.data = [self setupContributionGraphData];
     [self.view addSubview:self.contributionGraph];
 }
 
-- (NSArray *)readLast30DaysRecord
+- (NSArray *)setupContributionGraphData
+{
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    NSArray *recentRecords = [self readCurrentMonthRecord];
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    df.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    NSString *dateString2 = [df stringFromDate:[NSDate date]];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSInteger prevDays = 0;
+    NSInteger days = 0;
+    for (NSArray *row in recentRecords) {
+        NSString *dateString1 = [row firstObject];
+        if ([self date:dateString1 isInSameMonthWithDate:dateString2]) {
+            NSDate *recordDate = [df dateFromString:dateString1];
+            days = [calendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:recordDate];
+            // Fill the result array with 0(no-record date) and 1(record date)
+            for (int i=0; i<days-prevDays-1; ++i) {
+                [result addObject:@0];
+            }
+            [result addObject:@1];
+            prevDays = days;
+        }
+    }
+    return result;
+}
+
+- (BOOL)date:(NSString *)dateString1 isInSameMonthWithDate:(NSString *)dateString2
+{
+    // Convert both date string into yyyy-MM
+    NSString *string1 = [self.recordManager subStringFromDateString:dateString1];
+    NSString *string2 = [self.recordManager subStringFromDateString:dateString2];
+    
+    return [string1 isEqualToString:string2];
+}
+
+// Return the array of records of current month
+- (NSArray *)readCurrentMonthRecord
 {
     NSArray *array = [[NSArray alloc] init];
     NSInteger recordsNumber = [self.records count];
@@ -68,8 +111,15 @@ static int onceAnimated = 2;
     NSDate *today = [NSDate date];
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSUInteger days = [calendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:today];
-    NSRange range = {recordsNumber > days ? (recordsNumber - days) : 0, recordsNumber};
-    return [array subarrayWithRange:range];
+    if (recordsNumber > days) {
+        NSInteger location =  recordsNumber - days;
+        NSInteger length = days;
+        NSRange range = {location, length};
+        return [self.records subarrayWithRange:range];
+    }
+    else {
+        return self.records;
+    }
 }
 
 - (void)setupBarChart

@@ -78,7 +78,7 @@
 "Y6e-kg-pMv.text" = "km";
 
 /* Class = "IBUITabBarItem"; title = "Settings"; ObjectID = "YEx-C2-EzB"; */
-"YEx-C2-EzB.title" = "設置";
+"YEx-C2-EzB.title" = "設定";
 
 /* Class = "IBUITabBarItem"; title = "Stats"; ObjectID = "Z7h-1E-pvt"; */
 "Z7h-1E-pvt.title" = "統計";
@@ -108,7 +108,7 @@
 "oWA-lY-crh.text" = "km";
 
 /* Class = "IBUILabel"; text = "Running Stats is a faithful recorder for your running activities. I wish it would support you to live a healthy life :-)"; ObjectID = "q1y-Jw-F86"; */
-"q1y-Jw-F86.text" = "我每周跑會十公里，所以寫了這個跑步統計。希望它會讓你更加熱愛跑步 :-)";
+"q1y-Jw-F86.text" = "我每周會跑十公里，所以寫了這個跑步統計。希望它會讓你更加熱愛跑步 :-)";
 
 /* Class = "IBUILabel"; text = "0.00"; ObjectID = "txX-DT-gCk"; */
 "txX-DT-gCk.text" = "0.00";

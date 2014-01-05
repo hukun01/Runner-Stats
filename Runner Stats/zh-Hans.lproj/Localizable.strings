@@ -8,10 +8,10 @@
 // First interface
 "FirstNavigationBarTitle" = "跑步统计";
 "StartRunningText" = " 开始";
-"DistanceCovered" = "距离：%d ";
+"DistanceCovered" = "距离，%d ";
 "kilometers" = "公里";
 "miles" = "英里";
-"DurationText" = " 耗时：";
+"DurationText" = "。耗时，";
 // alert view
 "DiscardTitle" = "放弃？";
 "Do you want to Discard" = "停止并放弃本次的记录？";

@@ -7,10 +7,11 @@
  */
 // First interface
 "FirstNavigationBarTitle" = "跑步統計";
-"StartRunningText" = " 開始";"DistanceCovered" = "距離 %d ";
+"StartRunningText" = " 開始";
+"DistanceCovered" = "距離： %d ";
 "kilometers" = "公里";
 "miles" = "英里";
-"DurationText" = " 耗時 ";
+"DurationText" = "。耗時：";
 // alert view
 "DiscardTitle" = "放棄？";
 "Do you want to Discard" = "停止並放棄本次的記錄？";
@@ -38,4 +39,4 @@
 "NOV" = "十一月";
 "DEC" = "十二月";
 // Third interface
-"Settings" = "設置";
+"Settings" = "設定";

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PNColor.h"
 
 @interface TEAContributionGraph : UIView
 

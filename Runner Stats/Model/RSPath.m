@@ -152,11 +152,10 @@
     MKMapPoint prevPoint = points[pointCount - 1];
     // Get the distance between this new point and the previous point.
     CLLocationDistance metersApart = MKMetersBetweenMapPoints(newPoint, prevPoint);
-    // If the distance is too far, skip it
+    // If the distance is too big, skip it
     if (metersApart > TOO_BIG_DISTANCE) {
         return updateRect;
     }
-    
     if (metersApart > MINIMUM_DELTA_METERS) {
         self.distance += metersApart;
         // Grow the points array if necessary
@@ -181,9 +180,6 @@
         double maxY = MAX(newPoint.y, prevPoint.y);
         
         updateRect = MKMapRectMake(minX, minY, maxX - minX, maxY - minY);
-    }
-    else {
-        NSLog(@"Too close");
     }
     return updateRect;
 }
