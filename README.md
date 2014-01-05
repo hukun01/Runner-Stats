@@ -5,4 +5,4 @@ Runner Stats is an iPhone app, which helps you record the data of every run, inc
 
 I run 5 kilometers for every test! :-D
 
------- path branch is for RunningBar.
+------ Master branch is for current runnable version.
