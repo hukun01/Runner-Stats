@@ -39,7 +39,7 @@
 "JbR-ag-bLZ.text" = "0.00";
 
 /* Class = "IBUILabel"; text = "Open Source Libraries Used"; ObjectID = "JnA-8J-6cD"; */
-"JnA-8J-6cD.text" = "所用的开源库";
+"JnA-8J-6cD.text" = "所用的开源库&特别鸣谢";
 
 /* Class = "IBUILabel"; text = "Voice Feedback"; ObjectID = "KcC-g2-y4D"; */
 "KcC-g2-y4D.text" = "语音提示";
