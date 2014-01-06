@@ -1,3 +1,2 @@
 Known bug:
- * Currently no bug found. Congrats!
- Would not update contribution graph and bar chart after just saving a record, need to open the app again.
+* By output the graph's description in RSStatsSecondVC.m, I found there are two TEAContributionGraph objects being generated every time it enters the view. Don't get the reason. 

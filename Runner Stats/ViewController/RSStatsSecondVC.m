@@ -26,8 +26,6 @@
 
 @implementation RSStatsSecondVC
 
-static int onceAnimated = 2;
-
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
@@ -43,32 +41,24 @@ static int onceAnimated = 2;
 	// Do any additional setup after loading the view.
     
     self.myNavigationItem.title = NSLocalizedString(@"Running Frequency", nil);
-    
-    self.records = [self.recordManager readRecord];
-    
-    [self setupContributionGraph];
-    [self setupBarChart];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    if (onceAnimated > 0) {
-        --onceAnimated;
-    }
+    self.records = [self.recordManager readRecord];
+    [self setupContributionGraph];
+    [self setupBarChart];
     // setup iAd banner
     [self setupADBanner];
+    [self.barChart strokeChart];
+    [self.view addSubview:self.barChart];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    if (0 == onceAnimated) {
-        --onceAnimated;
-        [self.barChart strokeChart];
-        [self.view addSubview:self.barChart];
-    }
 }
 
 #pragma mark - contribution graph
@@ -114,11 +104,9 @@ static int onceAnimated = 2;
     NSString *lastString = [df stringFromDate:lastDate];
     todayString = [df stringFromDate:[NSDate date]];
     if ([lastString isEqualToString:todayString]) {
-        NSLog(@"WHY?");
         [result replaceObjectAtIndex:[result count]-1 withObject:@5];
     }
     else {
-        NSLog(@"WHY22333?");
         [result addObject:@5];
     }
     
