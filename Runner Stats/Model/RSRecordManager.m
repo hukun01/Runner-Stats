@@ -57,7 +57,7 @@
     for (NSArray *line in recordContent) {
         [writer writeLineOfFields:line];
     }
-    
+    //
     
     return YES;
 }
@@ -65,7 +65,17 @@
 - (NSArray *)readRecord
 {
     NSArray *allRecords = [NSArray arrayWithContentsOfCSVFile:self.recordPath];
-    NSRange range = {0, [allRecords count]-1};
+    // Check the tail, cut off the row that only contain "".
+    NSInteger invalidTail = [allRecords count]-1;
+    while (invalidTail >= 0) {
+        if ([[allRecords objectAtIndex:invalidTail] count] == 1) {
+            --invalidTail;
+        }
+        else {
+            break;
+        }
+    }
+    NSRange range = {0, invalidTail + 1};
     return [allRecords subarrayWithRange:range];
 }
 

@@ -192,9 +192,12 @@ static int duration = 0;
     if (self.voiceOn && [self configureAVAudioSession]) {
         [self speakCountDown];
     }
+    else if (!self.voiceOn) {
+        [self startTimer];
+    }
     //debug
-    duration = 230;
-    [self triggleVoiceFeedback];
+    //duration = 230;
+    //[self triggleVoiceFeedback];
     //
     //debug
     self.test_statusLabel.text = @"Start";
