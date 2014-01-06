@@ -38,6 +38,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		460D5318187A88CF00CC8D08 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		460D5319187A88CF00CC8D08 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		460D531A187A88CF00CC8D08 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4610CD441878F5C20006E36D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = "Runner Stats/Base.lproj/InfoPlist.strings"; sourceTree = SOURCE_ROOT; };
 		4610CD4B1878F6360006E36D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		4610CD4C1878F6380006E36D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -328,6 +331,7 @@
 				"zh-Hans",
 				"zh-Hant",
 				fr,
+				ja,
 			);
 			mainGroup = 46D4AAA118655E6700F787BA;
 			productRefGroup = 46D4AAAB18655E6700F787BA /* Products */;
@@ -421,6 +425,7 @@
 				4610CD4C1878F6380006E36D /* zh-Hant */,
 				4658282C1878F867006837E8 /* en */,
 				46FF027A187A062800E823BF /* fr */,
+				460D5319187A88CF00CC8D08 /* ja */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -433,6 +438,7 @@
 				466240041878FEF000660F9F /* zh-Hant */,
 				466240061878FEF400660F9F /* zh-Hans */,
 				46FF0279187A062800E823BF /* fr */,
+				460D5318187A88CF00CC8D08 /* ja */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -445,6 +451,7 @@
 				4658282A1878F818006837E8 /* zh-Hans */,
 				4658282B1878F819006837E8 /* zh-Hant */,
 				46FF027B187A062800E823BF /* fr */,
+				460D531A187A88CF00CC8D08 /* ja */,
 			);
 			name = Localizable.strings;
 			path = "Runner Stats";

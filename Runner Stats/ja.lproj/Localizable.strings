@@ -1,0 +1,43 @@
+/* 
+  Localizable.strings
+  Runner Stats
+
+  Created by Mr. Who on 1/4/14.
+  Copyright (c) 2014 hk. All rights reserved.
+*/
+// First interface
+"FirstNavigationBarTitle" = "ランナーの統計";
+"StartRunningText" = " スタート";
+"DistanceCovered" = "距離, %d ";
+"kilometers" = "キロメートル";
+"miles" = "マイル";
+"DurationText" = ". デュレーション, ";
+// alert view
+"DiscardTitle" = "捨てる？";
+"Do you want to Discard" = "捨てるしますか？";
+"CancelOption" = "キャンセル";
+"DiscardOption" = "捨てる";
+"SaveTitle" = "Save?";
+"Do you want to Save" = "保存しますか？";
+"SaveOption" = "セーブ";
+// Second-1 interface
+"Second_1_NavigationBarTitle" = "概要";
+// Second-1 details interface
+"Max Speed" = "最高速度";
+// Second-2 interface
+"Running Frequency" = "ラン周波数";
+"barChartTitle" = "最後の7週間の活動";
+"JAN" = "JAN";
+"FEB" = "FEB";
+"MAR" = "MAR";
+"APR" = "APR";
+"MAY" = "MAY";
+"JUN" = "JUN";
+"JUL" = "JUL";
+"AUG" = "AUG";
+"SEP" = "SEP";
+"OCT" = "OCT";
+"NOV" = "NOV";
+"DEC" = "DEC";
+// Third interface
+"Settings" = "設定";

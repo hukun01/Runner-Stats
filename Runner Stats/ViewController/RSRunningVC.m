@@ -181,7 +181,6 @@ static int duration = 0;
 {
     if (self.isRunning) {
         [self startTimer];
-        NSLog(@"When?");
     }
 }
 
@@ -194,8 +193,8 @@ static int duration = 0;
         [self speakCountDown];
     }
     //debug
-//    duration = 230;
-//    [self triggleVoiceFeedback];
+    duration = 230;
+    [self triggleVoiceFeedback];
     //
     //debug
     self.test_statusLabel.text = @"Start";
