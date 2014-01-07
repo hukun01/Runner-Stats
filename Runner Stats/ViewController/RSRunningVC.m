@@ -83,9 +83,6 @@ static int duration = 0;
     _recordManager = [[RSRecordManager alloc] init];
     _isRunning = NO;
     
-    // debug
-    if (![[NSFileManager defaultManager] removeItemAtPath:[self.recordManager recordPath] error:NULL])
-        NSLog(@"remove failed");
     if (![_recordManager createRecord]) {
         NSLog(@"Create record.csv failed.");
     }
@@ -106,8 +103,11 @@ static int duration = 0;
 
 - (BOOL)configureAVAudioSession
 {
-    self.speaker = [[AVSpeechSynthesizer alloc] init];
-    self.speaker.delegate = self;
+    if (!self.speaker) {
+        self.speaker = [[AVSpeechSynthesizer alloc] init];
+        self.speaker.delegate = self;
+    }
+    
     AVAudioSession* session = [AVAudioSession sharedInstance];
     //error handling
     BOOL success;
@@ -302,7 +302,7 @@ static int duration = 0;
     NSString *feedBackString = [distanceText stringByAppendingString:durationText];
     AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:feedBackString];
     utterance.rate = (AVSpeechUtteranceDefaultSpeechRate + AVSpeechUtteranceMinimumSpeechRate)/2;
-    if (self.speaker && utterance) {
+    if ([self configureAVAudioSession] && self.speaker && utterance) {
         [utterance setPitchMultiplier:1.25];
         [self.speaker speakUtterance:utterance];
     }
