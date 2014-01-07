@@ -51,8 +51,6 @@
 // iAD banner
 @property (strong, nonatomic) ADBannerView *iAd;
 
-@property (strong, nonatomic) IBOutlet UILabel *test_statusLabel;
-
 @end
 
 @implementation RSRunningVC
@@ -195,12 +193,7 @@ static int duration = 0;
     else if (!self.voiceOn) {
         [self startTimer];
     }
-    //debug
-    //duration = 230;
-    //[self triggleVoiceFeedback];
-    //
-    //debug
-    self.test_statusLabel.text = @"Start";
+    
     // Clear the data of last event
     if ([[self.map overlays] count] != 0) {
         [self.map removeOverlays:[self.map overlays]];
@@ -238,14 +231,8 @@ static int duration = 0;
     }
     if ([self.path pointCount] == 0) {
         self.currLocation = newLocation;
-        if (![self.path saveFirstLocation:self.currLocation]) {
-            //debug
-            self.test_statusLabel.text = @"No valid location";
-        }
-        else {
+        if ([self.path saveFirstLocation:self.currLocation]) {
             [self.map addOverlay:self.path];
-            //debug
-            self.test_statusLabel.text = @"Add overlay";
         }
     }
     
@@ -270,12 +257,9 @@ static int duration = 0;
         // Move map with user location
         self.currLocation = newLocation;
         
-        //debug
-        self.test_statusLabel.text = [NSString stringWithFormat:@"%.4f, %.4f", newLocation.coordinate.latitude, newLocation.coordinate.longitude];
     }
     // if the distance is small, also display speed if it is valid, but do not store it
     else if ([self.path isValidLocation:newLocation]) {
-        self.test_statusLabel.text = @"Low speed but valid.";
         self.speed = (SECONDS_OF_HOUR/RS_UNIT) * newLocation.speed;
     }
     
@@ -308,9 +292,6 @@ static int duration = 0;
     }
     ++distanceBoundForVoice;
     duration = 0;
-    
-    //debug
-    NSLog(@"%@", feedBackString);
 }
 
 - (NSString *)timeFormatted:(int)totalSeconds longerThanOneHour:(BOOL)islonger
@@ -460,9 +441,6 @@ static int duration = 0;
     
     NSArray *newRecord = @[startDateString, disStr, durStr, avgSpdStr];
     [self.recordManager addALine:newRecord];
-
-    //debug
-    self.test_statusLabel.text = [NSString stringWithFormat:@"%@", newRecord];
 }
 
 #pragma mark - ADBanner configuration

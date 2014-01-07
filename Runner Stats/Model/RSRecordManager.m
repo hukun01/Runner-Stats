@@ -21,24 +21,6 @@
     return self;
 }
 
-//debug
-- (NSArray *) test_Record
-{
-    return @[
-             @[@"2013-12-01 16:28:00", @"5341", @"1450", @"3.3"],
-             @[@"2013-12-05 16:28:00", @"5341", @"1250", @"3.3"],
-             @[@"2013-12-10 16:28:00", @"5341", @"1850", @"3.3"],
-             @[@"2013-12-15 16:28:00", @"5341", @"1550", @"3.3"],
-             @[@"2013-12-18 16:28:00", @"5341", @"1800", @"3.3"],
-             @[@"2013-12-19 16:28:00", @"5341", @"1530", @"3.4"],
-             @[@"2013-12-22 16:28:00", @"5341", @"1780", @"3.2"],
-             @[@"2014-01-01 16:30:00", @"5341", @"1800", @"3"],
-             @[@"2014-01-03 16:34:00", @"5129", @"1776", @"2.20"],
-             @[@"2014-01-04 16:32:00", @"5341", @"1802", @"2.3"],
-             @[@"2014-01-05 16:32:00", @"5341", @"1702", @"2.3"],
-             ];
-}
-
 - (BOOL)createRecord
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -50,14 +32,6 @@
             return NO;
         }
     }
-    
-    //debug
-    CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:self.recordPath];
-    NSArray *recordContent = [self test_Record];
-    for (NSArray *line in recordContent) {
-        [writer writeLineOfFields:line];
-    }
-    //
     
     return YES;
 }
