@@ -52,11 +52,11 @@
     }
     
     //debug
-    CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:self.recordPath];
-    NSArray *recordContent = [self test_Record];
-    for (NSArray *line in recordContent) {
-        [writer writeLineOfFields:line];
-    }
+//    CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:self.recordPath];
+//    NSArray *recordContent = [self test_Record];
+//    for (NSArray *line in recordContent) {
+//        [writer writeLineOfFields:line];
+//    }
     //
     
     return YES;
