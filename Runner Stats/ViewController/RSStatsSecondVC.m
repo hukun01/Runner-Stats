@@ -10,6 +10,7 @@
 #import "PNChart.h"
 #import "TEAContributionGraph.h"
 #import "RSRecordManager.h"
+#import "RSRunningVC.h"
 
 #define TEACHART_WIDTH 190
 #define TEACHART_HEIGHT 162
@@ -47,7 +48,11 @@
 {
     [super viewWillAppear:animated];
     
-    self.records = [self.recordManager readRecord];
+    if (!self.records || [RSRunningVC recordState]) {
+        self.records = [self.recordManager readRecord];
+        [RSRunningVC changeRecordStateTo:NO];
+    }
+    
     [self setupContributionGraph];
     [self setupBarChart];
     // setup iAd banner
