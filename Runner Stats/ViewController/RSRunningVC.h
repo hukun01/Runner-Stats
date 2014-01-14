@@ -17,4 +17,7 @@
 @interface RSRunningVC : UIViewController
 <MKMapViewDelegate, CLLocationManagerDelegate, UIAlertViewDelegate, AVSpeechSynthesizerDelegate, ADBannerViewDelegate>
 
+// Change the state of record, from saveNewRecord to noNewRecord
++ (void)changeRecordStateTo:(BOOL)state;
++ (BOOL)recordState;
 @end

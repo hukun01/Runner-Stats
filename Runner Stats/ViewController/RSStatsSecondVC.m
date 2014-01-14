@@ -10,6 +10,7 @@
 #import "PNChart.h"
 #import "TEAContributionGraph.h"
 #import "RSRecordManager.h"
+#import "RSRunningVC.h"
 
 #define TEACHART_WIDTH 190
 #define TEACHART_HEIGHT 162
@@ -47,7 +48,11 @@
 {
     [super viewWillAppear:animated];
     
-    self.records = [self.recordManager readRecord];
+    if (!self.records || [RSRunningVC recordState]) {
+        self.records = [self.recordManager readRecord];
+        [RSRunningVC changeRecordStateTo:NO];
+    }
+    
     [self setupContributionGraph];
     [self setupBarChart];
     // setup iAd banner
@@ -163,13 +168,14 @@
     [self setupBarChartData];
 }
 
+// Calculate the recent 7 weeks
 #define BIGGEST_NUM_OF_RECORDS 49
 - (void)setupBarChartData
 {
     NSArray *data = [[NSArray alloc] init];
-    NSInteger recordNumber = [self.records count];
-    if (recordNumber > BIGGEST_NUM_OF_RECORDS) {
-        NSInteger location = recordNumber - BIGGEST_NUM_OF_RECORDS;
+    NSInteger recordAmount = [self.records count];
+    if (recordAmount > BIGGEST_NUM_OF_RECORDS) {
+        NSInteger location = recordAmount - BIGGEST_NUM_OF_RECORDS;
         NSInteger length = BIGGEST_NUM_OF_RECORDS;
         NSRange range = {location, length};
         data = [self.records subarrayWithRange:range];
@@ -180,11 +186,11 @@
     if ([data count] < 1) {
         return;
     }
+    NSMutableArray *xLabelsArray = [[NSMutableArray alloc] initWithArray:@[@"00:00", @"00:00", @"00:00", @"00:00", @"00:00", @"00:00", @"00:00"]];
+    NSMutableArray *yValuesArray = [[NSMutableArray alloc] initWithArray:@[@0, @0, @0, @0, @0, @0, @0]];
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     df.timeZone = [NSTimeZone localTimeZone];
     df.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-    NSMutableArray *xLabelsArray = [[NSMutableArray alloc] initWithArray:@[@"00:00", @"00:00", @"00:00", @"00:00", @"00:00", @"00:00", @"00:00"]];
-    NSMutableArray *yValuesArray = [[NSMutableArray alloc] initWithArray:@[@0, @0, @0, @0, @0, @0, @0]];
     NSInteger indexOfPoint = [xLabelsArray count]-1;
     NSInteger indexOfRecord = [data count]-1;
     NSDate *currentWeekDate = [self getToday];
@@ -202,7 +208,7 @@
         }
         else {
             [xLabelsArray replaceObjectAtIndex:indexOfPoint withObject:[self.recordManager timeFormatted:(int)durationSeconds withOption:FORMAT_HHMM]];
-            //NSLog(@"XXX %ld, %@",(long)indexOfPoint, [self.recordManager timeFormatted:(int)durationSeconds withOption:FORMAT_HHMM]);
+            //NSLog(@"P %ld, R %ld, %@",(long)indexOfPoint,(long)indexOfRecord, [self.recordManager timeFormatted:(int)durationSeconds withOption:FORMAT_HHMM]);
             [yValuesArray replaceObjectAtIndex:indexOfPoint withObject:[NSNumber numberWithInteger:durationSeconds]];
             -- indexOfPoint;
             durationSeconds = 0;
@@ -233,11 +239,12 @@
     NSDate* destinationDate = [[NSDate alloc] initWithTimeInterval:interval sinceDate:sourceDate];
     return destinationDate;
 }
-
+    
+#define SECONDS_OF_WEEK 604800
 - (BOOL)inSameWeekBetweenDate:(NSDate *)oldDate andDate:(NSDate *)newDate
 {
     NSTimeInterval interval = [newDate timeIntervalSinceDate:oldDate];
-    if (interval < 0) {
+    if (interval < 0 || interval > SECONDS_OF_WEEK) {
         return NO;
     }
     return YES;

@@ -98,8 +98,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 1 && indexPath.row == 0) {
-        NSString *appName = [NSString stringWithString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"]];
-        NSURL *appStoreURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://itunes.com/app/%@",[appName stringByReplacingOccurrencesOfString:@" " withString:@""]]];
+        NSURL *appStoreURL = [NSURL URLWithString:@"https://itunes.apple.com/gb/app/runner-stats/id793443821?ls=1&mt=8"];
         [[UIApplication sharedApplication] openURL:appStoreURL];
     }
 }

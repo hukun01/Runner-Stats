@@ -58,6 +58,8 @@
 static int distanceBoundForVoice = 1;
 // number of seconds
 static int duration = 0;
+// Denote wheter the record file has changed
+static bool saveNewRecord;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -67,8 +69,19 @@ static int duration = 0;
     return self;
 }
 
++ (void)changeRecordStateTo:(BOOL)state
+{
+    saveNewRecord = state;
+}
+
++ (BOOL)recordState
+{
+    return saveNewRecord;
+}
+
 - (void)setUp
 {
+    [RSRunningVC changeRecordStateTo:NO];
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.delegate = self;
     _locationManager.distanceFilter = 3.0;
