@@ -104,7 +104,7 @@
     CLLocationDistance wholeMeters = 0.0;
     NSTimeInterval wholeSeconds = 0.0;
     CLLocationSpeed averageSpeed = 0.0;
-    if ([self.records count] > 1) {
+    if ([self.records count] >= 1) {
         for (NSArray *record in self.records) {
             wholeMeters += [[record objectAtIndex:1] doubleValue];
             wholeSeconds += [[record objectAtIndex:2] intValue];
@@ -125,7 +125,7 @@
     self.durationLabel.text = wholeDurationString;
     
     int pace = 0;
-    if ([self.records count] > 1) {
+    if ([self.records count] >= 1) {
         averageSpeed /= [self.records count];
         averageSpeed *= (SECONDS_OF_HOUR/RS_UNIT);
         pace = wholeSeconds / wholeMeters;
