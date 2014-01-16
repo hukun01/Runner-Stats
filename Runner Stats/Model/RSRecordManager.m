@@ -64,7 +64,7 @@
 {
     // Need to check if there is already a record with same date
     NSArray *allRecords = [self readRecord];
-    if ([allRecords count] > 1) {
+    if ([allRecords count] >= 1) {
         NSArray *recentRecord = [allRecords objectAtIndex:([allRecords count]-2)];
         NSString *recentRecordDate = [recentRecord firstObject];
         recentRecordDate = [[recentRecordDate componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] firstObject];
