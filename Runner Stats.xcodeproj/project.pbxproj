@@ -254,8 +254,8 @@
 			children = (
 				465237971878DEA1000BFE5E /* JBChartHelper */,
 				465237901878DE98000BFE5E /* Model */,
-				4652378C1878DE89000BFE5E /* AppDelegate */,
 				465237661878DDCE000BFE5E /* ViewController */,
+				4652378C1878DE89000BFE5E /* AppDelegate */,
 				462496631878FD4100F1FF9B /* Main.storyboard */,
 				46D4AAB418655E6700F787BA /* Supporting Files */,
 			);
