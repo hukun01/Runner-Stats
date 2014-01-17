@@ -84,11 +84,11 @@ static int duration = 0;
     _isRunning = NO;
     
     // debug
-    if (![[NSFileManager defaultManager] removeItemAtPath:[self.recordManager recordPath] error:NULL])
-        NSLog(@"remove failed");
-    if (![_recordManager createRecord]) {
-        NSLog(@"Create record.csv failed.");
-    }
+//    if (![[NSFileManager defaultManager] removeItemAtPath:[self.recordManager recordPath] error:NULL])
+//        NSLog(@"remove failed");
+//    if (![_recordManager createRecord]) {
+//        NSLog(@"Create record.csv failed.");
+//    }
 }
 
 - (void)viewDidLoad
