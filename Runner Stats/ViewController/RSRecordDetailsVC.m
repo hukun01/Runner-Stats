@@ -93,19 +93,19 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
 - (void)configureDataSource
 {
     NSArray *dataArray = [self.recordManager readRecordDetailsByPath:self.recordPath] ;
-    if ([dataArray count] <= 1) {
+    if ([dataArray count] < 1) {
         NSLog(@"!? path:%@", self.recordPath);
         return;
     }
     // allow at most 50 points to be drawn
-    CLLocationDistance SMALLEST_GAP = [[[dataArray objectAtIndex:[dataArray count]-2] objectAtIndex:1] doubleValue] / NUMBER_OF_XY_POINTS;
+    CLLocationDistance SMALLEST_GAP = [[[dataArray lastObject] objectAtIndex:1] doubleValue] / NUMBER_OF_XY_POINTS;
     SMALLEST_GAP = MAX(SMALLEST_GAP, 30.0);
     
-    NSMutableArray *tempRecordData = [[NSMutableArray alloc] init];
+    NSMutableArray *tempRecordData = [NSMutableArray array];
     CLLocationDistance distanceFilter = 0;
     CLLocationDistance currentDistance = 0;
     self.maxSpeed = 0;
-    for (int i=0; i < [dataArray count]-1; ++i) {
+    for (int i=0; i < [dataArray count]; ++i) {
         currentDistance = [[dataArray[i] objectAtIndex:1] doubleValue];
         if ((currentDistance - distanceFilter) > SMALLEST_GAP) {
             distanceFilter = currentDistance;
@@ -115,7 +115,7 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
     }
     // add the last line of data
     if ((currentDistance - distanceFilter) != 0) {
-        [tempRecordData addObject:[dataArray objectAtIndex:[dataArray count]-2]];
+        [tempRecordData addObject:[dataArray lastObject]];
     }
     self.recordData = [NSArray arrayWithArray:tempRecordData];
 }
@@ -198,7 +198,6 @@ static bool bannerHasBeenLoaded = NO;
 
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner
 {
-    NSLog(@"Success233!");
     bannerHasBeenLoaded = YES;
     self.iAd.hidden = NO;
 }
@@ -238,6 +237,9 @@ static bool bannerHasBeenLoaded = NO;
 
 - (CGFloat)lineChartView:(JBLineChartView *)lineChartView heightForIndex:(NSInteger)index
 {
+    if ([self.recordData count] <= index) {
+        return 0.0f;
+    }
     NSArray *row = [self.recordData objectAtIndex:index];
     // Since the API returns NSInteger, and my data is double type, I multiply a big number to make it like some integer
     // and keep the relativity of line trend
@@ -246,6 +248,9 @@ static bool bannerHasBeenLoaded = NO;
 
 - (void)lineChartView:(JBLineChartView *)lineChartView didSelectChartAtIndex:(NSInteger)index
 {
+    if ([self.recordData count] <= index) {
+        return;
+    }
     NSArray *row = [self.recordData objectAtIndex:index];
     
     NSNumber *speedValue = [NSNumber numberWithDouble:[[row lastObject] doubleValue] * SECONDS_OF_HOUR/RS_UNIT];

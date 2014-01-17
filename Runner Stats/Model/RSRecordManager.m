@@ -99,16 +99,15 @@
 - (void)deleteLastLine
 {
     NSArray *allRecords = [self readRecord];
-    if ([allRecords count] <= 1) {
-        [[NSFileManager defaultManager] removeItemAtPath:self.recordPath error:NULL];
-        [self createRecord];
-        return;
-    }
     
     if (![[NSFileManager defaultManager] removeItemAtPath:self.recordPath error:NULL])
         NSLog(@"Remove current record failed.");
     if (![self createRecord]) {
         NSLog(@"Re-create failed.");
+    }
+    // if the file contains only one row, clear the file content
+    if ([allRecords count] < 2) {
+        return;
     }
     
     CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:self.recordPath];
