@@ -126,7 +126,6 @@
 {
     NSArray *allRecords = [self readRecord];
     if ([allRecords count] <= 1) {
-        NSLog(@"deleteLastLine??");
         [[NSFileManager defaultManager] removeItemAtPath:self.recordPath error:NULL];
         [self createRecord];
         return;
