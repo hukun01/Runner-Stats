@@ -98,7 +98,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 1 && indexPath.row == 0) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://itunes.apple.com/app/Runner Stats"]];
+        NSURL *appStoreURL = [NSURL URLWithString:@"https://itunes.apple.com/gb/app/runner-stats/id793443821?ls=1&mt=8"];
+        [[UIApplication sharedApplication] openURL:appStoreURL];
     }
 }
 @end

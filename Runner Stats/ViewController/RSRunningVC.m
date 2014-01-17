@@ -51,8 +51,6 @@
 // iAD banner
 @property (strong, nonatomic) ADBannerView *iAd;
 
-@property (strong, nonatomic) IBOutlet UILabel *test_statusLabel;
-
 @end
 
 @implementation RSRunningVC
@@ -60,6 +58,8 @@
 static int distanceBoundForVoice = 1;
 // number of seconds
 static int duration = 0;
+// Denote wheter the record file has changed
+static bool saveNewRecord;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -69,8 +69,19 @@ static int duration = 0;
     return self;
 }
 
++ (void)changeRecordStateTo:(BOOL)state
+{
+    saveNewRecord = state;
+}
+
++ (BOOL)recordState
+{
+    return saveNewRecord;
+}
+
 - (void)setUp
 {
+    [RSRunningVC changeRecordStateTo:NO];
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.delegate = self;
     _locationManager.distanceFilter = 3.0;
@@ -83,12 +94,9 @@ static int duration = 0;
     _recordManager = [[RSRecordManager alloc] init];
     _isRunning = NO;
     
-    // debug
-//    if (![[NSFileManager defaultManager] removeItemAtPath:[self.recordManager recordPath] error:NULL])
-//        NSLog(@"remove failed");
-//    if (![_recordManager createRecord]) {
-//        NSLog(@"Create record.csv failed.");
-//    }
+    if (![_recordManager createRecord]) {
+        NSLog(@"Create record.csv failed.");
+    }
 }
 
 - (void)viewDidLoad
@@ -106,8 +114,11 @@ static int duration = 0;
 
 - (BOOL)configureAVAudioSession
 {
-    self.speaker = [[AVSpeechSynthesizer alloc] init];
-    self.speaker.delegate = self;
+    if (!self.speaker) {
+        self.speaker = [[AVSpeechSynthesizer alloc] init];
+        self.speaker.delegate = self;
+    }
+    
     AVAudioSession* session = [AVAudioSession sharedInstance];
     //error handling
     BOOL success;
@@ -195,12 +206,7 @@ static int duration = 0;
     else if (!self.voiceOn) {
         [self startTimer];
     }
-    //debug
-    //duration = 230;
-    //[self triggleVoiceFeedback];
-    //
-    //debug
-    self.test_statusLabel.text = @"Start";
+    
     // Clear the data of last event
     if ([[self.map overlays] count] != 0) {
         [self.map removeOverlays:[self.map overlays]];
@@ -238,14 +244,8 @@ static int duration = 0;
     }
     if ([self.path pointCount] == 0) {
         self.currLocation = newLocation;
-        if (![self.path saveFirstLocation:self.currLocation]) {
-            //debug
-            self.test_statusLabel.text = @"No valid location";
-        }
-        else {
+        if ([self.path saveFirstLocation:self.currLocation]) {
             [self.map addOverlay:self.path];
-            //debug
-            self.test_statusLabel.text = @"Add overlay";
         }
     }
     
@@ -270,12 +270,9 @@ static int duration = 0;
         // Move map with user location
         self.currLocation = newLocation;
         
-        //debug
-        self.test_statusLabel.text = [NSString stringWithFormat:@"%.4f, %.4f", newLocation.coordinate.latitude, newLocation.coordinate.longitude];
     }
     // if the distance is small, also display speed if it is valid, but do not store it
     else if ([self.path isValidLocation:newLocation]) {
-        self.test_statusLabel.text = @"Low speed but valid.";
         self.speed = (SECONDS_OF_HOUR/RS_UNIT) * newLocation.speed;
     }
     
@@ -302,15 +299,12 @@ static int duration = 0;
     NSString *feedBackString = [distanceText stringByAppendingString:durationText];
     AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:feedBackString];
     utterance.rate = (AVSpeechUtteranceDefaultSpeechRate + AVSpeechUtteranceMinimumSpeechRate)/2;
-    if (self.speaker && utterance) {
+    if ([self configureAVAudioSession] && self.speaker && utterance) {
         [utterance setPitchMultiplier:1.25];
         [self.speaker speakUtterance:utterance];
     }
     ++distanceBoundForVoice;
     duration = 0;
-    
-    //debug
-    NSLog(@"%@", feedBackString);
 }
 
 - (NSString *)timeFormatted:(int)totalSeconds longerThanOneHour:(BOOL)islonger
@@ -460,9 +454,6 @@ static int duration = 0;
     
     NSArray *newRecord = @[startDateString, disStr, durStr, avgSpdStr];
     [self.recordManager addALine:newRecord];
-
-    //debug
-    self.test_statusLabel.text = [NSString stringWithFormat:@"%@", newRecord];
 }
 
 #pragma mark - ADBanner configuration
@@ -490,6 +481,11 @@ static bool bannerHasBeenLoaded = NO;
         NSLog(@"Some error about ads: %@", error);
         self.iAd.hidden = YES;
     }
+}
+
+- (void)bannerViewActionDidFinish:(ADBannerView *)banner
+{
+    NSLog(@"bannerview was selected");
 }
 
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner

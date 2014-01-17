@@ -21,24 +21,6 @@
     return self;
 }
 
-//debug
-- (NSArray *) test_Record
-{
-    return @[
-             @[@"2013-12-01 16:28:00", @"5341", @"1450", @"3.3"],
-             @[@"2013-12-05 16:28:00", @"5341", @"1250", @"3.3"],
-             @[@"2013-12-10 16:28:00", @"5341", @"1850", @"3.3"],
-             @[@"2013-12-15 16:28:00", @"5341", @"1550", @"3.3"],
-             @[@"2013-12-18 16:28:00", @"5341", @"1800", @"3.3"],
-             @[@"2013-12-19 16:28:00", @"5341", @"1530", @"3.4"],
-             @[@"2013-12-22 16:28:00", @"5341", @"1780", @"3.2"],
-             @[@"2014-01-01 16:30:00", @"5341", @"1800", @"3"],
-             @[@"2014-01-03 16:34:00", @"5129", @"1776", @"2.20"],
-             @[@"2014-01-04 16:32:00", @"5341", @"1802", @"2.3"],
-             @[@"2014-01-05 16:32:00", @"5341", @"1702", @"2.3"],
-             ];
-}
-
 - (BOOL)createRecord
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -51,47 +33,39 @@
         }
     }
     
-    //debug
-    CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:self.recordPath];
-    NSArray *recordContent = [self test_Record];
-    for (NSArray *line in recordContent) {
-        [writer writeLineOfFields:line];
-    }
-    //
-    
     return YES;
 }
 
 - (NSArray *)readRecord
 {
-    NSArray *allRecords = [NSArray arrayWithContentsOfCSVFile:self.recordPath];
+    NSMutableArray *allRecords = [[NSArray arrayWithContentsOfCSVFile:self.recordPath] mutableCopy];
     // Check the tail, cut off the row that only contain "".
-    NSInteger invalidTail = [allRecords count]-1;
-    while (invalidTail >= 0) {
-        if ([[allRecords objectAtIndex:invalidTail] count] == 1) {
-            --invalidTail;
-        }
-        else {
-            break;
+    if ([allRecords count] > 0) {
+        if ([[allRecords lastObject] count] == 1) {
+            [allRecords removeLastObject];
         }
     }
-    NSRange range = {0, invalidTail + 1};
-    return [allRecords subarrayWithRange:range];
+    return allRecords;
 }
 
 - (NSArray *)readRecordDetailsByPath:(NSString *)path
 {
-    NSArray *detailData = [NSArray arrayWithContentsOfCSVFile:path];
-    NSRange range = {0, [detailData count]-1};
-    return [detailData subarrayWithRange:range];
+    NSMutableArray *allRecords = [[NSArray arrayWithContentsOfCSVFile:path] mutableCopy];
+    // Check the tail, cut off the row that only contain "".
+    if ([allRecords count] > 0) {
+        if ([[allRecords lastObject] count] == 1) {
+            [allRecords removeLastObject];
+        }
+    }
+    return allRecords;
 }
 
 - (void)addALine:(NSArray *)newline
 {
     // Need to check if there is already a record with same date
     NSArray *allRecords = [self readRecord];
-    if ([allRecords count] > 1) {
-        NSArray *recentRecord = [allRecords objectAtIndex:([allRecords count]-2)];
+    if ([allRecords count] >= 1) {
+        NSArray *recentRecord = [allRecords lastObject];
         NSString *recentRecordDate = [recentRecord firstObject];
         recentRecordDate = [[recentRecordDate componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] firstObject];
         NSString *newRecordDate = [newline firstObject];
@@ -125,19 +99,19 @@
 - (void)deleteLastLine
 {
     NSArray *allRecords = [self readRecord];
-    if ([allRecords count] == 1) {
-        return;
-    }
-    NSRange range = {0, [allRecords count]-1};
-    NSArray *newAllRecords = [allRecords subarrayWithRange:range];
     
-    if (![[NSFileManager defaultManager] removeItemAtPath:[self recordPath] error:NULL])
+    if (![[NSFileManager defaultManager] removeItemAtPath:self.recordPath error:NULL])
         NSLog(@"Remove current record failed.");
     if (![self createRecord]) {
         NSLog(@"Re-create failed.");
     }
+    // if the file contains only one row, clear the file content
+    if ([allRecords count] < 2) {
+        return;
+    }
+    
     CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:self.recordPath];
-    for (NSArray *a in newAllRecords) {
+    for (NSArray *a in [allRecords subarrayWithRange:NSMakeRange(0, [allRecords count]-1)]) {
         [writer writeLineOfFields:a];
     }
 }

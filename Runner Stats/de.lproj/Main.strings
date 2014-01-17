@@ -9,7 +9,7 @@
 "5wL-O2-Quz.text" = "0.00";
 
 /* Class = "IBUIButton"; normalTitle = "Discard"; ObjectID = "7gt-yV-Crg"; */
-"7gt-yV-Crg.normalTitle" = "Discard";
+"7gt-yV-Crg.normalTitle" = "Wegwerfen";
 
 /* Class = "IBUILabel"; text = "No session"; ObjectID = "7nu-jG-QX4"; */
 "7nu-jG-QX4.text" = "No session";
@@ -18,10 +18,10 @@
 "8fS-yQ-swe.text" = "min/km";
 
 /* Class = "IBUILabel"; text = "Measure Unit"; ObjectID = "Amf-s1-7TI"; */
-"Amf-s1-7TI.text" = "Measure Unit";
+"Amf-s1-7TI.text" = "Maßeinheit";
 
 /* Class = "IBUILabel"; text = "Avg. Pace"; ObjectID = "BZT-cK-7W6"; */
-"BZT-cK-7W6.text" = "Avg. Pace";
+"BZT-cK-7W6.text" = "Avg. Rhythmus";
 
 /* Class = "IBUIViewController"; title = "RunningVC"; ObjectID = "CZ4-MO-1fc"; */
 "CZ4-MO-1fc.title" = "RunningVC";
@@ -33,16 +33,16 @@
 "Dw3-Q1-UQs.text" = "0.00";
 
 /* Class = "IBUILabel"; text = "Distance"; ObjectID = "I5W-ZR-owc"; */
-"I5W-ZR-owc.text" = "Distance";
+"I5W-ZR-owc.text" = "Entfernung";
 
 /* Class = "IBUILabel"; text = "0.00"; ObjectID = "JbR-ag-bLZ"; */
 "JbR-ag-bLZ.text" = "0.00";
 
 /* Class = "IBUILabel"; text = "Open Source Libraries Used"; ObjectID = "JnA-8J-6cD"; */
-"JnA-8J-6cD.text" = "Libraries Used & Thanks";
+"JnA-8J-6cD.text" = "Open-Source-Bibliotheken";
 
 /* Class = "IBUILabel"; text = "Voice Feedback"; ObjectID = "KcC-g2-y4D"; */
-"KcC-g2-y4D.text" = "Voice Feedback";
+"KcC-g2-y4D.text" = "Sprachansagen";
 
 /* Class = "IBUIViewController"; title = "StatsSecondVC"; ObjectID = "Kd3-60-NxG"; */
 "Kd3-60-NxG.title" = "StatsSecondVC";
@@ -57,7 +57,7 @@
 "QUy-BD-bpt.title" = "StatsVC";
 
 /* Class = "IBUILabel"; text = "Rate Me"; ObjectID = "RnO-SR-hBc"; */
-"RnO-SR-hBc.text" = "Rate Me";
+"RnO-SR-hBc.text" = "Bewerten mich";
 
 /* Class = "IBUINavigationItem"; title = "Title"; ObjectID = "U6H-gJ-pni"; */
 "U6H-gJ-pni.title" = "Title";
@@ -69,19 +69,19 @@
 "W7i-5o-QsX.text" = "00:00:00";
 
 /* Class = "IBUIButton"; normalTitle = "Start"; ObjectID = "XUg-bu-Lvn"; */
-"XUg-bu-Lvn.normalTitle" = "Start";
+"XUg-bu-Lvn.normalTitle" = "Anfangen";
 
 /* Class = "IBUIButton"; normalTitle = "Save"; ObjectID = "Y4X-gG-Cmv"; */
-"Y4X-gG-Cmv.normalTitle" = "Save";
+"Y4X-gG-Cmv.normalTitle" = "Speichern";
 
 /* Class = "IBUILabel"; text = "km"; ObjectID = "Y6e-kg-pMv"; */
 "Y6e-kg-pMv.text" = "km";
 
 /* Class = "IBUITabBarItem"; title = "Settings"; ObjectID = "YEx-C2-EzB"; */
-"YEx-C2-EzB.title" = "Settings";
+"YEx-C2-EzB.title" = "Einstellungen";
 
 /* Class = "IBUITabBarItem"; title = "Stats"; ObjectID = "Z7h-1E-pvt"; */
-"Z7h-1E-pvt.title" = "Stats";
+"Z7h-1E-pvt.title" = "Statistik";
 
 /* Class = "IBUILabel"; text = "kph"; ObjectID = "Zer-NW-NdN"; */
 "Zer-NW-NdN.text" = "kph";
@@ -90,10 +90,10 @@
 "bgL-Vf-ugF.text" = "00:00:00";
 
 /* Class = "IBUILabel"; text = "Avg. Speed"; ObjectID = "cY4-1H-wFe"; */
-"cY4-1H-wFe.text" = "Avg. Speed";
+"cY4-1H-wFe.text" = "Avg. Schwindigkeit";
 
 /* Class = "IBUILabel"; text = "App Support Page"; ObjectID = "d42-XJ-MrB"; */
-"d42-XJ-MrB.text" = "App Support Page";
+"d42-XJ-MrB.text" = "App-Support-Seite";
 
 /* Class = "IBUILabel"; text = "kph"; ObjectID = "dcW-5Q-9cD"; */
 "dcW-5Q-9cD.text" = "kph";
@@ -117,16 +117,16 @@
 "oWA-lY-crh.text" = "km";
 
 /* Class = "IBUILabel"; text = "Runner Stats is a faithful recorder for your running activities. I wish it would support you to live a healthy life :-)"; ObjectID = "q1y-Jw-F86"; */
-"q1y-Jw-F86.text" = "I like running so I made this Runner Stats. I wish it would support you to live a healthy life :-)";
+"q1y-Jw-F86.text" = "Ich liebe Lauf,so habe ich diese App geschrieben,mit der ich Ihnen wünsche,ein gesundes Leben zu genießen. :-)";
 
 /* Class = "IBUILabel"; text = "0.00"; ObjectID = "txX-DT-gCk"; */
 "txX-DT-gCk.text" = "0.00";
 
 /* Class = "IBUITabBarItem"; title = "Running"; ObjectID = "u1e-5L-l1D"; */
-"u1e-5L-l1D.title" = "Running";
+"u1e-5L-l1D.title" = "Lauf";
 
 /* Class = "IBUILabel"; text = "Duration"; ObjectID = "uw5-nT-cuY"; */
-"uw5-nT-cuY.text" = "Duration";
+"uw5-nT-cuY.text" = "Dauer";
 
 /* Class = "IBUILabel"; text = "0.00"; ObjectID = "web-Z5-FiK"; */
 "web-Z5-FiK.text" = "0.00";
@@ -135,7 +135,7 @@
 "xMZ-ze-rkX.title" = "RecordDetailsVC";
 
 /* Class = "IBUILabel"; text = "Countdown on Start"; ObjectID = "xpE-y0-AJy"; */
-"xpE-y0-AJy.text" = "Countdown on Start";
+"xpE-y0-AJy.text" = "Countdown vom Start";
 
 /* Class = "IBUISegmentedControl"; zSW-ur-pec.segmentTitles[0] = "km"; ObjectID = "zSW-ur-pec"; */
 "zSW-ur-pec.segmentTitles[0]" = "km";

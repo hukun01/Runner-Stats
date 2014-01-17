@@ -104,12 +104,20 @@
     CLLocationDistance wholeMeters = 0.0;
     NSTimeInterval wholeSeconds = 0.0;
     CLLocationSpeed averageSpeed = 0.0;
-    if ([self.records count] > 1) {
+    if ([self.records count] > 0) {
         for (NSArray *record in self.records) {
             wholeMeters += [[record objectAtIndex:1] doubleValue];
             wholeSeconds += [[record objectAtIndex:2] intValue];
             averageSpeed += [[record lastObject] doubleValue];
         }
+    }
+    else {
+        self.distanceLabel.text = @"0";
+        self.durationLabel.text = @"0";
+        self.avgSpeedLabel.text = @"0";
+        self.avgSpeedLabel.text = @"0";
+        
+        return;
     }
     
     wholeMeters /= RS_UNIT;
@@ -125,14 +133,12 @@
     self.durationLabel.text = wholeDurationString;
     
     int pace = 0;
-    if ([self.records count] > 1) {
-        averageSpeed /= [self.records count];
-        averageSpeed *= (SECONDS_OF_HOUR/RS_UNIT);
-        pace = wholeSeconds / wholeMeters;
-    }
+    pace = wholeSeconds / wholeMeters;
     NSString *averagePaceString = [self.recordManager timeFormatted:pace withOption:FORMAT_MMSS];
     self.avgPaceLabel.text = averagePaceString;
     
+    averageSpeed /= [self.records count];
+    averageSpeed *= (SECONDS_OF_HOUR/RS_UNIT);
     if (averageSpeed > 10.0) {
         self.avgSpeedLabel.text = [NSString stringWithFormat:@"%.1f", averageSpeed];
     }
