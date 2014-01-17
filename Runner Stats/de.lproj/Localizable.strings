@@ -25,7 +25,7 @@
 // Second-1 details interface
 "Max Speed" = "Höchstgeschwindigkeit";
 // Second-2 interface
-"Running Frequency" = "Running Frequency";
+"Running Frequency" = "Lauf-Frequenz";
 "barChartTitle" = "Aktivität in der letzten 7 Wochen";
 "JAN" = "JAN";
 "FEB" = "FEB";
