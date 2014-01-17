@@ -125,7 +125,9 @@
 - (void)deleteLastLine
 {
     NSArray *allRecords = [self readRecord];
-    if ([allRecords count] == 1) {
+    if ([allRecords count] <= 1) {
+        [[NSFileManager defaultManager] removeItemAtPath:[self recordPath] error:NULL];
+        [self createRecord];
         return;
     }
     NSRange range = {0, [allRecords count]-1};
