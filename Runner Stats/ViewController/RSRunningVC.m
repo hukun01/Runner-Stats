@@ -483,6 +483,11 @@ static bool bannerHasBeenLoaded = NO;
     }
 }
 
+- (void)bannerViewActionDidFinish:(ADBannerView *)banner
+{
+    NSLog(@"bannerview was selected");
+}
+
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner
 {
     NSLog(@"Success!");

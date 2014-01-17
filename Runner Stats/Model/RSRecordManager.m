@@ -38,26 +38,26 @@
 
 - (NSArray *)readRecord
 {
-    NSArray *allRecords = [NSArray arrayWithContentsOfCSVFile:self.recordPath];
+    NSMutableArray *allRecords = [[NSArray arrayWithContentsOfCSVFile:self.recordPath] mutableCopy];
     // Check the tail, cut off the row that only contain "".
-    NSInteger invalidTail = [allRecords count]-1;
-    while (invalidTail >= 0) {
-        if ([[allRecords objectAtIndex:invalidTail] count] == 1) {
-            --invalidTail;
-        }
-        else {
-            break;
+    if ([allRecords count] > 0) {
+        if ([[allRecords lastObject] count] == 1) {
+            [allRecords removeLastObject];
         }
     }
-    NSRange range = {0, invalidTail + 1};
-    return [allRecords subarrayWithRange:range];
+    return allRecords;
 }
 
 - (NSArray *)readRecordDetailsByPath:(NSString *)path
 {
-    NSArray *detailData = [NSArray arrayWithContentsOfCSVFile:path];
-    NSRange range = {0, [detailData count]-1};
-    return [detailData subarrayWithRange:range];
+    NSMutableArray *allRecords = [[NSArray arrayWithContentsOfCSVFile:path] mutableCopy];
+    // Check the tail, cut off the row that only contain "".
+    if ([allRecords count] > 0) {
+        if ([[allRecords lastObject] count] == 1) {
+            [allRecords removeLastObject];
+        }
+    }
+    return allRecords;
 }
 
 - (void)addALine:(NSArray *)newline
@@ -65,7 +65,7 @@
     // Need to check if there is already a record with same date
     NSArray *allRecords = [self readRecord];
     if ([allRecords count] >= 1) {
-        NSArray *recentRecord = [allRecords objectAtIndex:([allRecords count]-2)];
+        NSArray *recentRecord = [allRecords lastObject];
         NSString *recentRecordDate = [recentRecord firstObject];
         recentRecordDate = [[recentRecordDate componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] firstObject];
         NSString *newRecordDate = [newline firstObject];
@@ -100,20 +100,19 @@
 {
     NSArray *allRecords = [self readRecord];
     if ([allRecords count] <= 1) {
-        [[NSFileManager defaultManager] removeItemAtPath:[self recordPath] error:NULL];
+        [[NSFileManager defaultManager] removeItemAtPath:self.recordPath error:NULL];
         [self createRecord];
         return;
     }
-    NSRange range = {0, [allRecords count]-1};
-    NSArray *newAllRecords = [allRecords subarrayWithRange:range];
     
-    if (![[NSFileManager defaultManager] removeItemAtPath:[self recordPath] error:NULL])
+    if (![[NSFileManager defaultManager] removeItemAtPath:self.recordPath error:NULL])
         NSLog(@"Remove current record failed.");
     if (![self createRecord]) {
         NSLog(@"Re-create failed.");
     }
+    
     CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:self.recordPath];
-    for (NSArray *a in newAllRecords) {
+    for (NSArray *a in [allRecords subarrayWithRange:NSMakeRange(0, [allRecords count]-1)]) {
         [writer writeLineOfFields:a];
     }
 }
