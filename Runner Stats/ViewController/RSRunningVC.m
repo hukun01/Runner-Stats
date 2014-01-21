@@ -204,14 +204,14 @@ static bool saveNewRecord;
 # pragma mark - Start Session
 - (IBAction)startSession:(id)sender
 {
-    self.isRunning = YES;
     [self.locationManager startUpdatingLocation];
     if (self.voiceOn && [self configureAVAudioSession]) {
         [self speakCountDown];
     }
-    else if (!self.voiceOn) {
+    else {
         [self startTimer];
     }
+    self.isRunning = YES;
     
     // Clear the data of last event
     if ([[self.map overlays] count] != 0) {
