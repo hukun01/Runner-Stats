@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 hk. All rights reserved.
 //
 
+#import "RSRunningVC.h"
 #import "RSStatsFirstVC.h"
 #import "RSRecordManager.h"
 #import "RSRecordCell.h"
@@ -31,6 +32,18 @@
 @end
 
 @implementation RSStatsFirstVC
+// Denote wheter the record file has changed
+static bool updateNewRecord;
+
++ (void)changeUpdateStateTo:(BOOL)state
+{
+    updateNewRecord = state;
+}
+
++ (BOOL)updateState
+{
+    return updateNewRecord;
+}
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -46,6 +59,7 @@
 {
     _records = records;
     [self.recordTableView reloadData];
+    [RSStatsFirstVC changeUpdateStateTo:YES];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -77,6 +91,7 @@
     // setup table view
     self.recordTableView.dataSource = self;
     self.recordTableView.delegate = self;
+    [RSStatsFirstVC changeUpdateStateTo:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -87,7 +102,10 @@
     parentVC.pageControl.hidden = NO;
     parentVC.currentStatsView.scrollEnabled = YES;
     // setup data
-    self.records = [self.recordManager readRecord];
+    if (!self.records || ([RSRunningVC updateState] && ![RSStatsFirstVC updateState])) {
+        self.records = [self.recordManager readRecord];
+        [RSStatsFirstVC changeUpdateStateTo:YES];
+    }
     [self calcWholeDataForLabels];
     [self setupUnitLabels];
 }

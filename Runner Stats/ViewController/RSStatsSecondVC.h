@@ -11,4 +11,5 @@
 
 @interface RSStatsSecondVC : UIViewController <ADBannerViewDelegate>
 
++ (void)changeUpdateStateTo:(BOOL)state;
 @end

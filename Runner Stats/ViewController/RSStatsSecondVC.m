@@ -26,6 +26,18 @@
 @end
 
 @implementation RSStatsSecondVC
+// Denote wheter the record file has changed
+static bool updateNewRecord;
+
++ (void)changeUpdateStateTo:(BOOL)state
+{
+    updateNewRecord = state;
+}
+
++ (BOOL)updateState
+{
+    return updateNewRecord;
+}
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -41,6 +53,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    [RSStatsSecondVC changeUpdateStateTo:NO];
     self.myNavigationItem.title = NSLocalizedString(@"Running Frequency", nil);
 }
 
@@ -48,9 +61,10 @@
 {
     [super viewWillAppear:animated];
     
-    if (!self.records || [RSRunningVC recordState]) {
+    // setup data
+    if (!self.records || ([RSRunningVC updateState] && ![RSStatsSecondVC updateState])) {
         self.records = [self.recordManager readRecord];
-        [RSRunningVC changeRecordStateTo:NO];
+        [RSStatsSecondVC changeUpdateStateTo:YES];
     }
     
     [self setupContributionGraph];

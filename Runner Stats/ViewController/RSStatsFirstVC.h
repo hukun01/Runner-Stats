@@ -13,4 +13,5 @@
 
 @interface RSStatsFirstVC : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
++ (void)changeUpdateStateTo:(BOOL)state;
 @end

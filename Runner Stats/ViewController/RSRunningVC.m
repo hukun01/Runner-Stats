@@ -8,6 +8,7 @@
 
 #import "RSRunningVC.h"
 #import "RSStatsFirstVC.h"
+#import "RSStatsSecondVC.h"
 
 #define DISCARD_ALERT_TAG 0
 #define SAVE_ALERT_TAG 1
@@ -72,9 +73,14 @@ static bool saveNewRecord;
 + (void)changeRecordStateTo:(BOOL)state
 {
     saveNewRecord = state;
+    // Reset the update state in other VCs
+    if (state) {
+        [RSStatsFirstVC changeUpdateStateTo:NO];
+        [RSStatsSecondVC changeUpdateStateTo:NO];
+    }
 }
 
-+ (BOOL)recordState
++ (BOOL)updateState
 {
     return saveNewRecord;
 }
@@ -376,6 +382,7 @@ static bool saveNewRecord;
             // make it unable to zoom
             [self saveSessionAsRecord];
             [self.path saveTmpAsData];
+            [RSRunningVC changeRecordStateTo:YES];
         }
     }
 }
