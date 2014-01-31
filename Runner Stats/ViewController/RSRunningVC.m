@@ -197,6 +197,7 @@ static bool saveNewRecord;
 - (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didFinishSpeechUtterance:(AVSpeechUtterance *)utterance
 {
     if (self.isRunning) {
+        self.isRunning = YES;
         [self startTimer];
     }
 }
@@ -210,8 +211,8 @@ static bool saveNewRecord;
     }
     else {
         [self startTimer];
+        self.isRunning = YES;
     }
-    self.isRunning = YES;
     
     // Clear the data of last event
     if ([[self.map overlays] count] != 0) {
@@ -275,7 +276,6 @@ static bool saveNewRecord;
         self.speed = (SECONDS_OF_HOUR/RS_UNIT) * [self.path instantSpeed];
         // Move map with user location
         self.currLocation = newLocation;
-        
     }
     // if the distance is small, also display speed if it is valid, but do not store it
     else if ([self.path isValidLocation:newLocation]) {
