@@ -369,7 +369,6 @@ static bool saveNewRecord;
         // Discard session
         if (alertView.tag == DISCARD_ALERT_TAG)
         {
-            // TO-DO: delete tmp files
             // Remove overlay, clear path
             [self.map removeOverlays:[self.map overlays]];
             [self.path clearContents];
@@ -379,7 +378,6 @@ static bool saveNewRecord;
         else if (alertView.tag == SAVE_ALERT_TAG)
         {
             // Save current session
-            // TO-DO: save tmp files to disk
             // Remain all data
             // make it unable to zoom
             [self saveSessionAsRecord];
@@ -395,6 +393,9 @@ static bool saveNewRecord;
     [self.locationManager stopUpdatingLocation];
     [self stopTimer];
     [self restoreUI];
+    // When stop speaking, make the cdString empty
+    // for the check in the following didFinishSpeechUtterance method
+    self.cdString = @"";
     if (self.speaker.isSpeaking) {
         [self.speaker stopSpeakingAtBoundary:AVSpeechBoundaryWord];
     }
