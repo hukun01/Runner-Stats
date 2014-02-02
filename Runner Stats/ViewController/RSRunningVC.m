@@ -42,6 +42,7 @@
 @property (strong, nonatomic) RSPath *path;
 @property (strong, nonatomic) MKPolylineRenderer *pathRenderer;
 @property (strong, nonatomic) IBOutlet UINavigationItem *myNavigationItem;
+@property (strong, nonatomic) NSString *cdString;
 // before start, count down related
 @property (strong, nonatomic) AVSpeechSynthesizer *speaker;
 @property (assign, nonatomic) BOOL voiceOn;
@@ -167,12 +168,12 @@ static bool saveNewRecord;
 
 - (void)speakCountDown
 {
-    NSString *countDownString = [self countDownString];
-    if ([countDownString isEqualToString:@""]) {
+    self.cdString = [self countDownString];
+    if ([self.cdString isEqualToString:@""]) {
         NSLog(@"NULL String");
         return;
     }
-    AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:countDownString];
+    AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:self.cdString];
     utterance.rate = AVSpeechUtteranceMinimumSpeechRate;
     if (self.speaker && utterance) {
         [utterance setPitchMultiplier:1.25];
@@ -196,7 +197,8 @@ static bool saveNewRecord;
 
 - (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didFinishSpeechUtterance:(AVSpeechUtterance *)utterance
 {
-    if (self.isRunning) {
+    // If the speaker is counting down, when it finishes, start the running state
+    if ([self.cdString isEqualToString:[utterance speechString]]) {
         self.isRunning = YES;
         [self startTimer];
     }
