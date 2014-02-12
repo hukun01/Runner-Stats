@@ -100,10 +100,23 @@ static bool updateNewRecord;
     df.dateFormat = @"yyyy-MM-dd HH:mm:ss";
     NSString *todayString = [df stringFromDate:[NSDate date]];
     NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    NSInteger days = [calendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:[NSDate date]];
+    // if there is no record in recentRecords
+    if (0 == [recentRecords count]) {
+        for (int i=0; i<days-1; i++) {
+            [result addObject:@0];
+        }
+        [result addObject:@5];
+        self.contributionGraph.data = result;
+        return;
+    }
+    
     NSInteger prevDays = 0;
-    NSInteger days = 0;
+    NSString *dateString1;
+    
     for (NSArray *row in recentRecords) {
-        NSString *dateString1 = [row firstObject];
+        dateString1 = [row firstObject];
         if ([self date:dateString1 isInSameMonthWithDate:todayString]) {
             NSDate *recordDate = [df dateFromString:dateString1];
             days = [calendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:recordDate];
@@ -115,19 +128,12 @@ static bool updateNewRecord;
             prevDays = days;
         }
     }
+    NSInteger daysUntilNow = [calendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:[NSDate date]];
+    for (int i=0; i < daysUntilNow-days-1; ++i) {
+        [result addObject:@0];
+    }
     // Change today's rect to green color
-    NSArray *lastRow = [recentRecords lastObject];
-    NSString *recordDateOfLastRow = [lastRow firstObject];
-    NSDate *lastDate = [df dateFromString:recordDateOfLastRow];
-    df.dateFormat = @"yyyy-MM-dd";
-    NSString *lastString = [df stringFromDate:lastDate];
-    todayString = [df stringFromDate:[NSDate date]];
-    if ([lastString isEqualToString:todayString]) {
-        [result replaceObjectAtIndex:[result count]-1 withObject:@5];
-    }
-    else {
-        [result addObject:@5];
-    }
+    [result addObject:@5];
     
     self.contributionGraph.data = result;
 }
@@ -148,9 +154,8 @@ static bool updateNewRecord;
     if (recordsNumber < 1) {
         return [NSArray array];
     }
-    NSDate *today = [NSDate date];
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSUInteger daysOfMonth = [calendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:today];
+    
+    NSUInteger daysOfMonth = [[NSCalendar currentCalendar] ordinalityOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:[NSDate date]];
     if (recordsNumber > daysOfMonth) {
         NSInteger location =  recordsNumber - daysOfMonth;
         NSInteger length = daysOfMonth;
