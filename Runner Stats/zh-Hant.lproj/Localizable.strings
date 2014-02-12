@@ -12,6 +12,12 @@
 "kilometers" = "公里";
 "miles" = "英里";
 "DurationText" = "。耗時：";
+
+"minutes" = "%d 分";
+"minSec" = "%d 分, %d 秒";
+"hourMin" = "%d 小時, %d 分";
+"hourMinSec" = "%d 小時, %d 分, %d 秒";
+
 // alert view
 "DiscardTitle" = "放棄？";
 "Do you want to Discard" = "停止並放棄本次的記錄？";

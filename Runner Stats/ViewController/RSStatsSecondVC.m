@@ -94,7 +94,7 @@ static bool updateNewRecord;
 
 - (void)setupContributionGraphData
 {
-    NSMutableArray *result = [[NSMutableArray alloc] init];
+    NSMutableArray *result = [NSMutableArray array];
     NSArray *recentRecords = [self readCurrentMonthRecord];
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     df.dateFormat = @"yyyy-MM-dd HH:mm:ss";
@@ -144,10 +144,9 @@ static bool updateNewRecord;
 // Return the array of records of current month
 - (NSArray *)readCurrentMonthRecord
 {
-    NSArray *array = [[NSArray alloc] init];
     NSInteger recordsNumber = [self.records count];
     if (recordsNumber < 1) {
-        return array;
+        return [NSArray array];
     }
     NSDate *today = [NSDate date];
     NSCalendar *calendar = [NSCalendar currentCalendar];

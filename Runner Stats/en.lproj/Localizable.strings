@@ -12,6 +12,12 @@
 "kilometers" = "kilometers";
 "miles" = "miles";
 "DurationText" = ". Duration, ";
+
+"minutes" = "%d minutes";
+"minSec" = "%d minutes, %d seconds";
+"hourMin" = "%d hours, %d minutes";
+"hourMinSec" = "%d hours, %d minutes, %d seconds";
+
 // alert view
 "DiscardTitle" = "Discard?";
 "Do you want to Discard" = "Do you want to stop and discard this session?";

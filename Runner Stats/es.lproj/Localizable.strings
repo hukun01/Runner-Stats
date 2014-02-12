@@ -12,6 +12,12 @@
 "kilometers" = "kilómetros";
 "miles" = "millas";
 "DurationText" = ". Duracion, ";
+
+"minutes" = "%d minutos";
+"minSec" = "%d minutos, %d segundos";
+"hourMin" = "%d hora, %d minutos";
+"hourMinSec" = "%d hora, %d minutos, %d segundos";
+
 // alert view
 "DiscardTitle" = "Deshacer?";
 "Do you want to Discard" = "Quieres Deshacer?";

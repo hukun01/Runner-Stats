@@ -12,6 +12,12 @@
 "kilometers" = "キロメートル";
 "miles" = "マイル";
 "DurationText" = ". デュレーション, ";
+
+"minutes" = "%d 分";
+"minSec" = "%d 分, %d 秒";
+"hourMin" = "%d 時間, %d 分";
+"hourMinSec" = "%d 時間, %d 分, %d 秒";
+
 // alert view
 "DiscardTitle" = "捨てる？";
 "Do you want to Discard" = "捨てるしますか？";

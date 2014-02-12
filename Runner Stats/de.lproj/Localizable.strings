@@ -12,6 +12,12 @@
 "kilometers" = "Kilometer";
 "miles" = "Meile";
 "DurationText" = ". Dauer, ";
+
+"minutes" = "%d Protokoll";
+"minSec" = "%d Protokoll, %d zweite";
+"hourMin" = "%d Stunden, %d Protokoll";
+"hourMinSec" = "%d Stunden, %d Protokoll, %d zweite";
+
 // alert view
 "DiscardTitle" = "Wegwerfen?";
 "Do you want to Discard" = "Möchten Sie es wegwerfen?";

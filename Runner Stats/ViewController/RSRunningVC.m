@@ -323,15 +323,15 @@ static bool saveNewRecord;
     
     if (!islonger) {
         if (seconds == 0) {
-            return [NSString stringWithFormat:@"%d minutes", minutes];
+            return [NSString stringWithFormat:NSLocalizedString(@"minutes", nil), minutes];
         }
-        return [NSString stringWithFormat:@"%d minutes, %d seconds", minutes, seconds];
+        return [NSString stringWithFormat:NSLocalizedString(@"minSec", nil), minutes, seconds];
     }
     else {
         if (seconds == 0) {
-            return [NSString stringWithFormat:@"%d hours, %d minutes",hours, minutes];
+            return [NSString stringWithFormat:NSLocalizedString(@"hourMin", nil), hours, minutes];
         }
-        return [NSString stringWithFormat:@"%d hours, %d minutes, %d seconds",hours, minutes, seconds];
+        return [NSString stringWithFormat:NSLocalizedString(@"hourMinSec", nil), hours, minutes, seconds];
     }
 }
 
