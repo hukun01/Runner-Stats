@@ -129,11 +129,11 @@ static bool updateNewRecord;
         }
     }
     NSInteger daysUntilNow = [calendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:[NSDate date]];
-    for (int i=0; i < daysUntilNow-days-1; ++i) {
+    for (int i=0; i < daysUntilNow-days; ++i) {
         [result addObject:@0];
     }
     // Change today's rect to green color
-    [result addObject:@5];
+    [result replaceObjectAtIndex:[result count]-1 withObject:@5];
     
     self.contributionGraph.data = result;
 }
