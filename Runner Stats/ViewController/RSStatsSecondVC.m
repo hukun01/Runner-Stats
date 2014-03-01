@@ -128,9 +128,21 @@ static bool updateNewRecord;
             prevDays = days;
         }
     }
+    // If today and the last recordDate is in the same month,
+    // in this case, [daysUntilNow] is always greater than [days]
     NSInteger daysUntilNow = [calendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:[NSDate date]];
-    for (int i=0; i < daysUntilNow-days; ++i) {
-        [result addObject:@0];
+    // dateString1 is the date of the most recent record
+    if ([self date:dateString1 isInSameMonthWithDate:todayString]) {
+        for (int i=0; i < daysUntilNow-days; ++i) {
+            [result addObject:@0];
+        }
+    }
+    // If today and the last recordDate is not in the same month,
+    // in this case, [daysUntilNow] is the number of @0 that should be in result
+    else {
+        for (int i=0; i < daysUntilNow; ++i) {
+            [result addObject:@0];
+        }
     }
     // Change today's rect to green color
     [result replaceObjectAtIndex:[result count]-1 withObject:@5];
