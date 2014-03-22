@@ -134,7 +134,7 @@ static bool updateNewRecord;
         self.distanceLabel.text = @"0";
         self.durationLabel.text = @"0";
         self.avgSpeedLabel.text = @"0";
-        self.avgSpeedLabel.text = @"0";
+        self.avgPaceLabel.text = @"0";
         
         return;
     }
@@ -152,7 +152,12 @@ static bool updateNewRecord;
     self.durationLabel.text = wholeDurationString;
     
     int pace = 0;
-    pace = wholeSeconds / wholeMeters;
+    if (wholeMeters == 0) {
+        pace = 0;
+    }
+    else {
+        pace = wholeSeconds / wholeMeters;
+    }
     NSString *averagePaceString = [self.recordManager timeFormatted:pace withOption:FORMAT_MMSS];
     self.avgPaceLabel.text = averagePaceString;
     
@@ -193,7 +198,6 @@ static bool updateNewRecord;
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Delete record at %ld, row", indexPath.row);
     [self.recordManager deleteRowAt:indexPath.row];
     self.records = [self.recordManager readRecord];
     [RSStatsFirstVC changeUpdateStateTo:YES];
