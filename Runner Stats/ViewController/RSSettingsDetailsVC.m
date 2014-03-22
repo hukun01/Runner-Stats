@@ -63,14 +63,13 @@
 }
 
 #pragma mark - segue selector
-- (void)showSettingDetailsByTag:(NSNumber *)tag
+- (void)showAppSuportPage
 {
-    if ([tag isEqualToNumber:SUPPORT_URL]) {
-        self.url = [NSURL URLWithString:@"http://lifexplorer.me/projects/Runner-Stats/#respond"];
-    }
-    else {
-        self.url = [NSURL URLWithString:@"http://lifexplorer.me/projects/runner-stats/libraries-used-in-runner-stats-and-special-thanks/#page"];
-    }
+    self.url = [NSURL URLWithString:@"http://lifexplorer.me/projects/Runner-Stats/#respond"];
 }
 
+- (void)showOpenSourceLibs
+{
+    self.url = [NSURL URLWithString:@"http://lifexplorer.me/projects/runner-stats/libraries-used-in-runner-stats-and-special-thanks/#page"];
+}
 @end

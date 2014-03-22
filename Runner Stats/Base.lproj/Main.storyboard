@@ -558,7 +558,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="l7Z-ag-HCM" kind="push" identifier="showSettingDetails" id="s1Y-3a-pju"/>
+                                            <segue destination="l7Z-ag-HCM" kind="push" identifier="showAppSuportPage" id="s1Y-3a-pju"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="TZY-2Q-kB7">
@@ -577,7 +577,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="l7Z-ag-HCM" kind="push" identifier="showSettingDetails" id="mFf-QJ-Tbh"/>
+                                            <segue destination="l7Z-ag-HCM" kind="push" identifier="showOpenSourceLibs" id="mFf-QJ-Tbh"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>

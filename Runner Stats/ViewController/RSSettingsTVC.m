@@ -79,16 +79,16 @@
     if ([sender isKindOfClass:[UITableViewCell class]]) {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         if (indexPath) {
-            if ([segue.identifier isEqualToString:@"showSettingDetails"]) {
-                if ([segue.destinationViewController respondsToSelector:@selector(showSettingDetailsByTag:)]) {
-                    NSNumber *tag = @0;
-                    if (indexPath.row == 1) {
-                        tag = SUPPORT_URL;
-                    }
-                    else if (indexPath.row == 2) {
-                        tag = LIBRARIES_URL;
-                    }
-                    [segue.destinationViewController performSelector:@selector(showSettingDetailsByTag:) withObject:tag];
+            if ([segue.identifier isEqualToString:@"showAppSuportPage"]) {
+                if ([segue.destinationViewController respondsToSelector:@selector(showAppSuportPage)]) {
+
+                    [segue.destinationViewController performSelector:@selector(showAppSuportPage)];
+                }
+            }
+            else if ([segue.identifier isEqualToString:@"showOpenSourceLibs"]) {
+                if ([segue.destinationViewController respondsToSelector:@selector(showOpenSourceLibs)]) {
+                    
+                    [segue.destinationViewController performSelector:@selector(showOpenSourceLibs)];
                 }
             }
         }

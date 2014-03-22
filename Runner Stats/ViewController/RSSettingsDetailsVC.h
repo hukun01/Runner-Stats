@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface RSSettingsDetailsVC : UIViewController
-- (void)showSettingDetailsByTag:(NSNumber *)tag;
+- (void)showAppSuportPage;
+- (void)showOpenSourceLibs;
 @end
