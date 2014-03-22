@@ -1,3 +1,3 @@
-Known bug:
-* By output the graph's description in RSStatsSecondVC.m, I found there are two TEAContributionGraph objects being generated every time it enters the view. Don't get the reason. 
-* When countdown, although the timer does not go, the other three parameters got changed, need to make them be in the initial state until the countdown ends.* If user turns off the voice feedback but keep the countdown seconds for 5 or 10, the countdown would not be available.
+Known bug or flaw:
+* Haven't dectected if the voice feedback is played by the speaker or earpods.
+* If user turns off the voice feedback but keep the countdown seconds for 5 or 10, the countdown would not be available.

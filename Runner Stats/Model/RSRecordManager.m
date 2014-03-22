@@ -8,6 +8,10 @@
 
 #import "RSRecordManager.h"
 
+@interface RSRecordManager()
+@property NSFileManager *fileManager;
+@end
+
 @implementation RSRecordManager
 
 - (id)init
@@ -17,16 +21,16 @@
     {
         NSString *docsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
         self.recordPath = [docsPath stringByAppendingPathComponent:@"record.csv"];
+        _fileManager = [NSFileManager defaultManager];
     }
     return self;
 }
 
 - (BOOL)createRecord
 {
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    if (![fileManager fileExistsAtPath:self.recordPath])
+    if (![self.fileManager fileExistsAtPath:self.recordPath])
     {
-        if (![fileManager createFileAtPath:self.recordPath contents:nil attributes:nil])
+        if (![self.fileManager createFileAtPath:self.recordPath contents:nil attributes:nil])
         {
             NSLog(@"Record creation failed.");
             return NO;
@@ -100,7 +104,7 @@
 {
     NSArray *allRecords = [self readRecord];
     
-    if (![[NSFileManager defaultManager] removeItemAtPath:self.recordPath error:NULL])
+    if (![self.fileManager removeItemAtPath:self.recordPath error:NULL])
         NSLog(@"Remove current record failed.");
     if (![self createRecord]) {
         NSLog(@"Re-create failed.");
@@ -114,6 +118,45 @@
     for (NSArray *a in [allRecords subarrayWithRange:NSMakeRange(0, [allRecords count]-1)]) {
         [writer writeLineOfFields:a];
     }
+}
+
+- (void)deleteRowAt:(NSInteger)row
+{
+    NSMutableArray *allRecords = [[self readRecord] mutableCopy];
+    
+    
+    if (![self.fileManager removeItemAtPath:self.recordPath error:NULL])
+        NSLog(@"Remove current record failed.");
+    if (![self createRecord]) {
+        NSLog(@"Re-create failed.");
+    }
+    // if the file contains only one row, clear the file content
+    if ([allRecords count] < 2) {
+        return;
+    }
+    
+    // delete associated data file whose name is the date
+    NSArray *record = [allRecords objectAtIndex:row];
+    NSString *recordFileName = [[record firstObject] description];
+    NSDateFormatter* df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *date = [df dateFromString:recordFileName];
+    [df setDateFormat:@"yyyy-MM-dd"];
+    recordFileName = [df stringFromDate:date];
+    NSString *docsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    NSString *recordPath = [docsPath stringByAppendingPathComponent:[recordFileName stringByAppendingString:@".csv"]];
+    if (![self.fileManager removeItemAtPath:recordPath error:NULL]) {
+        NSLog(@"Remove data file failed.");
+    }
+    
+    // delete this record summary in record.csv
+    [allRecords removeObjectAtIndex:row];
+    
+    CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:self.recordPath];
+    for (NSArray *a in [allRecords subarrayWithRange:NSMakeRange(0, [allRecords count])]) {
+        [writer writeLineOfFields:a];
+    }
+    
 }
 
 - (NSString *)timeFormatted:(int)totalSeconds withOption:(NSInteger)option

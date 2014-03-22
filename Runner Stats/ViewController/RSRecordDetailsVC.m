@@ -226,11 +226,11 @@ static bool bannerHasBeenLoaded = NO;
     return [df stringFromDate:date];
 }
 
-- (void)showRecordFromDate:(NSString *)recordDate
+- (void)showRecordFromDate:(NSString *)recordDateStr
 {
-    self.record = recordDate;
+    self.record = recordDateStr;
     NSString *docsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-    self.recordPath = [docsPath stringByAppendingPathComponent:[[self getRecordNameFromRecordDate:recordDate] stringByAppendingString:@".csv"]];
+    self.recordPath = [docsPath stringByAppendingPathComponent:[[self getRecordNameFromRecordDate:recordDateStr] stringByAppendingString:@".csv"]];
 }
 
 #pragma mark - JBLineChartViewDelegate

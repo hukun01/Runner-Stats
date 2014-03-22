@@ -88,6 +88,7 @@ static bool updateNewRecord;
 - (void)setup
 {
     [self.navigationItem setTitle:NSLocalizedString(@"Second_1_NavigationBarTitle", nil)];
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
     // setup table view
     self.recordTableView.dataSource = self;
     self.recordTableView.delegate = self;
@@ -185,14 +186,35 @@ static bool updateNewRecord;
     cell.distanceLabel.text = [NSString stringWithFormat:@"%.2f", wholeDistance];
     cell.unitLabel.text = [@" " stringByAppendingString:RS_DISTANCE_UNIT_STRING];
     int seconds = [[[self.records objectAtIndex:indexPath.row] objectAtIndex:2] intValue];
-    //if (seconds >= SECONDS_OF_HOUR) {
-        cell.durationLabel.text = [self.recordManager timeFormatted:seconds withOption:FORMAT_HHMMSS];
-    //}
-    //else {
-    //    cell.durationLabel.text = [self.recordManager timeFormatted:seconds withOption:FORMAT_MMSS];
-    //}
+    cell.durationLabel.text = [self.recordManager timeFormatted:seconds withOption:FORMAT_HHMMSS];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"Delete record at %ld, row", indexPath.row);
+    [self.recordManager deleteRowAt:indexPath.row];
+    self.records = [self.recordManager readRecord];
+    [RSStatsFirstVC changeUpdateStateTo:YES];
+    // Refresh data labels
+    [self calcWholeDataForLabels];
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+    [super setEditing:editing animated:animated];
+    [self.recordTableView setEditing:editing animated:animated];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	return YES;
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	return UITableViewCellEditingStyleDelete;
 }
 
 - (NSString *)cellTitleForIndex:(NSInteger)index

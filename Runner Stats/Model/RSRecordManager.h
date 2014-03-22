@@ -25,6 +25,7 @@
 - (void)addALine:(NSArray *)newline;
 - (NSString *)timeFormatted:(int)totalSeconds withOption:(NSInteger)option;
 - (NSString *)subStringFromDateString:(NSString *)dateString;
+- (void)deleteRowAt:(NSInteger)row;
 
 @property(strong, nonatomic) NSString *recordPath;
 
