@@ -159,7 +159,7 @@
     
 }
 
-- (NSString *)timeFormatted:(int)totalSeconds withOption:(NSInteger)option
+- (NSString *)timeFormatted:(int)totalSeconds withOption:(int)option
 {
     int seconds = totalSeconds % 60;
     int minutes = (totalSeconds / 60) % 60;

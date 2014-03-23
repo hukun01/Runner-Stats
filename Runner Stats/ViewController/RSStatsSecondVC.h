@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "RSConstants.h"
 
-@interface RSStatsSecondVC : UIViewController <ADBannerViewDelegate>
+@interface RSStatsSecondVC : UIViewController// <ADBannerViewDelegate>
 
 + (void)changeUpdateStateTo:(BOOL)state;
+@property GADBannerView *bannerView;
 @end

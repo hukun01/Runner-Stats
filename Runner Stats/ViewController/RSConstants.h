@@ -6,7 +6,9 @@
 //  Copyright (c) 2014 hk. All rights reserved.
 //
 
-#import <iAd/iAd.h>
+//#import <iAd/iAd.h>
+#import "GADBannerView.h"
+#import "GADAdMobExtras.h"
 
 #ifndef RunningStats_RSConstants_h
 #define RunningStats_RSConstants_h

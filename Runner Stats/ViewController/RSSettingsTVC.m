@@ -63,6 +63,12 @@
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setBool:self.voiceSwitch.on forKey:@"voiceSwitch"];
+    // if voice gets turned off, no countdown
+    if (!self.voiceSwitch.on) {
+        [defaults setInteger:0 forKey:@"countDown"];
+        self.countDownSegControl.selectedSegmentIndex = 0;
+    }
+    
     [defaults synchronize];
 }
 

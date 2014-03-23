@@ -35,7 +35,7 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
 @property (assign, nonatomic) NSUInteger flagPoint;
 @property (assign, nonatomic) CLLocationSpeed maxSpeed;
 // iAD banner
-@property (strong, nonatomic) ADBannerView *iAd;
+//@property (strong, nonatomic) ADBannerView *iAd;
 @end
 
 @implementation RSRecordDetailsVC
@@ -73,7 +73,8 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
     // informationView
     [self configureInfoView];
     // setup iAd banner
-    [self setupADBanner];
+    //[self setupADBanner];
+    [self setupADBannerWith:@"ca-app-pub-3727162321470301/8885419874"];
     
     [self.view addSubview:self.lineChart];
     [self.lineChart reloadData];
@@ -171,41 +172,74 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
     [self.view addSubview:self.infoView];
 }
 
-static bool bannerHasBeenLoaded = NO;
+//static bool bannerHasBeenLoaded = NO;
+//
+//- (void)setupADBanner
+//{
+//    if (!self.iAd) {
+//        self.iAd = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
+//        self.iAd.hidden = YES;
+//        CGRect iAdFrame = self.iAd.frame;
+//        iAdFrame.origin.y = self.view.frame.size.height-50;
+//        self.iAd.frame = iAdFrame;
+//        self.iAd.delegate = self;
+//        [self.view addSubview:self.iAd];
+//    }
+//}
 
-- (void)setupADBanner
+- (void)setupADBannerWith:(NSString *)adUintID
 {
-    if (!self.iAd) {
-        self.iAd = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
-        self.iAd.hidden = YES;
-        CGRect iAdFrame = self.iAd.frame;
-        iAdFrame.origin.y = self.view.frame.size.height-50;
-        self.iAd.frame = iAdFrame;
-        self.iAd.delegate = self;
-        [self.view addSubview:self.iAd];
+    if (!self.bannerView) {
+        self.bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+        self.bannerView.adUnitID = adUintID;
+        self.bannerView.rootViewController = self;
+        CGRect adFrame = self.bannerView.frame;
+        adFrame.origin.y = self.view.frame.size.height - 50;
+        self.bannerView.frame = adFrame;
+        [self.view addSubview:self.bannerView];
     }
+
+    GADRequest *request = [GADRequest request];
+    
+    GADAdMobExtras *extras = [[GADAdMobExtras alloc] init];
+    extras.additionalParameters =
+    [NSMutableDictionary dictionaryWithObjectsAndKeys:
+     @"FFFFFF", @"color_bg",
+     @"FFFFFF", @"color_bg_top",
+     @"FFFFFF", @"color_border",
+     @"000080", @"color_link",
+     @"808080", @"color_text",
+     @"008000", @"color_url",
+     nil];
+    
+    [request registerAdNetworkExtras:extras];
+    
+//    request.testDevices = @[GAD_SIMULATOR_ID];
+//    request.testing = YES;
+    
+    [self.bannerView loadRequest:request];
 }
 
 #pragma mark - ADBanner delegate
-- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
-{
-    // When error happens, if the ad has been there, just keep it
-    // otherwise, hide it.
-    if (!bannerHasBeenLoaded) {
-        self.iAd.hidden = YES;
-    }
-}
-
-- (void)bannerViewDidLoadAd:(ADBannerView *)banner
-{
-    bannerHasBeenLoaded = YES;
-    self.iAd.hidden = NO;
-}
-
-- (BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave
-{
-    return YES;
-}
+//- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+//{
+//    // When error happens, if the ad has been there, just keep it
+//    // otherwise, hide it.
+//    if (!bannerHasBeenLoaded) {
+//        self.iAd.hidden = YES;
+//    }
+//}
+//
+//- (void)bannerViewDidLoadAd:(ADBannerView *)banner
+//{
+//    bannerHasBeenLoaded = YES;
+//    self.iAd.hidden = NO;
+//}
+//
+//- (BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave
+//{
+//    return YES;
+//}
 #pragma end
 
 - (NSString *)getHeaderTitleFromRecord:(NSString *)record

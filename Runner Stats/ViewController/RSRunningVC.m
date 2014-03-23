@@ -51,7 +51,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *speedUnitLabel;
 @property (strong, nonatomic) IBOutlet UILabel *speedUnitLabel2;
 // iAD banner
-@property (strong, nonatomic) ADBannerView *iAd;
+//@property (strong, nonatomic) ADBannerView *iAd;
 
 @end
 
@@ -89,17 +89,17 @@ static bool saveNewRecord;
 - (void)setUp
 {
     [RSRunningVC changeRecordStateTo:NO];
-    _locationManager = [[CLLocationManager alloc] init];
-    _locationManager.delegate = self;
-    _locationManager.distanceFilter = 3.0;
+    _locationManager                 = [[CLLocationManager alloc] init];
+    _locationManager.delegate        = self;
+    _locationManager.distanceFilter  = 3.0;
     _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
     // data
     [self resetData];
-    _currLocation = [_locationManager location];
+    _currLocation  = [_locationManager location];
     self.isRunning = NO;
     // Create a record if not exist
     _recordManager = [[RSRecordManager alloc] init];
-    _isRunning = NO;
+    _isRunning     = NO;
     
     if (![_recordManager createRecord]) {
         NSLog(@"Create record.csv failed.");
@@ -116,7 +116,7 @@ static bool saveNewRecord;
                                                  name:UIApplicationWillEnterForegroundNotification
                                                object:nil];
     self.myNavigationItem.title = NSLocalizedString(@"FirstNavigationBarTitle", nil);
-    [self setupADBanner];
+    [self setupADBannerWith:@"ca-app-pub-3727162321470301/2978487079"];
 }
 
 - (BOOL)configureAVAudioSession
@@ -162,8 +162,8 @@ static bool saveNewRecord;
 - (void)updateUnitLabels
 {
     self.distanceUnitLabel.text = RS_DISTANCE_UNIT_STRING;
-    self.speedUnitLabel.text = RS_SPEED_UNIT_SHORT_STRING;
-    self.speedUnitLabel2.text = self.speedUnitLabel.text;
+    self.speedUnitLabel.text    = RS_SPEED_UNIT_SHORT_STRING;
+    self.speedUnitLabel2.text   = self.speedUnitLabel.text;
 }
 
 - (void)speakCountDown
@@ -227,12 +227,13 @@ static bool saveNewRecord;
     [self renewMapRegion];
     
     // Change accessibility of some UI elements and display iAd
-    self.startButton.hidden = YES;
-    self.saveButton.hidden = NO;
-    self.stopButton.hidden = NO;
-    self.map.zoomEnabled = NO;
+    self.startButton.hidden             = YES;
+    self.saveButton.hidden              = NO;
+    self.stopButton.hidden              = NO;
+    self.map.zoomEnabled                = NO;
     self.tabBarController.tabBar.hidden = YES;
-    self.iAd.hidden = NO;
+    //self.iAd.hidden = NO;
+    self.bannerView.hidden              = NO;
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
@@ -419,7 +420,8 @@ static bool saveNewRecord;
     self.saveButton.hidden = YES;
     self.tabBarController.tabBar.hidden = NO;
     self.map.zoomEnabled = YES;
-    self.iAd.hidden = YES;
+    //self.iAd.hidden = YES;
+    self.bannerView.hidden = YES;
 }
 
 - (void)stopTimer
@@ -467,50 +469,82 @@ static bool saveNewRecord;
 }
 
 #pragma mark - ADBanner configuration
-static bool bannerHasBeenLoaded = NO;
-- (void)setupADBanner
+//static bool bannerHasBeenLoaded = NO;
+- (void)setupADBannerWith:(NSString *)adUintID
 {
-    if (!self.iAd) {
-        self.iAd = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
-        self.iAd.hidden = YES;
-        CGRect iAdFrame = self.iAd.frame;
-        iAdFrame.origin.y = self.view.frame.size.height-50;
-        self.iAd.frame = iAdFrame;
-        self.iAd.delegate = self;
-        [self.view addSubview:self.iAd];
+    if (!self.bannerView) {
+        self.bannerView                    = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+        self.bannerView.adUnitID           = adUintID;
+        self.bannerView.rootViewController = self;
+        CGRect adFrame                     = self.bannerView.frame;
+        adFrame.origin.y                   = self.view.frame.size.height - 50;
+        self.bannerView.frame              = adFrame;
+        [self.view addSubview:self.bannerView];
     }
+    
+    GADRequest *request = [GADRequest request];
+    
+    GADAdMobExtras *extras = [[GADAdMobExtras alloc] init];
+    extras.additionalParameters =
+    [NSMutableDictionary dictionaryWithObjectsAndKeys:
+     @"FFFFFF", @"color_bg",
+     @"FFFFFF", @"color_bg_top",
+     @"FFFFFF", @"color_border",
+     @"000080", @"color_link",
+     @"808080", @"color_text",
+     @"008000", @"color_url",
+     nil];
+    
+    [request registerAdNetworkExtras:extras];
+//    
+//    request.testDevices = @[GAD_SIMULATOR_ID];
+//    request.testing = YES;
+    
+    [self.bannerView loadRequest:request];
 }
+//- (void)setupADBanner
+//{
+//    if (!self.iAd) {
+//        self.iAd = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
+//        self.iAd.hidden = YES;
+//        CGRect iAdFrame = self.iAd.frame;
+//        iAdFrame.origin.y = self.view.frame.size.height-50;
+//        self.iAd.frame = iAdFrame;
+//        self.iAd.delegate = self;
+//        [self.view addSubview:self.iAd];
+//    }
+//}
 
 #pragma mark - ADBanner delegate
-- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
-{
-    if (!self.isRunning) {
-        return;
-    }
-    if (!bannerHasBeenLoaded) {
-        NSLog(@"Some error about ads: %@", error);
-        self.iAd.hidden = YES;
-    }
-}
+//- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+//{
+//    if (!self.isRunning) {
+//        return;
+//    }
+//    if (!bannerHasBeenLoaded) {
+//        NSLog(@"Some error about ads: %@", error);
+//        self.iAd.hidden = YES;
+//    }
+//}
 
-- (void)bannerViewActionDidFinish:(ADBannerView *)banner
-{
-    NSLog(@"bannerview was selected");
-}
+//- (void)bannerViewActionDidFinish:(ADBannerView *)banner
+//{
+//    NSLog(@"bannerview was selected");
+//}
+//
+//- (void)bannerViewDidLoadAd:(ADBannerView *)banner
+//{
+//    NSLog(@"Success!");
+//    bannerHasBeenLoaded = YES;
+//    if (self.isRunning) {
+//        self.iAd.hidden = NO;
+//    }
+//}
 
-- (void)bannerViewDidLoadAd:(ADBannerView *)banner
-{
-    NSLog(@"Success!");
-    bannerHasBeenLoaded = YES;
-    if (self.isRunning) {
-        self.iAd.hidden = NO;
-    }
-}
-
-- (BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave
-{
-    return YES;
-}
+//- (BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave
+//{
+//    return YES;
+//}
 
 #pragma mark - Stable utility functions
 - (void)renewMapRegion
@@ -554,23 +588,23 @@ static bool bannerHasBeenLoaded = NO;
 
 - (void)setSeconds:(NSInteger)sessionSeconds
 {
-    _sessionSeconds = sessionSeconds;
-    self.timerLabel.text = [self.recordManager timeFormatted:sessionSeconds withOption:FORMAT_HHMMSS];
+    _sessionSeconds      = sessionSeconds;
+    self.timerLabel.text = [self.recordManager timeFormatted:(int)sessionSeconds withOption:FORMAT_HHMMSS];
 }
 
 - (void)timerTick
 {
     self.sessionSeconds += 1;
-    duration += 1;
+    duration            += 1;
 }
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView
             rendererForOverlay:(id <MKOverlay>)overlay
 {
     if (!self.pathRenderer) {
-        _pathRenderer = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
+        _pathRenderer                 = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
         self.pathRenderer.strokeColor = [[UIColor alloc] initWithRed:66.0/255.0 green:204.0/255.0 blue:255.0/255.0 alpha:0.75];
-        self.pathRenderer.lineWidth = 6.5;
+        self.pathRenderer.lineWidth   = 6.5;
     }
     return self.pathRenderer;
 }

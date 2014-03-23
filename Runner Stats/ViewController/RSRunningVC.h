@@ -15,7 +15,8 @@
 #import "RSConstants.h"
 
 @interface RSRunningVC : UIViewController
-<MKMapViewDelegate, CLLocationManagerDelegate, UIAlertViewDelegate, AVSpeechSynthesizerDelegate, ADBannerViewDelegate>
+<MKMapViewDelegate, CLLocationManagerDelegate, UIAlertViewDelegate, AVSpeechSynthesizerDelegate>//, ADBannerViewDelegate>
 
 + (BOOL)updateState;
+@property GADBannerView *bannerView;
 @end
