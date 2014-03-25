@@ -98,7 +98,7 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
         NSLog(@"!? path:%@", self.recordPath);
         return;
     }
-    // allow at most 50 points to be drawn
+    // allow at most $NUMBER_OF_XY_POINTS$ points to be drawn
     CLLocationDistance SMALLEST_GAP = [[[dataArray lastObject] objectAtIndex:1] doubleValue] / NUMBER_OF_XY_POINTS;
     SMALLEST_GAP = MAX(SMALLEST_GAP, 30.0);
     

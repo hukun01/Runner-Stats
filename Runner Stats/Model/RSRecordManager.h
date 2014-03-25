@@ -22,7 +22,7 @@
 - (NSArray *)readRecord;
 - (NSArray *)readRecordDetailsByPath:(NSString *)path;
 // newline points to a NSArray separated by comma
-- (void)addALine:(NSArray *)newline;
+- (void)addALineToCatalog:(NSArray *)newline;
 - (NSString *)timeFormatted:(int)totalSeconds withOption:(int)option;
 - (NSString *)subStringFromDateString:(NSString *)dateString;
 - (void)deleteRowAt:(NSInteger)row;

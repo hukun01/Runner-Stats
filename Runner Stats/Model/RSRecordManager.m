@@ -64,7 +64,7 @@
     return allRecords;
 }
 
-- (void)addALine:(NSArray *)newline
+- (void)addALineToCatalog:(NSArray *)newline
 {
     // Need to check if there is already a record with same date
     NSArray *allRecords = [self readRecord];

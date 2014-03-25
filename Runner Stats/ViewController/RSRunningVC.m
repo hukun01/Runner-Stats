@@ -476,7 +476,7 @@ static bool resumeMusic;
 // the unit of speed is meters/seconds
 - (void)saveSessionAsRecord
 {
-    if (![self.path doesTmpFileExists]) {
+    if (0 == [self.path.runningData count]) {
         return;
     }
     NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
@@ -497,7 +497,7 @@ static bool resumeMusic;
     NSString *avgSpdStr = [NSString stringWithFormat:@"%.2f",[self.path distance] / duration];
     
     NSArray *newRecord = @[startDateString, disStr, durStr, avgSpdStr];
-    [self.recordManager addALine:newRecord];
+    [self.recordManager addALineToCatalog:newRecord];
 }
 
 #pragma mark - ADBanner configuration
@@ -547,7 +547,7 @@ static bool resumeMusic;
 //    }
 //}
 
-#pragma mark - ADBanner delegate
+//#pragma mark - ADBanner delegate
 //- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
 //{
 //    if (!self.isRunning) {
@@ -578,7 +578,7 @@ static bool resumeMusic;
 //    return YES;
 //}
 
-#pragma mark - Stable utility functions
+#pragma mark - Utility functions
 - (void)renewMapRegion
 {
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.map.userLocation.coordinate, MAP_REGION_SIZE, MAP_REGION_SIZE);

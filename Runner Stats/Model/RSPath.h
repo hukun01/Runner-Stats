@@ -15,7 +15,6 @@
 - (void)clearContents;
 - (void)saveTmpAsData;
 - (BOOL)isValidLocation:(CLLocation *)location;
-- (BOOL)doesTmpFileExists;
 
 // Add a location observation. A MKMapRect containing the newly added point
 // and the previously added point is returned so that the view can be updated
@@ -28,4 +27,5 @@
 
 @property (assign, nonatomic) NSUInteger pointCount;
 @property (assign, nonatomic) CLLocationDistance distance;
+@property (strong, nonatomic) NSMutableArray *runningData;
 @end
