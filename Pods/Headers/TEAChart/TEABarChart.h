@@ -1,1 +1,0 @@
-../../TEAChart/TEAChart/TEABarChart.h
