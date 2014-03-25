@@ -8,6 +8,7 @@
 
 #import "RSRunningVC.h"
 #import "RSStatsFirstVC.h"
+#import "RSStatsSecondVC.h"
 #import "RSRecordManager.h"
 #import "RSRecordCell.h"
 #import "RSStatsVC.h"
@@ -59,7 +60,7 @@ static bool updateNewRecord;
 {
     _records = records;
     [self.recordTableView reloadData];
-    [RSStatsFirstVC changeUpdateStateTo:YES];
+    [RSRunningVC changeRecordStateTo:YES];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -200,9 +201,9 @@ static bool updateNewRecord;
 {
     [self.recordManager deleteRowAt:indexPath.row];
     self.records = [self.recordManager readRecord];
-    [RSStatsFirstVC changeUpdateStateTo:YES];
     // Refresh data labels
     [self calcWholeDataForLabels];
+    [RSStatsFirstVC changeUpdateStateTo:YES];
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated

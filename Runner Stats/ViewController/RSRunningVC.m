@@ -62,6 +62,8 @@ static int distanceBoundForVoice = 1;
 static int duration = 0;
 // Denote wheter the record file has changed
 static bool saveNewRecord;
+// flag for resuming background music
+static bool resumeMusic;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -119,26 +121,6 @@ static bool saveNewRecord;
     [self setupADBannerWith:@"ca-app-pub-3727162321470301/2978487079"];
 }
 
-- (BOOL)configureAVAudioSession
-{
-    if (!self.speaker) {
-        self.speaker = [[AVSpeechSynthesizer alloc] init];
-        self.speaker.delegate = self;
-    }
-    
-    AVAudioSession* session = [AVAudioSession sharedInstance];
-    //error handling
-    BOOL success;
-    //set the audioSession category.
-    //Needs to be Record or PlayAndRecord to use audioRouteOverride:
-    success = [session setCategory:AVAudioSessionCategoryPlayAndRecord error:NULL];
-    //set the audioSession override
-    success = [session overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:NULL];
-    //activate the audio session
-    success = [session setActive:YES error:NULL];
-    return success;
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -164,6 +146,45 @@ static bool saveNewRecord;
     self.distanceUnitLabel.text = RS_DISTANCE_UNIT_STRING;
     self.speedUnitLabel.text    = RS_SPEED_UNIT_SHORT_STRING;
     self.speedUnitLabel2.text   = self.speedUnitLabel.text;
+}
+
+#pragma mark - Audio
+- (BOOL)isHeadsetPluggedIn
+{
+    NSArray *availableOutputs = [[AVAudioSession sharedInstance] currentRoute].outputs;
+    for (AVAudioSessionPortDescription *portDescription in availableOutputs) {
+        if ([portDescription.portType isEqualToString:AVAudioSessionPortHeadphones]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+- (BOOL)configureAVAudioSession
+{
+    if (!self.speaker) {
+        self.speaker = [[AVSpeechSynthesizer alloc] init];
+        self.speaker.delegate = self;
+    }
+    
+    AVAudioSession* session = [AVAudioSession sharedInstance];
+    resumeMusic = session.otherAudioPlaying;
+    //error handling
+    BOOL success;
+    //set the audioSession category.
+    //Needs to be Record or PlayAndRecord to use audioRouteOverride:
+    success = [session setCategory:AVAudioSessionCategoryPlayAndRecord error:NULL];
+    //set the audioSession override
+    if ([self isHeadsetPluggedIn]) {
+        success = [session overrideOutputAudioPort:AVAudioSessionPortOverrideNone error:NULL];
+    }
+    else {
+        success = [session overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:NULL];
+    }
+    //activate the audio session
+    success = [session setActive:YES error:NULL];
+    
+    return success;
 }
 
 - (void)speakCountDown
@@ -202,6 +223,9 @@ static bool saveNewRecord;
         self.isRunning = YES;
         [self startTimer];
     }
+    if (resumeMusic) {
+        [[AVAudioSession sharedInstance] setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:NULL];
+    }
 }
 
 # pragma mark - Start Session
@@ -214,6 +238,9 @@ static bool saveNewRecord;
     else {
         [self startTimer];
         self.isRunning = YES;
+        if (resumeMusic) {
+            [[AVAudioSession sharedInstance] setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:NULL];
+        }
     }
     
     // Clear the data of last event
@@ -238,7 +265,9 @@ static bool saveNewRecord;
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
-    _map.centerCoordinate = userLocation.location.coordinate;
+    if (self.isRunning) {
+        _map.centerCoordinate = userLocation.location.coordinate;
+    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager
@@ -398,7 +427,10 @@ static bool saveNewRecord;
     // for the check in the following didFinishSpeechUtterance method
     self.cdString = @"";
     if (self.speaker.isSpeaking) {
-        [self.speaker stopSpeakingAtBoundary:AVSpeechBoundaryWord];
+        [self.speaker stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
+    }
+    if (resumeMusic) {
+        [[AVAudioSession sharedInstance] setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:NULL];
     }
 }
 

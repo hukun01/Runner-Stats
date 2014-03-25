@@ -65,6 +65,7 @@ static bool updateNewRecord;
     if (!self.records || ([RSRunningVC updateState] && ![RSStatsSecondVC updateState])) {
         self.records = [self.recordManager readRecord];
         [RSStatsSecondVC changeUpdateStateTo:YES];
+        [RSRunningVC changeRecordStateTo:NO];
     }
     
     [self setupContributionGraph];

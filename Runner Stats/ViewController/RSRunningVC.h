@@ -18,5 +18,6 @@
 <MKMapViewDelegate, CLLocationManagerDelegate, UIAlertViewDelegate, AVSpeechSynthesizerDelegate>//, ADBannerViewDelegate>
 
 + (BOOL)updateState;
++ (void)changeRecordStateTo:(BOOL)state;
 @property GADBannerView *bannerView;
 @end
