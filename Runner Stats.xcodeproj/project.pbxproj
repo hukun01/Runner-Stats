@@ -30,6 +30,7 @@
 		465237AC1878DECB000BFE5E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 465237AB1878DECB000BFE5E /* main.m */; };
 		465237AE1878DED1000BFE5E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 465237AD1878DED1000BFE5E /* Images.xcassets */; };
 		465237D21878E08F000BFE5E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 465237D41878E08F000BFE5E /* Localizable.strings */; };
+		4654523318E27689006B5333 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4654523218E27689006B5333 /* GameKit.framework */; };
 		46679A4118DE745B0093E80A /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46679A3F18DE745B0093E80A /* libGoogleAdMobAds.a */; };
 		46679A4218DE745B0093E80A /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 46679A4018DE745B0093E80A /* README.txt */; };
 		4685E50418DE50BC00221E12 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4685E50318DE50BC00221E12 /* AdSupport.framework */; };
@@ -104,6 +105,7 @@
 		465237AB1878DECB000BFE5E /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Runner Stats/main.m"; sourceTree = SOURCE_ROOT; };
 		465237AD1878DED1000BFE5E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Runner Stats/Images.xcassets"; sourceTree = SOURCE_ROOT; };
 		465237D51878E095000BFE5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4654523218E27689006B5333 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		465828291878F817006837E8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4658282A1878F818006837E8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		4658282B1878F819006837E8 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4654523318E27689006B5333 /* GameKit.framework in Frameworks */,
 				4685E50C18DE50E600221E12 /* SystemConfiguration.framework in Frameworks */,
 				4685E50A18DE50E100221E12 /* StoreKit.framework in Frameworks */,
 				4685E50818DE50DA00221E12 /* MessageUI.framework in Frameworks */,
@@ -291,6 +294,7 @@
 		46D4AAAC18655E6700F787BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4654523218E27689006B5333 /* GameKit.framework */,
 				4685E50B18DE50E600221E12 /* SystemConfiguration.framework */,
 				4685E50918DE50E100221E12 /* StoreKit.framework */,
 				4685E50718DE50DA00221E12 /* MessageUI.framework */,
