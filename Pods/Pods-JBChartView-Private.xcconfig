@@ -1,0 +1,5 @@
+#include "Pods-JBChartView.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/JBChartView" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/CHCSVParser" "${PODS_ROOT}/Headers/JBChartView" "${PODS_ROOT}/Headers/PNChart" "${PODS_ROOT}/Headers/TEAChart"
+OTHER_LDFLAGS = -ObjC
+PODS_ROOT = ${SRCROOT}
