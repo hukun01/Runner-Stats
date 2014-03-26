@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		15A3F798A6CB417B9C2C0F91 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B49D21AA1849DCAC899F2D /* libPods.a */; };
+		46071A9418E228AB00014C5F /* RSAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 46071A9318E228AB00014C5F /* RSAnnotation.m */; };
 		4610CD451878F5C20006E36D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4610CD431878F5C20006E36D /* InfoPlist.strings */; };
 		462496651878FD4100F1FF9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 462496631878FD4100F1FF9B /* Main.storyboard */; };
 		464282F218788487007E13F7 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 464282F118788487007E13F7 /* iAd.framework */; };
@@ -46,6 +47,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		46071A9218E228AB00014C5F /* RSAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSAnnotation.h; sourceTree = "<group>"; };
+		46071A9318E228AB00014C5F /* RSAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAnnotation.m; sourceTree = "<group>"; };
 		460B29F318830E78006D6A9B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		460B29F418830E78006D6A9B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		460B29F518830E78006D6A9B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -212,6 +215,8 @@
 				465237921878DE98000BFE5E /* RSPath.m */,
 				465237931878DE98000BFE5E /* RSRecordManager.h */,
 				465237941878DE98000BFE5E /* RSRecordManager.m */,
+				46071A9218E228AB00014C5F /* RSAnnotation.h */,
+				46071A9318E228AB00014C5F /* RSAnnotation.m */,
 			);
 			name = Model;
 			path = "Runner Stats/Model";
@@ -472,6 +477,7 @@
 				4652377B1878DDCE000BFE5E /* RSRecordDetailsVC.m in Sources */,
 				465237801878DDCE000BFE5E /* RSStatsFirstVC.m in Sources */,
 				4652378F1878DE89000BFE5E /* RSAppDelegate.m in Sources */,
+				46071A9418E228AB00014C5F /* RSAnnotation.m in Sources */,
 				465237AC1878DECB000BFE5E /* main.m in Sources */,
 				465237961878DE98000BFE5E /* RSRecordManager.m in Sources */,
 				4652377D1878DDCE000BFE5E /* RSSettingsDetailsVC.m in Sources */,

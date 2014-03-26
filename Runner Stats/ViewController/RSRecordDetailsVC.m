@@ -13,8 +13,8 @@
 #import "JBChartHeaderView.h"
 #import "JBLineChartFooterView.h"
 #import "RSStatsVC.h"
+#import "RSConstants.h"
 
-#define NUMBER_OF_XY_POINTS 60
 #define NUMBER_OF_SECTION_POINTS 25
 
 // Numerics
@@ -93,32 +93,35 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
 
 - (void)configureDataSource
 {
-    NSArray *dataArray = [self.recordManager readRecordDetailsByPath:self.recordPath] ;
-    if ([dataArray count] < 1) {
-        NSLog(@"!? path:%@", self.recordPath);
+    self.recordData = [self.recordManager readRecordDetailsByPath:self.recordPath] ;
+    if ([self.recordData count] < 1) {
+        NSLog(@"Empty record");
         return;
     }
-    // allow at most $NUMBER_OF_XY_POINTS$ points to be drawn
-    CLLocationDistance SMALLEST_GAP = [[[dataArray lastObject] objectAtIndex:1] doubleValue] / NUMBER_OF_XY_POINTS;
-    SMALLEST_GAP = MAX(SMALLEST_GAP, 30.0);
-    
-    NSMutableArray *tempRecordData = [NSMutableArray array];
-    CLLocationDistance distanceFilter = 0;
-    CLLocationDistance currentDistance = 0;
-    self.maxSpeed = 0;
-    for (int i=0; i < [dataArray count]; ++i) {
-        currentDistance = [[dataArray[i] objectAtIndex:1] doubleValue];
-        if ((currentDistance - distanceFilter) > SMALLEST_GAP) {
-            distanceFilter = currentDistance;
-            [tempRecordData addObject:dataArray[i]];
-            self.maxSpeed = MAX(self.maxSpeed, [[dataArray[i] lastObject] doubleValue]);
+    // deal with old data
+    else if ([self.recordData count] > NUMBER_OF_XY_POINTS) {
+        // allow at most $NUMBER_OF_XY_POINTS$ points to be drawn
+        CLLocationDistance SMALLEST_GAP = [[[self.recordData lastObject] objectAtIndex:1] doubleValue] / NUMBER_OF_XY_POINTS;
+        SMALLEST_GAP = MAX(SMALLEST_GAP, 30.0);
+        
+        NSMutableArray *tempRecordData = [NSMutableArray array];
+        CLLocationDistance distanceFilter = 0;
+        CLLocationDistance currentDistance = 0;
+        self.maxSpeed = 0;
+        for (NSArray *line in self.recordData) {
+            currentDistance = [[line objectAtIndex:1] doubleValue];
+            if ((currentDistance - distanceFilter) > SMALLEST_GAP) {
+                distanceFilter = currentDistance;
+                [tempRecordData addObject:line];
+                self.maxSpeed = MAX(self.maxSpeed, [[line lastObject] doubleValue]);
+            }
         }
+        // add the last line of data
+        if ((currentDistance - distanceFilter) != 0) {
+            [tempRecordData addObject:[self.recordData lastObject]];
+        }
+        self.recordData = [NSArray arrayWithArray:tempRecordData];
     }
-    // add the last line of data
-    if ((currentDistance - distanceFilter) != 0) {
-        [tempRecordData addObject:[dataArray lastObject]];
-    }
-    self.recordData = [NSArray arrayWithArray:tempRecordData];
 }
 
 - (void)configureLineChart

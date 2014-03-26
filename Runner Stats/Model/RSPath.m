@@ -1,7 +1,7 @@
 
 
 #import "RSPath.h"
-#define NUMBER_OF_XY_POINTS 60
+#import "RSConstants.h"
 
 #define INITIAL_POINT_SPACE 1000
 #define TOO_BIG_DISTANCE 50
@@ -198,9 +198,23 @@
     }
     
     CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:recordName];
+    // allow at most $NUMBER_OF_XY_POINTS$ points to be drawn
+    CLLocationDistance SMALLEST_GAP = [[[self.runningData lastObject] objectAtIndex:1] doubleValue] / NUMBER_OF_XY_POINTS;
+    SMALLEST_GAP = MAX(SMALLEST_GAP, 30.0);
     
-    for (NSArray *newline in self.runningData) {
-        [writer writeLineOfFields:newline];
+    CLLocationDistance distanceFilter = 0;
+    CLLocationDistance currentDistance = 0;
+
+    for (NSArray *line in self.runningData) {
+        currentDistance = [[line objectAtIndex:1] doubleValue];
+        if ((currentDistance - distanceFilter) > SMALLEST_GAP) {
+            distanceFilter = currentDistance;
+            [writer writeLineOfFields:line];
+        }
+    }
+    // add the last line of data
+    if ((currentDistance - distanceFilter) != 0) {
+        [writer writeLineOfFields:[self.runningData lastObject]];
     }
 }
 

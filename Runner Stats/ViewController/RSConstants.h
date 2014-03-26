@@ -37,4 +37,7 @@
 #define RS_NOV NSLocalizedString(@"NOV", nil)
 #define RS_DEC NSLocalizedString(@"DEC", nil)
 
+
+#define NUMBER_OF_XY_POINTS 60
+
 #endif

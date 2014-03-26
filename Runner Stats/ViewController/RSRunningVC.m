@@ -9,6 +9,7 @@
 #import "RSRunningVC.h"
 #import "RSStatsFirstVC.h"
 #import "RSStatsSecondVC.h"
+#import "RSAnnotation.h"
 
 #define DISCARD_ALERT_TAG 0
 #define SAVE_ALERT_TAG 1
@@ -95,13 +96,10 @@ static bool resumeMusic;
     _locationManager.delegate        = self;
     _locationManager.distanceFilter  = 3.0;
     _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-    // data
+    _recordManager                   = [[RSRecordManager alloc] init];
+    _isRunning                       = NO;
+    // reset data
     [self resetData];
-    _currLocation  = [_locationManager location];
-    self.isRunning = NO;
-    // Create a record if not exist
-    _recordManager = [[RSRecordManager alloc] init];
-    _isRunning     = NO;
     
     if (![_recordManager createRecord]) {
         NSLog(@"Create record.csv failed.");
@@ -244,9 +242,8 @@ static bool resumeMusic;
     }
     
     // Clear the data of last event
-    if ([[self.map overlays] count] != 0) {
-        [self.map removeOverlays:[self.map overlays]];
-    }
+    [self.map removeOverlays:[self.map overlays]];
+    [self removeAllPinsButUserLocation];
     [self.path clearContents];
     [self resetData];
     
@@ -266,7 +263,7 @@ static bool resumeMusic;
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
     if (self.isRunning) {
-        _map.centerCoordinate = userLocation.location.coordinate;
+        self.map.centerCoordinate = userLocation.location.coordinate;
     }
 }
 
@@ -304,6 +301,9 @@ static bool resumeMusic;
         self.distance = [self.path distance] / RS_UNIT;
         if (self.distance > distanceBoundForVoice) {
             [self triggleVoiceFeedback];
+            // add annotation
+            RSAnnotation *myAnn = [[RSAnnotation alloc] initWithTitle:[NSString stringWithFormat:@"%d", distanceBoundForVoice] andLocation:[self.currLocation coordinate]];
+            [self.map addAnnotation:myAnn];
         }
         self.speed = (SECONDS_OF_HOUR/RS_UNIT) * [self.path instantSpeed];
         // Move map with user location
@@ -403,6 +403,7 @@ static bool resumeMusic;
             [self.map removeOverlays:[self.map overlays]];
             [self.path clearContents];
             [self resetData];
+            [self removeAllPinsButUserLocation];
         }
         // save session
         else if (alertView.tag == SAVE_ALERT_TAG)
@@ -443,7 +444,7 @@ static bool resumeMusic;
     duration = 0;
     distanceBoundForVoice = 1;
 }
-
+// restore main part of UI, keep path and annotations
 - (void)restoreUI
 {
     // Restore buttons
@@ -579,12 +580,57 @@ static bool resumeMusic;
 //}
 
 #pragma mark - Utility functions
+#pragma mark - About map
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    if ([annotation isKindOfClass:[RSAnnotation class]]) {
+        RSAnnotation *myAnnotation = (RSAnnotation *)annotation;
+        MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"RSAnnotationID"];
+        
+        if (annotationView == nil) {
+            annotationView = [myAnnotation annotationView];
+        }
+        else {
+            annotationView.annotation = annotation;
+        }
+        return annotationView;
+    }
+    else {
+        return nil;
+    }
+}
+
 - (void)renewMapRegion
 {
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.map.userLocation.coordinate, MAP_REGION_SIZE, MAP_REGION_SIZE);
     [self.map setRegion:region animated:YES];
 }
 
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView
+            rendererForOverlay:(id <MKOverlay>)overlay
+{
+    if (!self.pathRenderer) {
+        _pathRenderer                 = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
+        self.pathRenderer.strokeColor = [[UIColor alloc] initWithRed:66.0/255.0 green:204.0/255.0 blue:255.0/255.0 alpha:0.75];
+        self.pathRenderer.lineWidth   = 6.5;
+    }
+    return self.pathRenderer;
+}
+
+- (void)removeAllPinsButUserLocation
+{
+    id userLocation = [self.map userLocation];
+    NSMutableArray *pins = [[NSMutableArray alloc] initWithArray:[self.map annotations]];
+    if ( userLocation != nil ) {
+        [pins removeObject:userLocation]; // avoid removing user location off the map
+    }
+    
+    [self.map removeAnnotations:pins];
+    
+    pins = nil;
+}
+
+#pragma mark - About labels
 - (void)setSpeed:(CLLocationSpeed)speed
 {
     _speed = speed;
@@ -628,17 +674,6 @@ static bool resumeMusic;
 {
     self.sessionSeconds += 1;
     duration            += 1;
-}
-
-- (MKOverlayRenderer *)mapView:(MKMapView *)mapView
-            rendererForOverlay:(id <MKOverlay>)overlay
-{
-    if (!self.pathRenderer) {
-        _pathRenderer                 = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
-        self.pathRenderer.strokeColor = [[UIColor alloc] initWithRed:66.0/255.0 green:204.0/255.0 blue:255.0/255.0 alpha:0.75];
-        self.pathRenderer.lineWidth   = 6.5;
-    }
-    return self.pathRenderer;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
