@@ -20,19 +20,19 @@
     if (self)
     {
         NSString *docsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-        self.recordPath = [docsPath stringByAppendingPathComponent:@"record.csv"];
+        _catalogPath = [docsPath stringByAppendingPathComponent:@"record.csv"];
         _fileManager = [NSFileManager defaultManager];
     }
     return self;
 }
 
-- (BOOL)createRecord
+- (BOOL)createCatalog
 {
-    if (![self.fileManager fileExistsAtPath:self.recordPath])
+    if (![self.fileManager fileExistsAtPath:self.catalogPath])
     {
-        if (![self.fileManager createFileAtPath:self.recordPath contents:nil attributes:nil])
+        if (![self.fileManager createFileAtPath:self.catalogPath contents:nil attributes:nil])
         {
-            NSLog(@"Record creation failed.");
+            NSLog(@"Catalog creation failed.");
             return NO;
         }
     }
@@ -40,9 +40,9 @@
     return YES;
 }
 
-- (NSArray *)readRecord
+- (NSArray *)readCatalog
 {
-    NSMutableArray *allRecords = [[NSArray arrayWithContentsOfCSVFile:self.recordPath] mutableCopy];
+    NSMutableArray *allRecords = [[NSArray arrayWithContentsOfCSVFile:self.catalogPath] mutableCopy];
     // Check the tail, cut off the row that only contain "".
     if ([allRecords count] > 0) {
         if ([[allRecords lastObject] count] == 1) {
@@ -67,7 +67,7 @@
 - (void)addALineToCatalog:(NSArray *)newline
 {
     // Need to check if there is already a record with same date
-    NSArray *allRecords = [self readRecord];
+    NSArray *allRecords = [self readCatalog];
     if ([allRecords count] >= 1) {
         NSArray *recentRecord = [allRecords lastObject];
         NSString *recentRecordDate = [recentRecord firstObject];
@@ -86,7 +86,7 @@
         }
     }
     
-    CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:self.recordPath];
+    CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:self.catalogPath];
     [writer writeLineOfFields:newline];
 }
 
@@ -102,11 +102,11 @@
 // Delete the last nonempty line in the record
 - (void)deleteLastLine
 {
-    NSArray *allRecords = [self readRecord];
+    NSArray *allRecords = [self readCatalog];
     
-    if (![self.fileManager removeItemAtPath:self.recordPath error:NULL])
+    if (![self.fileManager removeItemAtPath:self.catalogPath error:NULL])
         NSLog(@"Remove current record failed.");
-    if (![self createRecord]) {
+    if (![self createCatalog]) {
         NSLog(@"Re-create failed.");
     }
     // if the file contains only one row, clear the file content
@@ -114,7 +114,7 @@
         return;
     }
     
-    CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:self.recordPath];
+    CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:self.catalogPath];
     for (NSArray *a in [allRecords subarrayWithRange:NSMakeRange(0, [allRecords count]-1)]) {
         [writer writeLineOfFields:a];
     }
@@ -122,15 +122,15 @@
 
 - (void)deleteRowAt:(NSInteger)row
 {
-    NSMutableArray *allRecords = [[self readRecord] mutableCopy];
+    NSMutableArray *allRecords = [[self readCatalog] mutableCopy];
     
     
-    if (![self.fileManager removeItemAtPath:self.recordPath error:NULL])
+    if (![self.fileManager removeItemAtPath:self.catalogPath error:NULL])
         NSLog(@"Remove current record failed.");
-    if (![self createRecord]) {
+    if (![self createCatalog]) {
         NSLog(@"Re-create failed.");
     }
-    // if the file contains only one row, clear the file content
+    // if the file contains only one row, it means that the catalog is empty.
     if ([allRecords count] < 2) {
         return;
     }
@@ -152,7 +152,7 @@
     // delete this record summary in record.csv
     [allRecords removeObjectAtIndex:row];
     
-    CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:self.recordPath];
+    CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:self.catalogPath];
     for (NSArray *a in [allRecords subarrayWithRange:NSMakeRange(0, [allRecords count])]) {
         [writer writeLineOfFields:a];
     }

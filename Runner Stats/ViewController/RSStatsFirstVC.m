@@ -105,7 +105,7 @@ static bool updateNewRecord;
     parentVC.currentStatsView.scrollEnabled = YES;
     // setup data
     if (!self.records || ([RSRunningVC updateState] && ![RSStatsFirstVC updateState])) {
-        self.records = [self.recordManager readRecord];
+        self.records = [self.recordManager readCatalog];
         [RSStatsFirstVC changeUpdateStateTo:YES];
     }
     [self calcWholeDataForLabels];
@@ -200,7 +200,7 @@ static bool updateNewRecord;
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.recordManager deleteRowAt:indexPath.row];
-    self.records = [self.recordManager readRecord];
+    self.records = [self.recordManager readCatalog];
     // Refresh data labels
     [self calcWholeDataForLabels];
     [RSStatsFirstVC changeUpdateStateTo:YES];

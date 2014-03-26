@@ -63,7 +63,7 @@ static bool updateNewRecord;
     
     // setup data
     if (!self.records || ([RSRunningVC updateState] && ![RSStatsSecondVC updateState])) {
-        self.records = [self.recordManager readRecord];
+        self.records = [self.recordManager readCatalog];
         [RSStatsSecondVC changeUpdateStateTo:YES];
         [RSRunningVC changeRecordStateTo:NO];
     }

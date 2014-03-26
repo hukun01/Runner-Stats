@@ -44,7 +44,6 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        //_lineChart = [[PNLineChart alloc] initWithFrame:CGRectMake(0, 235.0, SCREEN_WIDTH, 200.0)];
         _recordManager = [[RSRecordManager alloc] init];
     }
     return self;
@@ -98,16 +97,15 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
         NSLog(@"Empty record");
         return;
     }
-    // deal with old data
-    else if ([self.recordData count] > NUMBER_OF_XY_POINTS) {
-        // allow at most $NUMBER_OF_XY_POINTS$ points to be drawn
-        CLLocationDistance SMALLEST_GAP = [[[self.recordData lastObject] objectAtIndex:1] doubleValue] / NUMBER_OF_XY_POINTS;
-        SMALLEST_GAP = MAX(SMALLEST_GAP, 30.0);
-        
-        NSMutableArray *tempRecordData = [NSMutableArray array];
-        CLLocationDistance distanceFilter = 0;
-        CLLocationDistance currentDistance = 0;
-        self.maxSpeed = 0;
+    // allow at most $NUMBER_OF_XY_POINTS$ points to be drawn
+    CLLocationDistance SMALLEST_GAP = [[[self.recordData lastObject] objectAtIndex:1] doubleValue] / NUMBER_OF_XY_POINTS;
+    SMALLEST_GAP = MAX(SMALLEST_GAP, 30.0);
+    NSMutableArray *tempRecordData = [NSMutableArray array];
+    CLLocationDistance distanceFilter = 0;
+    CLLocationDistance currentDistance = 0;
+    self.maxSpeed = 0;
+    // deal with old data, need to compress original record array, and find the max speed
+    if ([self.recordData count] > NUMBER_OF_XY_POINTS+1) {
         for (NSArray *line in self.recordData) {
             currentDistance = [[line objectAtIndex:1] doubleValue];
             if ((currentDistance - distanceFilter) > SMALLEST_GAP) {
@@ -117,10 +115,18 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
             }
         }
         // add the last line of data
-        if ((currentDistance - distanceFilter) != 0) {
-            [tempRecordData addObject:[self.recordData lastObject]];
-        }
+        [tempRecordData addObject:[self.recordData lastObject]];
         self.recordData = [NSArray arrayWithArray:tempRecordData];
+    }
+    // deal with new data, only need to get the max speed
+    else {
+        for (NSArray *line in self.recordData) {
+            currentDistance = [[line objectAtIndex:1] doubleValue];
+            if ((currentDistance - distanceFilter) > SMALLEST_GAP) {
+                distanceFilter = currentDistance;
+                self.maxSpeed = MAX(self.maxSpeed, [[line lastObject] doubleValue]);
+            }
+        }
     }
 }
 

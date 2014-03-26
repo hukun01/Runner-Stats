@@ -58,9 +58,9 @@
 
 @implementation RSRunningVC
 // add 1 after every feedback
-static int distanceBoundForVoice = 1;
+static int distanceBound = 1;
 // number of seconds
-static int duration = 0;
+static int durationBound = 0;
 // Denote wheter the record file has changed
 static bool saveNewRecord;
 // flag for resuming background music
@@ -101,7 +101,7 @@ static bool resumeMusic;
     // reset data
     [self resetData];
     
-    if (![_recordManager createRecord]) {
+    if (![_recordManager createCatalog]) {
         NSLog(@"Create record.csv failed.");
     }
 }
@@ -299,11 +299,15 @@ static bool resumeMusic;
         [self.pathRenderer setNeedsDisplayInMapRect:updateRect];
         // Update data
         self.distance = [self.path distance] / RS_UNIT;
-        if (self.distance > distanceBoundForVoice) {
-            // add annotation
-            RSAnnotation *myAnn = [[RSAnnotation alloc] initWithTitle:[NSString stringWithFormat:@"%d", distanceBoundForVoice] andLocation:[self.currLocation coordinate]];
-            [self.map addAnnotation:myAnn];
+        if (self.distance > distanceBound) {
             [self triggleVoiceFeedback];
+            
+            // add annotation
+            RSAnnotation *myAnn = [[RSAnnotation alloc] initWithTitle:[NSString stringWithFormat:@"%d", distanceBound] andLocation:[self.currLocation coordinate]];
+            [self.map addAnnotation:myAnn];
+            // reset data for every unit
+            ++distanceBound;
+            durationBound = 0;
         }
         self.speed = (SECONDS_OF_HOUR/RS_UNIT) * [self.path instantSpeed];
         // Move map with user location
@@ -325,13 +329,13 @@ static bool resumeMusic;
     if (!self.voiceOn) {
         return;
     }
-    NSString *distanceText = [[NSString stringWithFormat:NSLocalizedString(@"DistanceCovered", nil), distanceBoundForVoice] stringByAppendingString:RS_UNIT_VOICE];
+    NSString *distanceText = [[NSString stringWithFormat:NSLocalizedString(@"DistanceCovered", nil), distanceBound] stringByAppendingString:RS_UNIT_VOICE];
     NSString *durationString = [[NSString alloc] init];
-    if (duration < SECONDS_OF_HOUR) {
-        durationString = [self timeFormatted:duration longerThanOneHour:NO];
+    if (durationBound < SECONDS_OF_HOUR) {
+        durationString = [self timeFormatted:durationBound longerThanOneHour:NO];
     }
     else {
-        durationString = [self timeFormatted:duration longerThanOneHour:YES];
+        durationString = [self timeFormatted:durationBound longerThanOneHour:YES];
     }
     NSString *durationText = [NSLocalizedString(@"DurationText", nil) stringByAppendingString:durationString];
     NSString *feedBackString = [distanceText stringByAppendingString:durationText];
@@ -341,8 +345,6 @@ static bool resumeMusic;
         [utterance setPitchMultiplier:1.25];
         [self.speaker speakUtterance:utterance];
     }
-    ++distanceBoundForVoice;
-    duration = 0;
 }
 
 - (NSString *)timeFormatted:(int)totalSeconds longerThanOneHour:(BOOL)islonger
@@ -441,8 +443,8 @@ static bool resumeMusic;
     self.distance = 0.0;
     self.avgSpeed = 0.0;
     self.sessionSeconds = 0;
-    duration = 0;
-    distanceBoundForVoice = 1;
+    durationBound = 0;
+    distanceBound = 1;
 }
 // restore main part of UI, keep path and annotations
 - (void)restoreUI
@@ -673,7 +675,7 @@ static bool resumeMusic;
 - (void)timerTick
 {
     self.sessionSeconds += 1;
-    duration            += 1;
+    durationBound            += 1;
 }
 
 - (NSUInteger)supportedInterfaceOrientations

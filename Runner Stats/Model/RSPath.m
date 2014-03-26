@@ -5,7 +5,7 @@
 
 #define INITIAL_POINT_SPACE 1000
 #define TOO_BIG_DISTANCE 50
-#define MINIMUM_DELTA_METERS 5.0
+#define MINIMUM_DELTA_METERS 2.0
 #define POINTS_TAG 0
 #define SPEEDS_TAG 1
 
@@ -213,9 +213,7 @@
         }
     }
     // add the last line of data
-    if ((currentDistance - distanceFilter) != 0) {
-        [writer writeLineOfFields:[self.runningData lastObject]];
-    }
+    [writer writeLineOfFields:[self.runningData lastObject]];
 }
 
 - (CLLocationSpeed)instantSpeed
