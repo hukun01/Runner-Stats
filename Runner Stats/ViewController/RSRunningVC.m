@@ -300,10 +300,10 @@ static bool resumeMusic;
         // Update data
         self.distance = [self.path distance] / RS_UNIT;
         if (self.distance > distanceBoundForVoice) {
-            [self triggleVoiceFeedback];
             // add annotation
             RSAnnotation *myAnn = [[RSAnnotation alloc] initWithTitle:[NSString stringWithFormat:@"%d", distanceBoundForVoice] andLocation:[self.currLocation coordinate]];
             [self.map addAnnotation:myAnn];
+            [self triggleVoiceFeedback];
         }
         self.speed = (SECONDS_OF_HOUR/RS_UNIT) * [self.path instantSpeed];
         // Move map with user location
