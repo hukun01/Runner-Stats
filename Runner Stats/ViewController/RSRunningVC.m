@@ -98,6 +98,7 @@ static bool resumeMusic;
     _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
     _recordManager                   = [[RSRecordManager alloc] init];
     _isRunning                       = NO;
+    _map.showsUserLocation           = YES;
     // reset data
     [self resetData];
     
@@ -122,21 +123,19 @@ static bool resumeMusic;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (!self.isRunning) {
-        [self restoreUI];
-    }
+
+    [self restoreUI];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
-    [self renewMapRegion];
-    self.map.showsUserLocation = YES;
     self.currLocation = [self.locationManager location];
     
     self.voiceOn = RS_VOICE_ON;
     [self updateUnitLabels];
+    [self renewMapRegion];
 }
 
 - (void)updateUnitLabels
@@ -214,7 +213,8 @@ static bool resumeMusic;
     return result;
 }
 
-- (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didFinishSpeechUtterance:(AVSpeechUtterance *)utterance
+- (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer
+ didFinishSpeechUtterance:(AVSpeechUtterance *)utterance
 {
     // If the speaker is counting down, when it finishes, start the running state
     if ([self.cdString isEqualToString:[utterance speechString]]) {
@@ -242,7 +242,7 @@ static bool resumeMusic;
     }
     
     // Clear the data of last event
-    [self.map removeOverlays:[self.map overlays]];
+    [self.map removeOverlays:self.map.overlays];
     [self removeAllPinsButUserLocation];
     [self.path clearContents];
     [self resetData];
@@ -258,13 +258,6 @@ static bool resumeMusic;
     self.tabBarController.tabBar.hidden = YES;
     //self.iAd.hidden = NO;
     self.bannerView.hidden              = NO;
-}
-
-- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
-{
-    if (self.isRunning) {
-        self.map.centerCoordinate = userLocation.location.coordinate;
-    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager
@@ -347,7 +340,8 @@ static bool resumeMusic;
     }
 }
 
-- (NSString *)timeFormatted:(int)totalSeconds longerThanOneHour:(BOOL)islonger
+- (NSString *)timeFormatted:(int)totalSeconds
+          longerThanOneHour:(BOOL)islonger
 {
     int seconds = totalSeconds % 60;
     int minutes = (totalSeconds / 60) % 60;
@@ -392,7 +386,8 @@ static bool resumeMusic;
     [alert show];
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+- (void)alertView:(UIAlertView *)alertView
+clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1)
     {
@@ -583,7 +578,17 @@ static bool resumeMusic;
 
 #pragma mark - Utility functions
 #pragma mark - About map
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+
+- (void)mapView:(MKMapView *)mapView
+didUpdateUserLocation:(MKUserLocation *)userLocation
+{
+    if (self.isRunning) {
+        self.map.centerCoordinate = userLocation.location.coordinate;
+    }
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView
+            viewForAnnotation:(id<MKAnnotation>)annotation
 {
     if ([annotation isKindOfClass:[RSAnnotation class]]) {
         RSAnnotation *myAnnotation = (RSAnnotation *)annotation;
@@ -612,7 +617,7 @@ static bool resumeMusic;
             rendererForOverlay:(id <MKOverlay>)overlay
 {
     if (!self.pathRenderer) {
-        _pathRenderer                 = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
+        self.pathRenderer             = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
         self.pathRenderer.strokeColor = [[UIColor alloc] initWithRed:66.0/255.0 green:204.0/255.0 blue:255.0/255.0 alpha:0.75];
         self.pathRenderer.lineWidth   = 6.5;
     }

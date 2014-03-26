@@ -278,7 +278,8 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
 
 #pragma mark - JBLineChartViewDelegate
 
-- (CGFloat)lineChartView:(JBLineChartView *)lineChartView heightForIndex:(NSInteger)index
+- (CGFloat)lineChartView:(JBLineChartView *)lineChartView
+          heightForIndex:(NSInteger)index
 {
     if ([self.recordData count] <= index) {
         return 0.0f;
@@ -289,7 +290,8 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
     return [[row lastObject] floatValue] * 100;
 }
 
-- (void)lineChartView:(JBLineChartView *)lineChartView didSelectChartAtIndex:(NSInteger)index
+- (void)lineChartView:(JBLineChartView *)lineChartView
+didSelectChartAtIndex:(NSInteger)index
 {
     if ([self.recordData count] <= index) {
         return;
@@ -319,7 +321,8 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
     [self.infoView setHidden:NO animated:YES];
 }
 
-- (void)lineChartView:(JBLineChartView *)lineChartView didUnselectChartAtIndex:(NSInteger)index
+- (void)lineChartView:(JBLineChartView *)lineChartView
+didUnselectChartAtIndex:(NSInteger)index
 {
     [self.infoView setHidden:YES animated:YES];
 }

@@ -80,7 +80,8 @@
 }
 
 # pragma mark - segue tableview delegate
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)prepareForSegue:(UIStoryboardSegue *)segue
+                 sender:(id)sender
 {
     if ([sender isKindOfClass:[UITableViewCell class]]) {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
@@ -101,7 +102,8 @@
     }
 }
 // setup rate me table view cell
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 1 && indexPath.row == 0) {
         NSURL *appStoreURL = [NSURL URLWithString:@"https://itunes.apple.com/gb/app/runner-stats/id793443821?ls=1&mt=8"];

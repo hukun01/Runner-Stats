@@ -152,7 +152,8 @@ static bool updateNewRecord;
     self.contributionGraph.data = result;
 }
 
-- (BOOL)date:(NSString *)dateString1 isInSameMonthWithDate:(NSString *)dateString2
+- (BOOL)date:(NSString *)dateString1
+isInSameMonthWithDate:(NSString *)dateString2
 {
     // Convert both date string into yyyy-MM
     NSString *string1 = [self.recordManager subStringFromDateString:dateString1];
@@ -273,7 +274,8 @@ static bool updateNewRecord;
 }
     
 #define SECONDS_OF_WEEK 604800
-- (BOOL)inSameWeekBetweenDate:(NSDate *)oldDate andDate:(NSDate *)newDate
+- (BOOL)inSameWeekBetweenDate:(NSDate *)oldDate
+                      andDate:(NSDate *)newDate
 {
     NSTimeInterval interval = [newDate timeIntervalSinceDate:oldDate];
     if (interval < 0 || interval > SECONDS_OF_WEEK) {

@@ -63,7 +63,8 @@ static bool updateNewRecord;
     [RSRunningVC changeRecordStateTo:YES];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)prepareForSegue:(UIStoryboardSegue *)segue
+                 sender:(id)sender
 {
     if ([sender isKindOfClass:[UITableViewCell class]]) {
         NSIndexPath *indexPath = [self.recordTableView indexPathForCell:sender];
@@ -172,12 +173,14 @@ static bool updateNewRecord;
     }
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section
 {
     return [self.records count];
 }
 
-- (RSRecordCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (RSRecordCell *)tableView:(UITableView *)tableView
+      cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *CellIdentifier = [NSString stringWithFormat:@"recordCell"];
     RSRecordCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -197,7 +200,9 @@ static bool updateNewRecord;
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.recordManager deleteRowAt:indexPath.row];
     self.records = [self.recordManager readCatalog];
@@ -206,18 +211,21 @@ static bool updateNewRecord;
     [RSStatsFirstVC changeUpdateStateTo:YES];
 }
 
-- (void)setEditing:(BOOL)editing animated:(BOOL)animated
+- (void)setEditing:(BOOL)editing
+          animated:(BOOL)animated
 {
     [super setEditing:editing animated:animated];
     [self.recordTableView setEditing:editing animated:animated];
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (BOOL)tableView:(UITableView *)tableView
+canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	return YES;
 }
 
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView
+           editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	return UITableViewCellEditingStyleDelete;
 }

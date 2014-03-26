@@ -37,7 +37,8 @@
     return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
 	[super viewWillAppear:animated];
 	
 	for (NSUInteger i =0; i < [self.childViewControllers count]; i++) {
@@ -55,7 +56,8 @@
 	self.currentStatsView.contentSize = CGSizeMake(_currentStatsView.frame.size.width * [self.childViewControllers count], _currentStatsView.frame.size.height);
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated
+{
 	[super viewDidAppear:animated];
 	
 	if ([self.childViewControllers count]) {
@@ -66,7 +68,8 @@
 	}
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated
+{
 	if ([self.childViewControllers count]) {
 		UIViewController *viewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
 		if (viewController.view.superview != nil) {
@@ -77,7 +80,8 @@
 	[super viewWillDisappear:animated];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
+- (void)viewDidDisappear:(BOOL)animated
+{
 	UIViewController *viewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
 	if (viewController.view.superview != nil) {
 		[viewController viewDidDisappear:animated];
@@ -85,7 +89,8 @@
 	[super viewDidDisappear:animated];
 }
 
-- (void)loadScrollViewWithPage:(NSUInteger)page {
+- (void)loadScrollViewWithPage:(NSUInteger)page
+{
     if (page >= [self.childViewControllers count])
         return;
     
