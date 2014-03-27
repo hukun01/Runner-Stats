@@ -67,10 +67,9 @@
 - (void)addALineToCatalog:(NSArray *)newline
 {
     // Need to check if there is already a record with same date
-    NSArray *allRecords = [self readCatalog];
+    NSMutableArray *allRecords = [[self readCatalog] mutableCopy];
     if ([allRecords count] >= 1) {
-        NSArray *recentRecord = [allRecords lastObject];
-        NSString *recentRecordDate = [recentRecord firstObject];
+        NSString *recentRecordDate = [[allRecords lastObject] firstObject];
         recentRecordDate = [[recentRecordDate componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] firstObject];
         NSString *newRecordDate = [newline firstObject];
         newRecordDate = [[newRecordDate componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] firstObject];
@@ -81,13 +80,17 @@
         NSDate *newDate = [df dateFromString:newRecordDate];
         if ([recentDate isEqualToDate:newDate])
         {
-            NSLog(@"Only one record in a day.");
-            [self deleteLastLine];
+            //Only one record in a day.
+            [allRecords removeLastObject];
         }
     }
+    // add the lastest record
+    [allRecords addObject:newline];
     
     CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:self.catalogPath];
-    [writer writeLineOfFields:newline];
+    for (NSArray *row in allRecords) {
+        [writer writeLineOfFields:row];
+    }
 }
 
 - (NSString *)subStringFromDateString:(NSString *)dateString
@@ -99,45 +102,15 @@
     return [df stringFromDate:date];
 }
 
-// Delete the last nonempty line in the record
-- (void)deleteLastLine
-{
-    NSArray *allRecords = [self readCatalog];
-    
-    if (![self.fileManager removeItemAtPath:self.catalogPath error:NULL])
-        NSLog(@"Remove current record failed.");
-    if (![self createCatalog]) {
-        NSLog(@"Re-create failed.");
-    }
-    // if the file contains only one row, clear the file content
-    if ([allRecords count] < 2) {
-        return;
-    }
-    
-    CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:self.catalogPath];
-    for (NSArray *a in [allRecords subarrayWithRange:NSMakeRange(0, [allRecords count]-1)]) {
-        [writer writeLineOfFields:a];
-    }
-}
-
 - (void)deleteRowAt:(NSInteger)row
 {
     NSMutableArray *allRecords = [[self readCatalog] mutableCopy];
-    
-    
-    if (![self.fileManager removeItemAtPath:self.catalogPath error:NULL])
-        NSLog(@"Remove current record failed.");
-    if (![self createCatalog]) {
-        NSLog(@"Re-create failed.");
-    }
-    // if the file contains only one row, it means that the catalog is empty.
-    if ([allRecords count] < 2) {
+    if (row >= [allRecords count]) {
         return;
     }
     
-    // delete associated data file whose name is the date
-    NSArray *record = [allRecords objectAtIndex:row];
-    NSString *recordFileName = [[record firstObject] description];
+    // delete associated data file whose name is $date$.csv
+    NSString *recordFileName = [[allRecords[row] firstObject] description];
     NSDateFormatter* df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSDate *date = [df dateFromString:recordFileName];
@@ -149,14 +122,13 @@
         NSLog(@"Remove data file failed.");
     }
     
-    // delete this record summary in record.csv
+    // delete this record summary in catalog: record.csv
     [allRecords removeObjectAtIndex:row];
     
     CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:self.catalogPath];
-    for (NSArray *a in [allRecords subarrayWithRange:NSMakeRange(0, [allRecords count])]) {
-        [writer writeLineOfFields:a];
+    for (NSArray *row in allRecords) {
+        [writer writeLineOfFields:row];
     }
-    
 }
 
 - (NSString *)timeFormatted:(int)totalSeconds withOption:(int)option
