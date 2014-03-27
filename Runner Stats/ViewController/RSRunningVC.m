@@ -407,8 +407,6 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
             // Remain all data
             // make it unable to zoom
             [self saveSessionAsRecord];
-            [self.path saveTmpAsData];
-            [RSRunningVC changeRecordStateTo:YES];
         }
     }
 }
@@ -489,11 +487,14 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
     else {
         disStr = [NSString stringWithFormat:@"%.2f",finalDistance];
     }
-    
     NSString *avgSpdStr = [NSString stringWithFormat:@"%.2f",[self.path distance] / duration];
     
     NSArray *newRecord = @[startDateString, disStr, durStr, avgSpdStr];
     [self.recordManager addALineToCatalog:newRecord];
+    
+    
+    [self.path saveTmpAsData];
+    [RSRunningVC changeRecordStateTo:YES];
 }
 
 #pragma mark - ADBanner configuration
