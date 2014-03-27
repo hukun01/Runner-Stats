@@ -727,7 +727,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="In-App Icon" width="120" height="120"/>
+        <image name="In-App Icon" width="1200" height="1200"/>
         <image name="RunningBar" width="30" height="30"/>
         <image name="SettingsBar" width="30" height="30"/>
         <image name="StatsBar" width="30" height="30"/>
