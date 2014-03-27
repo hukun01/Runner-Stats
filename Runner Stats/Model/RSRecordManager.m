@@ -52,7 +52,7 @@
     return allRecords;
 }
 
-- (NSArray *)readRecordDetailsByPath:(NSString *)path
+- (NSArray *)readRecordByPath:(NSString *)path
 {
     NSMutableArray *allRecords = [[NSArray arrayWithContentsOfCSVFile:path] mutableCopy];
     // Check the tail, cut off the row that only contain "".
@@ -64,7 +64,7 @@
     return allRecords;
 }
 
-- (void)addALineToCatalog:(NSArray *)newline
+- (void)addCatalogEntry:(NSArray *)newline
 {
     // Need to check if there is already a record with same date
     NSMutableArray *allRecords = [[self readCatalog] mutableCopy];
@@ -102,7 +102,7 @@
     return [df stringFromDate:date];
 }
 
-- (void)deleteRowAt:(NSInteger)row
+- (void)deleteEntryAt:(NSInteger)row
 {
     NSMutableArray *allRecords = [[self readCatalog] mutableCopy];
     if (row >= [allRecords count]) {
@@ -131,7 +131,8 @@
     }
 }
 
-- (NSString *)timeFormatted:(int)totalSeconds withOption:(int)option
+- (NSString *)timeFormatted:(int)totalSeconds
+                 withOption:(int)option
 {
     int seconds = totalSeconds % 60;
     int minutes = (totalSeconds / 60) % 60;

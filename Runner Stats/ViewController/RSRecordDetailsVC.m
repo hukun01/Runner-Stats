@@ -92,7 +92,7 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
 
 - (void)configureDataSource
 {
-    self.recordData = [self.recordManager readRecordDetailsByPath:self.recordPath] ;
+    self.recordData = [self.recordManager readRecordByPath:self.recordPath] ;
     if ([self.recordData count] < 1) {
         NSLog(@"Empty record");
         return;

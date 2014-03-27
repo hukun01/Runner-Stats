@@ -204,7 +204,7 @@ static bool updateNewRecord;
 commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.recordManager deleteRowAt:indexPath.row];
+    [self.recordManager deleteEntryAt:indexPath.row];
     self.records = [self.recordManager readCatalog];
     // Refresh data labels
     [self calcWholeDataForLabels];

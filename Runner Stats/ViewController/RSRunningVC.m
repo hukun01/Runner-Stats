@@ -490,10 +490,10 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
     NSString *avgSpdStr = [NSString stringWithFormat:@"%.2f",[self.path distance] / duration];
     
     NSArray *newRecord = @[startDateString, disStr, durStr, avgSpdStr];
-    [self.recordManager addALineToCatalog:newRecord];
+    [self.recordManager addCatalogEntry:newRecord];
     
     
-    [self.path saveTmpAsData];
+    [self.path saveTmpDataAsRecord];
     [RSRunningVC changeRecordStateTo:YES];
 }
 

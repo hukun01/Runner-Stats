@@ -13,7 +13,7 @@
 
 - (BOOL)saveFirstLocation:(CLLocation *)location;
 - (void)clearContents;
-- (void)saveTmpAsData;
+- (void)saveTmpDataAsRecord;
 - (BOOL)isValidLocation:(CLLocation *)location;
 
 // Add a location observation. A MKMapRect containing the newly added point

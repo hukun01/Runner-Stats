@@ -20,12 +20,12 @@
 // Date,Distance,Duration,AvgSpeed
 - (BOOL)createCatalog;
 - (NSArray *)readCatalog;
-- (NSArray *)readRecordDetailsByPath:(NSString *)path;
+- (NSArray *)readRecordByPath:(NSString *)path;
 // newline points to a NSArray separated by comma
-- (void)addALineToCatalog:(NSArray *)newline;
+- (void)addCatalogEntry:(NSArray *)newline;
 - (NSString *)timeFormatted:(int)totalSeconds withOption:(int)option;
 - (NSString *)subStringFromDateString:(NSString *)dateString;
-- (void)deleteRowAt:(NSInteger)row;
+- (void)deleteEntryAt:(NSInteger)row;
 
 @property(strong, nonatomic) NSString *catalogPath;
 

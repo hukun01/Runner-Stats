@@ -176,7 +176,7 @@
     return YES;
 }
 
-- (void)saveTmpAsData
+- (void)saveTmpDataAsRecord
 {
     NSString *docsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];

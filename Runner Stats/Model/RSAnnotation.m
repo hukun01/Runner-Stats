@@ -10,7 +10,8 @@
 
 @implementation RSAnnotation
 
-- (id)initWithTitle:(NSString *)title andLocation:(CLLocationCoordinate2D)location
+- (id)initWithTitle:(NSString *)title
+        andLocation:(CLLocationCoordinate2D)location
 {
     self = [super init];
     
