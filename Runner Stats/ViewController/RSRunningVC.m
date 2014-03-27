@@ -135,7 +135,6 @@ static bool resumeMusic;
     
     self.voiceOn = RS_VOICE_ON;
     [self updateUnitLabels];
-    [self renewMapRegion];
 }
 
 - (void)updateUnitLabels
@@ -311,7 +310,6 @@ static bool resumeMusic;
         self.speed = (SECONDS_OF_HOUR/RS_UNIT) * newLocation.speed;
     }
     
-    [self renewMapRegion];
     NSTimeInterval duration = ABS([self.startDate timeIntervalSinceNow]);
     self.avgSpeed = (SECONDS_OF_HOUR/RS_UNIT) * [self.path distance] / duration;
 }
@@ -585,6 +583,7 @@ didUpdateUserLocation:(MKUserLocation *)userLocation
     if (self.isRunning) {
         self.map.centerCoordinate = userLocation.location.coordinate;
     }
+    [self renewMapRegion];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView
@@ -626,15 +625,13 @@ didUpdateUserLocation:(MKUserLocation *)userLocation
 
 - (void)removeAllPinsButUserLocation
 {
-    id userLocation = [self.map userLocation];
-    NSMutableArray *pins = [[NSMutableArray alloc] initWithArray:[self.map annotations]];
+    id userLocation = self.map.userLocation;
+    NSMutableArray *pins = [[NSMutableArray alloc] initWithArray:self.map.annotations];
     if ( userLocation != nil ) {
         [pins removeObject:userLocation]; // avoid removing user location off the map
     }
     
     [self.map removeAnnotations:pins];
-    
-    pins = nil;
 }
 
 #pragma mark - About labels
