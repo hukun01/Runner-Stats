@@ -7,6 +7,7 @@
 //
 
 #import "RSGameKitHelper.h"
+#import "RSConstants.h"
 
 @interface RSGameKitHelper ()
 {
@@ -70,11 +71,17 @@
         
         [self setLastError:error];
         
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         if (blockLocalPlayer.authenticated) {
             self.gameCenterFeaturesEnabled = YES;
-        } else if(viewController) {
+            
+            [defaults setBool:YES forKey:FLAG_LOGIN_GC];
+        }
+        else if(viewController) {
+            [defaults setBool:YES forKey:FLAG_LOGIN_GC];
             [self presentViewController:viewController];
-        } else {
+        }
+        else {
             self.gameCenterFeaturesEnabled = NO;
         }
     };

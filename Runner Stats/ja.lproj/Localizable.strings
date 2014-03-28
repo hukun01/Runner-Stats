@@ -21,6 +21,8 @@
 // alert view
 "DiscardTitle" = "捨てる？";
 "Do you want to Discard" = "捨てるしますか？";
+"Login to game center" = "あなたのランクを確認するには、Game Center にログインしてください。";
+"LoginOption" = "ログイン";
 "CancelOption" = "キャンセル";
 "DiscardOption" = "捨てる";
 "SaveTitle" = "Save?";

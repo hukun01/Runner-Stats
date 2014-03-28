@@ -25,6 +25,14 @@
 
 #define SECONDS_OF_HOUR 3600
 
+#define NUMBER_OF_XY_POINTS 60
+
+#define LEADERBOARD_ID @"me.lifexplorer.Runner_Stats.Best_Runners"
+
+#define FLAG_LOGIN_GC @"LoginGC"
+#define FLAG_HAS_SUBMITTED_SOCRE @"hasSubmitted"
+
+
 #define RS_JAN NSLocalizedString(@"JAN", nil)
 #define RS_FEB NSLocalizedString(@"FEB", nil)
 #define RS_MAR NSLocalizedString(@"MAR", nil)
@@ -37,8 +45,4 @@
 #define RS_OCT NSLocalizedString(@"OCT", nil)
 #define RS_NOV NSLocalizedString(@"NOV", nil)
 #define RS_DEC NSLocalizedString(@"DEC", nil)
-
-
-#define NUMBER_OF_XY_POINTS 60
-
 #endif

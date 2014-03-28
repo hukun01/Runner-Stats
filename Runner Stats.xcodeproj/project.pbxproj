@@ -42,7 +42,6 @@
 		46AC5AFB18656098006CAAD1 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AC5AFA18656098006CAAD1 /* AudioToolbox.framework */; };
 		46AC5AFD1865648E006CAAD1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AC5AFC1865648E006CAAD1 /* MapKit.framework */; };
 		46AD93C818E5197A00EAD300 /* RSGameKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 46AD93C718E5197A00EAD300 /* RSGameKitHelper.m */; };
-		46AD93CB18E51D4C00EAD300 /* RSRankVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 46AD93CA18E51D4C00EAD300 /* RSRankVC.m */; };
 		46D4AAAE18655E6700F787BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D4AAAD18655E6700F787BA /* Foundation.framework */; };
 		46D4AAB018655E6700F787BA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D4AAAF18655E6700F787BA /* CoreGraphics.framework */; };
 		46D4AAB218655E6700F787BA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D4AAB118655E6700F787BA /* UIKit.framework */; };
@@ -136,8 +135,6 @@
 		46AC5AFC1865648E006CAAD1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		46AD93C618E5197A00EAD300 /* RSGameKitHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSGameKitHelper.h; sourceTree = "<group>"; };
 		46AD93C718E5197A00EAD300 /* RSGameKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSGameKitHelper.m; sourceTree = "<group>"; };
-		46AD93C918E51D4C00EAD300 /* RSRankVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSRankVC.h; sourceTree = "<group>"; };
-		46AD93CA18E51D4C00EAD300 /* RSRankVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSRankVC.m; sourceTree = "<group>"; };
 		46B7D6C41878E44F000C5524 /* Runner Stats.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "Runner Stats.entitlements"; path = "Runner Stats/Runner Stats.entitlements"; sourceTree = SOURCE_ROOT; };
 		46C47DF6186F6F4000A990B0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		46C47DF8186FFFC400A990B0 /* Known bug.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Known bug.md"; sourceTree = "<group>"; };
@@ -196,8 +193,6 @@
 				465237691878DDCE000BFE5E /* RSRecordCell.m */,
 				465237761878DDCE000BFE5E /* RSStatsSecondVC.h */,
 				465237771878DDCE000BFE5E /* RSStatsSecondVC.m */,
-				46AD93C918E51D4C00EAD300 /* RSRankVC.h */,
-				46AD93CA18E51D4C00EAD300 /* RSRankVC.m */,
 				465237721878DDCE000BFE5E /* RSSettingsVC.h */,
 				465237731878DDCE000BFE5E /* RSSettingsVC.m */,
 				465237701878DDCE000BFE5E /* RSSettingsTVC.h */,
@@ -495,7 +490,6 @@
 				46071A9418E228AB00014C5F /* RSAnnotation.m in Sources */,
 				465237AC1878DECB000BFE5E /* main.m in Sources */,
 				465237961878DE98000BFE5E /* RSRecordManager.m in Sources */,
-				46AD93CB18E51D4C00EAD300 /* RSRankVC.m in Sources */,
 				4652377D1878DDCE000BFE5E /* RSSettingsDetailsVC.m in Sources */,
 				465237811878DDCE000BFE5E /* RSStatsSecondVC.m in Sources */,
 				465237951878DE98000BFE5E /* RSPath.m in Sources */,

@@ -21,6 +21,8 @@
 // alert view
 "DiscardTitle" = "Discard?";
 "Do you want to Discard" = "Do you want to stop and discard this session?";
+"Login to game center" = "To see your rank, please log in to Game Center.";
+"LoginOption" = "Login";
 "CancelOption" = "Cancel";
 "DiscardOption" = "Discard";
 "SaveTitle" = "Save?";

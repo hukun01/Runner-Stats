@@ -21,6 +21,8 @@
 // alert view
 "DiscardTitle" = "Abandonner?";
 "Do you want to Discard" = "Voulez-vous l’abandonner?";
+"Login to game center" = "Pour voir votre rang, s'il vous plaît vous connecter à Game Center.";
+"LoginOption" = "Connexion";
 "CancelOption" = "Annuler";
 "DiscardOption" = "Abandonner";
 "SaveTitle" = "Sauver?";

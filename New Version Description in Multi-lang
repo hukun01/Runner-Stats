@@ -2,7 +2,6 @@
 需要修改版本号的地方：
 target;
 InfoPlist.strings;
-Runner Stats-Info.plist.
 
 En:
 Improve performance; 

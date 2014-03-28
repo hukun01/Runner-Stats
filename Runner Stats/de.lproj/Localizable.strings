@@ -21,6 +21,8 @@
 // alert view
 "DiscardTitle" = "Wegwerfen?";
 "Do you want to Discard" = "Möchten Sie es wegwerfen?";
+"Login to game center" = "Um deinen Rang zu sehen, bitte melden Sie sich bei Game Center.";
+"LoginOption" = "Anmelden";
 "CancelOption" = "Cancel";
 "DiscardOption" = "Wegwerfen";
 "SaveTitle" = "Speichern?";

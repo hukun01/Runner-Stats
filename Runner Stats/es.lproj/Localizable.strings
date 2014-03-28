@@ -21,6 +21,8 @@
 // alert view
 "DiscardTitle" = "Deshacer?";
 "Do you want to Discard" = "Quieres Deshacer?";
+"Login to game center" = "Para ver su posición, por favor identifícate para Game Center.";
+"LoginOption" = "login";
 "CancelOption" = "Cancelar";
 "DiscardOption" = "Discard";
 "SaveTitle" = "Guardar?";

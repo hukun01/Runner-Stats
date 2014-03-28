@@ -13,6 +13,8 @@
 
 #define DISCARD_ALERT_TAG 0
 #define SAVE_ALERT_TAG 1
+#define LOGIN_ALERT_TAG 2
+
 #define MAP_REGION_SIZE 330
 
 @interface RSRunningVC ()
@@ -135,6 +137,46 @@ static bool resumeMusic;
     
     self.voiceOn = RS_VOICE_ON;
     [self updateUnitLabels];
+    self.myNavigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Rank" style:UIBarButtonItemStylePlain target:self action:@selector(showGameCenter)];
+}
+
+- (void)showGameCenter
+{
+    if ([[RSGameKitHelper sharedGameKitHelper] gameCenterFeaturesEnabled] ) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        if (![defaults boolForKey:FLAG_HAS_SUBMITTED_SOCRE]) {
+            RSRecordManager *recordManager = [[RSRecordManager alloc] init];
+            NSArray *records = [recordManager readCatalog];
+            double_t wholeMeters = 0.0;
+            if ([records count] > 0) {
+                for (NSArray *record in records) {
+                    wholeMeters += [[record objectAtIndex:1] doubleValue];
+                }
+                wholeMeters /= RS_UNIT;
+            }
+            [[RSGameKitHelper sharedGameKitHelper] submitScore:wholeMeters category:LEADERBOARD_ID];
+            [defaults setBool:YES forKey:FLAG_HAS_SUBMITTED_SOCRE];
+            [defaults synchronize];
+        }
+        
+        GKGameCenterViewController *gameCenterController = [[GKGameCenterViewController alloc] init];
+        if (gameCenterController != nil) {
+            gameCenterController.gameCenterDelegate = [RSGameKitHelper sharedGameKitHelper];
+            gameCenterController.viewState = GKGameCenterViewControllerStateLeaderboards;
+            gameCenterController.leaderboardIdentifier = LEADERBOARD_ID;
+            [self presentViewController:gameCenterController animated:YES completion:nil];
+        }
+    }
+    else {
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:nil
+                              message:NSLocalizedString(@"Login to game center", nil)
+                              delegate:self
+                              cancelButtonTitle:NSLocalizedString(@"CancelOption", nil)
+                              otherButtonTitles:NSLocalizedString(@"LoginOption", nil), nil];
+        alert.tag = LOGIN_ALERT_TAG;
+        [alert show];
+    }
 }
 
 - (void)updateUnitLabels
@@ -387,26 +429,24 @@ static bool resumeMusic;
 - (void)alertView:(UIAlertView *)alertView
 clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex == 1)
-    {
+    if (buttonIndex == 1) {
         // First to stop session
         [self stopSession];
         // Discard session
-        if (alertView.tag == DISCARD_ALERT_TAG)
-        {
+        if (alertView.tag == DISCARD_ALERT_TAG) {
             // Remove overlay, clear path
             [self.map removeOverlays:[self.map overlays]];
             [self.path clearContents];
             [self resetData];
             [self removeAllPinsButUserLocation];
         }
-        // save session
-        else if (alertView.tag == SAVE_ALERT_TAG)
-        {
-            // Save current session
-            // Remain all data
-            // make it unable to zoom
+        // Save session
+        else if (alertView.tag == SAVE_ALERT_TAG) {
             [self saveSessionAsRecord];
+        }
+        // Login to game center
+        else if (alertView.tag == LOGIN_ALERT_TAG) {
+            [[RSGameKitHelper sharedGameKitHelper] authenticateLocalPlayer];
         }
     }
 }
@@ -498,14 +538,9 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
     
     // need to extract this piece of code.
     if ([[RSGameKitHelper sharedGameKitHelper] gameCenterFeaturesEnabled]) {
-        NSArray *records = [self.recordManager readCatalog];
-        CLLocationDistance wholeMeters = 0.0;
-        if ([records count] > 0) {
-            for (NSArray *record in records) {
-                wholeMeters += [[record objectAtIndex:1] doubleValue];
-            }
-        }
-        [[RSGameKitHelper sharedGameKitHelper] submitScore:wholeMeters category:@"me.lifexplorer.Runner_Stats.Best_Runners"];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setBool:NO forKey:FLAG_HAS_SUBMITTED_SOCRE];
+        [defaults synchronize];
     }
 }
 

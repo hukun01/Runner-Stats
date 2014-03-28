@@ -7,15 +7,21 @@
 //
 
 #import "RSAppDelegate.h"
+#import "RSGameKitHelper.h"
+#import "RSConstants.h"
 
 @implementation RSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:FLAG_LOGIN_GC]) {
+        [[RSGameKitHelper sharedGameKitHelper] authenticateLocalPlayer];
+    }
+    
     return YES;
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

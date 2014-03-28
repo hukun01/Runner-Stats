@@ -21,6 +21,8 @@
 // alert view
 "DiscardTitle" = "放棄？";
 "Do you want to Discard" = "停止並放棄本次的記錄？";
+"Login to game center" = "要查看排名，請先登錄遊戲中心。";
+"LoginOption" = "登錄";
 "CancelOption" = "取消";
 "DiscardOption" = "放棄";
 "SaveTitle" = "保存？";
