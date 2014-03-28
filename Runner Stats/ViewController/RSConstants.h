@@ -9,6 +9,7 @@
 //#import <iAd/iAd.h>
 #import "GADBannerView.h"
 #import "GADAdMobExtras.h"
+#import "RSGameKitHelper.h"
 
 #ifndef RunningStats_RSConstants_h
 #define RunningStats_RSConstants_h

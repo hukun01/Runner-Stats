@@ -495,6 +495,18 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
     
     [self.path saveTmpDataAsRecord];
     [RSRunningVC changeRecordStateTo:YES];
+    
+    // need to extract this piece of code.
+    if ([[RSGameKitHelper sharedGameKitHelper] gameCenterFeaturesEnabled]) {
+        NSArray *records = [self.recordManager readCatalog];
+        CLLocationDistance wholeMeters = 0.0;
+        if ([records count] > 0) {
+            for (NSArray *record in records) {
+                wholeMeters += [[record objectAtIndex:1] doubleValue];
+            }
+        }
+        [[RSGameKitHelper sharedGameKitHelper] submitScore:wholeMeters category:@"me.lifexplorer.Runner_Stats.Best_Runners"];
+    }
 }
 
 #pragma mark - ADBanner configuration

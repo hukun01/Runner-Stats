@@ -356,6 +356,7 @@
                     <connections>
                         <segue destination="CZ4-MO-1fc" kind="relationship" relationship="viewControllers" id="SUk-Ux-ee1"/>
                         <segue destination="QUy-BD-bpt" kind="relationship" relationship="viewControllers" id="M8t-EP-wfW"/>
+                        <segue destination="33K-dd-vOj" kind="relationship" relationship="viewControllers" id="f57-H9-0v3"/>
                         <segue destination="9fn-nI-MbL" kind="relationship" relationship="viewControllers" id="O3W-sV-tuf"/>
                     </connections>
                 </tabBarController>
@@ -633,10 +634,10 @@
             </objects>
             <point key="canvasLocation" x="1836" y="1318"/>
         </scene>
-        <!--View Controller-->
+        <!--RankVC - Rank-->
         <scene sceneID="cIY-fr-HvH">
             <objects>
-                <viewController id="33K-dd-vOj" sceneMemberID="viewController">
+                <viewController id="33K-dd-vOj" customClass="RSRankVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YoD-Iy-MeR"/>
                         <viewControllerLayoutGuide type="bottom" id="5hz-Tn-1BH"/>
@@ -644,8 +645,21 @@
                     <view key="view" contentMode="scaleToFill" id="A3H-Wm-ogD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uiU-cO-hes">
+                                <rect key="frame" x="44" y="148" width="233" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Rank" image="RankBar" id="Nrx-zd-F7X"/>
+                    <connections>
+                        <outlet property="noticeLabel" destination="uiU-cO-hes" id="TCg-78-4Mj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZh-SI-XRw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -727,7 +741,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="In-App Icon" width="1200" height="1200"/>
+        <image name="In-App Icon" width="120" height="120"/>
+        <image name="RankBar" width="30" height="30"/>
         <image name="RunningBar" width="30" height="30"/>
         <image name="SettingsBar" width="30" height="30"/>
         <image name="StatsBar" width="30" height="30"/>
