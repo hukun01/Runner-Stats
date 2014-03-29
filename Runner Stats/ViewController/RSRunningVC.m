@@ -152,7 +152,7 @@ static bool resumeMusic;
                 for (NSArray *record in records) {
                     wholeMeters += [[record objectAtIndex:1] doubleValue];
                 }
-                wholeMeters /= RS_UNIT;
+                wholeMeters /= 1000.0;
             }
             [[RSGameKitHelper sharedGameKitHelper] submitScore:wholeMeters category:LEADERBOARD_ID];
             [defaults setBool:YES forKey:FLAG_HAS_SUBMITTED_SOCRE];

@@ -71,6 +71,6 @@ didFailLoadWithError:(NSError *)error
 
 - (void)showOpenSourceLibs
 {
-    self.url = [NSURL URLWithString:@"http://lifexplorer.me/projects/runner-stats/libraries-used-in-runner-stats-and-special-thanks/#page"];
+    self.url = [NSURL URLWithString:@"http://lifexplorer.me/projects/runner-stats/rs-special-thanks/#page"];
 }
 @end
