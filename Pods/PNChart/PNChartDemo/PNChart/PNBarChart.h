@@ -23,6 +23,8 @@
 
 @property (strong, nonatomic) NSArray * xLabels;
 
+@property (strong, nonatomic) NSArray * upperXLabels;
+
 @property (strong, nonatomic) NSArray * yLabels;
 
 @property (strong, nonatomic) NSArray * yValues;

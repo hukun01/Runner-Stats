@@ -34,7 +34,7 @@
 "Max Speed" = "vitesse de pointe";
 // Second-2 interface
 "Running Frequency" = "Fréquence de Course";
-"barChartTitle" = "Duration of Last 7 Weeks";
+"barChartTitle" = "Montant de l'exercice des 7 derniers jours";
 "JAN" = "JAN";
 "FEB" = "FEB";
 "MAR" = "MAR";

@@ -34,7 +34,7 @@
 "Max Speed" = "Max Speed";
 // Second-2 interface
 "Running Frequency" = "Running Frequency";
-"barChartTitle" = "Duration of Last 7 Weeks";
+"barChartTitle" = "Amount of Exercise of Last 7 Weeks";
 "JAN" = "JAN";
 "FEB" = "FEB";
 "MAR" = "MAR";

@@ -34,7 +34,7 @@
 "Max Speed" = "Höchstgeschwindigkeit";
 // Second-2 interface
 "Running Frequency" = "Lauf-Frequenz";
-"barChartTitle" = "Aktivität in der letzten 7 Wochen";
+"barChartTitle" = "Anzahl der Übung in der letzten 7 Wochen";
 "JAN" = "JAN";
 "FEB" = "FEB";
 "MAR" = "MAR";

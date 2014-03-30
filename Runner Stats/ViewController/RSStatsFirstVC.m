@@ -226,7 +226,10 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView
            editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	return UITableViewCellEditingStyleDelete;
+    if (tableView.editing) {
+        return UITableViewCellEditingStyleDelete;
+    }
+    return UITableViewCellEditingStyleNone;
 }
 
 - (NSString *)cellTitleForIndex:(NSInteger)index

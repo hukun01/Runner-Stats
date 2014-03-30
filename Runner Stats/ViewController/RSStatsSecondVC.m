@@ -73,8 +73,6 @@ static bool updateNewRecord;
     // setup iAd banner
     //[self setupADBanner];
     [self setupADBannerWith:@"ca-app-pub-3727162321470301/7408686676"];
-    [self.barChart strokeChart];
-    [self.view addSubview:self.barChart];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -192,20 +190,23 @@ isInSameMonthWithDate:(NSString *)dateString2
     self.barChart.strokeColor = PNTwitterColor;
     // add title label
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.barChart.frame.size.width, 30)];
-    titleLabel.text = NSLocalizedString(@"barChartTitle", nil);
+    titleLabel.text = [NSLocalizedString(@"barChartTitle", nil) stringByAppendingString:[NSString stringWithFormat:@" (%@)", RS_DISTANCE_UNIT_STRING]];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.textColor = [UIColor colorWithWhite:0.56 alpha:1];
     titleLabel.font = [UIFont systemFontOfSize:14];
     [self.barChart addSubview:titleLabel];
     // barChart data
     [self setupBarChartData];
+    // add to main view
+    [self.barChart strokeChart];
+    [self.view addSubview:self.barChart];
 }
 
 // Calculate the recent 7 weeks
 #define BIGGEST_NUM_OF_RECORDS 49
 - (void)setupBarChartData
 {
-    NSArray *data = [[NSArray alloc] init];
+    NSArray *data = [NSArray array];
     NSInteger recordAmount = [self.records count];
     if (recordAmount > BIGGEST_NUM_OF_RECORDS) {
         NSInteger location = recordAmount - BIGGEST_NUM_OF_RECORDS;
@@ -219,7 +220,11 @@ isInSameMonthWithDate:(NSString *)dateString2
     if ([data count] < 1) {
         return;
     }
+    // distance array
+    NSMutableArray *upperXLabelsArray = [[NSMutableArray alloc] initWithArray:@[@"0", @"0", @"0", @"0", @"0", @"0", @"0"]];
+    // duration array
     NSMutableArray *xLabelsArray = [[NSMutableArray alloc] initWithArray:@[@"00:00", @"00:00", @"00:00", @"00:00", @"00:00", @"00:00", @"00:00"]];
+    // numbers of seconds array
     NSMutableArray *yValuesArray = [[NSMutableArray alloc] initWithArray:@[@0, @0, @0, @0, @0, @0, @0]];
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     df.timeZone = [NSTimeZone localTimeZone];
@@ -229,31 +234,36 @@ isInSameMonthWithDate:(NSString *)dateString2
     NSDate *currentWeekDate = [self getToday];
     NSDate *firstDateOfWeek = [self getFirstDayOfTheWeekFromDate:currentWeekDate];
     NSUInteger durationSeconds = 0;
+    CLLocationDistance durationDistance = 0.0;
     // Compare recordDate and first date of the last N week,
     // if they are in the same week, add the duration,
-    // or write to points array, and go to the further previous week.
+    // otherwise write to points array, and go to the further previous week.
     while (indexOfPoint >= 0 && indexOfRecord >= 0) {
         NSArray *row = [data objectAtIndex:indexOfRecord];
         NSDate *recordDate = [df dateFromString:[row firstObject]];
         if ([self inSameWeekBetweenDate:firstDateOfWeek andDate:recordDate]) {
-            durationSeconds += [[row objectAtIndex:2] integerValue];
+            durationSeconds += [row[2] integerValue];
+            durationDistance += [row[1] doubleValue];
             -- indexOfRecord;
         }
         else {
+            [upperXLabelsArray replaceObjectAtIndex:indexOfPoint withObject:[NSString stringWithFormat:@"%.1lf", durationDistance / RS_UNIT]];
             [xLabelsArray replaceObjectAtIndex:indexOfPoint withObject:[self.recordManager timeFormatted:(int)durationSeconds withOption:FORMAT_HHMM]];
-            //NSLog(@"P %ld, R %ld, %@",(long)indexOfPoint,(long)indexOfRecord, [self.recordManager timeFormatted:(int)durationSeconds withOption:FORMAT_HHMM]);
             [yValuesArray replaceObjectAtIndex:indexOfPoint withObject:[NSNumber numberWithInteger:durationSeconds]];
             -- indexOfPoint;
             durationSeconds = 0;
+            durationDistance = 0;
             firstDateOfWeek = [self minusAWeekFromDate:firstDateOfWeek];
         }
     }
     // Add the last point if available
     if (indexOfPoint >= 0) {
+        [upperXLabelsArray replaceObjectAtIndex:indexOfPoint withObject:[NSString stringWithFormat:@"%.1lf", durationDistance / RS_UNIT]];
         [xLabelsArray replaceObjectAtIndex:indexOfPoint withObject:[self.recordManager timeFormatted:(int)durationSeconds withOption:FORMAT_HHMM]];
         [yValuesArray replaceObjectAtIndex:indexOfPoint withObject:[NSNumber numberWithInteger:durationSeconds]];
     }
     
+    self.barChart.upperXLabels = upperXLabelsArray;
     self.barChart.xLabels = xLabelsArray;
     self.barChart.yValues = yValuesArray;
 }

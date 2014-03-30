@@ -72,7 +72,24 @@
             [self addSubview:label];
         }
     }
+}
+
+-(void)setUpperXLabels:(NSArray *)upperXLabels
+{
+    _upperXLabels = upperXLabels;
     
+    if (_showLabel) {
+        _xLabelWidth = (self.frame.size.width - chartMargin*2)/[upperXLabels count];
+        
+        for(int index = 0; index < upperXLabels.count; index++)
+        {
+            NSString* labelText = upperXLabels[index];
+            PNChartLabel *upperLabel = [[PNChartLabel alloc] initWithFrame:CGRectMake((index *  _xLabelWidth + chartMargin), 25.0, _xLabelWidth, 20.0)];
+            [upperLabel setTextAlignment:NSTextAlignmentCenter];
+            upperLabel.text = labelText;
+            [self addSubview:upperLabel];
+        }
+    }
 }
 
 -(void)setStrokeColor:(UIColor *)strokeColor
@@ -83,7 +100,7 @@
 -(void)strokeChart
 {
 
-    CGFloat chartCavanHeight = self.frame.size.height - chartMargin * 2 - 40.0;
+    CGFloat chartCavanHeight = self.frame.size.height - chartMargin * 2 - 55;//40.0;
     NSInteger index = 0;
 	
     for (NSString * valueString in _yValues) {
