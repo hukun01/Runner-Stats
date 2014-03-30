@@ -428,7 +428,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yh9-nk-0JI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="954" y="1252"/>
+            <point key="canvasLocation" x="954" y="834"/>
         </scene>
         <!--SettingsTVC-->
         <scene sceneID="U9y-zS-9TX">
@@ -597,7 +597,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ki4-fl-gZl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1370" y="1318"/>
+            <point key="canvasLocation" x="1370" y="900"/>
         </scene>
         <!--Settings DetailsVC-->
         <scene sceneID="OR5-Ze-cC7">
@@ -631,25 +631,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3AP-pe-YPz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1836" y="1318"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="cIY-fr-HvH">
-            <objects>
-                <viewController id="33K-dd-vOj" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="YoD-Iy-MeR"/>
-                        <viewControllerLayoutGuide type="bottom" id="5hz-Tn-1BH"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="A3H-Wm-ogD">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cZh-SI-XRw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="501" y="533"/>
+            <point key="canvasLocation" x="1836" y="900"/>
         </scene>
         <!--Stats SecondVC - StatsSecondVC-->
         <scene sceneID="DiP-e6-Fga">
@@ -723,11 +705,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cdc-hW-xbH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="501" y="1318"/>
+            <point key="canvasLocation" x="501" y="900"/>
         </scene>
     </scenes>
     <resources>
-        <image name="In-App Icon" width="1200" height="1200"/>
+        <image name="In-App Icon" width="120" height="120"/>
         <image name="RunningBar" width="30" height="30"/>
         <image name="SettingsBar" width="30" height="30"/>
         <image name="StatsBar" width="30" height="30"/>
@@ -739,6 +721,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="s1Y-3a-pju"/>
+        <segue reference="mFf-QJ-Tbh"/>
     </inferredMetricsTieBreakers>
 </document>

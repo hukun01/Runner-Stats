@@ -201,10 +201,7 @@ static bool resumeMusic;
 - (NSString *)countDownString
 {
     int countDown = RS_COUNT_DOWN;
-    NSString *result = [[NSString alloc] init];
-    if (countDown == 0) {
-        return result;
-    }
+    NSString *result = @"";
     for (; countDown > 0; --countDown) {
         result = [result stringByAppendingString:[NSString stringWithFormat:@"%d, ", countDown]];
     }
@@ -229,7 +226,7 @@ static bool resumeMusic;
 - (IBAction)startSession:(id)sender
 {
     [self.locationManager startUpdatingLocation];
-    if (self.voiceOn && [self configureAVAudioSession]) {
+    if (self.voiceOn && RS_COUNT_DOWN != 0 && [self configureAVAudioSession]) {
         [self speakCountDown];
     }
     else {
@@ -292,11 +289,12 @@ static bool resumeMusic;
         // Update data
         self.distance = [self.path distance] / RS_UNIT;
         if (self.distance > distanceBound) {
-            [self triggleVoiceFeedback];
-            
             // add annotation
             RSAnnotation *myAnn = [[RSAnnotation alloc] initWithTitle:[NSString stringWithFormat:@"%d", distanceBound] andLocation:[self.currLocation coordinate]];
             [self.map addAnnotation:myAnn];
+            
+            [self triggleVoiceFeedback];
+            
             // reset data for every unit
             ++distanceBound;
             durationBound = 0;
@@ -591,16 +589,7 @@ didUpdateUserLocation:(MKUserLocation *)userLocation
             viewForAnnotation:(id<MKAnnotation>)annotation
 {
     if ([annotation isKindOfClass:[RSAnnotation class]]) {
-        RSAnnotation *myAnnotation = (RSAnnotation *)annotation;
-        MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"RSAnnotationID"];
-        
-        if (annotationView == nil) {
-            annotationView = [myAnnotation annotationView];
-        }
-        else {
-            annotationView.annotation = annotation;
-        }
-        return annotationView;
+        return [(RSAnnotation *)annotation annotationView];
     }
     else {
         return nil;
