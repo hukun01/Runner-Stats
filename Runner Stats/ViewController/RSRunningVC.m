@@ -532,9 +532,10 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
     
     
     [self.path saveTmpDataAsRecord];
+    // Set the flag that denotes the other VC needs to re-display animation of figures
     [RSRunningVC changeRecordStateTo:YES];
-    
-    // need to extract this piece of code.
+
+    // Set the flag of game center to remember that the latest result has not been submitted
     if ([[RSGameKitHelper sharedGameKitHelper] gameCenterFeaturesEnabled]) {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setBool:NO forKey:FLAG_HAS_SUBMITTED_SOCRE];

@@ -61,6 +61,9 @@ static bool updateNewRecord;
     _records = records;
     [self.recordTableView reloadData];
     [RSRunningVC changeRecordStateTo:YES];
+    // Refresh data labels
+    [self calcWholeDataForLabels];
+    [RSStatsFirstVC changeUpdateStateTo:YES];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue
@@ -106,10 +109,8 @@ static bool updateNewRecord;
     parentVC.currentStatsView.scrollEnabled = YES;
     // setup data
     if (!self.records || ([RSRunningVC updateState] && ![RSStatsFirstVC updateState])) {
-        self.records = [self.recordManager readCatalog];
-        [RSStatsFirstVC changeUpdateStateTo:YES];
+        self.records = [[[self.recordManager readCatalog] reverseObjectEnumerator] allObjects];
     }
-    [self calcWholeDataForLabels];
     [self setupUnitLabels];
 }
 
@@ -204,11 +205,9 @@ static bool updateNewRecord;
 commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.recordManager deleteEntryAt:indexPath.row];
-    self.records = [self.recordManager readCatalog];
-    // Refresh data labels
-    [self calcWholeDataForLabels];
-    [RSStatsFirstVC changeUpdateStateTo:YES];
+    NSInteger realIndex = [self.records count] - indexPath.row - 1;
+    [self.recordManager deleteEntryAt:realIndex];
+    self.records = [[[self.recordManager readCatalog] reverseObjectEnumerator] allObjects];
 }
 
 - (void)setEditing:(BOOL)editing
