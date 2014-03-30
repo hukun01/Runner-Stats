@@ -50,7 +50,8 @@
     label.frame = labelFrame;
     [annotationView addSubview:bgImg];
     [annotationView addSubview:label];
-
+    
+    annotationView.annotation = self;
     return annotationView;
 }
 
