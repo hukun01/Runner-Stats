@@ -66,11 +66,11 @@ didFailLoadWithError:(NSError *)error
 #pragma mark - segue selector
 - (void)showAppSuportPage
 {
-    self.url = [NSURL URLWithString:@"http://lifexplorer.me/projects/Runner-Stats/#respond"];
+    self.url = [NSURL URLWithString:@"http://lifexplorer.me/projects/runner-stats/#respond"];
 }
 
 - (void)showOpenSourceLibs
 {
-    self.url = [NSURL URLWithString:@"http://lifexplorer.me/projects/runner-stats/rs-special-thanks/#page"];
+    self.url = [NSURL URLWithString:@"http://lifexplorer.me/projects/runner-stats/special-thanks/#page"];
 }
 @end
