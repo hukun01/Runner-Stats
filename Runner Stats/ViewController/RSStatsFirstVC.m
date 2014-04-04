@@ -64,6 +64,9 @@ static bool updateNewRecord;
     // Refresh data labels
     [self calcWholeDataForLabels];
     [RSStatsFirstVC changeUpdateStateTo:YES];
+    if ([RSStatsSecondVC updateState]) {
+        [RSRunningVC changeRecordStateTo:NO];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue

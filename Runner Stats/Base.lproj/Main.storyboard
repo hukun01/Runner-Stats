@@ -372,11 +372,11 @@
                         <viewControllerLayoutGuide type="bottom" id="sA5-lC-5ho"/>
                     </layoutGuides>
                     <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" indicatorStyle="black" id="emR-5y-yT7">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="670"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="714"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LifeXplorer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQF-PM-bpq">
-                                <rect key="frame" x="79" y="531" width="162" height="79"/>
+                                <rect key="frame" x="79" y="575" width="162" height="79"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="79" id="Upf-0y-XIz"/>
@@ -409,7 +409,7 @@
                             <constraint firstItem="sA5-lC-5ho" firstAttribute="top" secondItem="DQF-PM-bpq" secondAttribute="bottom" constant="11" id="29X-qz-5aH"/>
                             <constraint firstItem="DQF-PM-bpq" firstAttribute="centerX" secondItem="q1y-Jw-F86" secondAttribute="centerX" id="4Bc-i7-cHA"/>
                             <constraint firstItem="q1y-Jw-F86" firstAttribute="leading" secondItem="emR-5y-yT7" secondAttribute="leading" constant="20" symbolic="YES" id="M65-YQ-bkg"/>
-                            <constraint firstItem="DQF-PM-bpq" firstAttribute="top" secondItem="emR-5y-yT7" secondAttribute="top" constant="531" id="T3n-vh-BvN"/>
+                            <constraint firstItem="DQF-PM-bpq" firstAttribute="top" secondItem="emR-5y-yT7" secondAttribute="top" constant="575" id="T3n-vh-BvN"/>
                             <constraint firstAttribute="trailing" secondItem="q1y-Jw-F86" secondAttribute="trailing" constant="20" symbolic="YES" id="a3J-qu-W1P"/>
                             <constraint firstItem="q1y-Jw-F86" firstAttribute="top" secondItem="btL-Xa-9E1" secondAttribute="bottom" constant="3" id="hIj-cK-U8w"/>
                             <constraint firstItem="btL-Xa-9E1" firstAttribute="centerX" secondItem="emR-5y-yT7" secondAttribute="centerX" id="pn6-qz-s3H"/>
@@ -420,7 +420,7 @@
                     </scrollView>
                     <navigationItem key="navigationItem" id="rzB-Lb-szb"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="670"/>
+                    <size key="freeformSize" width="320" height="714"/>
                     <connections>
                         <outlet property="descriptionLabel" destination="q1y-Jw-F86" id="1u5-LW-sUB"/>
                         <outlet property="scrollView" destination="emR-5y-yT7" id="eT4-z7-hU4"/>
@@ -542,8 +542,27 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="iaG-un-1lt">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="jCt-RI-hxJ">
                                         <rect key="frame" x="0.0" y="231" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jCt-RI-hxJ" id="dcz-KR-E6v">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Version Log" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fwd-iv-OOv">
+                                                    <rect key="frame" x="20" y="11" width="247" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="l7Z-ag-HCM" kind="push" identifier="showVersionLog" id="44C-Gs-SfT"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="iaG-un-1lt">
+                                        <rect key="frame" x="0.0" y="275" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iaG-un-1lt" id="oOB-Qr-E8w">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -562,7 +581,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="TZY-2Q-kB7">
-                                        <rect key="frame" x="0.0" y="275" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="319" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TZY-2Q-kB7" id="V4s-5j-yMK">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -589,6 +608,8 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="htV-uB-6Cm"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
                     <connections>
                         <outlet property="countDownSegControl" destination="nYe-TJ-ofj" id="w46-8Z-0dJ"/>
                         <outlet property="measureUnitSegControl" destination="zSW-ur-pec" id="XAM-uk-aDm"/>
@@ -631,7 +652,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3AP-pe-YPz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1836" y="1318"/>
+            <point key="canvasLocation" x="1936" y="900"/>
         </scene>
         <!--Stats SecondVC - StatsSecondVC-->
         <scene sceneID="DiP-e6-Fga">
@@ -721,6 +742,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="mFf-QJ-Tbh"/>
+        <segue reference="44C-Gs-SfT"/>
     </inferredMetricsTieBreakers>
 </document>

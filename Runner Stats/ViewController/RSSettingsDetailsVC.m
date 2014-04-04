@@ -73,4 +73,9 @@ didFailLoadWithError:(NSError *)error
 {
     self.url = [NSURL URLWithString:@"http://lifexplorer.me/projects/runner-stats/special-thanks/#page"];
 }
+
+- (void)showVersionLog
+{
+    self.url = [NSURL URLWithString:@"http://lifexplorer.me/projects/runner-stats/version-log"];
+}
 @end

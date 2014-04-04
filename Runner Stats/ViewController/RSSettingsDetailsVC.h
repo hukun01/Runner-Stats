@@ -11,4 +11,5 @@
 @interface RSSettingsDetailsVC : UIViewController
 - (void)showAppSuportPage;
 - (void)showOpenSourceLibs;
+- (void)showVersionLog;
 @end

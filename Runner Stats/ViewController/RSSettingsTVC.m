@@ -98,6 +98,12 @@
                     [segue.destinationViewController performSelector:@selector(showOpenSourceLibs)];
                 }
             }
+            else if ([segue.identifier isEqualToString:@"showVersionLog"]) {
+                if ([segue.destinationViewController respondsToSelector:@selector(showVersionLog)]) {
+                    
+                    [segue.destinationViewController performSelector:@selector(showVersionLog)];
+                }
+            }
         }
     }
 }

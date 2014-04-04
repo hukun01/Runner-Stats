@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 hk. All rights reserved.
 //
 
+#import "RSStatsFirstVC.h"
 #import "RSStatsSecondVC.h"
 #import "PNChart.h"
 #import "TEAContributionGraph.h"
@@ -65,7 +66,9 @@ static bool updateNewRecord;
     if (!self.records || ([RSRunningVC updateState] && ![RSStatsSecondVC updateState])) {
         self.records = [self.recordManager readCatalog];
         [RSStatsSecondVC changeUpdateStateTo:YES];
-        [RSRunningVC changeRecordStateTo:NO];
+        if ([RSStatsFirstVC updateState]) {
+            [RSRunningVC changeRecordStateTo:NO];
+        }
     }
     
     [self setupContributionGraph];

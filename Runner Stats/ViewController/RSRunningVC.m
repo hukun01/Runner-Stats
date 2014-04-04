@@ -309,7 +309,7 @@ static bool resumeMusic;
     if (!self.path) {
         self.path = [[RSPath alloc] init];
     }
-    if ([self.path pointCount] == 0) {
+    if (self.path.pointCount == 0) {
         self.currLocation = newLocation;
         if ([self.path saveFirstLocation:self.currLocation]) {
             [self.map addOverlay:self.path];
@@ -329,7 +329,7 @@ static bool resumeMusic;
         // Ask the overlay view to update just the changed area.
         [self.pathRenderer setNeedsDisplayInMapRect:updateRect];
         // Update data
-        self.distance = [self.path distance] / RS_UNIT;
+        self.distance = self.path.distance / RS_UNIT;
         if (self.distance > distanceBound) {
             // add annotation
             RSAnnotation *myAnn = [[RSAnnotation alloc] initWithTitle:[NSString stringWithFormat:@"%d", distanceBound] andLocation:[self.currLocation coordinate]];
@@ -341,7 +341,7 @@ static bool resumeMusic;
             ++distanceBound;
             durationBound = 0;
         }
-        self.speed = (SECONDS_OF_HOUR/RS_UNIT) * [self.path instantSpeed];
+        self.speed = (SECONDS_OF_HOUR/RS_UNIT) * self.path.instantSpeed;
         // Move map with user location
         self.currLocation = newLocation;
     }
@@ -351,7 +351,7 @@ static bool resumeMusic;
     }
     
     NSTimeInterval duration = ABS([self.startDate timeIntervalSinceNow]);
-    self.avgSpeed = (SECONDS_OF_HOUR/RS_UNIT) * [self.path distance] / duration;
+    self.avgSpeed = (SECONDS_OF_HOUR/RS_UNIT) * self.path.distance / duration;
 }
 
 // Speak the current distance and the duration for the last km or mile
@@ -517,7 +517,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
     NSTimeInterval duration = ABS([self.startDate timeIntervalSinceNow]);
     NSString *durStr = [NSString stringWithFormat:@"%d", (int)duration];
     NSString *startDateString = [dateformatter stringFromDate:self.startDate];
-    CLLocationDistance finalDistance = [self.path distance];
+    CLLocationDistance finalDistance = self.path.distance;
     NSString *disStr;
     if (finalDistance > 10.0) {
         disStr = [NSString stringWithFormat:@"%.1f",finalDistance];
@@ -525,7 +525,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
     else {
         disStr = [NSString stringWithFormat:@"%.2f",finalDistance];
     }
-    NSString *avgSpdStr = [NSString stringWithFormat:@"%.2f",[self.path distance] / duration];
+    NSString *avgSpdStr = [NSString stringWithFormat:@"%.2f",self.path.distance / duration];
     
     NSArray *newRecord = @[startDateString, disStr, durStr, avgSpdStr];
     [self.recordManager addCatalogEntry:newRecord];
@@ -630,7 +630,9 @@ didUpdateUserLocation:(MKUserLocation *)userLocation
     if (self.isRunning) {
         self.map.centerCoordinate = userLocation.location.coordinate;
     }
-    [self renewMapRegion];
+    if (![RSRunningVC updateState]) {
+        [self renewMapRegion];
+    }
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView
@@ -715,7 +717,7 @@ didUpdateUserLocation:(MKUserLocation *)userLocation
 - (void)timerTick
 {
     self.sessionSeconds += 1;
-    durationBound            += 1;
+    durationBound       += 1;
 }
 
 - (NSUInteger)supportedInterfaceOrientations

@@ -32,7 +32,7 @@
     [self addChildViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"SettingsTVC"]];
     UITableViewController *settingsTVC = [[self childViewControllers] firstObject];
     if (settingsTVC.view.superview == nil) {
-        CGRect frame = CGRectMake(0, 187, self.scrollView.frame.size.width, 451);
+        CGRect frame = CGRectMake(0, 187, self.scrollView.frame.size.width, 515);
         settingsTVC.view.frame = frame;
         [self.scrollView addSubview:settingsTVC.tableView];
     }
