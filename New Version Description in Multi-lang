@@ -3,6 +3,10 @@
 target;
 InfoPlist.strings;
 
+找不到lib的时候，在这里：
+Building Settings: Search Paths:文件夹带空格的要转义，末尾要加斜杠。
+
+
 En:
 Improve performance; 
 Fix a bug.

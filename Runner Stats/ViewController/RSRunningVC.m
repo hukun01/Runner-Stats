@@ -83,6 +83,7 @@ static bool resumeMusic;
     _map.showsUserLocation           = YES;
     // reset data
     [self resetData];
+    self.screenName = @"Running Screen";
     
     if (![RSRecordManager createCatalog]) {
         NSLog(@"Create record.csv failed.");
@@ -114,10 +115,8 @@ static bool resumeMusic;
     [super viewDidAppear:animated];
     
     self.currLocation = [self.locationManager location];
-    
     self.voiceOn = RS_VOICE_ON;
     [self updateUnitLabels];
-    self.myNavigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Rank", nil) style:UIBarButtonItemStylePlain target:self action:@selector(showGameCenter)];
 }
 
 - (void)showGameCenter
@@ -269,6 +268,7 @@ static bool resumeMusic;
     self.tabBarController.tabBar.hidden = YES;
     //self.iAd.hidden = NO;
     self.bannerView.hidden              = NO;
+    self.myNavigationItem.rightBarButtonItem = nil;
 }
 
 - (void)locationManager:(CLLocationManager *)manager
@@ -459,6 +459,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
     self.map.zoomEnabled = YES;
     //self.iAd.hidden = YES;
     self.bannerView.hidden = YES;
+    self.myNavigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Rank", nil) style:UIBarButtonItemStylePlain target:self action:@selector(showGameCenter)];
 }
 
 - (void)stopTimer

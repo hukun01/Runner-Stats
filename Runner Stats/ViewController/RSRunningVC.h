@@ -13,8 +13,9 @@
 #import "RSRecordManager.h"
 #import "RSPath.h"
 #import "RSConstants.h"
+#import "GAITrackedViewController.h"
 
-@interface RSRunningVC : UIViewController
+@interface RSRunningVC : GAITrackedViewController
 <MKMapViewDelegate, CLLocationManagerDelegate, UIAlertViewDelegate, AVSpeechSynthesizerDelegate>//, ADBannerViewDelegate>
 
 @property GADBannerView *bannerView;

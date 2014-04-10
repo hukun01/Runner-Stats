@@ -23,7 +23,6 @@
 // newline points to a NSArray separated by comma
 + (void)addCatalogEntry:(NSArray *)newline;
 + (void)deleteEntryAt:(NSInteger)row;
-+ (void)update;
 
 + (NSString *)timeFormatted:(int)totalSeconds withOption:(int)option;
 + (NSString *)subStringFromDateString:(NSString *)dateString;
