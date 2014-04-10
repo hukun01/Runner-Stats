@@ -13,5 +13,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *distanceLabel;
 @property (strong, nonatomic) IBOutlet UILabel *durationLabel;
 @property (strong, nonatomic) IBOutlet UILabel *unitLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *timeImageView;
 
 @end

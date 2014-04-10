@@ -18,6 +18,8 @@
 "hourMin" = "%d 時間, %d 分";
 "hourMinSec" = "%d 時間, %d 分, %d 秒";
 
+"Rank" = "ランク";
+
 // alert view
 "DiscardTitle" = "捨てる？";
 "Do you want to Discard" = "捨てるしますか？";

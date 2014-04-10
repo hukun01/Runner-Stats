@@ -18,6 +18,8 @@
 "hourMin" = "%d Stunden, %d Protokoll";
 "hourMinSec" = "%d Stunden, %d Protokoll, %d zweite";
 
+"Rank" = "Rang";
+
 // alert view
 "DiscardTitle" = "Wegwerfen?";
 "Do you want to Discard" = "Möchten Sie es wegwerfen?";

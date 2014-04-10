@@ -29,6 +29,10 @@
 @property (strong, nonatomic) IBOutlet UILabel *paceUnitLabel;
 @property (strong, nonatomic) IBOutlet UILabel *speedUnitLabel;
 
+@property (strong, nonatomic) UIImage *sunImg;
+@property (strong, nonatomic) UIImage *moonImg;
+@property (strong, nonatomic) NSDate *nightTime;
+@property (strong, nonatomic) NSDateFormatter *df;
 
 @end
 
@@ -52,6 +56,11 @@ static bool updateNewRecord;
     if (self) {
         // Custom initialization
         _recordManager = [[RSRecordManager alloc] init];
+        _df = [[NSDateFormatter alloc] init];
+        _df.dateFormat = @"HH:mm:ss";
+        _nightTime = [_df dateFromString:@"18:00:00"];
+        _sunImg = [UIImage imageNamed:@"Sun"];
+        _moonImg = [UIImage imageNamed:@"Moon"];
     }
     return self;
 }
@@ -140,7 +149,7 @@ static bool updateNewRecord;
         self.distanceLabel.text = @"0";
         self.durationLabel.text = @"0";
         self.avgSpeedLabel.text = @"0";
-        self.avgPaceLabel.text = @"0";
+        self.avgPaceLabel.text  = @"0";
         
         return;
     }
@@ -193,7 +202,24 @@ static bool updateNewRecord;
     if (indexPath.row >= [self.records count]) {
         return cell;
     }
-    cell.textLabel.text = [self cellTitleForIndex:indexPath.row];
+    NSArray *rowContent = [self.records objectAtIndex:indexPath.row];
+    NSString *recordDateString = [[rowContent firstObject] description];
+    self.df.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    NSDate *date = [self.df dateFromString:recordDateString];
+    self.df.dateFormat = @"MMM dd, yyyy";
+    cell.textLabel.text = [self.df stringFromDate:date];
+    
+    self.df.dateFormat = @"HH:mm:ss";
+    NSDate *recordTime = [self.df dateFromString:[self.df stringFromDate:date]];
+    // if record time is later than nighttime, use moon img
+    if ([recordTime compare:self.nightTime] == NSOrderedDescending) {
+        cell.timeImageView.image = self.moonImg;
+    }
+    else {
+        cell.timeImageView.image = self.sunImg;
+    }
+    
+    
     CLLocationDistance wholeDistance = [[[self.records objectAtIndex:indexPath.row] objectAtIndex:1] doubleValue];
     wholeDistance /= RS_UNIT;
     cell.distanceLabel.text = [NSString stringWithFormat:@"%.2f", wholeDistance];

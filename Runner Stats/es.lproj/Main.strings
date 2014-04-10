@@ -135,7 +135,7 @@
 "xMZ-ze-rkX.title" = "RecordDetailsVC";
 
 /* Class = "IBUILabel"; text = "Countdown on Start"; ObjectID = "xpE-y0-AJy"; */
-"xpE-y0-AJy.text" = "Tiempo de Comienzo";
+"xpE-y0-AJy.text" = "Cuenta atrás";
 
 /* Class = "IBUISegmentedControl"; zSW-ur-pec.segmentTitles[0] = "km"; ObjectID = "zSW-ur-pec"; */
 "zSW-ur-pec.segmentTitles[0]" = "km";

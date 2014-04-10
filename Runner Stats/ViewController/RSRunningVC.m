@@ -137,7 +137,7 @@ static bool resumeMusic;
     
     self.voiceOn = RS_VOICE_ON;
     [self updateUnitLabels];
-    self.myNavigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Rank" style:UIBarButtonItemStylePlain target:self action:@selector(showGameCenter)];
+    self.myNavigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Rank", nil) style:UIBarButtonItemStylePlain target:self action:@selector(showGameCenter)];
 }
 
 - (void)showGameCenter
@@ -152,7 +152,7 @@ static bool resumeMusic;
                 for (NSArray *record in records) {
                     wholeMeters += [[record objectAtIndex:1] doubleValue];
                 }
-                wholeMeters /= 1000.0;
+                wholeMeters /= 10.0;
             }
             [[RSGameKitHelper sharedGameKitHelper] submitScore:wholeMeters category:LEADERBOARD_ID];
             [defaults setBool:YES forKey:FLAG_HAS_SUBMITTED_SOCRE];

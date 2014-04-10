@@ -18,6 +18,8 @@
 "hourMin" = "%d heures, %d minutes";
 "hourMinSec" = "%d heures, %d minutes, %d deuxième";
 
+"Rank" = "rang";
+
 // alert view
 "DiscardTitle" = "Abandonner?";
 "Do you want to Discard" = "Voulez-vous l’abandonner?";
