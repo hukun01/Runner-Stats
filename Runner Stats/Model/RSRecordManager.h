@@ -18,15 +18,18 @@
 // There is always only one record.csv whose structure is as followed.
 
 // Date,Distance,Duration,AvgSpeed
-- (BOOL)createCatalog;
-- (NSArray *)readCatalog;
-- (NSArray *)readRecordByPath:(NSString *)path;
++ (BOOL)createCatalog;
++ (NSArray *)readRecordByPath:(NSString *)path;
 // newline points to a NSArray separated by comma
-- (void)addCatalogEntry:(NSArray *)newline;
-- (NSString *)timeFormatted:(int)totalSeconds withOption:(int)option;
-- (NSString *)subStringFromDateString:(NSString *)dateString;
-- (void)deleteEntryAt:(NSInteger)row;
++ (void)addCatalogEntry:(NSArray *)newline;
++ (void)deleteEntryAt:(NSInteger)row;
++ (void)update;
 
-@property(strong, nonatomic) NSString *catalogPath;
++ (NSString *)timeFormatted:(int)totalSeconds withOption:(int)option;
++ (NSString *)subStringFromDateString:(NSString *)dateString;
 
++ (NSArray *)allRecords;
++ (double_t)overallDistance;
++ (double_t)overallTime;
++ (double_t)overallSpeed;
 @end

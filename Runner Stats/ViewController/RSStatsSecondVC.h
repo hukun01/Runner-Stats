@@ -11,7 +11,5 @@
 
 @interface RSStatsSecondVC : UIViewController// <ADBannerViewDelegate>
 
-+ (BOOL)updateState;
-+ (void)changeUpdateStateTo:(BOOL)state;
 @property GADBannerView *bannerView;
 @end

@@ -24,15 +24,12 @@ CGFloat const kJBLineChartViewControllerChartHeaderPadding = 10.0f;
 CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
 
 @interface RSRecordDetailsVC ()
-@property (strong, nonatomic) RSRecordManager *recordManager;
 @property (strong, nonatomic) JBChartHeaderView *headerView;
 @property (strong, nonatomic) JBLineChartView *lineChart;
 @property (strong, nonatomic) JBChartInformationView *infoView;
-@property (strong, nonatomic) NSString *record;
+@property (strong, nonatomic) NSString *recordTitle;
 @property (strong, nonatomic) NSString *recordPath;
 @property (strong, nonatomic) NSArray *recordData;
-// flagPoint is for marking every kilometer or mile covered
-@property (assign, nonatomic) NSUInteger flagPoint;
 @property (assign, nonatomic) CLLocationSpeed maxSpeed;
 // iAD banner
 //@property (strong, nonatomic) ADBannerView *iAd;
@@ -40,20 +37,10 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
 
 @implementation RSRecordDetailsVC
 
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        _recordManager = [[RSRecordManager alloc] init];
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    self.flagPoint = 1000;
+    
     [self configureDataSource];
     if ([self.recordData count] < 1) {
         return;
@@ -92,7 +79,7 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
 
 - (void)configureDataSource
 {
-    self.recordData = [self.recordManager readRecordByPath:self.recordPath] ;
+    self.recordData = [RSRecordManager readRecordByPath:self.recordPath] ;
     if ([self.recordData count] < 1) {
         NSLog(@"Empty record");
         return;
@@ -145,7 +132,7 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
         self.headerView = [[JBChartHeaderView alloc] initWithFrame:CGRectMake(kJBNumericDefaultPadding, ceil(self.view.bounds.size.height * 0.5) - ceil(kJBLineChartViewControllerChartHeaderHeight * 0.5), self.view.bounds.size.width - (kJBNumericDefaultPadding * 2), kJBLineChartViewControllerChartHeaderHeight)];
     }
     
-    self.headerView.titleLabel.text = [self getHeaderTitleFromRecord:self.record];
+    self.headerView.titleLabel.text = [self getHeaderTitleFromRecord:self.recordTitle];
     self.headerView.titleLabel.textColor = kJBColorLineChartHeader;
     self.headerView.titleLabel.shadowColor = [UIColor colorWithWhite:1.0 alpha:0.25];
     self.headerView.titleLabel.shadowOffset = CGSizeMake(0, 1);
@@ -271,7 +258,7 @@ CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
 
 - (void)showRecordFromDate:(NSString *)recordDateStr
 {
-    self.record = recordDateStr;
+    self.recordTitle = recordDateStr;
     NSString *docsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     self.recordPath = [docsPath stringByAppendingPathComponent:[[self getRecordNameFromRecordDate:recordDateStr] stringByAppendingString:@".csv"]];
 }

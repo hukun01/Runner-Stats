@@ -20,41 +20,17 @@
 @property (strong, nonatomic) PNBarChart *barChart;
 @property (strong, nonatomic) TEAContributionGraph *contributionGraph;
 @property (strong, nonatomic) IBOutlet UINavigationItem *myNavigationItem;
-@property (strong, nonatomic) RSRecordManager *recordManager;
 @property (strong, nonatomic) NSArray *records;
 
 //@property (strong, nonatomic) ADBannerView *iAd;
 @end
 
 @implementation RSStatsSecondVC
-// Denote wheter the record file has changed
-static bool updateNewRecord;
-
-+ (void)changeUpdateStateTo:(BOOL)state
-{
-    updateNewRecord = state;
-}
-
-+ (BOOL)updateState
-{
-    return updateNewRecord;
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        _recordManager = [[RSRecordManager alloc] init];
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
     
-    [RSStatsSecondVC changeUpdateStateTo:NO];
     self.myNavigationItem.title = NSLocalizedString(@"Running Frequency", nil);
 }
 
@@ -63,24 +39,13 @@ static bool updateNewRecord;
     [super viewWillAppear:animated];
     
     // setup data
-    if (!self.records || ([RSRunningVC updateState] && ![RSStatsSecondVC updateState])) {
-        self.records = [self.recordManager readCatalog];
-        [RSStatsSecondVC changeUpdateStateTo:YES];
-        if ([RSStatsFirstVC updateState]) {
-            [RSRunningVC changeRecordStateTo:NO];
-        }
-    }
+    self.records = [RSRecordManager allRecords];
     
     [self setupContributionGraph];
     [self setupBarChart];
     // setup iAd banner
     //[self setupADBanner];
     [self setupADBannerWith:@"ca-app-pub-3727162321470301/7408686676"];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
 }
 
 #pragma mark - contribution graph
@@ -157,8 +122,8 @@ static bool updateNewRecord;
 isInSameMonthWithDate:(NSString *)dateString2
 {
     // Convert both date string into yyyy-MM
-    NSString *string1 = [self.recordManager subStringFromDateString:dateString1];
-    NSString *string2 = [self.recordManager subStringFromDateString:dateString2];
+    NSString *string1 = [RSRecordManager subStringFromDateString:dateString1];
+    NSString *string2 = [RSRecordManager subStringFromDateString:dateString2];
     
     return [string1 isEqualToString:string2];
 }
@@ -251,7 +216,7 @@ isInSameMonthWithDate:(NSString *)dateString2
         }
         else {
             [upperXLabelsArray replaceObjectAtIndex:indexOfPoint withObject:[NSString stringWithFormat:@"%.1lf", durationDistance / RS_UNIT]];
-            [xLabelsArray replaceObjectAtIndex:indexOfPoint withObject:[self.recordManager timeFormatted:(int)durationSeconds withOption:FORMAT_HHMM]];
+            [xLabelsArray replaceObjectAtIndex:indexOfPoint withObject:[RSRecordManager timeFormatted:(int)durationSeconds withOption:FORMAT_HHMM]];
             [yValuesArray replaceObjectAtIndex:indexOfPoint withObject:[NSNumber numberWithInteger:durationSeconds]];
             -- indexOfPoint;
             durationSeconds = 0;
@@ -262,7 +227,7 @@ isInSameMonthWithDate:(NSString *)dateString2
     // Add the last point if available
     if (indexOfPoint >= 0) {
         [upperXLabelsArray replaceObjectAtIndex:indexOfPoint withObject:[NSString stringWithFormat:@"%.1lf", durationDistance / RS_UNIT]];
-        [xLabelsArray replaceObjectAtIndex:indexOfPoint withObject:[self.recordManager timeFormatted:(int)durationSeconds withOption:FORMAT_HHMM]];
+        [xLabelsArray replaceObjectAtIndex:indexOfPoint withObject:[RSRecordManager timeFormatted:(int)durationSeconds withOption:FORMAT_HHMM]];
         [yValuesArray replaceObjectAtIndex:indexOfPoint withObject:[NSNumber numberWithInteger:durationSeconds]];
     }
     

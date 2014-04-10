@@ -18,7 +18,6 @@
 @interface RSStatsFirstVC ()
 @property (strong, nonatomic) IBOutlet UITableView *recordTableView;
 @property (strong, nonatomic) NSArray *records;
-@property (strong, nonatomic) RSRecordManager *recordManager;
 
 @property (strong, nonatomic) IBOutlet UILabel *distanceLabel;
 @property (strong, nonatomic) IBOutlet UILabel *durationLabel;
@@ -37,25 +36,11 @@
 @end
 
 @implementation RSStatsFirstVC
-// Denote wheter the record file has changed
-static bool updateNewRecord;
-
-+ (void)changeUpdateStateTo:(BOOL)state
-{
-    updateNewRecord = state;
-}
-
-+ (BOOL)updateState
-{
-    return updateNewRecord;
-}
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        // Custom initialization
-        _recordManager = [[RSRecordManager alloc] init];
         _df = [[NSDateFormatter alloc] init];
         _df.dateFormat = @"HH:mm:ss";
         _nightTime = [_df dateFromString:@"18:00:00"];
@@ -69,13 +54,8 @@ static bool updateNewRecord;
 {
     _records = records;
     [self.recordTableView reloadData];
-    [RSRunningVC changeRecordStateTo:YES];
     // Refresh data labels
     [self calcWholeDataForLabels];
-    [RSStatsFirstVC changeUpdateStateTo:YES];
-    if ([RSStatsSecondVC updateState]) {
-        [RSRunningVC changeRecordStateTo:NO];
-    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue
@@ -109,7 +89,6 @@ static bool updateNewRecord;
     // setup table view
     self.recordTableView.dataSource = self;
     self.recordTableView.delegate = self;
-    [RSStatsFirstVC changeUpdateStateTo:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -120,9 +99,7 @@ static bool updateNewRecord;
     parentVC.pageControl.hidden = NO;
     parentVC.currentStatsView.scrollEnabled = YES;
     // setup data
-    if (!self.records || ([RSRunningVC updateState] && ![RSStatsFirstVC updateState])) {
-        self.records = [[[self.recordManager readCatalog] reverseObjectEnumerator] allObjects];
-    }
+    self.records = [[[RSRecordManager allRecords] reverseObjectEnumerator] allObjects];
     [self setupUnitLabels];
 }
 
@@ -135,17 +112,7 @@ static bool updateNewRecord;
 
 - (void)calcWholeDataForLabels
 {
-    CLLocationDistance wholeMeters = 0.0;
-    NSTimeInterval wholeSeconds = 0.0;
-    CLLocationSpeed averageSpeed = 0.0;
-    if ([self.records count] > 0) {
-        for (NSArray *record in self.records) {
-            wholeMeters += [[record objectAtIndex:1] doubleValue];
-            wholeSeconds += [[record objectAtIndex:2] intValue];
-            averageSpeed += [[record lastObject] doubleValue];
-        }
-    }
-    else {
+    if ([self.records count] == 0) {
         self.distanceLabel.text = @"0";
         self.durationLabel.text = @"0";
         self.avgSpeedLabel.text = @"0";
@@ -153,8 +120,9 @@ static bool updateNewRecord;
         
         return;
     }
-    
-    wholeMeters /= RS_UNIT;
+    CLLocationDistance wholeMeters = [RSRecordManager overallDistance] / RS_UNIT;
+    NSTimeInterval wholeSeconds = [RSRecordManager overallTime];
+    CLLocationSpeed averageSpeed = [RSRecordManager overallSpeed];
     
     if (wholeMeters > 10.0) {
         self.distanceLabel.text = [NSString stringWithFormat:@"%.1f", wholeMeters];
@@ -163,7 +131,7 @@ static bool updateNewRecord;
         self.distanceLabel.text = [NSString stringWithFormat:@"%.2f", wholeMeters];
     }
     
-    NSString *wholeDurationString = [self.recordManager timeFormatted:wholeSeconds withOption:FORMAT_HHMMSS];
+    NSString *wholeDurationString = [RSRecordManager timeFormatted:wholeSeconds withOption:FORMAT_HHMMSS];
     self.durationLabel.text = wholeDurationString;
     
     int pace = 0;
@@ -173,10 +141,9 @@ static bool updateNewRecord;
     else {
         pace = wholeSeconds / wholeMeters;
     }
-    NSString *averagePaceString = [self.recordManager timeFormatted:pace withOption:FORMAT_MMSS];
+    NSString *averagePaceString = [RSRecordManager timeFormatted:pace withOption:FORMAT_MMSS];
     self.avgPaceLabel.text = averagePaceString;
     
-    averageSpeed /= [self.records count];
     averageSpeed *= (SECONDS_OF_HOUR/RS_UNIT);
     if (averageSpeed > 10.0) {
         self.avgSpeedLabel.text = [NSString stringWithFormat:@"%.1f", averageSpeed];
@@ -219,13 +186,11 @@ static bool updateNewRecord;
         cell.timeImageView.image = self.sunImg;
     }
     
-    
-    CLLocationDistance wholeDistance = [[[self.records objectAtIndex:indexPath.row] objectAtIndex:1] doubleValue];
-    wholeDistance /= RS_UNIT;
+    CLLocationDistance wholeDistance = [[[self.records objectAtIndex:indexPath.row] objectAtIndex:1] doubleValue] / RS_UNIT;
     cell.distanceLabel.text = [NSString stringWithFormat:@"%.2f", wholeDistance];
     cell.unitLabel.text = [@" " stringByAppendingString:RS_DISTANCE_UNIT_STRING];
     int seconds = [[[self.records objectAtIndex:indexPath.row] objectAtIndex:2] intValue];
-    cell.durationLabel.text = [self.recordManager timeFormatted:seconds withOption:FORMAT_HHMMSS];
+    cell.durationLabel.text = [RSRecordManager timeFormatted:seconds withOption:FORMAT_HHMMSS];
     
     return cell;
 }
@@ -235,8 +200,8 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger realIndex = [self.records count] - indexPath.row - 1;
-    [self.recordManager deleteEntryAt:realIndex];
-    self.records = [[[self.recordManager readCatalog] reverseObjectEnumerator] allObjects];
+    [RSRecordManager deleteEntryAt:realIndex];
+    self.records = [[[RSRecordManager allRecords] reverseObjectEnumerator] allObjects];
 }
 
 - (void)setEditing:(BOOL)editing

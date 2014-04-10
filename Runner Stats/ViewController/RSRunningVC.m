@@ -40,7 +40,6 @@
 // Stop and save a session
 @property (strong, nonatomic) IBOutlet UIButton *saveButton;
 // Others
-@property (strong, nonatomic) RSRecordManager *recordManager;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) RSPath *path;
 @property (strong, nonatomic) MKPolylineRenderer *pathRenderer;
@@ -63,48 +62,29 @@
 static int distanceBound = 1;
 // number of seconds
 static int durationBound = 0;
-// Denote wheter the record file has changed
-static bool saveNewRecord;
 // flag for resuming background music
 static bool resumeMusic;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
-        [self setUp];
+        [self setup];
     }
     return self;
 }
 
-+ (void)changeRecordStateTo:(BOOL)state
+- (void)setup
 {
-    saveNewRecord = state;
-    // Reset the update state in other VCs
-    if (state) {
-        [RSStatsFirstVC changeUpdateStateTo:NO];
-        [RSStatsSecondVC changeUpdateStateTo:NO];
-    }
-}
-
-+ (BOOL)updateState
-{
-    return saveNewRecord;
-}
-
-- (void)setUp
-{
-    [RSRunningVC changeRecordStateTo:NO];
     _locationManager                 = [[CLLocationManager alloc] init];
     _locationManager.delegate        = self;
     _locationManager.distanceFilter  = 3.0;
     _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-    _recordManager                   = [[RSRecordManager alloc] init];
     _isRunning                       = NO;
     _map.showsUserLocation           = YES;
     // reset data
     [self resetData];
     
-    if (![_recordManager createCatalog]) {
+    if (![RSRecordManager createCatalog]) {
         NSLog(@"Create record.csv failed.");
     }
 }
@@ -145,15 +125,8 @@ static bool resumeMusic;
     if ([[RSGameKitHelper sharedGameKitHelper] gameCenterFeaturesEnabled] ) {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         if (![defaults boolForKey:FLAG_HAS_SUBMITTED_SOCRE]) {
-            RSRecordManager *recordManager = [[RSRecordManager alloc] init];
-            NSArray *records = [recordManager readCatalog];
-            double_t wholeMeters = 0.0;
-            if ([records count] > 0) {
-                for (NSArray *record in records) {
-                    wholeMeters += [[record objectAtIndex:1] doubleValue];
-                }
-                wholeMeters /= 10.0;
-            }
+            double_t wholeMeters = [RSRecordManager overallDistance] / 1000.0;
+            
             [[RSGameKitHelper sharedGameKitHelper] submitScore:wholeMeters category:LEADERBOARD_ID];
             [defaults setBool:YES forKey:FLAG_HAS_SUBMITTED_SOCRE];
             [defaults synchronize];
@@ -528,12 +501,10 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
     NSString *avgSpdStr = [NSString stringWithFormat:@"%.2f",self.path.distance / duration];
     
     NSArray *newRecord = @[startDateString, disStr, durStr, avgSpdStr];
-    [self.recordManager addCatalogEntry:newRecord];
+    [RSRecordManager addCatalogEntry:newRecord];
     
     
     [self.path saveTmpDataAsRecord];
-    // Set the flag that denotes the other VC needs to re-display animation of figures
-    [RSRunningVC changeRecordStateTo:YES];
 
     // Set the flag of game center to remember that the latest result has not been submitted
     if ([[RSGameKitHelper sharedGameKitHelper] gameCenterFeaturesEnabled]) {
@@ -630,9 +601,8 @@ didUpdateUserLocation:(MKUserLocation *)userLocation
     if (self.isRunning) {
         self.map.centerCoordinate = userLocation.location.coordinate;
     }
-    if (![RSRunningVC updateState]) {
-        [self renewMapRegion];
-    }
+
+    [self renewMapRegion];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView
@@ -711,7 +681,7 @@ didUpdateUserLocation:(MKUserLocation *)userLocation
 - (void)setSeconds:(NSInteger)sessionSeconds
 {
     _sessionSeconds      = sessionSeconds;
-    self.timerLabel.text = [self.recordManager timeFormatted:(int)sessionSeconds withOption:FORMAT_HHMMSS];
+    self.timerLabel.text = [RSRecordManager timeFormatted:(int)sessionSeconds withOption:FORMAT_HHMMSS];
 }
 
 - (void)timerTick
