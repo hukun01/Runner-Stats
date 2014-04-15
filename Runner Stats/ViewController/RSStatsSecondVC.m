@@ -217,7 +217,7 @@ isInSameMonthWithDate:(NSString *)dateString2
         else {
             [upperXLabelsArray replaceObjectAtIndex:indexOfPoint withObject:[NSString stringWithFormat:@"%.1lf", durationDistance / RS_UNIT]];
             [xLabelsArray replaceObjectAtIndex:indexOfPoint withObject:[RSRecordManager timeFormatted:(int)durationSeconds withOption:FORMAT_HHMM]];
-            [yValuesArray replaceObjectAtIndex:indexOfPoint withObject:[NSNumber numberWithInteger:durationSeconds]];
+            [yValuesArray replaceObjectAtIndex:indexOfPoint withObject:[NSNumber numberWithDouble:durationDistance / RS_UNIT]];
             -- indexOfPoint;
             durationSeconds = 0;
             durationDistance = 0;
@@ -228,7 +228,7 @@ isInSameMonthWithDate:(NSString *)dateString2
     if (indexOfPoint >= 0) {
         [upperXLabelsArray replaceObjectAtIndex:indexOfPoint withObject:[NSString stringWithFormat:@"%.1lf", durationDistance / RS_UNIT]];
         [xLabelsArray replaceObjectAtIndex:indexOfPoint withObject:[RSRecordManager timeFormatted:(int)durationSeconds withOption:FORMAT_HHMM]];
-        [yValuesArray replaceObjectAtIndex:indexOfPoint withObject:[NSNumber numberWithInteger:durationSeconds]];
+        [yValuesArray replaceObjectAtIndex:indexOfPoint withObject:[NSNumber numberWithDouble:durationDistance / RS_UNIT]];
     }
     
     self.barChart.upperXLabels = upperXLabelsArray;

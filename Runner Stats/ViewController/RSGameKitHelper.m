@@ -9,12 +9,6 @@
 #import "RSGameKitHelper.h"
 #import "RSConstants.h"
 
-@interface RSGameKitHelper ()
-{
-    
-}
-@end
-
 @implementation RSGameKitHelper
 
 -(void) submitScore:(double_t)score
