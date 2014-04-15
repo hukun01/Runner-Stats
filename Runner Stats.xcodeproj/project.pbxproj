@@ -45,6 +45,7 @@
 		46B70A2518F73A7400BB4AD7 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46B70A2418F73A7400BB4AD7 /* libGoogleAnalyticsServices.a */; };
 		46B70A2718F73AA300BB4AD7 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46B70A2618F73AA300BB4AD7 /* libz.dylib */; };
 		46B70A2918F73D7800BB4AD7 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46B70A2818F73D7800BB4AD7 /* libsqlite3.dylib */; };
+		46B70A2C18F7B52000BB4AD7 /* RSAddRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 46B70A2B18F7B52000BB4AD7 /* RSAddRecordVC.m */; };
 		46D4AAAE18655E6700F787BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D4AAAD18655E6700F787BA /* Foundation.framework */; };
 		46D4AAB018655E6700F787BA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D4AAAF18655E6700F787BA /* CoreGraphics.framework */; };
 		46D4AAB218655E6700F787BA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D4AAB118655E6700F787BA /* UIKit.framework */; };
@@ -148,6 +149,8 @@
 		46B70A2418F73A7400BB4AD7 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		46B70A2618F73AA300BB4AD7 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		46B70A2818F73D7800BB4AD7 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		46B70A2A18F7B52000BB4AD7 /* RSAddRecordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSAddRecordVC.h; sourceTree = "<group>"; };
+		46B70A2B18F7B52000BB4AD7 /* RSAddRecordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAddRecordVC.m; sourceTree = "<group>"; };
 		46B7D6C41878E44F000C5524 /* Runner Stats.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "Runner Stats.entitlements"; path = "Runner Stats/Runner Stats.entitlements"; sourceTree = SOURCE_ROOT; };
 		46C47DF6186F6F4000A990B0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		46C47DF8186FFFC400A990B0 /* Known bug.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Known bug.md"; sourceTree = "<group>"; };
@@ -203,6 +206,8 @@
 				465237791878DDCE000BFE5E /* RSStatsVC.m */,
 				465237741878DDCE000BFE5E /* RSStatsFirstVC.h */,
 				465237751878DDCE000BFE5E /* RSStatsFirstVC.m */,
+				46B70A2A18F7B52000BB4AD7 /* RSAddRecordVC.h */,
+				46B70A2B18F7B52000BB4AD7 /* RSAddRecordVC.m */,
 				4652376A1878DDCE000BFE5E /* RSRecordDetailsVC.h */,
 				4652376B1878DDCE000BFE5E /* RSRecordDetailsVC.m */,
 				465237681878DDCE000BFE5E /* RSRecordCell.h */,
@@ -524,6 +529,7 @@
 				46071A9418E228AB00014C5F /* RSAnnotation.m in Sources */,
 				465237AC1878DECB000BFE5E /* main.m in Sources */,
 				465237961878DE98000BFE5E /* RSRecordManager.m in Sources */,
+				46B70A2C18F7B52000BB4AD7 /* RSAddRecordVC.m in Sources */,
 				4652377D1878DDCE000BFE5E /* RSSettingsDetailsVC.m in Sources */,
 				465237811878DDCE000BFE5E /* RSStatsSecondVC.m in Sources */,
 				465237951878DE98000BFE5E /* RSPath.m in Sources */,

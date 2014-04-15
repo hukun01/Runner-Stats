@@ -12,6 +12,7 @@
 #import "RSRecordManager.h"
 #import "RSRecordCell.h"
 #import "RSStatsVC.h"
+#import "RSAddRecordVC.h"
 
 #define CELL_HEIGHT 44
 
@@ -86,9 +87,18 @@
 {
     [self.navigationItem setTitle:NSLocalizedString(@"Second_1_NavigationBarTitle", nil)];
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addARecord)];
     // setup table view
     self.recordTableView.dataSource = self;
     self.recordTableView.delegate = self;
+}
+
+- (void)addARecord
+{
+    RSAddRecordVC *addRecordVC =[self.storyboard instantiateViewControllerWithIdentifier:@"AddRecordVC"];
+    if (addRecordVC != nil) {
+        [self presentViewController:addRecordVC animated:YES completion:nil];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -130,9 +140,7 @@
     else {
         self.distanceLabel.text = [NSString stringWithFormat:@"%.2f", wholeMeters];
     }
-    
-    NSString *wholeDurationString = [RSRecordManager timeFormatted:wholeSeconds withOption:FORMAT_HHMMSS];
-    self.durationLabel.text = wholeDurationString;
+    self.durationLabel.text = [RSRecordManager timeFormatted:wholeSeconds withOption:FORMAT_HHMMSS];
     
     int pace = 0;
     if (wholeMeters == 0) {

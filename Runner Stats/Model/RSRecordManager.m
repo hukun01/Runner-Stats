@@ -7,6 +7,8 @@
 //
 
 #import "RSRecordManager.h"
+#import "RSGameKitHelper.h"
+#import "RSConstants.h"
 
 @interface RSRecordManager()
 @end
@@ -66,6 +68,13 @@ double_t overallSpeed;
         }
         overallSpeed = overallDistance / overallTime;
     }
+    
+    // Set the flag of game center to remember that the latest result has not been submitted
+    if ([[RSGameKitHelper sharedGameKitHelper] gameCenterFeaturesEnabled]) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setBool:NO forKey:FLAG_HAS_SUBMITTED_SOCRE];
+        [defaults synchronize];
+    }
 }
 
 
@@ -103,24 +112,34 @@ double_t overallSpeed;
 + (void)addCatalogEntry:(NSArray *)newline
 {
     // Need to check if there is already a record with same date
-    if ([allRecords count] >= 1) {
-        NSString *recentRecordDate = [[allRecords lastObject] firstObject];
-        recentRecordDate = [[recentRecordDate componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] firstObject];
-        NSString *newRecordDate = [newline firstObject];
-        newRecordDate = [[newRecordDate componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] firstObject];
-        
-        NSDateFormatter* df = [[NSDateFormatter alloc] init];
-        [df setDateFormat:@"yyyy-MM-dd"];
-        NSDate *recentDate = [df dateFromString:recentRecordDate];
-        NSDate *newDate = [df dateFromString:newRecordDate];
-        if ([recentDate isEqualToDate:newDate])
-        {
-            //Only one record in a day.
-            [allRecords removeLastObject];
+    NSString *newRecordDateStr = [newline firstObject];
+    newRecordDateStr = [[newRecordDateStr componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] firstObject];
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"yyyy-MM-dd"];
+    NSDate *newDate = [df dateFromString:newRecordDateStr];
+    
+    int index = 0;
+    while (index < [allRecords count]) {
+        NSString *currentRecordDateStr = [allRecords[index] firstObject];
+        currentRecordDateStr = [[currentRecordDateStr componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] firstObject];
+        NSDate *currentRecordDate = [df dateFromString:currentRecordDateStr];
+        // if newDate is later than currentDate, goto next
+        if ([newDate compare:currentRecordDate] == NSOrderedDescending) {
+            index++;
+        }
+        // if newDate is earlier
+        else if ([newDate compare:currentRecordDate] == NSOrderedAscending) {
+            [allRecords insertObject:newline atIndex:index];
+            break;
+        }
+        else {
+            [allRecords replaceObjectAtIndex:index withObject:newline];
+            break;
         }
     }
-    // add the lastest record
-    [allRecords addObject:newline];
+    if ([allRecords count] == 0 || [allRecords count] == index) {
+        [allRecords addObject:newline];
+    }
     
     CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:catalogPath];
     for (NSArray *row in allRecords) {
@@ -179,7 +198,12 @@ double_t overallSpeed;
         return [NSString stringWithFormat:@"%02d:%02d", minutes, seconds];
     }
     else if (option == FORMAT_HHMMSS) {
-        return [NSString stringWithFormat:@"%02d:%02d:%02d",hours, minutes, seconds];
+        if (hours > 99) {
+            return [NSString stringWithFormat:@"%03d:%02d:%02d",hours, minutes, seconds];
+        }
+        else {
+            return [NSString stringWithFormat:@"%02d:%02d:%02d",hours, minutes, seconds];
+        }
     }
     else {
         return [NSString stringWithFormat:@"%02d:%02d", hours, minutes];

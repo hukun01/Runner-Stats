@@ -504,15 +504,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
     NSArray *newRecord = @[startDateString, disStr, durStr, avgSpdStr];
     [RSRecordManager addCatalogEntry:newRecord];
     
-    
     [self.path saveTmpDataAsRecord];
-
-    // Set the flag of game center to remember that the latest result has not been submitted
-    if ([[RSGameKitHelper sharedGameKitHelper] gameCenterFeaturesEnabled]) {
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setBool:NO forKey:FLAG_HAS_SUBMITTED_SOCRE];
-        [defaults synchronize];
-    }
 }
 
 #pragma mark - ADBanner configuration
