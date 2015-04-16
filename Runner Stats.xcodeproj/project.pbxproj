@@ -49,6 +49,9 @@
 		46D4AAAE18655E6700F787BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D4AAAD18655E6700F787BA /* Foundation.framework */; };
 		46D4AAB018655E6700F787BA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D4AAAF18655E6700F787BA /* CoreGraphics.framework */; };
 		46D4AAB218655E6700F787BA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D4AAB118655E6700F787BA /* UIKit.framework */; };
+		46E8E5341AE06DE500213F3A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E8E5311AE06DE500213F3A /* FBSDKCoreKit.framework */; };
+		46E8E5351AE06DE500213F3A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E8E5321AE06DE500213F3A /* FBSDKLoginKit.framework */; };
+		46E8E5361AE06DE500213F3A /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E8E5331AE06DE500213F3A /* FBSDKShareKit.framework */; };
 		46EEB9BF187734CB00A9E83A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46EEB9BE187734CB00A9E83A /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -159,6 +162,9 @@
 		46D4AAAF18655E6700F787BA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		46D4AAB118655E6700F787BA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		46D4AACF18655E6800F787BA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		46E8E5311AE06DE500213F3A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		46E8E5321AE06DE500213F3A /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		46E8E5331AE06DE500213F3A /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		46EEB9BE187734CB00A9E83A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		46FF0279187A062800E823BF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		46FF027A187A062800E823BF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -174,12 +180,14 @@
 			files = (
 				46B70A2918F73D7800BB4AD7 /* libsqlite3.dylib in Frameworks */,
 				46B70A2718F73AA300BB4AD7 /* libz.dylib in Frameworks */,
+				46E8E5351AE06DE500213F3A /* FBSDKLoginKit.framework in Frameworks */,
 				4685E50C18DE50E600221E12 /* SystemConfiguration.framework in Frameworks */,
 				46B70A1C18F73A2F00BB4AD7 /* CoreData.framework in Frameworks */,
 				4654523318E27689006B5333 /* GameKit.framework in Frameworks */,
 				4685E50A18DE50E100221E12 /* StoreKit.framework in Frameworks */,
 				4685E50818DE50DA00221E12 /* MessageUI.framework in Frameworks */,
 				4685E50618DE50D100221E12 /* CoreTelephony.framework in Frameworks */,
+				46E8E5341AE06DE500213F3A /* FBSDKCoreKit.framework in Frameworks */,
 				4685E50418DE50BC00221E12 /* AdSupport.framework in Frameworks */,
 				46EEB9BF187734CB00A9E83A /* AVFoundation.framework in Frameworks */,
 				46AC5AFD1865648E006CAAD1 /* MapKit.framework in Frameworks */,
@@ -187,6 +195,7 @@
 				46D4AAB218655E6700F787BA /* UIKit.framework in Frameworks */,
 				46B70A2518F73A7400BB4AD7 /* libGoogleAnalyticsServices.a in Frameworks */,
 				46D4AAAE18655E6700F787BA /* Foundation.framework in Frameworks */,
+				46E8E5361AE06DE500213F3A /* FBSDKShareKit.framework in Frameworks */,
 				46679A4118DE745B0093E80A /* libGoogleAdMobAds.a in Frameworks */,
 				46AC5AFB18656098006CAAD1 /* AudioToolbox.framework in Frameworks */,
 				15A3F798A6CB417B9C2C0F91 /* libPods.a in Frameworks */,
@@ -334,6 +343,9 @@
 		46D4AAAC18655E6700F787BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				46E8E5311AE06DE500213F3A /* FBSDKCoreKit.framework */,
+				46E8E5321AE06DE500213F3A /* FBSDKLoginKit.framework */,
+				46E8E5331AE06DE500213F3A /* FBSDKShareKit.framework */,
 				46B70A2818F73D7800BB4AD7 /* libsqlite3.dylib */,
 				46B70A2618F73AA300BB4AD7 /* libz.dylib */,
 				46B70A1B18F73A2F00BB4AD7 /* CoreData.framework */,
@@ -665,9 +677,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Runner Stats/Runner Stats.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Documents/FacebookSDK,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Runner Stats/Runner Stats-Prefix.pch";
 				INFOPLIST_FILE = "Runner Stats/Runner Stats-Info.plist";
@@ -691,9 +708,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Runner Stats/Runner Stats.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Kun Hu (GVRWTQ7EVM)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kun Hu (GVRWTQ7EVM)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Documents/FacebookSDK,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Runner Stats/Runner Stats-Prefix.pch";
 				INFOPLIST_FILE = "Runner Stats/Runner Stats-Info.plist";
