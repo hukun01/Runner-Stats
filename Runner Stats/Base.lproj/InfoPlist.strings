@@ -3,3 +3,4 @@
 "CFBundleDisplayName" = "Runner Stats";
 "CFBundleName" = "Runner Stats";
 "CFBundleShortVersionString" = "1.14";
+"NSLocationAlwaysUsageDescription" = "May I use your location for recording?";

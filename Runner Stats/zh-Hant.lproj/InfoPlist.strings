@@ -2,4 +2,5 @@
 
 "CFBundleDisplayName" = "跑步統計";
 "CFBundleName" = "跑步統計";
-"CFBundleShortVersionString" = "1.12";
+"CFBundleShortVersionString" = "1.15";
+"NSLocationAlwaysUsageDescription" = "請允許本App使用您的位置信息。";

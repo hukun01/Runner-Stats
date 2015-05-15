@@ -2,4 +2,5 @@
 
 "CFBundleDisplayName" = "ランナーの統計";
 "CFBundleName" = "ランナーの統計";
-"CFBundleShortVersionString" = "1.12";
+"CFBundleShortVersionString" = "1.15";
+"NSLocationAlwaysUsageDescription" = "May I use your location for recording?";

@@ -94,6 +94,12 @@ static bool resumeMusic;
 {
     [super viewDidLoad];
     
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1) {
+        if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+            [self.locationManager requestWhenInUseAuthorization];
+        }
+    }
+    
     self.map.delegate = self;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(renewMapRegion)
